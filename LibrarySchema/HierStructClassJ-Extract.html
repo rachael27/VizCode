@@ -1,0 +1,219 @@
+<html>
+
+<head>
+  <title>Hierarchical Structure of Class J</title>
+</head>
+
+<body>
+  <div id="content">
+    <h1>Class J</h1>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.7.2.js"></script>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script>
+    var dataset;
+
+    d3.queue()
+      .defer(d3.csv, "File/AllClassJ.csv")
+      .defer(d3.csv, "File/JClassification.csv")
+      .await(function (error, classj, textclass) {
+        if (error) throw error;
+        var struct = [];
+        var parent = [];
+        var tcstruct = [];
+        var flag = 0;
+        var len = 0;
+
+        tcstruct.push({
+          classmark: "J",
+          name: "Politics",
+
+          children: [],
+        });
+        for (var i = 0; i < textclass.length; i++) {
+          if (textclass[i].type == "class") {
+            tcstruct[0].children.push({
+              classmark: textclass[i].classmark.trimStart().trimEnd(),
+              name: textclass[i].name,
+
+              children: [],
+            });
+          } else
+            for (var c = 0; c < tcstruct[0].children.length; c++) {
+              //  console.log(tcstruct[0].children[c].name);
+              //  console.log(textclass[i].name.split(" ")[0]);
+              if (
+                tcstruct[0].children[c].classmark ==
+                textclass[i].classmark.split(" ")[0]
+              ) {
+                //  console.log("match");
+                // console.log(tcstruct[0].children[c]);
+                tcstruct[0].children[c].children.push({
+                  classmark: textclass[i].classmark,
+                  name: textclass[i].name,
+                });
+              }
+            }
+        }
+        // console.log(tcstruct);
+
+        parent.push("root");
+        struct.push({
+          parent: "",
+          child: "root",
+          uosisbn: "",
+          text: "",
+        });
+
+        for (var j = 0; j < classj.length; j++) {
+          var callnum = classj[j].CallNumber.split(" ");
+
+          for (var k = 1; k < callnum.length; k++) {
+            var string = "";
+            for (var l = 0; l <= k; l++) {
+              string = string + " " + callnum[l];
+              //console.log(callnum[l]);
+              string = string.trimStart();
+
+              if (!parent.includes(string)) {
+                parent.push(string);
+
+                var splits = string.split(" ");
+                var len = splits.length;
+                if (len < 2) {
+                  struct.push({
+                    parent: "root",
+                    child: "root" + " " + splits[len - 1],
+                    uosisbn: "",
+                    text: "",
+                  });
+                } else {
+                  var stringparent = "";
+                  for (var i = 0; i < len - 1; i++) {
+                    stringparent = stringparent + " " + splits[i];
+                  }
+                  stringparent = stringparent.trimStart();
+
+                  if (stringparent == string)
+                    struct.push({
+                      parent: "root" + " " + splits[len - 2],
+                      child: string,
+                      uosisbn: "",
+                      text: "",
+                    });
+                  else {
+                    if (len >= 2 && stringparent.length > 2) {
+                      struct.push({
+                        parent: stringparent,
+                        child: string,
+                        uosisbn: classj[j].ISBN,
+                        text: "",
+                      });
+                    } else
+                      struct.push({
+                        parent: "root" + " " + stringparent,
+                        child: string,
+                        uosisbn: "",
+                        text: "",
+                      });
+                  }
+                }
+
+                /*
+                      struct.push({
+                        parent: splits[len - 2],
+                        child: splits[len - 1],
+                      });
+                      */
+              }
+            }
+          }
+        }
+        // console.log(parent);
+        console.log(tcstruct);
+
+        for (var i = 0; i < struct.length; i++) {
+          for (var j = 0; j < tcstruct[0].children.length; j++) {
+            var str = struct[i].child.replace(/ /g, "");
+            var classmark = tcstruct[0].children[j].classmark.replace(
+              / /g,
+              ""
+            );
+            if (str.includes("root")) str = str.replace("root", "");
+
+            if (str == tcstruct[0].children[j].classmark.replace(/ /g, "")) {
+              //console.log("mcatch");
+
+              struct[i].text = tcstruct[0].children[j].name;
+            }
+
+            if (str.substring(0, 2) == classmark.substring(0, 2)) {
+
+              // console.log(struct[i].parent);
+              for (
+                var c = 0;
+                c < tcstruct[0].children[j].children.length;
+                c++
+              ) {
+                //console.log(struct[i].child.split(" ")[0] + struct[i].child.split(" ")[1]);
+                //console.log(tcstruct[0].children[j].children[c].classmark.split(" ")[0] + tcstruct[0].children[j].children[c].classmark.split(" ")[1]);
+                if (
+                  str ==
+                  tcstruct[0].children[j].children[c].classmark.replace(
+                    / /g,
+                    ""
+                  ) || (struct[i].child.split(" ")[0] + struct[i].child.split(" ")[1]) == (tcstruct[0].children[j].children[c].classmark.split(" ")[0] + tcstruct[0].children[j].children[c].classmark.split(" ")[1])
+                )
+                  struct[i].text = tcstruct[0].children[j].children[c].name;
+                else {
+                  // console.log("inside");
+                  // console.log(tcstruct[0].children[j].children[c].classmark);
+                  if (
+                    tcstruct[0].children[j].children[c].classmark.includes(
+                      "-"
+                    )
+                  ) {
+                    var classmark = tcstruct[0].children[j].children[c].classmark;
+                    classmark = classmark.substring(3, classmark.length);
+                    /*  console.log(classmark);
+                     console.log(struct[i].child.split(" ")[1]);
+ 
+                     console.log(classmark.split(
+                       "-"
+                     )[0]);
+                     console.log(classmark.split(
+                       "-"
+                     )[1]); */
+                    if (
+                      struct[i].child.split(" ")[1] >=
+                      classmark.split(
+                        "-"
+                      )[0] &&
+                      struct[i].child.split(" ")[1] <=
+                      classmark.split(
+                        "-"
+                      )[1]
+                    ) {
+                      if (struct[i].parent.includes("root")) {
+
+                        console.log(struct[i].parent);
+                      }
+                      //console.log(struct[i].child);
+                      // console.log(struct[i].parent.split(" ")[1]);
+                      struct[i].text =
+                        tcstruct[0].children[j].children[c].name;
+                    }
+                  }
+
+                }
+              }
+            }
+          }
+        }
+        console.log(struct);
+      });
+  </script>
+</body>
+
+</html>

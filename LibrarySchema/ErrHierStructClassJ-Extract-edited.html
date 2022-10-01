@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <title>DATASET</title>
+  </head>
+
+  <body>
+    <div id="content">
+      <h1>Class J</h1>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.7.2.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script>
+      var dataset;
+      d3.csv("File/AllClassJ.csv", function (classj) {
+        var struct = [];
+        var parent = [];
+        var flag = 0;
+        var len = 0;
+
+        parent.push("root");
+        struct.push({
+          parent: "",
+          child: "root",
+        });
+
+        for (var j = 0; j < classj.length; j++) {
+          var callnum = classj[j].CallNumber.split(" ");
+
+          for (var k = 1; k < callnum.length; k++) {
+            var string = "";
+            for (var l = 0; l <= k; l++) {
+              string = string + " " + callnum[l];
+              //console.log(callnum[l]);
+              string = string.trimStart();
+
+              if (!parent.includes(string)) {
+                parent.push(string);
+
+                var splits = string.split(" ");
+                var len = splits.length;
+                if (len < 2) {
+                  struct.push({
+                    parent: "root",
+                    child: "root" + " " + splits[len - 1],
+                  });
+                } else {
+                  var stringparent = "";
+                  for (var i = 0; i < len - 1; i++) {
+                    stringparent = stringparent + " " + splits[i];
+                  }
+                  stringparent = stringparent.trimStart();
+
+                  if (stringparent == string)
+                    struct.push({
+                      parent: "root" + " " + splits[len - 2],
+                      child: string,
+                    });
+                  else {
+                    if (len >= 2 && stringparent.length > 2) {
+                      struct.push({
+                        parent: stringparent,
+                        child: string,
+                      });
+                    } else
+                      struct.push({
+                        parent: "root" + " " + stringparent,
+                        child: string,
+                      });
+                  }
+                }
+
+                /*
+                  struct.push({
+                    parent: splits[len - 2],
+                    child: splits[len - 1],
+                  });
+                  */
+              }
+            }
+          }
+        }
+        console.log(parent);
+        console.log(struct);
+      });
+    </script>
+  </body>
+</html>

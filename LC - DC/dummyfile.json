@@ -1,0 +1,270 @@
+{
+    "name": "APPLICATIONS",
+    "children": [
+        {
+            "name": "office365",
+            "children": [
+                {
+                    "name": "enterprise",
+                    "children": [
+                        {
+                            "name": "access",
+                            "value": 1471
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "mapi",
+            "children": [
+                {
+                    "name": "over",
+                    "children": [
+                        {
+                            "name": "http",
+                            "value": 963
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "soap",
+            "value": 333
+        },
+        {
+            "name": "icloud",
+            "children": [
+                {
+                    "name": "base",
+                    "value": 207
+                },
+                {
+                    "name": "mail",
+                    "value": 5
+                }
+            ]
+        },
+        {
+            "name": "google",
+            "children": [
+                {
+                    "name": "base",
+                    "value": 924
+                },
+                {
+                    "name": "analytics",
+                    "value": 13
+                },
+                {
+                    "name": "play",
+                    "value": 4
+                },
+                {
+                    "name": "maps",
+                    "value": 2
+                },
+                {
+                    "name": "update",
+                    "value": 1
+                }
+            ]
+        },
+        {
+            "name": "activesync",
+            "value": 1726
+        },
+        {
+            "name": "ms",
+            "children": [
+                {
+                    "name": "exchange",
+                    "value": 1369
+                },
+                {
+                    "name": "update",
+                    "value": 27
+                },
+                {
+                    "name": "teams",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "name": "web",
+            "children": [
+                {
+                    "name": "browsing",
+                    "value": 1166
+                }
+            ]
+        },
+        {
+            "name": "youtube",
+            "children": [
+                {
+                    "name": "base",
+                    "value": 146
+                }
+            ]
+        },
+        {
+            "name": "ssl",
+            "value": 1273
+        },
+        {
+            "name": "json",
+            "children": [
+                {
+                    "name": "rpc",
+                    "value": 37
+                }
+            ]
+        },
+        {
+            "name": "netflix",
+            "children": [
+                {
+                    "name": "base",
+                    "value": 5
+                }
+            ]
+        },
+        {
+            "name": "facebook",
+            "children": [
+                {
+                    "name": "base",
+                    "value": 18
+                }
+            ]
+        },
+        {
+            "name": "apple",
+            "children": [
+                {
+                    "name": "maps",
+                    "value": 9
+                }
+            ]
+        },
+        {
+            "name": "whatsapp",
+            "children": [
+                {
+                    "name": "base",
+                    "value": 31
+                }
+            ]
+        },
+        {
+            "name": "dns",
+            "value": 13
+        },
+        {
+            "name": "sip",
+            "value": 17
+        },
+        {
+            "name": "ms",
+            "children": [
+                {
+                    "name": "office365",
+                    "children": [
+                        {
+                            "name": "base",
+                            "value": 38
+                        }
+                    ]
+                },
+                {
+                    "name": "teams",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "name": "outlook",
+            "children": [
+                {
+                    "name": "web",
+                    "value": 85
+                }
+            ]
+        },
+        {
+            "name": "twitter",
+            "children": [
+                {
+                    "name": "base",
+                    "value": 41
+                }
+            ]
+        },
+        {
+            "name": "gmail",
+            "children": [
+                {
+                    "name": "base",
+                    "value": 5
+                }
+            ]
+        },
+        {
+            "name": "outlook",
+            "children": [
+                {
+                    "name": "web",
+                    "children": [
+                        {
+                            "name": "online",
+                            "value": 57
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "ssh",
+            "value": 2
+        },
+        {
+            "name": "bitdefender",
+            "value": 2
+        },
+        {
+            "name": "apple",
+            "children": [
+                {
+                    "name": "push",
+                    "children": [
+                        {
+                            "name": "notifications",
+                            "value": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "instagram",
+            "children": [
+                {
+                    "name": "base",
+                    "value": 3
+                }
+            ]
+        },
+        {
+            "name": "wechat",
+            "children": [
+                {
+                    "name": "base",
+                    "value": 1
+                }
+            ]
+        }
+    ]
+}

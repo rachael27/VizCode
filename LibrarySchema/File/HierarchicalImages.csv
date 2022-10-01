@@ -1,0 +1,318 @@
+Viz,Source,Dimensionality,FormatofPC,Secondary,Layout,Layout Details,Orientation
+2 1/2-D Treemap,thumbs100png/Turo1992.png,2D,Contained,Tightly Nested / Stacked,Shape-based,Rectangle,
+2D Beamtree,thumbs100png/Ham2002_1.png,2D,Overlap,Adjoined by a side,Angle-based,,
+2D Contour Map,thumbs100png/Kubota2006_1.png,2D,Contained,Loosely packed,Shape-based,Curve,
+2D Icicle Plot,thumbs100png/Kruskal1983_1.png,2D,Adjacent,Adjoined by a side,Linear,,Top-down
+3-Dimensional Phylogeny Layout,thumbs100png/Kim2007.png,3D,Node-link,,Linear,Phylogeny,
+3D Beamtree,thumbs100png/Ham2002_2.png,3D,Overlap,Adjoined by a side,Angle-based,,
+3D Carousel Tree,thumbs100png/Cao2013.png,3D,Adjacent,Ajacent to each other,Radial,,
+3D Cone Tree Layout,thumbs100png/Nadeau2008.png,3D,Node-link,,Shape-based,Cone,
+3D Contour Map,thumbs100png/Kubota2006_2.png,3D,Contained,Loosely packed / stacked,Shape-based,Geo,
+3D Fractal Representation,thumbs100png/Meier1996.png,3D,Overlap,Adjoined by a side,Angle-based,,
+3D Grid Embedding,thumbs100png/Bein2000.png,3D,Node-link,,Angle-based,,
+3D Hierarchical Data Representation,thumbs100png/Theisen2001.png,3D,Node-link,,Linear,,Top-down
+3D Icicle Plot,thumbs100png/Kruskal1983_2.png,3D,Contained,Loosely packed,Shape-based,Rectangle,
+3D Information Landscape,thumbs100png/Tesler1992.png,3D,Contained,Loosely packed,Shape-based,Rectangle,
+3D Nested Cylinders and Spheres,thumbs100png/Wang2006.png,3D,Contained,Tightly nested,Shape-based,Circle,
+3D Nested Treemap,thumbs100png/Churcher1999.png,3D,Contained,Tightly nested,Shape-based,Rectangle,
+3D Polar Steptree,thumbs100png/Schulz2011_2.png,3D,Contained,Tightly nested / Stacked,Shape-based,Cylinder,
+3D Polar Treemap (Cylinder),thumbs100png/Schulz2011_5.png,3D,Contained,Tightly nested / Stacked,Shape-based,Cylinder,
+3D Polar Treemap (Sphere),thumbs100png/Schulz2011_4.png,3D,Contained,Tightly nested / Stacked,Shape-based,Sphere,
+3D Sunburst (Cylinder),thumbs100png/Schedl2007.png,3D,Adjacent,Adjoined by a side,Radial,,
+3D Sunburst (Sphere),thumbs100png/Schulz2011_3.png,3D,Adjacent,Adjoined by a side,Shape-based,Sphere,
+3D Sunburst (Wheel),thumbs100png/Schulz2011_1.png,3D,Adjacent,Adjoined by a side / Stacked,Shape-based,Cylinder,
+3D Treemap,thumbs100png/Johnson1993_3.png,3D,Contained,Loosely packed / Stacked,Shape-based,Cube,
+3D-Treemap,thumbs100png/Liggesmeyer2009.png,3D,Contained,Tightly nested,Shape-based,Rectangle,
+Acacia Tree,thumbs100png/Burch2020_2.png,3D,Adjacent,Adjoined by a side,Balloon,,
+Accordion Drawing,thumbs100png/Munzner2003.png,2D,Node-link,,Linear,,Left-right
+AdaptiviTree,thumbs100png/Tan2007.png,2D,Node-link,,Linear,,Right-left/Left-right
+Adjacency-preserving Spatial Treemaps,thumbs100png/Buchin2011.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Aggregate Tree Map,thumbs100png/Chuah1998_1.png,2D,Adjacent,Adjoined by a side,Radial,,
+Angular Treemap,thumbs100png/Liang2012.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Archimedean Spiral Layout,thumbs100png/Eppstein2009.png,2D,Node-link,,Radial,,
+Balanced Partition Treemap,thumbs100png/Feng2019.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Balloon Drawing,thumbs100png/Lin2005.png,2D,Node-link,,Radial,,
+Balloon Treemap,thumbs100png/Viegas2013.png,2D,Contained,Loosely packed,Shape-based,Circle,
+BaobabView,thumbs100png/Elzen2011.png,2D,Node-link,,Linear,,
+BarcodeTree,thumbs100png/Li2020.png,2D,Adjacent,Adjacent to each other,Linear,,Left-right
+Bifocal Tree,thumbs100png/Cava2002.png,2D,Node-link,,Shape-based,Hyperbolic,
+Blob Hierarchy Layout,thumbs100png/Harel2000.png,2D,Contained,Loosely packed,Shape-based,Rectangle,
+Botanical Tree Layout,thumbs100png/Devroye1995.png,2D,Node-link,,Linear,Bottom-up,
+Botanical Tree,thumbs100png/Kleiberg2001.png,3D,Adjacent,Adjoined by a side,Balloon,,
+Bubble Hierarchy,thumbs100png/Hlawatsch2014.png,3D,Adjacent,Adjoined by a side,Special: Balloon,,
+Bubble Tree,thumbs100png/Grivet2004.png,2D,Node-link,,Balloon,,
+Bubble Tree,thumbs100png/Boardman2000.png,2D,Hybrid: Node-link+Contained,,Shape-based,Circle,
+Bubble Treemap,thumbs100png/Goertler2018.png,2D,Contained,Tightly nested,Shape-based,Curve,
+Bubblemap,thumbs100png/Bederson2001_2.png,2D,Contained,Tightly nested,Shape-based,Curve,
+Cabinet Tree,thumbs100png/Yang2015a.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+CactusTree,thumbs100png/Dang2017.png,2D,Node-link,,Linear,Bottom-up,
+Calling Context Ring Charts,thumbs100png/Moret2009.png,2D,Adjacent,Adjoined by a side,Radial,,
+Cone Tree,thumbs100png/Robertson1991_2.png,3D,Node-link,,Hybrid: Linear+Shape-based,Cone,Left-right
+Career Tree,thumbs100png/Bocoup2011.png,2D,Node-link,,Linear,,Bottom-up
+Cascaded Pietree,thumbs100png/Schulz2013_2.png,2D,Hybrid: Overlap+Contained,,Shape-based,Circle,
+Cascaded Treemaps,thumbs100png/Lu2008.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Cheops,thumbs100png/Beaudoin1996.png,2D,Hybrid: Overlap+Contained,,Shape-based,Triangle,
+Circular Partitions,thumbs100png/Onak2008.png,2D,Contained,Tightly nested,Shape-based,Circle,
+Circular Phylogenetic Tree Layout,thumbs100png/Bachmaier2005_1.png,2D,Node-link,,Radial,,
+Circular Subtree Drawing,thumbs100png/Jia2008.png,2D,Node-link,,Radial,,
+Circular Tree Drawing,thumbs100png/Toosi2014.png,2D,Node-link,,Shape-based,Circular,
+Cityscape Metaphor,thumbs100png/Keskin1997.png,3D,Node-link,,Balloon,,
+ClockTree,thumbs100png/Li2020a.png,2D,Node-link,,Shape-based,Circular,
+Cluster Treemap,thumbs100png/Wattenberg1999.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Clustergram,thumbs100png/Schonlau2002.png,2D,Node-link,,Linear,,Left-right
+CodeCity,thumbs100png/Wettel2007.png,3D,Contained,Loosely packed,Shape-based,Rectangle,
+Collapsible Cylindrical Tree,thumbs100png/Dachselt2001.png,3D,Adjacent,Adjacent to each other,Linear,,
+Collector,thumbs100png/Schulz2011_6.png,3D,Hybrid: Contained+Adjacent (leaves),,Shape-based,Rectangle,
+Columnar Tree Map,thumbs100png/Armitage2014.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Compact Box-Drawing,thumbs100png/Hasan2002.png,2D,Node-link,,Linear,,Left-right
+Compact Layered Layout,thumbs100png/Marriott2007.png,2D,Node-link,,Linear,,Top-down
+Cone Tree,thumbs100png/Robertson1991_1.png,3D,Node-link,,Hybrid: Linear+Shape-based,Cone,Top-down
+Contact Tree,thumbs100png/Sallaberry2016.png,2D,Node-link,,Linear,,Bottom-up
+Context Treemap,thumbs100png/Csallner2003.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Contour-Based Treemap,thumbs100png/Wu2016.png,2D,Contained,Tightly nested,Shape-based,Circle,
+Contrast Spiral Treemap,thumbs100png/Tu2007.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+ControlTree,thumbs100png/Appert2007.png,2D,Node-link,,Linear,,Left-right
+CoVennTree,thumbs100png/Lott2015.png,2D,Node-link,,Balloon,,
+CropCircles,thumbs100png/Parsia2005.png,2D,Contained,Loosely packed,Shape-based,Circle,
+Curled Tree,thumbs100png/Ahmed2007.png,2D,Node-link,,Linear,,Top-down
+Curved Tree,thumbs100png/Rostami2014.png,2D,Node-link,,Linear,,Bottom-up
+Cushion Treemap,thumbs100png/Wijk1999.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Cushioned Icicle Plot,thumbs100png/Chevalier2007.png,2D,Adjacent,Adjoined by a side,Linear,,Left-right
+"D-Map
+Diffusion Map",thumbs100png/Chen2016.png,2D,Hyrbid: Contained+Node-link,,Shape-based,Curve,
+Data Jewelry Box / HeiankyoView,thumbs100png/Yamaguchi2003.png,2D,Contained,Loosely packed,Shape-based,Square,
+DataBurst,thumbs100png/Smith2010.png,2D,Adjacent,Adjoined by a side,Radial,,
+DeepTree,thumbs100png/Block2012.png,2D,Node-link,,Linear,,Bottom-up
+Degree-of-Interest Tree,thumbs100png/Card2002.png,2D,Node-link,,Linear,,Top-down
+DensiTree,thumbs100png/Bouckaert2010.png,2D,Node-link,,Linear,,Top-down
+Descendant-Level-View,thumbs100png/Aydin2011.png,2D,Node-link,,Linear,,
+Diamond Tree,thumbs100png/Burch2020_3.png,2D,Adjacent,Adjoined by a vertex,Radial,,Top-down
+Diamond Tree,thumbs100png/Wang2014.png,2D,Adjacent,Adjoined by a vertex,Radial,,
+Disk Tree,thumbs100png/EdChi1998.png,2D,Node-link,,Radial,,
+Distance Encoded Tree,thumbs100png/Lee2009.png,2D,Node-link,,Linear,,
+DocuBurst,thumbs100png/Collins2009.png,2D,Adjacent,Adjoined by a side,Radial,,Top-down
+Double Tree,thumbs100png/Culy2010.png,2D,Node-link,,Linear,,
+Drawer Trees,thumbs100png/Yang2014.png,2D,Contained,Tightly nested,Shape-based,Rectangle,Left-right / Right-left
+Dynamic Tree Layout,thumbs100png/Moen1990.png,2D,Node-link,,Linear,,
+Dynamically Blended Tree Layout,thumbs100png/Wilson1999.png,2D,Node-link,,Radial,,Left-right
+Edge Equalized Treemap,thumbs100png/Kobayashi2012.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Eichhorn-Tree,thumbs100png/Eichhorn2006.png,2D,Overlap,Loosely packed,Balloon,,
+Elastic Hierarchies,thumbs100png/Zhao2005.png,2D,Hybrid: Node-link+Contained,,Linear,,
+Elastic Tree,thumbs100png/Yan2021.png,2D,Node-link,,Linear,,
+Elevated City Map,thumbs100png/Steinbruckner2010.png,3D,Adjacent,Joined by a side,Shape-based,Geo,Top-down
+Ellimaps,thumbs100png/Otjacques2007.png,2D,Contained,Loosely packed,Shape-based,Ellipse,
+Embedded Spatiotemporal Hierarchies,thumbs100png/Hadlak2010.png,2D,Contained+Node-link,Loosely packed,Shape-based,Geo,
+EncCon Tree 2D,thumbs100png/Nguyen2004.png,2D,Node-link,,Hybrid: Balloon+Shape-based,Rectangle,
+EncCon Tree 3D,thumbs100png/Huang2007.png,3D,Contained,Loosely packed,Shape-based,Rectangle,
+Enhanced Radial Space-Filling Layout,thumbs100png/Jia2009.png,2D,Adjacent,Adjoined by a side,Radial,,
+Equal-Height Treemap,thumbs100png/Wittenburg2018.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Expandable Tree,thumbs100png/Bereiter1999.png,2D,Hybrid: Contained+Overlap,,Shape-based,Rectangle,
+Exploded Treemaps,thumbs100png/Luboschik2007.png,3D,Hybrid: Node-link+Contained,,Hybrid: Linear+Shape-based,Rectangle,
+Extended Grid Embedding,thumbs100png/Youn1988.png,2D,Node-link,,Angle-based,,
+Fan Chart,thumbs100png/Draper2008.png,2D,Adjacent,Adjoined by a side,Radial,,
+Fan-shaped Tree Visualization,thumbs100png/Halachmi2000.png,2D,Node-link,,Shape-based,,
+FanLens,thumbs100png/Lou2008.png,2D,Adjacent,Adjoined by a side,Radial,Circular/fan,
+FastRings,thumbs100png/Rusu2007.png,2D,Node-link,,Balloon,,
+Fisheye Outline Tree,thumbs100png/Demian2006.png,2D,Adjacent,Adjacent to each other,Indented,,
+Fisheye Tree View,thumbs100png/Tominski2006.png,2D,Node-link,,Indented,,
+Flexible Trees,thumbs100png/Sadeghi2016.png,2D,Adjacent,Adjoined by a side,Radial,,
+FlexTree,thumbs100png/Song2002.png,2D,Node-link,,Linear,,
+FoamTree,thumbs100png/Matela2011.png,2D,Contained,Tightly nested,Shape-based,Polygon,Left-right
+Force-Directed Phylogenetic Tree Layout,thumbs100png/Cuadros2007.png,2D,Node-link,,Angle-based,Force-directed,
+Force-directed Tree Layout,thumbs100png/Sun2003.png,2D,Node-link,,Balloon,Force-directed,
+Formal Logic Representation,thumbs100png/Baron1969.png,2D,Contained,Tightly nested,Linear,,Top-down
+Fractal Maps,thumbs100png/CliftonBligh2004.png,2D,Contained,Loosely packed,Shape-based,Circle,
+Fractal Tree,thumbs100png/Ong2005.png,2D,Overlap,,Angle-based,,
+Fractal Tree Layout,thumbs100png/Koike1993.png,2D,Adjacent,,Angle-based,,
+FROTH,thumbs100png/Sun2003a.png,2D,Contained,Tightly nested,Shape-based,Circle,
+Garden Layout,thumbs100png/Eades1992_1.png,2D,Node-link,,Angle-based,,
+Generalized Pythagoras Trees,thumbs100png/Beck2014.png,2D,Adjacent,Adjoined by a side,Angle-based,,
+Generalized Treemap (Pie),thumbs100png/Vliegen2006_2.png,2D,Adjacent,Adjoined by a side,Radial,,
+Generalized Treemap (Pyramid),thumbs100png/Vliegen2006_1.png,2D,Contained,Adjoined by a side,Shape-based,Triangle,
+Generalized Treemap (Pyramid+Pie),thumbs100png/Vliegen2006_3.png,2D,Contained,Adjoined by a side,Shape-based,,
+Geophylogentic Tree Visualization,thumbs100png/Kidd2010.png,3D,Hybrid: Node-link+Contained,,Shape-based,Geo,
+Georeferenced Tree Layout,thumbs100png/Parks2009.png,2D,Node-link,,Linear,,Left-right
+Gestalt Cartoon Treemap,thumbs100png/Wattenberg2003.png,3D,Node-link,,Linear,,Left-right
+Golden Rectangle Treemap,thumbs100png/Lu2017.png,2D,Contained,Tightly nested,Shape-based,Rectangle,Top-down
+GosperMap,thumbs100png/Auber2013.png,2D,Contained,Tightly nested,Shape-based,Polygon,
+Grid TreeMap,thumbs100png/Schreck2006.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Gyrolayout,thumbs100png/Urribarri2013.png,3D,Node-link,,Shape-based,Sphere,
+H-Tree Layout,thumbs100png/Shiloach1976.png,2D,Node-link,,Angle-based,Hyperbolic,
+h-v Drawing,thumbs100png/Crescenzi1992.png,2D,Node-link,,Angle-based,H-tree layout,
+H3,thumbs100png/Munzner1997.png,3D,Node-link,,Shape-based,h-v layout,
+Helix Cone Tree,thumbs100png/Joshi2004.png,3D,Node-link,,Shape-based,Hyperbolic,
+Hexagonal Grid Drawing,thumbs100png/Bachmaier2008.png,2D,Node-link,,Angle-based,Helix-Cone,
+Hexagonal Grid Embedding,thumbs100png/Gordon1984.png,2D,Node-link,,Angle-based,Hexagonal layout,
+Hexagonal Tiling,thumbs100png/Yang2015b.png,2D,Contained,Tightly nested,Shape-based,Polygon,
+Hi-Tree,thumbs100png/Marriott2011.png,2D,Node-link,,Linear,,
+Hierarchical Sector Chart,thumbs100png/Brinton1939.png,2D,Adjacent,Adjoined by a side,Radial,,Top-down
+HierarchyMap,thumbs100png/Aborisade2010.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Hilbert/Moore Treemap,thumbs100png/Tak2013.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Hybrid Steptree/Treecube,thumbs100png/Schulz2011_7.png,3D,Hybrid: Contained+Adjacent,,Shape-based,Rectangle,
+Hybrid Sunburst/Treemap,thumbs100png/Webber2006.png,2D,Adjacent,Adjoined by a side,Hybrid: Shape-based+Hilbert Curve,Rectangle,
+Hybrid-Treemap,thumbs100png/Hahn2017.png,2D,Contained,Tightly nested,Shape-based,Rectangle+Polygon,
+Hyperbolic Browser,thumbs100png/Lamping1995.png,2D,Node-link,,Hyperbolic,,
+Hyperbolic Half-Plane Visualization,thumbs100png/Hida2005.png,2D,Node-link,,Hyperbolic,,
+Hyperbolic Look-alike,thumbs100png/Vernier2002.png,2D,Node-link,,Hyperbolic,,
+Hyperbolic Wheel,thumbs100png/Lam2012.png,2D,Adjacent,Adjoined by a side,Hyperbolic,,
+Inclusion Tree Layout Convention,thumbs100png/Eades1993_2.png,2D,Contained,Loosely packed,Shape-based,Rectangle,
+Incremental Layout by Boundary Shapes,thumbs100png/Workman2004.png,2D,Node-link,,Linear,,
+Indentation,thumbs100png/Knuth1968.png,2D,Adjacent,Adjacent to each other,Not enough information,,Left-right
+Indented Linear Timeline,thumbs100png/Venolia2003.png,2D,Node-link,,Indented,,
+Indented Pixel Tree Plots,thumbs100png/Burch2010.png,2D,Adjacent,,Indented,,
+Infinite Tree Layout,thumbs100png/Demetrescu1999.png,2D,Node-link,,Linear,,
+Information Cube,thumbs100png/Rekimoto1993.png,3D,Contained,Loosely packed,Shape-based,Cube,Top-down
+Information Pyramides,thumbs100png/Andrews1997.png,3D,Contained,Loosely packed,Shape-based,Rectangle,
+Information Slices,thumbs100png/Andrews1998.png,2D,Adjacent,Adjoined by a side,Radial,,
+InfoSky,thumbs100png/Andrews2002.png,2D,Contained,Loosely packed,Shape-based,Polygon,
+Innovated Squarified Treemap,thumbs100png/Lai2015.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+InterRing,thumbs100png/Yang2002.png,2D,Adjacent,Adjoined by a side,Radial,,
+Jester Hat,thumbs100png/Burch2020_1.png,2D,Adjacent,Adjoined by a vertex,Linear,,Bottom-up
+Jigsaw Map,thumbs100png/Wattenberg2005.png,2D,Contained,Tightly nested,Shape-based,Polygon,
+Kaleidoscope Visualization,thumbs100png/Tick1992.png,2D,Node-link,,Shape-based,Curve,
+Labeled Balanced Treemap,thumbs100png/Lu2013.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Large Tree Visualization,thumbs100png/Heard2009.png,2D,Node-link,,Radial,,
+LensTree,thumbs100png/Song2006.png,2D,Node-link,,Indented,,
+Lifemap Nested Semicircles,thumbs100png/deVienne2016.png,2D,Node-link,,Angle-based,,
+Lifted Treemap,thumbs100png/Chaudhuri2009.png,3D,Contained,Tightly nested,Shape-based,Rectangle,Bottom-up
+Linked Treemap,thumbs100png/Linsen2011.png,3D,Hybrid: Node-link+Contained,,Linear+Shape-based,Rectangle,
+Logarithmic Spiral Tree,thumbs100png/Buchin2011b.png,2D,Node-link,,Shape-based,Curve,
+Magic Eye View,thumbs100png/Kreuseler1999.png,2D,Node-link,,Radial,Spiral layout - Angle-Restricted Steiner Arborescences,
+Magic Treemap Cube,thumbs100png/Chen2010.png,3D,Contained,Tightly nested,Shape-based,Cube,
+Maximally-symmetric Layout,thumbs100png/Manning1988.png,2D,Node-link,,Radial,,
+Memory Islands,thumbs100png/Ganascia2004.png,3D,Contained,,Shape-based,,
+Metro Map Tree,thumbs100png/Korst2020.png,2D,Node-link,,Shape-based,Curve,
+Minimum Spanning Tree Approximation,thumbs100png/Giacomo2010.png,2D,Node-link,,Balloon,Geographical,
+Minimum-Layer Drawing,thumbs100png/Mondal2011.png,2D,Node-link,,Linear,,
+Mixed-Projection Treemap,thumbs100png/Limberger2017.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Modifiable Treemap,thumbs100png/Vernier2000.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+MoireTrees,thumbs100png/MohammadiAragh2005.png,2D,Adjacent,Adjacent to each other,Radial,,
+Mondrian Treemap,thumbs100png/Chauhan2010.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Multilevel Silhouette Tree,thumbs100png/Boutin2005.png,2D,Hybrid: Node-link+Adjacent,,Radial,,
+Multivariate Bubble Treemap,thumbs100png/Zheng2021_1.png,2D,Contained,Tightly nested,Shape-based,Curve,
+Multivariate Circular Treemap,thumbs100png/Zheng2021_2.png,2D,Contained,Loosely packed,Shape-based,Circle,
+Multivariate Hierarchic Plots,thumbs100png/Tekusova2008.png,3D,Adjacent,Adjoined by a side,Radial,,
+Navigable Strip Chart,thumbs100png/Armitage2016.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Nested Columns,thumbs100png/Johnson1993_4.png,3D,Contained,Loosely packed,Shape-based,Cylinder,
+Nested Hemispheres,thumbs100png/Balzer2004.png,3D,Contained,Loosely packed,Shape-based,Hemispheres,
+Nested Pie Chart,thumbs100png/Sukla2005.png,2D,Adjacent,Adjoined by a side,Radial,,
+Nested Pietree,thumbs100png/Schulz2013_1.png,2D,Contained,Tightly nested,Shape-based,Circle,
+Nested Self-Organising Map,thumbs100png/Ye2000.png,2D,Contained,Loosely packed,Shape-based,Rectangle,
+NMap,thumbs100png/Duarte2014.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Non-layered Tidy Trees,thumbs100png/Ploeg2014.png,2D,Node-link,,Linear,,
+Non-orthogonal Planar Straight-line Grid Drawing,thumbs100png/Rusu2007a.png,2D,Node-link,,Angle-based,Top-down,
+OneZoom,thumbs100png/Rosindell2012.png,2D,Node-link,,Linear,Non-orthogonal Planar Straight-line,
+Optimal Tree Layout,thumbs100png/Fischer1980.png,2D,Node-link,,Linear,Bottom-up,
+Ordered Area Representation,thumbs100png/Bertin1967_1.png,2D,Contained,,access problem,,Bottom-up
+Ordered Sunburst,thumbs100png/Chen2015.png,2D,Adjacent,Adjoined by a side,Radial,,
+Ordered Tree Drawing on k-Grids,thumbs100png/Brunner2010.png,2D,Node-link,,Angle-based,,
+Ordered Treemap,thumbs100png/Shneiderman2001.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Orthogonal Grid Embedding,thumbs100png/Gregori1989.png,2D,Node-link,,Angle-based,,
+Orthogonal Voronoi Treemap,thumbs100png/Wang2020.png,2D,Contained,Tightly nested,Shape-based,Rectangle+Orthogonal Layout?,
+Orthographic Treemap,thumbs100png/Benson2010.png,3D,Contained,Tightly nested,Shape-based,Rectangle,
+Outside-in Hierarchical Tree Visualization,thumbs100png/Keahey2018.png,2D,Adjacent,Adjoined by a side,Radial,,
+PaintingClass Tree Layout,thumbs100png/Teoh2003.png,2D,Node-link,,Linear,,
+PaisleyTree,thumbs100png/Etemad2014.png,2D,Node-link,,Shape-based,Circle,
+PansyTree,thumbs100png/Dong2020.png,2D,Node-link,,Balloon,Spiral/paisley,
+Parametrizable Treemap,thumbs100png/Telea2006.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Parent-centered Radial Layout,thumbs100png/Pavlo2006.png,2D,Node-link,,Radial,,
+pebbles,thumbs100png/Wetzel2003.png,2D,Contained,Loosely packed,Shape-based,Circle,
+PedVis,thumbs100png/Tuttle2010.png,2D,Node-link,,Angle-based,,
+Perspective Mapping of Tree Layouts,thumbs100png/Bowers1996.png,2D,Node-link,,Linear,H-tree layout,
+PhylloTree,thumbs100png/Neumann2006.png,3D,Node-link,,Shape-based,Spiral,Left-right
+PieTree,thumbs100png/Dix2000.png,2D,Adjacent,Adjacent to each other,Radial,,
+PittaTree,thumbs100png/Song2010.png,2D,Node-link,,Linear,,
+Planar Upward Tree Drawing,thumbs100png/Garg1996.png,2D,Node-link,,Linear,,Left-right
+PLANET,thumbs100png/Huang2020.png,2D,Node-link,,Radial,,Top-down
+Point-based Tree Visualization,thumbs100png/Schulz2009.png,2D,Node-link,,Balloon,,
+Polar Treemap,thumbs100png/Johnson1993_1.png,2D,Adjacent,Adjacent to each other,Shape-based,Circle,
+PolyPlane,thumbs100png/Hong2003.png,3D,Node-link,,Linear,,
+Pretty-printed Trees,thumbs100png/Vaucher1980.png,2D,Node-link,,Linear,,Top-down
+PygmyBrowser,thumbs100png/Band2006.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Pythagoras Tree,thumbs100png/Ernst1985.png,2D,Adjacent,Adjoined by a side,Angle-based,,
+Quadratic Programming Layout,thumbs100png/Bohanec2007.png,2D,Node-link,,Linear,,
+Quantum Treemap,thumbs100png/Bederson2001_1.png,2D,Contained,Loosely packed,Shape-based,Rectangle,Top-down
+Radial Edgeless Tree,thumbs100png/Hao2007.png,2D,Adjacent,Adjoined by a side,Radial,,
+Radial Phylogenetic Tree Layout,thumbs100png/Bachmaier2005_2.png,2D,Node-link,,Radial,,
+Radial Tree in Bunches,thumbs100png/ArceOrozco2017.png,2D,Node-link,,Radial,,
+Readable Layout,thumbs100png/Solo1986.png,2D,Node-link,,Linear,,
+Reconfigurable Disc Tree,thumbs100png/Jeong1998.png,3D,Node-link,,Shape-based,Circle,Top-down
+Rectangular Tesselation,thumbs100png/Ahuja1986_2.png,2D,Node-link,,Angle-based,,
+Rectangular Tree Browser,thumbs100png/Song2011.png,3D,Node-link,,not enough information,,
+Recursive Mixed Binary Tree Layout,thumbs100png/Bhattacharya1994.png,2D,Node-link,,Angle-based,,
+Recursive Semicircles,thumbs100png/Bohnacker2012.png,2D,Node-link,,Linear,,
+Reversed Radial Tree,thumbs100png/Dehouck2013.png,2D,Node-link,,Radial,,Top-down
+Rhizome Navigation,thumbs100png/Rafelsberger2007.png,2D,Node-link,,not enough information,,
+RINGS,thumbs100png/Teoh2002.png,2D,Node-link,,Balloon,,
+Ripple Presentation,thumbs100png/Ishihara2006.png,2D,Node-link,,Balloon,,
+Scaffold Tree,thumbs100png/Schuffenhauer2007.png,2D,Node-link,,Linear,,
+Self-adapting Sunburst,thumbs100png/LiWei2013.png,2D,Adjacent,Adjoined by a side,Radial,,
+Sequential Space-filling Layout,thumbs100png/Baudel2012.png,2D,Contained,,Shape-based,Rectangle,
+ShamsehTree,thumbs100png/Etemad2009.png,2D,Adjacent,Adjacent to each other,Radial,,
+Skeletal Image,thumbs100png/Herman1999.png,2D,Node-link,,Linear,,
+Slice-and-Dice Statistical Diagram,thumbs100png/Gannett1903.png,2D,Contained,Tightly nested,Shape-based,Rectangle,Top-down
+Slicing Floorplan,thumbs100png/Stockmeyer1983.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+SmartTree,thumbs100png/Husken2007.png,2D,Node-link,,Indented,,
+Space-optimized Tree,thumbs100png/Nguyen2002.png,2D,Node-link,,"Special: Basically balloon.
+The position of each child node is calculated using ""contained"" methods",,
+Space-Reclaiming Icicle Plot,thumbs100png/Wetering2020.png,2D,Node-link,,Linear,,
+SpaceTree,thumbs100png/Plaisant2002.png,2D,Node-link,,Linear,,Top-down
+Spatially Ordered Treemap,thumbs100png/Wood2008.png,2D,Contained,Tightly nested,Shape-based,Rectangle,Left-right
+SphereTree,thumbs100png/Brath2012.png,3D,Contained,,Shape-based,Sphere,
+Spherical Caps,thumbs100png/Dmitrieva2009.png,3D,Contained,Loosely packed,Special: Shape-based Contrained+Projection,Circle+Sphere,
+Spherical Layout,thumbs100png/Larrea2007.png,3D,Node-link,,Shape-based,,
+Spiral Steptree,thumbs100png/Schulz2011_8.png,3D,Adjacent,Adjoined by a side / stacked,Shape-based,Spiral,
+Spring-Embedder Models,thumbs100png/Lin2007b.png,2D,Node-link,,Angle-based,Force-directed,
+Square Sector Construction,thumbs100png/Bertin1967_3.png,2D,Node-link,,Special: Square sector (Radial),,
+Squarified Treemap,thumbs100png/Bruls2000.png,2D,Contained,,Shape-based,,
+Stable Treemap,thumbs100png/Sondag2018.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Stacked Hemispheres,thumbs100png/Ukrop2011.png,3D,Contained,Loosely packed,Shape-based,Hemisphere,
+Stacked Tree,thumbs100png/Bisson2012.png,2D,Node-link,,Linear,,
+StackTree Layout,thumbs100png/Miller2011.png,2D,Node-link,,Angle-based,StackTree,Top-dowm
+StepTree,thumbs100png/Bladh2004.png,3D,Contained,Tightly nested,Shape-based,Rectangle,
+Stereogram,thumbs100png/Bertin1967_2.png,3D,Contained,Loosely packed,Shape-based,Rectangle,
+Strata Treemap,thumbs100png/Choi2011.png,3D,Contained,Tightly nested,Shape-based,Cylinder,
+Street Layout,thumbs100png/Kratt2011.png,2D,Overlap,,Angle-based,Geo,
+Strip Treemap,thumbs100png/Baker1995.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Structural Decomposition Tree,thumbs100png/Engel2011.png,2D,Node-link,,Linear,,
+Sunburst,thumbs100png/Stasko2000.png,2D,Adjacent,Adjoined by a side,Radial,,Bottom-up
+Sunburst/VERSO,thumbs100png/Langelier2005_2.png,3D,Adjacent,Adjacent to each other,Radial,,
+Sundown Chart,thumbs100png/Woodburn2019.png,2D,Adjacent,Adjoined by a side,Radial,,
+Symmetric 3D Layout,thumbs100png/Hong2008.png,3D,Node-link,,Balloon,,
+Syntax Tree Layout,thumbs100png/Chuanxi2011.png,2D,Node-link,,Linear,Hyperbolic,
+T2.5D,thumbs100png/Nguyen2000.png,2D,Node-link,,Linear,,Top-down
+Tablorer,thumbs100png/Shin2011.png,2D,Adjacent,,Shape-based,Rectangle,Left-right
+Template-based Treemap,thumbs100png/Kokash2014.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Textured Treemap,thumbs100png/Holten2005.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Thematic Treemap,thumbs100png/Zhou2020.png,2D,Contained,Loosely packed,Shape-based,Rectangle,
+Thread Arcs,thumbs100png/Kerr2003.png,2D,Node-link,,Special: Linear,,
+Tidier Drawing,thumbs100png/Reingold1981.png,2D,Node-link,,Linear,,
+Tidy Drawing,thumbs100png/Wetherell1979.png,2D,Node-link,,Linear,,Top-down
+TimeEdgeTree,thumbs100png/Burch2011.png,2D,Node-link,,Linear,,Top-down
+Timeline Tree,thumbs100png/Burch2008.png,2D,Node-link,,Linear,,Top-down
+Tip-over Convention,thumbs100png/Eades1993_1.png,2D,Node-link,,Linear,,Left-right
+Topo-phylogeny,thumbs100png/Waese2017.png,2D,Hybrid: Contained+Node-link,,Shape-based,Curve,Top-down
+Treecube,thumbs100png/Tanaka2003.png,3D,Contained,Tightly nested,Shape-based,Cube,
+Treemap (Slice+Dice),thumbs100png/Johnson1991.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Treemap with Bounded Aspect Ratio,thumbs100png/Berg2011.png,2D,Contained,Loosely packed,Shape-based,Rectangle,
+Treemap with Minimum Cell Size,thumbs100png/Thorn2006.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Treemap with Ovals,thumbs100png/Johnson1993_2.png,2D,Contained,Loosely packed,Shape-based,Ellipse,
+Treemap with Priorities,thumbs100png/Leah2008.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Treemap/VERSO,thumbs100png/Langelier2005_1.png,3D,Contained,Loosely packed,Shape-based,Rectangle,
+TreemapBar,thumbs100png/Huang2009.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Trees,thumbs100png/Kleiner1981_1.png,2D,Node-link,,Linear,,Left-right
+TreeTeX Layout,thumbs100png/BruggemannKlein1989.png,2D,Node-link,,Linear,,
+TreVis,thumbs100png/Adamoli2010.png,2D,Adjacent,Adjoined by a side,Radial,,Top-down
+Triangular Aggregate Tree Map,thumbs100png/Chuah1998_2.png,2D,Adjacent,Adjoined by a side,Shape-based,Triangle,
+Triangular Tesselation,thumbs100png/Ahuja1986_1.png,2D,Node-link,,Angle-based,,
+Uncertainty Treemap,thumbs100png/Sondag2020.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Universal Decimal Classification,thumbs100png/Ducheyne2009.png,2D,Adjacent,Adjoined by a side,Radial,,
+Variational Circular Treemap,thumbs100png/Zhao2015.png,2D,Contained,Tightly nested,Shape-based,Circle,
+VineMap,thumbs100png/Cui2021.png,2D,Node-link,,Linear,,
+Visibility-improved Treemap,thumbs100png/Cao2011.png,2D,Hybrid: Contained+Node-link,,Shape-based,Ellipse,Top-down
+Voronoi Tree Maps with Circular Boundaries,thumbs100png/Ahmed2018.png,2D,Contained,Tightly nested,Shape-based,Polygon,
+Voronoi Treemap,thumbs100png/Balzer2005.png,2D,Contained,Tightly nested,Shape-based,Polygon,
+Walker Layout,thumbs100png/Walker1990.png,2D,Node-link,,Linear,,Top-down
+Warnier-Orr Diagram,thumbs100png/Warnier1974.png,2D,Node-link,,Linear,,Left-right
+Weighted Map,thumbs100png/Ghoniem2015.png,2D,Contained,Tightly nested,Shape-based,Rectangle,
+Word Tree,thumbs100png/Wattenberg2008.png,2D,Node-link,,Linear,,

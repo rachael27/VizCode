@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Tree Example</title>
+
+    <style>
+      .node {
+        cursor: pointer;
+      }
+
+      .node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 3px;
+      }
+
+      .node text {
+        font: 12px sans-serif;
+      }
+
+      .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- load the d3.js library -->
+    <div id="divid"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+
+    <script>
+      var treeData = [
+        {
+          name: "Top Level",
+          parent: "null",
+          children: [
+            {
+              name: "Level 2: A",
+              parent: "Top Level",
+              children: [
+                {
+                  name: "Son of A",
+                  parent: "Level 2: A",
+                },
+                {
+                  name: "Daughter of A",
+                  parent: "Level 2: A",
+                },
+              ],
+            },
+            {
+              name: "Level 2: B",
+              parent: "Top Level",
+            },
+          ],
+        },
+      ];
+
+      // ************** Generate the tree diagram	 *****************
+      var margin = { top: 20, right: 120, bottom: 20, left: 120 },
+        width = 960 - margin.right - margin.left,
+        height = 500 - margin.top - margin.bottom;
+
+      var i = 0,
+        duration = 750,
+        root;
+
+      var tree = d3.layout
+        .tree()
+        .size([height, width])
+        .children(function (d) {
+          return !d.contents || d.contents.length === 0 ? null : d.contents;
+        });
+
+      var nodes = tree.nodes(treeData);
+      var links = tree.links(nodes);
+
+      var maxLabelLength = 100;
+
+      var layoutRoot = d3
+        .select("#divid")
+        .append("svg:svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("svg:g")
+        .attr("class", "container")
+        .attr("transform", "translate(" + maxLabelLength + ",0)");
+
+      /*
+     Nodes as
+     <g class="node">
+         <circle class="node-dot" />
+         <text />
+     </g>
+  */
+      var nodeGroup = layoutRoot
+        .selectAll("g.node")
+        .data(nodes)
+        .enter()
+        .append("svg:g")
+        .attr("class", "node")
+        .attr("transform", function (d) {
+          return "translate(" + d.y + "," + d.x + ")";
+        });
+
+      nodeGroup.append("svg:circle").attr("class", "node-dot").attr("r", 50);
+
+      nodeGroup
+        .append("svg:text")
+        .attr("text-anchor", function (d) {
+          return d.children ? "end" : "start";
+        })
+        .attr("dx", function (d) {
+          var gap = 2 * 50;
+          return d.children ? -gap : gap;
+        })
+        .attr("dy", 3)
+        .text(function (d) {
+          return d.name;
+        });
+    </script>
+  </body>
+</html>

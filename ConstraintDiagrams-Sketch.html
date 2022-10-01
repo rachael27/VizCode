@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <title> Constraint Diagrams </title>
+</head>
+
+<style>
+.left {
+  float: left;
+  width: 15%;
+  overflow: hidden;
+}
+
+.right {
+	float:right;
+	width:85%;
+  overflow: hidden;
+}
+
+
+</style>
+
+<body>
+	<div id="checkboxes" class="left" style="background-color:#AEB3FF">
+		<b>EmpType</b><br>
+		<input type="checkbox" id="1A" name="emptype" value="1A" onclick="myFunction()">1A<br>
+		<input type="checkbox" id="1B" name="emptype" value="1B" onclick="myFunction()">1B<br>
+		<input type="checkbox" id="2" name="emptype" value="2" onclick="myFunction()">2<br>
+		<input type="checkbox" id="3" name="emptype" value="3" onclick="myFunction()">3<br>
+		<hr>
+		
+		
+
+		<b>Location</b><br>
+		<input type="checkbox" id="office" name="location" value="office">Office<br>
+		<input type="checkbox" id="onsite" name="location" value="onsite">On site<br>
+		<input type="checkbox" id="home" name="location" value="home">Home<br>
+		<input type="checkbox" id="roaming" name="location" value="roaming">Roaming<br>
+		<hr>
+		
+
+		<b>Time</b><br>
+		<input type="checkbox" id="officehrs" name="time" value="officehrs">OfficeHrs<br>
+		<input type="checkbox" id="evening" name="time" value="evening">Evening<br>
+		<input type="checkbox" id="weekend" name="time" value="weekend">Weekend<br>
+		<input type="checkbox" id="night" name="time" value="night">Night<br>
+		<input type="checkbox" id="publichol" name="time" value="publichol">Public Hol<br>
+		<hr>
+
+		<b>ActivityType</b><br>
+		<input type="checkbox" id="A1" name="acttype" value="A1">A1<br>
+		<input type="checkbox" id="A2" name="acttype" value="A2">A2<br>
+		<input type="checkbox" id="A3" name="acttype" value="A3">A3<br>
+		<input type="checkbox" id="A4" name="acttype" value="A4">A4<br>
+		<input type="checkbox" id="A5" name="acttype" value="A5">A5<br>
+		<hr>
+
+		<b>ResourceName</b><br>
+		<input type="checkbox" id="A" name="resname" value="A">A<br>
+		<input type="checkbox" id="B" name="resname" value="B">B<br>
+		<input type="checkbox" id="C" name="resname" value="C">C<br>
+		<input type="checkbox" id="D" name="resname" value="D">D<br>
+		<input type="checkbox" id="E" name="resname" value="E">E<br>
+		<input type="checkbox" id="F" name="resname" value="F">F<br>
+		<hr>
+
+		<b>AuthenticationMeasure</b><br>
+		<input type="checkbox" id="lev1" name="authtype" value="lev1">Lev1<br>
+		<input type="checkbox" id="lev2" name="authtype" value="lev2">Lev2<br>
+		<input type="checkbox" id="lev3" name="authtype" value="lev3">Lev3<br>
+		<input type="checkbox" id="lev4" name="authtype" value="lev4">Lev4<br>
+		<hr>
+	</div>
+
+    <div id="svgid" class="right"></div>
+	
+    
+	<script src="https://code.jquery.com/jquery-1.7.2.js"></script>
+	<script src="https://d3js.org/d3.v4.js"></script>
+		<script type="text/javascript">
+	
+	var svg = d3.select("#svgid")
+	.append("svg")
+	.attr("width", 800)
+	.attr("height", 800);
+
+	var radius=50;
+	var cir1x=100;
+	var cir1y=100;
+	var xspacing=200;
+	var yspacing=400;
+	
+	//Employee at Location  during Time can 
+	//perform ActType and access ResName using AuthLevel 
+	// Add the path using this helper function
+	var emp=svg.append("g")
+	.append('circle')
+	  .attr('cx', cir1x)
+	  .attr('cy', cir1y)
+	  .attr('r', radius)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", cir1x)
+    .attr("dy", "1em")
+    .text("EMPLOYEE");
+
+
+
+	  var cir2x=cir1x+xspacing;
+
+
+	svg.append("g")
+   .append("line")
+   .attr("x1", cir1x+radius)
+   .attr("y1", cir1y)
+   .attr("x2", cir2x-radius)
+   .attr("y2", cir1y)
+   .attr("stroke-width", 1)
+      .attr("stroke", "black");
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", cir1x+radius+10)
+    .attr("dy", cir1y)
+    .text("AtLocation");
+
+
+
+	
+	
+	  var atlocation=svg.append("g")
+	.append('circle')
+	  .attr('cx', cir2x)
+	  .attr('cy', cir1y)
+	  .attr('r', radius)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", cir2x)
+    .attr("dy", "1em")
+    .text("LOCATION");
+	
+
+	 
+	  var cir3x=cir2x+xspacing;
+
+	  svg
+	  .append("g")
+   .append("line")
+   .attr("x1", cir2x+radius)
+   .attr("y1", cir1y)
+   .attr("x2", cir3x-radius)
+   .attr("y2", cir1y)
+   .attr("stroke-width", 1)
+      .attr("stroke", "black");
+
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", cir2x+radius+10)
+    .attr("dy", cir1y)
+    .text("DuringTime");
+
+	  var timedur=svg.append("g")
+	.append('circle')
+	  .attr('cx', cir3x)
+	  .attr('cy', cir1y)
+	  .attr('r', radius)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", cir3x)
+    .attr("dy", "1em")
+    .text("TIME");
+
+	  
+	  var cir4x=cir1x;
+	  var cir4y=cir1y+yspacing;
+
+	  svg.append("g")
+   .append("line")
+   .attr("x1", cir1x)
+   .attr("y1", cir1y+radius)
+   .attr("x2", cir4x)
+   .attr("y2", cir4y-radius)
+   .attr("stroke-width", 1)
+      .attr("stroke", "black");
+
+	  
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", cir1x)
+    .attr("dy", (cir1y+cir4y)/2)
+    .text("CanPerformActivity");
+
+
+	
+	  var acttype=svg.append("g")
+	.append('circle')
+	  .attr('cx', cir4x)
+	  .attr('cy', cir4y)
+	  .attr('r', radius)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", cir4x+10)
+    .attr("dy", cir4y-(radius+10))
+    .text("ACTTYPE");
+
+	  
+	  var cir5x=cir4x+xspacing;
+
+	  svg
+	  .append("g")
+   .append("line")
+   .attr("x1", cir4x+radius)
+   .attr("y1", cir4y)
+   .attr("x2", cir5x-radius)
+   .attr("y2", cir4y)
+   .attr("stroke-width", 1)
+      .attr("stroke", "black");
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", cir4x+radius)
+    .attr("dy", cir4y)
+    .text("OnResource");
+
+
+	  var resname=svg.append("g")
+	.append('circle')
+	  .attr('cx', cir5x)
+	  .attr('cy', cir4y)
+	  .attr('r', radius)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", cir2x)
+    .attr("dy", cir4y-(radius+10))
+    .text("RESOURCE NAME");
+
+	  var cir6x=cir5x+xspacing;
+
+	  svg
+   .append("g")
+   .append("line")
+   .attr("x1", cir5x+radius)
+   .attr("y1", cir4y)
+   .attr("x2", cir6x-radius)
+   .attr("y2", cir4y)
+   .attr("stroke-width", 1)
+      .attr("stroke", "black");
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", cir5x+radius)
+    .attr("dy", cir4y)
+    .text("UsingAuthMeasure");
+
+
+	  
+	  var authlevel=svg.append("g")
+	.append('circle')
+	  .attr('cx', cir6x)
+	  .attr('cy', cir4y)
+	  .attr('r', radius)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+	
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", cir3x)
+    .attr("dy", cir4y-(radius+10))
+    .text("AUTH TYPE");
+
+	 
+	function myFunction(){
+	if (document.getElementById("1A").checked=true)
+	//alert("checked");
+	console.log("checked");
+	update();
+
+	}
+
+	function update()
+	{
+		d3.selectAll("g").selectAll("line").remove();
+		d3.selectAll("g").selectAll("text").remove();
+		var smallx=90;
+		var sxspacing=200;
+		
+		var smally=90;
+		var syspacing=400;
+
+		var sradius=10;
+
+		var a1=svg.append("g")
+	.append('circle')
+	  .attr('cx', smallx)
+	  .attr('cy', smally)
+	  .attr('r', sradius)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", smallx-sradius)
+    .attr("dy", smally-sradius)
+    .text("1a");
+
+	
+	svg.append("g")
+   .append("line")
+   .attr("x1", smallx+sradius)
+   .attr("y1", smally)
+   .attr("x2", smallx+sxspacing-sradius)
+   .attr("y2", 90)
+   .attr("stroke-width", 1)
+      .attr("stroke", "black");
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", 150)
+    .attr("dy", smally)
+    .text("AtLocation");
+
+
+
+
+
+
+
+smallx=sxspacing+smallx;
+	var office=svg.append("g")
+	.append('circle')
+	  .attr('cx', smallx)
+	  .attr('cy', smally)
+	  .attr('r', sradius)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", smallx)
+    .attr("dy", 80)
+    .text("Office");
+
+	
+	
+
+	svg.append("g")
+   .append("line")
+   .attr("x1", smallx+sradius)
+   .attr("y1", smally)
+   .attr("x2", smallx+sxspacing-sradius)
+   .attr("y2", smally)
+   .attr("stroke-width", 1)
+      .attr("stroke", "black");
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", 350)
+    .attr("dy", smally)
+    .text("DuringTime");
+
+
+
+
+
+
+
+
+
+
+	var officehrs=svg.append("g")
+	.append('circle')
+	  .attr('cx', 490)
+	  .attr('cy', 90)
+	  .attr('r', sradius)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", 480)
+    .attr("dy", 80)
+    .text("OfficeHrs");
+
+	
+
+	
+	
+
+	console.log(smally+" "+syspacing);
+
+	svg.append("g")
+   .append("line")
+   .attr("x1", 90)
+   .attr("y1", smally+sradius)
+   .attr("x2", 90)
+   .attr("y2", smally+syspacing)
+   .attr("stroke-width", 1)
+      .attr("stroke", "black");
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", 90)
+    .attr("dy", syspacing)
+    .text("CanPerformActType");
+
+
+	
+	
+
+
+	var a4=svg.append("g")
+	.append('circle')
+	  .attr('cx', 90)
+	  .attr('cy', 490)
+	  .attr('r', 10)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", 80)
+    .attr("dy", 480)
+    .text("A4");
+
+	
+	
+	syspacing=syspacing+400;
+	smally=smally+400;
+
+	console.log(syspacing+"");
+		
+	svg.append("g")
+   .append("line")
+   .attr("x1", 90+sradius)
+   .attr("y1", smally)
+   .attr("x2", smallx-sradius)
+   .attr("y2", smally)
+   .attr("stroke-width", 1)
+      .attr("stroke", "black");
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", 150)
+    .attr("dy", smally)
+    .text("OnResource");
+
+
+
+
+
+
+
+
+
+	var a=svg.append("g")
+	.append('circle')
+	  .attr('cx', 290)
+	  .attr('cy', 490)
+	  .attr('r', 10)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", 280)
+    .attr("dy", 480)
+    .text("Cat A");
+
+
+
+	
+	
+	
+
+	console.log(syspacing+"");
+		
+	svg.append("g")
+   .append("line")
+   .attr("x1", 90+sxspacing+sradius)
+   .attr("y1", smally)
+   .attr("x2", smallx+sxspacing-sradius)
+   .attr("y2", smally)
+   .attr("stroke-width", 1)
+      .attr("stroke", "black");
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", 350)
+    .attr("dy", smally)
+    .text("UsingAuth");
+
+
+
+
+
+	var lev1=svg.append("g")
+	.append('circle')
+	  .attr('cx', 490)
+	  .attr('cy', 490)
+	  .attr('r', 10)
+	  .attr('stroke', 'black')
+	  .attr('fill', 'white');
+
+
+	  svg.selectAll("g").filter(function(d, i,list) {
+    return i === list.length - 1;
+}).append("text")
+    .attr("dx", 480)
+    .attr("dy", 480)
+    .text("Lev1");
+//Grade1a at Office  during OfficeHrs can 
+//perform A4 and access A using Lev1 
+
+	}
+	</script>
+	
+
+
+
+	
+</body>
+</html>
+

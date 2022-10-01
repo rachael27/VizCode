@@ -1,0 +1,346 @@
+<html>
+
+<head>
+    <title>Hierarchical Structure of QNL Dataset</title>
+</head>
+
+<body>
+    <div id="content">
+        <h1>QNL Dataset</h1>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.7.2.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script>
+        console.log("hi");
+
+        d3.queue()
+            .defer(d3.csv, "File/Historyofpolitics28ISBNTruncated.csv")
+            // .defer(d3.csv, "File/JClassification.csv")
+            .await(function (error, qnl) {
+                if (error) throw error;
+                var unialpha = [];
+
+                var qnlstruct = [];
+                var qnlcn = "";
+                var qnlcnSSplit = []; //split using space
+                var qnlcnDSplit = []; //split using dot
+                var qnlcnPSplit = []; //split using plus
+                var unicombsl1 = [];
+                var unicombsl2 = [];
+                var strcn = "";
+                var parentstrcn = "";
+                var splitstrcn = "";
+                qnlstruct.push({
+                    parent: "",
+                    child: "root",
+                    text: "LCC Classification",
+                });
+
+
+                console.log(qnl.length);
+
+
+                unialpha =
+                    [
+                        "F",
+                        "E",
+                        "J",
+                        "D",
+                        "P",
+                        "U",
+                        "Z",
+                        "B",
+                        "H",
+                        "Q",
+                        "C",
+                        "G",
+                        "L",
+                        "M",
+                        "S",
+                        "N",
+                        "R",
+                        "T",
+                        "A",
+                        "K"
+                    ]
+
+                console.log(unialpha);
+
+                for (var i = 0; i < unialpha.length; i++) {
+                    qnlstruct.push({
+                        parent: "root",
+                        child: unialpha[i],
+                        qnlisbn: "",
+                        text: "",
+
+                    });
+                }
+
+                qnlstruct.push({
+                    parent: "F",
+                    child: "FIC",
+                    qnlisbn: "",
+                    text: "",
+
+                });
+
+                unicombsl1.push("FIC");
+
+
+
+
+                //for (var q = 26246; q < 26248; q++) {
+                for (var q = 0; q < qnl.length; q++) {
+                    console.log(q);
+                    qnlcn = qnl[q].CallNumber;
+
+                    qnlcnPSplit = qnlcn.split("+");
+                    for (var qp = 0; qp < qnlcnPSplit.length; qp++) {
+
+                        qnlcnSSplit = qnlcnPSplit[qp].split(" "); //split using space
+                        // console.log(qnlcnSSplit);
+                        for (var qs = 0; qs < qnlcnSSplit.length; qs++) {
+
+                            if (qs == 0) {
+                                strcn = "";
+
+                                qnlcnDSplit = qnlcnSSplit[qs].split(".");
+                                // console.log(qnlcnDSplit);
+                                for (qd = 0; qd < qnlcnDSplit.length; qd++) {
+                                    //console.log(qnlcnDSplit[qd]);
+                                    if (strcn == "")
+                                        strcn = qnlcnDSplit[qd];
+                                    else
+                                        strcn = strcn + "." + qnlcnDSplit[qd];
+
+                                    // console.log(strcn);
+                                    if (qd == 0 && qnlcnDSplit[qd].length != 1) {
+                                        //   console.log(qnlcnDSplit[qd].charAt(1));
+                                        if (qnlcnDSplit[qd].charAt(1).match(/[a-z]/i) && qnlcnDSplit[qd] != "FIC") {
+
+                                            if (!unicombsl1.includes(qnlcnDSplit[qd].substr(0, 2))) {
+                                                // console.log("123");
+                                                unicombsl1.push(qnlcnDSplit[qd].substr(0, 2));
+                                                qnlstruct.push({
+                                                    parent: qnlcnDSplit[qd].substr(0, 1),
+                                                    child: qnlcnDSplit[qd].substr(0, 2),
+                                                    qnlisbn: "",
+                                                    text: "",
+
+                                                });
+                                            }
+
+                                            if (!unicombsl2.includes(qnlcnDSplit[qd]) && qnlcnDSplit[qd].length != 2) {
+                                                /*  if (qnlcnDSplit[qd].substr(0, 2) == qnlcnDSplit[qd]) {
+                                                     console.log(unicombsl2.includes(qnlcnDSplit[qd]));
+                                                     console.log(qnlcnDSplit[qd].substr(0, 2));
+                                                 } */
+                                                unicombsl2.push(qnlcnDSplit[qd]);
+                                                // console.log("140");
+                                                qnlstruct.push({
+                                                    parent: qnlcnDSplit[qd].substr(0, 2),
+                                                    child: qnlcnDSplit[qd],//qnlcnDSplit[qd].substr(2, qnlcnDSplit[qd].length - 1),
+                                                    qnlisbn: "",
+                                                    text: "",
+
+                                                });
+
+                                            }
+                                        }
+
+                                        else {
+                                            if (qnlcnDSplit[qd].length != 1) {
+                                                //console.log(qnlcnDSplit[qd].substr(0, 1));
+                                                if (!unicombsl1.includes(qnlcnDSplit[qd])) {
+                                                    unicombsl1.push(qnlcnDSplit[qd]);
+                                                    // console.log("157");
+                                                    qnlstruct.push({
+                                                        parent: qnlcnDSplit[qd].substr(0, 1),
+                                                        child: qnlcnDSplit[qd],
+                                                        qnlisbn: "",
+                                                        text: "",
+
+                                                    });
+                                                }
+
+                                            }
+
+                                        }
+
+
+                                    }
+                                    else {
+
+
+                                        //if (!unicombsl2.includes(qnlcnDSplit[qd]) && qnlcnDSplit[qd] != 1) {
+                                        if (!unicombsl2.includes(qnlcnDSplit[qd])) {
+                                            // console.log(strcn);
+                                            parentstrcn = "";
+                                            splitstrcn = strcn.split(".");
+
+                                            for (var ps = 0; ps < splitstrcn.length - 1; ps++) {
+                                                //  console.log(splitstrcn[ps]);
+                                                if (parentstrcn == "")
+                                                    parentstrcn = splitstrcn[ps];
+                                                else
+                                                    parentstrcn = parentstrcn + "." + splitstrcn[ps];
+                                            }
+                                            //  console.log(parentstrcn);
+
+                                            // if (!unicombsl2.includes(strcn)) {
+                                            if (!unicombsl2.includes(strcn) && parentstrcn != "") {
+                                                unicombsl2.push(strcn);
+                                                //console.log("193" + parentstrcn);
+                                                qnlstruct.push({
+                                                    parent: parentstrcn,
+                                                    child: strcn,//qnlcnDSplit[qd].substr(2, qnlcnDSplit[qd].length - 1),
+                                                    qnlisbn: "",
+                                                    text: "",
+
+                                                });
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+                            }
+                            else if (qs == 1) {
+                                //console.log(strcn);
+                                //console.log(qnlcnSSplit[qs]);
+
+                                if (!unicombsl2.includes(strcn + " " + qnlcnSSplit[qs]) && strcn != "") {
+                                    unicombsl2.push(strcn + " " + qnlcnSSplit[qs]);
+                                    //console.log("215");
+                                    qnlstruct.push({
+                                        parent: strcn,
+                                        child: strcn + " " + qnlcnSSplit[qs],//qnlcnDSplit[qd].substr(2, qnlcnDSplit[qd].length - 1),
+                                        qnlisbn: "",
+                                        text: "",
+
+                                    });
+                                }
+
+                            }
+
+                            else if (qs == 2) {
+                                //console.log(strcn + " " + qnlcnSSplit[qs - 1]);
+                                //console.log(qnlcnSSplit[qs]);
+
+                                if (strcn + " " + qnlcnSSplit[qs - 1] != "") {
+                                    //console.log("232");
+                                    qnlstruct.push({
+                                        parent: strcn + " " + qnlcnSSplit[qs - 1],
+                                        child: strcn + " " + qnlcnSSplit[qs - 1] + " " + qnlcnSSplit[qs],//qnlcnDSplit[qd].substr(2, qnlcnDSplit[qd].length - 1),
+                                        qnlisbn: qnl[q].ISBN,
+                                        text: "",
+
+                                    });
+
+                                }
+                            }
+
+
+                        }
+                    }
+                }
+
+
+
+                /*
+ 
+                for (var i = 0; i < qnl.length; i++) {
+                    var qnlcn = qnl[i].CallNumber;
+ 
+                    qnlcn = qnlcn.replace("  ", " ");
+ 
+                    if (qnlcn.includes("+"))
+                        qnlcn = qnlcn.split("+")[0];
+ 
+                    year = qnlcn.substr(qnlcn.length - 4, qnlcn.length);
+ 
+                    qnlcn = qnlcn.substr(0, qnlcn.length - 4)
+ 
+                    console.log(qnlcn);
+ 
+                    if (qnlcn.substr(1, 1).match(/[a-z]/i)) {
+                        for (var j = 0; j < qnlcn.split(" ").length - 1; j++) {
+ 
+                            if (j == 0) {
+                                if (!unicombs.includes(qnlcn.substr(0, 2))) {
+                                    unicombs.push(qnlcn.substr(0, 2));
+                                    qnlstruct.push({
+                                        parent: qnlcn.substr(0, 1),
+                                        child: qnlcn.substr(0, 2),
+                                        qnlisbn: "",
+                                        text: "",
+                                    });
+                                }
+                            }
+                            else if (j == 1) {
+                                if (!unicombs.includes(qnlcn.split(" ")[j])) {
+                                    unicombs.push(qnlcn.split(" ")[j]);
+                                    qnlstruct.push({
+                                        parent: qnlcn.substr(0, 2),
+                                        child: qnlcn.split(" ")[j],
+                                        qnlisbn: "",
+                                        text: "",
+                                    });
+                                }
+                            }
+                            else {
+                                if (!unicombs.includes(qnlcn.split(" ")[j])) {
+                                    unicombs.push(qnlcn.split(" ")[j]);
+                                    qnlstruct.push({
+                                        parent: qnlcn.split(" ")[j - 1],
+                                        child: qnlcn.split(" ")[j],
+                                        qnlisbn: qnl[i].ISBN,
+                                        text: "",
+ 
+                                    });
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        for (var j = 0; j < qnlcn.split(" ").length - 1; j++) {
+                            if (!unicombs.includes("flag" + qnlcn.split(" ")[j])) {
+                                unicombs.push("flag" + qnlcn.split(" ")[j]);
+                                if (j == 0) {
+ 
+                                    qnlstruct.push({
+                                        parent: qnlcn.substr(0, 1),
+                                        child: "flag" + qnlcn.split(" ")[j],
+                                        qnlisbn: "",
+                                        text: "",
+                                    });
+                                }
+                                else {
+ 
+                                    qnlstruct.push({
+                                        parent: "flag" + qnlcn.split(" ")[j - 1],
+                                        child: qnlcn.split(" ")[j],
+                                        qnlisbn: qnl[i].ISBN,
+                                        text: "",
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+ 
+*/
+
+
+                console.log(unicombsl1);
+                console.log(unicombsl2);
+                console.log(qnlstruct);
+
+            });
+
+    </script>
+</body>
+
+</html>

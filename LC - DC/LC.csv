@@ -1,0 +1,732 @@
+﻿parent,child,caption
+,LCC,LCC
+LCC,A,General Works
+A,AC,Collections. Series. Collected works
+A,AE,Encyclopedias
+A,AG,Dictionaries and other general reference works
+A,AI,Newspapers--Indexes
+A,AI,Periodicals--Indexes
+A,AM,Museums. Collectors and collecting
+A,AN,Newspapers
+A,AP,General periodicals
+A,AS,Academies and learned societies
+A,AY,Yearbooks. Almanacs. Directories
+A,AZ,History of scholarship and learning. The humanities
+LCC,B,Philosophy
+B,BC,Logic
+B,BD,Speculative philosophy
+B,BF,Psychology
+BF,BF 1001+,Parapsychology
+B,BH,Aesthetics
+B,BJ,Ethics
+BJ,BJ 1-1725,Ethics
+BJ,BJ 1801-2195,Social usages. Etiquette
+B,BL,Religions. Mythology.
+B,BM,Judaism
+B,BP,Islam. Bahaism. Theosophy; etc.
+B,BQ,Buddhism
+B,BR,Christianity
+B,BS,Bible
+B,BT,Christian doctrinal theology
+B,BV,Practical Theology
+B,BX,Christian Denominations
+LCC,C,Auxiliary sciences of history (General)
+C,CB,History of civilization
+C,CC,Archaeology
+C,CD,Diplomatics. Archives. Seals
+CD,CD 5001-6471,Diplomatics. Archives. Seals
+C,CE,Technical chronology. Calendar
+C,CJ,Numismatics
+C,CN,Inscriptions. Epigraphy
+C,CR,Heraldry
+C,CS,Genealogy
+C,CT,Biography (General)
+LCC,D,"World History and History of Europe, Asia, Africa, Australia, New Zealand, etc."
+D,DU,Oceania (South Seas)
+DU,DU 125,Australian aborigines
+DU,DU 145,Australian Capital Territory. Canberra
+DU,DU 150-180,New South Wales
+DU,DU 182-198,Tasmania. Van Diemen's Land
+DU,DU 1-950,Oceania (South Seas); History of
+DU,DU 200-230,Victoria
+DU,DU 250-280,Queensland
+DU,DU 300-330,South Australia
+DU,DU 350-380,Western Australia
+DU,DU 390,Central Australia
+DU,DU 391,Northern Australia
+DU,DU 392-398,Northern Territory of Australia
+DU,DU 400-430,New Zealand
+DU,DU 422.8-424,Maoris
+DU,DU 490,Melanesia (General)
+DU,DU 620-629,Hawaiian Islands. Hawaii
+DU,DU 739-747,New Guinea
+DU,DU 80-398,Australia
+DU,DU 810-819,Samoan Islands
+D,DX,Romanies
+DX,DX 101-301,Gypsies
+LCC,E,America
+E,E 11-143,America
+E,E 31-49.2,North America
+E,E 51-73,Pre-Columbian America. The Indians
+E,E 75-99,Indians of North America
+E,E 81-83,Indian wars
+E,E 99,Indian tribes and cultures
+E,E 101-135,Discovery of America and early explorations
+E,E 103-110,Pre-Columbian period
+E,E 111-120,Columbus
+E,E 121-135,Post-Columbian period. El Dorado
+E,E 141-143,Descriptive accounts of America. Earliest to 1810
+E,E 151-887,United States
+E,E 183.7-183.9,Diplomatic history. Foreign and general relations
+E,E 184.5-185.98,Afro-Americans
+E,E 186+,Thirteen North American Colonies before 1776;
+E,E 186-199,Colonial history (1607-1775)
+E,E 196,King William's War; 1689-1697
+E,E 197,Queen Anne's War; 1702-1713
+E,E 198,King George's War; 1744-1748
+E,E 199,French and Indian War; 1755-1763
+E,E 201-298,The Revolution; 1775-1783
+E,E 300-453,Revolution to the Civil War; 1775/1783-1861
+E,E 302.5-302.6,Biography (Late eighteenth century)
+E,E 303-309,Confederation; 1783-1789
+E,E 310-337,Constitutional period; 1789-1809
+E,E 311-320,Washington's administrations; 1789-1797
+E,E 321-330,John Adams' administration; 1797-1801
+E,E 323,Troubles with France; 1796-1800
+E,E 331-337,Jefferson's administrations; 1801-1809
+E,E 333,Purchase of Louisiana; 1803
+E,E 335,War with Tripoli; 1801-1805
+E,E 337.5,Nineteenth century (General)
+E,E 341-370,Madison's administrations; 1809-1817
+E,E 351.5-364.9,War of 1812
+E,E 365,War with Algeria; 1815
+E,E 371-375,Monroe's administrations; 1817-1825
+E,E 373,Missouri Compromise; 1820
+E,E 376-380,John Quincy Adams' administration; 1825-1829
+E,E 381-385,Jackson's administrations; 1829-1837
+E,E 386-390,Van Buren's administration; 1837-1841
+E,E 391-392,Harrison's (W. H.) administration; March 4-April 4; 1841
+E,E 396-400,Tyler's administration; April 4; 1841-1845
+E,E 398,Northeastern boundary disputes; 1783-1845
+E,E 401-415.2,Mexican War; 1846-1848
+E,E 415.6-440.5,Middle nineteenth century; 1845/1848-1861
+E,E 416-420,Polk's administration; 1856-1849
+E,E 421-423,Taylor's administration; 1849-July 9; 1850
+E,E 423,Slavery question; 1849-1853
+E,E 426-430,Fillmore's administration; July 9; 1850-1853
+E,E 431-435,Pierce's administration; 1853-1857
+E,E 433,Slavery question; 1853-1857
+E,E 436-440.5,Buchanan's administration; 1857-1861
+E,E 438,Slavery question; 1557-1861
+E,E 441-453,Slavery in the United States. Antislavery movements
+E,E 456-459,Lincoln's administrations; 1861-April 15; 1865
+E,E 456-655,Civil War period; 1861-1865
+E,E 461-655,Civil War; 1861-1865
+E,E 482-489,Confederate States of America
+E,E 661-738,Late nineteenth century; 1865-1900
+E,E 666-670,Johnson's administration; April 15; 1865-1869
+E,E 668,Reconstruction; 1865-1877
+E,E 669,Purchase of Alaska; 1867
+E,E 671-680,Grant's administrations; 1869-1877
+E,E 681-685,Hayes' administration; 1877-1881
+E,E 686-687.9,Garfield's administration; March 4-September 19; 1881
+E,E 691-695,Arthur's administration; September 19; 1881-1885
+E,E 696-700,Cleveland's first administration; 1885-1889
+E,E 701-705,Benjamin Harrison's administration; 1889-1893
+E,E 706-710,Cleveland's second administration; 1893-1897
+E,E 711-738,McKinley's first administration; 1897-1901
+E,E 713,Annexation in 1898 of Hawaii; Philippines; and Puerto Rico
+E,E 714-735,War of 1898 (Spanish-American War)
+E,E 740-837.7,Twentieth century
+E,E 751,McKinley's second administration; March 4-Sept 14; 1901
+E,E 756-760,Theodore Roosevelt's administrations; Sept 14; 1901-1909
+E,E 761-765,Taft's administration; 1909-1913
+E,E 766-783,Wilson's administrations; 1913-1921
+E,E 768,Purchase of Danish West Indies (Virgin Islands; 1917)
+E,E 785-786,Harding's administration; 1921-August 2; 1923
+E,E 791-796,Coolidge's administration; August 2; 1923-1929
+E,E 801-805,Hoover's administration; 1929-1933
+E,E 806-812,Roosevelt's (F. D.) administrations; 1933-Apr 12; 1945
+E,E 813-816,Truman's administrations; April 12; 1945-1953
+E,E 835-837.7,Eisenhower's administrations; 1953-1961
+E,E 838-889,Later twentieth century; 1961-
+E,E 841-843,Kennedy's administration; 1961-November 22; 1963
+E,E 846-851,Johnson's administrations; November 22; 1963-1969
+E,E 855-861,Nixon's administrations; 1969-August 9; 1974
+E,E 865-868,Ford's administration; August 9; 1974-1977
+E,E 872-875,Carter's administration; 1977-1981
+E,E 876-880,Reagan's administrations; 1981-1989
+E,E 881-884,Bush's administration; 1989-1993
+E,E 885-887,Clinton's administrations; 1993-2001
+E,E 895+,Twenty-first century
+E,E 902,George W. Bush's administration; 2001
+LCC,F,History: America
+F,F 1-15,New England
+F,F 1-975,United States local history
+F,F 16-30,Maine
+F,F 31-45,New Hampshire
+F,F 46-60,Vermont
+F,F 61-75,Massachusetts
+F,F 76-90,Rhode Island
+F,F 91-105,Connecticut
+F,F 106,Atlantic coast. Middle Atlantic States
+F,F 116-130,New York
+F,F 122.1,New Netherlands to 1664
+F,F 131-145,New Jersey
+F,F 146-160,Pennsylvania
+F,F 161-175,Delaware
+F,F 167,New Sweden (Dutch possession; 1655-1664)
+F,F 176-190,Maryland
+F,F 191-205,District of Columbia. Washington
+F,F 206-220,The South. South Atlantic States
+F,F 221-235,Virginia
+F,F 236-250,West Virginia
+F,F 251-265,North Carolina
+F,F 266-280,South Carolina
+F,F 281-295,Georgia
+F,F 296-301,Gulf States. West Florida
+F,F 301,British East and West Florida; 1763-1783
+F,F 306-320,Florida
+F,F 314,Florida; Early to 1821
+F,F 321-335,Alabama
+F,F 336-350,Mississippi
+F,F 350.5-355,Mississippi River and Valley. Middle West
+F,F 366-380,Louisiana
+F,F 372,French Louisiana; 1698-1803
+F,F 372,French Louisiana; 1698-1803
+F,F 381-395,Texas
+F,F 381-395,Texas
+F,F 396,Old Southwest. Lower Mississippi Valley
+F,F 396,Old Southwest. Lower Mississippi Valley
+F,F 406-420,Arkansas
+F,F 406-420,Arkansas
+F,F 431-445,Tennessee
+F,F 431-445,Tennessee
+F,F 446-460,Kentucky
+F,F 446-460,Kentucky
+F,F 461-475,Missouri
+F,F 461-475,Missouri
+F,F 476-485,Old Northwest. Northwest Territory
+F,F 476-485,Old Northwest. Northwest Territory
+F,F 486-500,Ohio
+F,F 486-500,Ohio
+F,F 516-520,Ohio River and Valley
+F,F 516-520,Ohio River and Valley
+F,F 521-535,Indiana
+F,F 521-535,Indiana
+F,F 536-550,Illinois
+F,F 536-550,Illinois
+F,F 550.5-553.2,Lake Region. Great Lakes
+F,F 550.5-553.2,Lake Region. Great Lakes
+F,F 561-575,Michigan
+F,F 561-575,Michigan
+F,F 576-590,Wisconsin
+F,F 576-590,Wisconsin
+F,F 590.3-596.3,West; The. Trans-Mississippi Region. Great Plains
+F,F 590.3-596.3,West; The. Trans-Mississippi Region. Great Plains
+F,F 597,Northwest; The
+F,F 597,Northwest; The
+F,F 598,Missouri River and Valley
+F,F 598,Missouri River and Valley
+F,F 601-615,Minnesota
+F,F 601-615,Minnesota
+F,F 616-630,Iowa
+F,F 616-630,Iowa
+F,F 631-645,North Dakota
+F,F 631-645,North Dakota
+F,F 646-660,South Dakota
+F,F 646-660,South Dakota
+F,F 661-675,Nebraska
+F,F 661-675,Nebraska
+F,F 676-690,Kansas
+F,F 676-690,Kansas
+F,F 691-705,Oklahoma
+F,F 691-705,Oklahoma
+F,F 721-722,Rocky Mountains. Yellowstone National Park
+F,F 721-722,Rocky Mountains. Yellowstone National Park
+F,F 721-722,Rocky Mountains. Yellowstone National Park
+F,F 721-722,Rocky Mountains. Yellowstone National Park
+F,F 726-740,Montana
+F,F 726-740,Montana
+F,F 741-755,Idaho
+F,F 741-755,Idaho
+F,F 756-770,Wyoming
+F,F 756-770,Wyoming
+F,F 771-785,Colorado
+F,F 771-785,Colorado
+F,F 786-790,New Southwest. Colorado River; Canyon; and Valley
+F,F 786-790,New Southwest. Colorado River; Canyon; and Valley
+F,F 786-790,New Southwest. Colorado River; Canyon; and Valley
+F,F 786-790,New Southwest. Colorado River; Canyon; and Valley
+F,F 791-805,New Mexico
+F,F 791-805,New Mexico
+F,F 806-820,Arizona
+F,F 806-820,Arizona
+F,F 821-835,Utah
+F,F 821-835,Utah
+F,F 836-850,Nevada
+F,F 836-850,Nevada
+F,F 850.5-851.5,Pacific States
+F,F 850.5-851.5,Pacific States
+F,F 851.7,Cascade Range
+F,F 851.7,Cascade Range
+F,F 852-854,Pacific Northwest. Columbia River & Valley.
+F,F 852-854,Pacific Northwest. Columbia River & Valley.
+F,F 852-854,Pacific Northwest. Columbia River & Valley.
+F,F 852-854,Pacific Northwest. Columbia River & Valley.
+F,F 856-870,California
+F,F 856-870,California
+F,F 871-885,Oregon
+F,F 871-885,Oregon
+F,F 886-900,Washington
+F,F 886-900,Washington
+F,F 901-951,Alaska
+F,F 901-951,Alaska
+F,F 951,Bering Sea and Aleutian Islands
+F,F 951,Bering Sea and Aleutian Islands
+F,F 965,Territories of the United States (General)
+F,F 970,Insular possessions of the United States (General)
+F,F 975,Central American; West Indian
+F,F 1001-1140,British America; Canada
+F,F 1030; F 1038,New France and Acadia; 1600-1763
+F,F 1030; F 1038,New France and Acadia; 1600-1763
+F,F 1035.8,Maritime provinces. Atlantic coast of Canada
+F,F 1035.8,Maritime provinces. Atlantic coast of Canada
+F,F 1036-1040,Nova Scotia. Acadia
+F,F 1036-1040,Nova Scotia. Acadia
+F,F 1041-1045,New Brunswick
+F,F 1041-1045,New Brunswick
+F,F 1046-1049.7,Prince Edward Island
+F,F 1046-1049.7,Prince Edward Island
+F,F 1050,St. Lawrence Gulf; River and Valley (General)
+F,F 1050,St. Lawrence Gulf; River and Valley (General)
+F,F 1051-1055,Quebec
+F,F 1051-1055,Quebec
+F,F 1056-1059.7,Ontario
+F,F 1056-1059.7,Ontario
+F,F 1060-1060.97,Canadian Northwest. Northwest Territories
+F,F 1060-1060.97,Canadian Northwest. Northwest Territories
+F,F 1061-1065,Manitoba
+F,F 1061-1065,Manitoba
+F,F 1067,Assiniboia
+F,F 1067,Assiniboia
+F,F 1067,Assiniboia
+F,F 1067,Assiniboia
+F,F 1070-1074.7,Saskatchewan
+F,F 1070-1074.7,Saskatchewan
+F,F 1075-1080,Alberta
+F,F 1075-1080,Alberta
+F,F 1086-1089.7,British Columbia
+F,F 1086-1089.7,British Columbia
+F,F 1090,Rocky Mountains of Canada
+F,F 1090,Rocky Mountains of Canada
+F,F 1090.5,Arctic regions
+F,F 1090.5,Arctic regions
+F,F 1091-1095.5,Yukon
+F,F 1091-1095.5,Yukon
+F,F 1096-1100.5,Mackenzie
+F,F 1096-1100.5,Mackenzie
+F,F 1101-1105.7,Franklin
+F,F 1101-1105.7,Franklin
+F,F 1106-1110.5,Keewatin
+F,F 1106-1110.5,Keewatin
+F,F 1121-1139,Newfoundland
+F,F 1121-1139,Newfoundland
+F,F 1135-1139,Labrador
+F,F 1135-1139,Labrador
+F,F 1140,Labrador Peninsula
+F,F 1140,Labrador Peninsula
+F,F 1141-1145.2,Nunavut
+F,F 1170,Saint Pierre and Miquelon
+F,F 1170,Saint Pierre and Miquelon
+F,F 1201-1392,Mexico
+F,F 1201-1392,Mexico
+F,F 1201-3799,Latin America. Spanish America
+F,F 1201-3799,Latin America. Spanish America
+F,F 1201-3799,Latin America. Spanish America
+F,F 1201-3799,Latin America. Spanish America
+F,F 1401-1419,Latin America (General)
+F,F 1401-1419,Latin America (General)
+F,F 1421-1440,Central America
+F,F 1421-1440,Central America
+F,F 1435-1435.3,Mayas
+F,F 1435-1435.3,Mayas
+F,F 1435-1435.3,Mayas
+F,F 1435-1435.3,Mayas
+F,F 1441+,British Honduras (Belize)
+F,F 1441+,British Honduras (Belize)
+F,F 1441-1457,Belize
+F,F 1441-1457,Belize
+F,F 1461-1477,Guatemala
+F,F 1461-1477,Guatemala
+F,F 1481-1497,Salvador (El Salvador)
+F,F 1481-1497,Salvador (El Salvador)
+F,F 1501-1517,Honduras
+F,F 1501-1517,Honduras
+F,F 1521-1537,Nicaragua
+F,F 1521-1537,Nicaragua
+F,F 1541-1557,Costa Rica
+F,F 1541-1557,Costa Rica
+F,F 1561-1577,Panama
+F,F 1561-1577,Panama
+F,F 1569.C2,Canal Zone. Panama Canal
+F,F 1569.C2,Canal Zone. Panama Canal
+F,F 1601-1629,West Indies
+F,F 1601-1629,West Indies
+F,F 1630+,Bermuda
+F,F 1630+,Bermuda
+F,F 1630-1640,Bermudas
+F,F 1630-1640,Bermudas
+F,F 1650+,Bahamas
+F,F 1650+,Bahamas
+F,F 1650-1660,Bahamas
+F,F 1650-1660,Bahamas
+F,F 1741-1991,Greater Antilles
+F,F 1741-1991,Greater Antilles
+F,F 1751-1854.9,Cuba
+F,F 1751-1854.9,Cuba
+F,F 1861-1896,Jamaica
+F,F 1861-1896,Jamaica
+F,F 1900-1941,Haiti (Island). Hispaniola
+F,F 1900-1941,Haiti (Island). Hispaniola
+F,F 1912-1930,Haiti (Republic)
+F,F 1912-1930,Haiti (Republic)
+F,F 1931-1941,Dominican Republic
+F,F 1931-1941,Dominican Republic
+F,F 1951-1983,Puerto Rico
+F,F 1951-1983,Puerto Rico
+F,F 1991,Navassa
+F,F 1991,Navassa
+F,F 2001-2152,Lesser Antilles
+F,F 2001-2152,Lesser Antilles
+F,F 2001-2152,Lesser Antilles
+F,F 2001-2152,Lesser Antilles
+F,F 2006,Leeward Islands
+F,F 2006,Leeward Islands
+F,F 2011,Windward Islands
+F,F 2011,Windward Islands
+F,F 2016,Islands along Venezuela coast
+F,F 2016,Islands along Venezuela coast
+F,F 2016,Islands along Venezuela coast
+F,F 2016,Islands along Venezuela coast
+F,F 2033-2129,Lesser Antilles. Caribbees
+F,F 2033-2129,Lesser Antilles. Caribbees
+F,F 2131+,British West Indies
+F,F 2131+,British West Indies
+F,F 2131-2133,British West Indies
+F,F 2131-2133,British West Indies
+F,F 2136,Virgin Islands of the United States
+F,F 2136,Virgin Islands of the United States
+F,F 2141,Netherlands West Indies. Dutch West Indies
+F,F 2141,Dutch West Indies
+F,F 2141,Netherlands West Indies. Dutch West Indies
+F,F 2141,Dutch West Indies
+F,F 2151,French West Indies
+F,F 2151,French West Indies
+F,F 2155-2191,Caribbean area. Caribbean Sea
+F,F 2155-2191,Caribbean area. Caribbean Sea
+F,F 2201-3799,South America
+F,F 2201-3799,South America
+F,F 2251-2299,Colombia
+F,F 2251-2299,Colombia
+F,F 2301-2349,Venezuela
+F,F 2301-2349,Venezuela
+F,F 2351,Guiana
+F,F 2351,Guiana
+F,F 2361+,British Guiana
+F,F 2361+,British Guiana
+F,F 2361-2391,Guyana. British Guiana
+F,F 2401,Dutch Guinea
+F,F 2401-2431,Surinam
+F,F 2441+,French Guiana
+F,F 2441-2471,French Guiana
+F,F 2501-2659,Brazil
+F,F 2529,French Colony in Brazil; 1555-1567
+F,F 2532,Dutch Colony in Brazil; 1625-1661
+F,F 2661-2699,Paraguay
+F,F 2701-2799,Uruguay
+F,F 2801-3021,Argentina
+F,F 3031+,Falkland Islands
+F,F 3031-3031.5,Falkland Islands
+F,F 3051-3285,Chile
+F,F 3301-3359,Bolivia
+F,F 3401-3619,Peru
+F,F 3701-3799,Ecuador
+LCC,G,Geography (General)
+G,GA,Mathematical geography. Cartography
+G,GB,Physical geography
+G,GC,Oceanography
+G,GE,Environmental sciences
+G,GF,Human ecology. Anthropogeography
+G,GN,Anthropology
+G,GR,Folklore
+G,GT,Manners and customs (General)
+G,GV,Recreation. Leisure
+GV,GV 1019.2-1038.2,Motor sports
+GV,GV 1040-1059,Cycling. Bicycling
+GV,GV 1060.5-1098,Track and field athletics
+GV,GV 1100-1150.9,Fighting sports. Martial arts
+GV,GV 1151-1190,Shooting
+GV,GV 1199-1570,Games and amusements
+GV,GV 191.2-200.66,Outdoor life. Outdoor recreation
+GV,GV 460-555,Gymnastics. Gymnastic exercises
+GV,GV 545.5-548,Weight training. Weight lifting. Body building
+GV,GV 750-770.27,Air sports
+GV,GV 770.3- 840,Water sports
+GV,GV 840.7-857,Winter sports
+GV,GV 861-1017,Ball games
+LCC,H,Social sciences
+H,H 1-99,Social sciences (General)
+H,HA,Statistics
+H,HB,Economic theory. Demography
+H,HC,Economic history and conditions
+H,HD,Economic history and conditions
+H,HE,Transportation and communications
+H,HF,Commerce
+H,HG,Finance
+H,HJ,Public finance
+H,HQ,The Family. Marriage. Women
+H,HV,Sign language. Gesture--Systems of speech of the deaf
+H,HX,Socialism. Communism. Anarchism
+LCC,J,Political science
+J,JA,Political science
+LCC,K,Law in general. Comparative and uniform law. Jurisprudence
+K,KZ,Law of nations
+LCC,L,Education (General)
+L,LA,History of education
+L,LB,Theory and practice of education
+L,LC,Special aspects of education
+L,LD,Individual institutions - United States
+L,LE,Individual institutions - America (except United States)
+L,LF,Individual institutions - Europe
+L,LG,Individual institutions - Asia; Africa; Oceania
+L,LH,College and school magazines and newspapers
+L,LT,Textbooks
+LCC,M,Musical Works
+M,ML,Literature on music
+M,MT,Musical instruction and study
+LCC,N,Visual arts (General)
+N,NA,Architecture
+N,NB,Sculpture
+N,NC,Drawing. Design. Illustration
+N,ND,Painting
+N,NE,Print media
+N,NK,Decorative arts. Applied arts
+N,NX,Arts in general
+LCC,P,Philology. Linguistics
+P,P 1078,Philology. Linguistics
+P,P 117-117.5,Sign language. Gesture--General
+P,PA,Greek & Latin languages & literatures
+P,PB,Modern languages. Celtic languages
+PB,PB 1 - 431,Modern languages. Celtic languages--General
+P,PC,Romance languages
+PC,PC 2001 - 3761,Romance languages
+PC,PC 4001+,Romance languages
+PC,PC 601 - 1984,Romance languages
+P,PD,Germanic languages. Scandinavian languages
+P,PE,English language
+P,PF,West Germanic languages
+P,PG,Slavic; Baltic; Albanian languages & literatures
+P,PH,Finno-Ugric; Basque languages & literatures
+P,PJ,Oriental languages & literatures
+P,PJ,Oriental languages & literatures--Yiddish literature
+P,PK,Indo-Iranian language & literature
+PK,PK 8001 - 8499,Indo-Iranian language & literature
+PK,PK 8501 - 8835,Indo-Iranian language & literature
+P,PL,Languages of Eastern Asia; Africa; Oceania
+PL,PL 8000 - 8844,Languages of Eastern Asia; Africa; Oceania
+P,PM,Hyperborean; Indian; & artificial languages
+P,PN,Literature (General)
+P,PQ,French; Italian; Spanish; & Portuguese literatures
+PQ,PQ 1 - 3999,French; Italian; Spanish; & Portuguese literatures
+PQ,PQ 4001 - 5999,French; Italian; Spanish; & Portuguese literatures
+PQ,PQ 6001+,French; Italian; Spanish; & Portuguese literatures
+P,PR,English literature
+P,PS,American literature
+P,PT,German literature
+P,PZ,Juvenile belles lettres
+LCC,Q,Science (General)
+Q,QA,Mathematics
+QA,QA 75.5 - 76.95,Mathematics
+Q,QB,Astronomy
+Q,QC,Physics
+Q,QD,Chemistry
+Q,QE,Geology
+QE,QE 701+,Geology--Paleontology
+Q,QH,Biology (General)
+QH,QHN,Natural history (General)
+Q,QK,Botany
+Q,QL,Zoology
+Q,QM,Human anatomy
+Q,QP,Physiology
+Q,QR,Microbiology
+Q,QS,Human Anatomy
+QS,QS 1-132,Anatomy
+QS,QS 504-539,Histology
+QS,QS 604-681,Embryology
+Q,QT,Physiology
+QT,QT 104-172,Human Physiology
+QT,QT 1-33.1,Physiology (General)
+QT,QT 180-275,Physiology & Hygiene
+Q,QU,Biochemistry
+Q,QV,Pharmacology
+QV,QV 11,Pharmacology--History
+QV,QV 1-370,Pharmacology (General)
+QV,QV 600-667,Toxicology
+QV,QV 701-835,Pharmacy and Pharmaceutics
+Q,QW,Microbiology and Immunology
+Q,QX,Parasitology
+Q,QY,Clinical Pathology
+QY,QY 11,Clinical Pathology--History
+Q,QZ,Pathology
+QZ,QZ 11,Pathology--History
+LCC,S,Agriculture (General)
+S,SB,Plant culture
+S,SD,Forestry
+S,SF,Animal culture
+S,SH,Aquaculture. Fisheries. Angling
+S,SK,Hunting sports
+LCC,T,Technology (General)
+T,TA,Engineering (General). Civil engineering
+T,TC,Hydraulic engineering
+T,TD,Environmental technology. Sanitary engineering
+T,TE,Highway engineering. Roads and pavements
+T,TG,Bridge engineering
+T,TH,Building construction
+T,TJ,Mechanical engineering and machinery
+T,TK,Electrical engineering. Electronics. Nuclear engineering
+T,TL,Motor vehicles. Aeronautics. Astronautics
+T,TN,Mining engineering. Metallurgy
+T,TP,Chemical technology
+T,TR,Photography
+T,TS,Manufactures
+T,TT,Handicrafts. Arts and crafts
+T,TX,Home economics. Hospitality industry
+LCC,U,Military science (General)
+U,UA,Armies: Organization; distribution; military situation
+U,UB,Military administration
+U,UC,Maintenance and transportation
+U,UD,Infantry
+U,UE,Cavalry. Armor
+U,UF,Artillery
+U,UG,Military engineering. Air forces
+U,UH,Other services
+LCC,V,Naval science (General)
+V,VA,Navies Organization; distribution; naval situation
+V,VB,Naval administration
+V,VC,Naval maintenance
+V,VD,Naval seamen
+V,VE,Marines
+V,VF,Naval ordnance
+V,VG,Minor services of navies
+V,VK,Navigation. Merchant marine
+V,VM,Naval architecture. Shipbuilding. Marine engineering
+LCC,W,Medical Profession
+W,W 100-275,Medical Service Plans
+W,W 1-96,Medical Profession--General
+W,W 322-323,Other Medical Services
+W,W 601-925,Forensic Medicine & Dentistry
+W,WA,Public health
+WA,WA 11,Public Health--History
+WA,WA 1-106,Public Health (General)
+WA,WA 250-292,Accident and Injury Prevention
+WA,WA 300-395,Health Problems (special pops.)
+WA,WA 400-495,Occup. Med.; Health and Hygiene
+WA,WA 525-590,Health Admin. and Organization
+WA,WA 670-847,Sanitation and Environ. Control
+WA,WA 900-950,Statistics and Surveys
+W,WB,Practice of Medicine
+WB,WB 930,Homeopathy
+W,WC,Infectious/Communicable Disease
+WC,WC 11,Infectious/Comm. Dis.--History
+WC,WC 1-100,Infectious/Comm. Dis. (General)
+WC,WC 140-185,Sexually Transmitted Diseases
+WC,WC 195-425,Infection/Bacterial Infections
+WC,WC 500-593,Virus Diseases
+WC,WC 680-950,Tropical and Parasitic Diseases
+W,WD,Metabolic Diseases
+WD,WD 200-226,Metabolic Diseases
+WD,WD 400-430,Animal Poisons
+WD,WD 500-530,Plant Poisons
+WD,WD 600-675,Diseases by Physical Agents
+WD,WD 700-758,Aviation and Space Medicine
+W,WE,Musculoskeletal System
+WE,WE 11,Musculoskel. System--History
+WE,WE 168-190,Orthopaedics
+W,WF,Respiratory System
+WF,WF 11,Respiratory System--History
+W,WG,Cardiovascular System
+WG,WG 11,Cardiovascular System--History
+W,WH,Hemic/Lymph. Systems
+WH,WH 11,Hemic/Lymph. Systems--History
+W,WI,Gastrointestinal System
+WI,WI 11,Digestive System--History
+W,WJ,Urogenital System
+WJ,WJ 11,Urogenital System--History
+W,WK,Endocrine System
+WK,WK 11,Endocrine System--History
+W,WL,Nervous System
+WL,WL 11,Nervous System--History
+W,WM,Psychiatry--History
+WM,WM 11,Psychiatry--History
+WM,WM 1-105,Psychiatry (General)
+WM,WM 140-165,Mental Disorders. Diagnosis.
+WM,WM 170-197,Neurotic Disorders
+WM,WM 200-220,Psychotic Disorders
+WM,WM 270-290,Substance-Related Disorders
+WM,WM 300-308,Mental Retardation
+WM,WM 400-460.7,Therapies
+WM,WM 475-611,Other Disorders
+W,WN,Radiology/Diagnostic Imaging
+WN,WN 11,Radiol./Diag. Imaging--History
+WN,WN 440,Nuclear Medicine
+W,WO,Surgery
+WO,WO 11,Surgery--History
+WO,WO 1-149,Surgery (General)
+WO,WO 162-198,Surg. Procedure/Armamentarium
+WO,WO 200-460,Anesthesia
+WO,WO 500-517,Operative Surg./Surg. Techniques
+WO,WO 600-640,Plastic Surgery
+WO,WO 700-820,Traumatic/Industrial/Emerg. Surg.
+WO,WO 925-950,Surgery in Special Age Groups
+W,WP,Gynecology
+WP,WP 1-390,Gynecology (General)
+WP,WP 400-480,Uterus & Cervix Uteri
+WP,WP 505-660,Physiology & Functional Disorders
+WP,WP 800-910,Breast
+W,WQ,Obstetrics
+WQ,WQ 11,Obstetrics--History
+WQ,WQ 1-175,Obstetrics (General)
+WQ,WQ 200-260,Pregnancy
+WQ,WQ 300-330,Labor
+WQ,WQ 400-450,Obstetrical Surgery
+WQ,WQ 500-505,Puerperium
+W,WR,Dermatology
+WR,WR 11,Dermatology--History
+W,WS,Pediatrics
+WS,WS 11,Pediatrics--History
+W,WT,Geriatrics/Chronic Diseases
+WT,WT 11,Geriatrics/Chronic Dis.--History
+W,WU,Dentistry/Oral Surgery
+WU,WU 11,Dentistry/Oral Surg.--History
+W,WV,Otorhinolaryngology
+WV,WV 11,Otorhinolaryngology--History
+W,WW,Ophthalmology
+WW,WW 11,Ophthalmology--History
+W,WX,Hospitals & Health Facilities
+WX,WX 11,Hospitals/Health Fac.--History
+W,WY,Nursing
+WY,WY 11,Nursing--History
+W,WZ,History of Medicine
+LCC,Z,"Bibliography, Library Science"
+Z,Z 40-104.5,Books. Writing. Paleography. Libraries. Bibliography
+Z,Z 105-115.5,Books. Writing. Paleography. Libraries. Bibliography
+Z,Z 116-659,Books. Writing. Paleography. Libraries. Bibliography
+Z,Z 662-1000.5,Books. Writing. Paleography. Libraries. Bibliography
+Z,Z 699-699.5,Books. Writing. Paleography. Libraries. Bibliography
+Z,Z 1001-8999,Books. Writing. Paleography. Libraries. Bibliography
+Z,ZA,Information resources / Materials
+ZA,ZA 3150-3159,Information resources (General)
+ZA,ZA 3201-3250,Information resources (General)
+ZA,ZA 4050-4480,Information resources (General)
+ZA,ZA 5060-5185,Information resources (General)

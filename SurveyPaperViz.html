@@ -1,0 +1,675 @@
+<html>
+
+<head>
+  <title>DATASET</title>
+</head>
+
+<body>
+  <div id="root">
+    <svg id="viztree"></svg>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script type="module">
+    import { path } from "https://cdn.skypack.dev/d3-path@3";
+  </script>
+  <script>
+    var dimsArr = ["2D", "3D"];
+    var layoutArr = [
+      "Linear",
+      "Indented",
+      "Balloon",
+      "Radial",
+      "Hyperbolic",
+      "Grid-embedding",
+      "Angle-based",
+      "Shape-based",
+    ];
+
+    var format = {
+      name: "Hierarchical Visualizations",
+      value: 0,
+      children: [
+        {
+          name: "Node-link",
+          value: 0,
+        },
+        {
+          name: "Contained",
+          value: 0,
+          children: [
+            {
+              name: "Tightly nested",
+              value: 0,
+            },
+            {
+              name: "Loosely packed",
+              value: 0,
+            },
+          ],
+        },
+        {
+          name: "Adjacent",
+          value: 0,
+          children: [
+            {
+              name: "Adjoined by a vertex",
+              value: 0,
+            },
+            {
+              name: "Adjoined by a side",
+              value: 0,
+            },
+            /*
+            {
+              name: "Adjoined by an imaginary boundary",
+              value: 0,
+            },
+            */
+          ],
+        },
+        {
+          name: "Overlap",
+          value: 0,
+        },
+      ],
+    };
+    //  treelist(format);
+
+    d3.csv("/LibrarySchema/File/HierarchicalImages.csv", d3.autoType).then(
+      function (data) {
+        var countformat = [];
+        var countsecondary = [];
+        for (var i = 0; i < data.length; i++) {
+          // console.log(data[i].Viz);
+          countformat[i] = data[i].FormatofPC;
+          countsecondary[i] = data[i].Secondary;
+        }
+
+        function countLayout(layout) {
+          //   console.log(layout);
+          var countlayout = 0;
+
+          for (var i = 0; i < data.length; i++) {
+            // console.log(data[i].Secondary + " " + formatofpc);
+            if (data[i].Layout == layout) countlayout++;
+          }
+          return countlayout;
+        }
+
+        function countDimsFormat(formatofpc, dims) {
+          // console.log("len" + data.length);
+          var count = 0;
+          for (var i = 0; i < data.length; i++) {
+            // console.log(i);
+            // console.log(data[i].FormatofPC + " " + data[i].Dimensionality);
+
+            if (
+              data[i].FormatofPC == formatofpc &&
+              data[i].Dimensionality == dims
+            )
+              count++;
+            //   console.log(formatofpc + " " + dims + " " + count);
+          }
+          return count;
+        }
+
+        function countDimsSecondary(secondary, dims) {
+          // console.log("len" + data.length);
+          var count = 0;
+          for (var i = 0; i < data.length; i++) {
+            // console.log(i);
+            // console.log(data[i].FormatofPC + " " + data[i].Dimensionality);
+
+            if (
+              data[i].Secondary == secondary &&
+              data[i].Dimensionality == dims
+            )
+              count++;
+            //   console.log(formatofpc + " " + dims + " " + count);
+          }
+          return count;
+        }
+
+        function countLayoutFormat(formatofpc, layout) {
+          //  console.log(formatofpc + " " + layout);
+          var count = 0;
+          for (var i = 0; i < data.length; i++) {
+            // console.log(i);
+            //    console.log("data" + data[i].FormatofPC + " " + data[i].Layout);
+
+            if (data[i].FormatofPC == formatofpc && data[i].Layout == layout)
+              count++;
+            //   console.log(formatofpc + " " + dims + " " + count);
+          }
+          return count;
+        }
+
+        function countLayoutSecondary(secondary, layout) {
+          // console.log("len" + data.length);
+          var count = 0;
+          for (var i = 0; i < data.length; i++) {
+            // console.log(i);
+            // console.log(data[i].FormatofPC + " " + data[i].Dimensionality);
+
+            if (data[i].Secondary == secondary && data[i].Layout == layout)
+              count++;
+            //   console.log(formatofpc + " " + dims + " " + count);
+          }
+          return count;
+        }
+
+        function countFormat(word) {
+          const result = countformat.filter((cou) => cou == word);
+          //  console.log(result);
+          return result.length;
+        }
+
+        function countSecondary(word) {
+          const result = countsecondary.filter((cou) => cou == word);
+          // console.log(result);
+          return result.length;
+        }
+
+        // function treelist(resources) {
+        //console.log(resources);
+
+        var margin = { top: 30, right: 20, bottom: 30, left: 50 },
+          width = 2000 - margin.left - margin.right,
+          height = 1300 - margin.top - margin.bottom;
+
+        //Create SVG element
+        var svg = d3
+          .select("#root")
+          .select("#viztree")
+          .style("border-width", "5px")
+          .style("border-style", "solid")
+          .style("border-color", "black")
+          .attr("overflow", "auto")
+          .attr(
+            "transform",
+            "translate(" + margin.left + "," + margin.top + ")"
+          )
+          //.attr("viewBox", "0,0,150,420")
+          .attr("width", width + 200)
+          .attr("height", height + 400)
+          //.attr("overflow-y","scroll")
+          .append("g")
+          .attr("transform", "translate(" + 20 + "," + 100 + ")");
+
+        //console.log(width+" "+height);
+
+        var Tooltip = d3
+          .select("#viztree")
+          .append("div")
+          .style("opacity", 0)
+          .attr("class", "tooltip")
+          .style("background-color", "white")
+          .style("border", "solid")
+          .style("border-width", "2px")
+          .style("border-radius", "5px")
+          .style("padding", "5px");
+
+        //console.log(diameter);
+
+        var colorCircle = d3.scaleOrdinal(d3.schemeTableau10);
+        // .domain([0, 1, 2, 3])
+        // .range(["red", "green", "blue"]);
+
+        var colorDims = d3
+          .scaleOrdinal()
+          .domain([0, 1])
+          .range(["#CD5C5C", "#FFA07A"]);
+
+        var colorLayout = d3.scaleOrdinal(d3.schemeDark2);
+
+        //         console.log(resources);
+        //var sizeScale = d3.scaleSqrt().range([10, 30]);
+
+        var rectwidth = 330;
+        var rectheight = 120;
+
+        var horizontalSeparationBetweenNodes = 50;
+        var verticalSeparationBetweenNodes = 200;
+
+        var tree = d3
+          .tree()
+          .size([width - 100, height - 300])
+          /*
+          .nodeSize([
+            rectwidth + horizontalSeparationBetweenNodes,
+            rectheight + verticalSeparationBetweenNodes,
+          ])
+          */
+          .separation(function (a, b) {
+            return a.parent == b.parent ? 1 : 1.05; //1:1.125
+          });
+
+        let nodes = d3.hierarchy(format, function (d) {
+          return d.children;
+        });
+
+        nodes = tree(nodes);
+
+        // console.log(nodes);
+
+        const g = d3.select("#root").select("#viztree").select("g");
+
+        const node = g
+          .selectAll(".node")
+          .data(nodes.descendants())
+          .enter()
+          .append("g")
+          .attr(
+            "class",
+            (d) => "node" + (d.children ? " node--internal" : " node--leaf")
+          )
+          .attr("transform", (d) => "translate(" + d.x + "," + d.y + ")");
+
+        node
+          .append("rect")
+          .attr("width", function (d) {
+            if (d.depth == 0) return rectwidth + 80;
+            else return rectwidth;
+          })
+          .attr("height", rectheight)
+          .style("fill", "white")
+          .style("opacity", 1)
+          .style("stroke-width", "3px")
+          .style("stroke", function (d) {
+            //  console.log(d.depth + colorCircle(d.depth));
+            return colorCircle(d.depth);
+          });
+
+        for (var darr = 0; darr < dimsArr.length; darr++) {
+          node
+            .append("rect")
+            .attr("width", 15)
+            .attr("height", function (d) {
+              var count = 0;
+
+              if (d.depth == 1) {
+                count = countDimsFormat(d.data.name, dimsArr[darr]);
+                count = (count / countFormat(d.data.name)) * 100;
+              } else if (d.depth == 2) {
+                count = countDimsSecondary(d.data.name, dimsArr[darr]);
+                count = (count / countSecondary(d.data.name)) * 100;
+              }
+
+              /* console.log(
+              darr +
+                " " +
+                d.data.name +
+                " " +
+                dimsArr[darr] +
+                " " +
+                Math.round(count)
+            ); */
+
+              return Math.round(count);
+            })
+            .attr("x", -15)
+            .attr("y", function (d) {
+              if (darr == 0) count = 0;
+              else {
+                if (d.depth == 1) {
+                  count = countDimsFormat(d.data.name, dimsArr[0]);
+
+                  if (countFormat(d.data.name) != 0)
+                    count = (count / countFormat(d.data.name)) * 100;
+                  else count = 0;
+                }
+
+                if (d.depth == 2) {
+                  count = countDimsSecondary(d.data.name, dimsArr[0]);
+
+                  if (countSecondary(d.data.name) != 0)
+                    count = (count / countSecondary(d.data.name)) * 100;
+                  else count = 0;
+                }
+              }
+              return count;
+            })
+            .style("fill", colorDims(darr))
+            .style("opacity", 1)
+            .style("stroke", function (d) {
+              //  console.log(d.depth + colorCircle(d.depth));
+              return colorDims(darr);
+            });
+        }
+        var nodelink = 0,
+          contained = 0,
+          adjacent = 0,
+          overlap = 0;
+
+        var posArr = [
+          {
+            name: "Hierarchical Visualizations",
+            value: 0,
+            position: 0,
+          },
+          {
+            name: "Node-link",
+            value: 0,
+            position: 0,
+          },
+          {
+            name: "Contained",
+            value: 0,
+            position: 0,
+          },
+          {
+            name: "Adjacent",
+            value: 0,
+            position: 0,
+          },
+          {
+            name: "Overlap",
+            value: 0,
+            position: 0,
+          },
+          {
+            name: "Tightly nested",
+            value: 0,
+            position: 0,
+          },
+          {
+            name: "Loosely packed",
+            value: 0,
+            position: 0,
+          },
+          {
+            name: "Adjoined by a vertex",
+            value: 0,
+            position: 0,
+          },
+          {
+            name: "Adjoined by a side",
+            value: 0,
+            position: 0,
+          },
+        ];
+        for (var parr = 0; parr < posArr.length; parr++) {
+          for (var larr = 0; larr < layoutArr.length; larr++) {
+            var count = 0,
+              value = 0;
+            if (parr == 0) {
+              count = countLayout(layoutArr[larr]);
+            } else if (parr <= 4 && parr >= 1) {
+              console.log(posArr[parr].name + " " + layoutArr[larr]);
+              value = countLayoutFormat(posArr[parr].name, layoutArr[larr]);
+              console.log(value + " " + countFormat(posArr[parr].name));
+              count = Math.round(
+                (value / countFormat(posArr[parr].name)) * rectwidth
+              );
+
+              //   console.log(count);
+            } else {
+              value = countLayoutSecondary(
+                posArr[parr].name,
+                layoutArr[larr]
+              );
+              count = Math.round(
+                (value / countSecondary(posArr[parr].name)) * rectwidth
+              );
+            }
+
+            posArr[parr].value = posArr[parr].value + value;
+
+            if (larr != 0)
+              posArr[parr].position = posArr[parr].position + ";" + count;
+            else posArr[parr].position = count;
+
+            /*  console.log(
+            posArr[parr].name +
+              " " +
+              posArr[parr].position +
+              " " +
+              layoutArr[larr]
+          ); */
+          }
+        }
+
+        console.log(posArr);
+        for (var larr = 0; larr < layoutArr.length; larr++) {
+          node
+            .append("rect")
+            .attr("height", 20)
+            .attr("width", function (d, i) {
+              var val = 0;
+              // console.log(i + d.data.name + posArr[i].name);
+              if (d.depth == 0) {
+                val = posArr[i].position.split(";")[larr];
+              }
+              if (d.depth > 0) {
+                // console.log(layoutArr[larr]);
+                // console.log(i + "   " + posArr[i - 1].position);
+                val = posArr[i].position.split(";");
+                var count = 1;
+                for (var j = 0; j < val.length; val++) {
+                  if (val[j] != 0) count++;
+                }
+                console.log();
+                val = posArr[i].position.split(";")[larr];
+
+                console.log(val + " " + count);
+                return val;
+              }
+            })
+            .attr("y", rectheight)
+            .attr("x", function (d, i) {
+              console.log(larr + " " + d.data.name);
+              if (d.depth > 0) {
+                //  console.log(posArr[i - 1].name + " " + layoutArr[larr]);
+                var value = 0;
+                for (var j = 0; j < larr; j++) {
+                  value = value + parseInt(posArr[i].position.split(";")[j]);
+                  //  console.log(value);
+                }
+                return value;
+              }
+            })
+            .style("fill", colorLayout(larr))
+            .style("opacity", 1)
+            .style("stroke", function (d) {
+              //  console.log(d.depth + colorCircle(d.depth));
+              return colorCircle(larr);
+            });
+        }
+
+        node
+          .append("circle")
+          .attr("r", 35)
+          .attr("cx", function (d) {
+            if (d.depth == 0) return +rectwidth - 0;
+            else return +rectwidth - 45;
+          })
+          .attr("cy", +rectheight - 40)
+          .style("fill", "white")
+          .style("opacity", 1)
+          .style("stroke-width", "3px")
+          .style("stroke", function (d) {
+            //  console.log(d.depth + colorCircle(d.depth));
+            return colorCircle(d.depth);
+          });
+
+        node
+          .append("text")
+          .attr("dy", ".35em")
+          .style("font-size", "30px")
+          .attr("x", function (d) {
+            if (d.depth == 0) return +rectwidth + 20;
+            return d.children && d.depth !== 0
+              ? +rectwidth - 30
+              : +rectwidth - 60;
+          })
+          .attr("y", +rectheight - 38)
+          .style("text-anchor", (d) => (d.children ? "end" : "start"))
+          .text(function (d) {
+            //  console.log(d.data.name);
+            if (d.depth == 1) return countFormat(d.data.name);
+            else if (d.depth == 2) return countSecondary(d.data.name);
+            else return data.length;
+          });
+
+        const link = g
+          .selectAll(".link")
+          .data(nodes.descendants().slice(1))
+          .enter()
+          .append("path")
+          .attr("class", "link")
+          .style("stroke-width", "2")
+          .style("stroke", "black")
+          .style("fill", "none")
+          .style("opacity", "1")
+          .style("stroke-linecap", "round")
+          .style("stroke-linejoin", "round")
+          .attr("d", function (d) {
+            var x0 = d.x + rectwidth / 2;
+            var y0 = d.y;
+
+            var x1 = d.parent.x + rectwidth / 2;
+            if (d.parent.depth == 0)
+              var x1 = d.parent.x + (rectwidth + 80) / 2;
+            var y1 = d.parent.y + rectheight;
+
+            var k = 150;
+
+            var pathvar =
+              "M" +
+              x0 +
+              "," +
+              y0 +
+              " " +
+              "C" +
+              x0 +
+              "," +
+              (y0 - k) +
+              " " +
+              x1 +
+              "," +
+              (y1 + k) +
+              " " +
+              x1 +
+              "," +
+              y1;
+
+            // console.log(pathvar);
+
+            return pathvar;
+          });
+
+        //   console.log(nodes.descendants());
+        //   console.log(nodes.descendants().slice(1));
+
+        var value = 10;
+        //d.data.value;
+
+        node
+          .append("text")
+          .style("font-size", "35px")
+          .attr("dy", ".35em")
+          .attr("x", function (d) {
+            if (d.depth == 0) return rectwidth + 60;
+            else return d.children ? 155 : 20;
+          })
+          .attr("y", function (d) {
+            return d.children && d.depth !== 0 ? 25 : 25;
+          })
+          .style("text-anchor", (d) => (d.children ? "end" : "start"))
+          .text(function (d) {
+            //   console.log(d.data.name);
+            return d.data.name;
+          });
+        // }
+
+        var rectx = 1360;
+        var recty = 1036;
+        var labx = 1400;
+        var laby = 1050;
+        var offset = 30;
+        var legrectwidth = 20,
+          legrectheight = 20;
+
+        var legendg = svg
+          .append("g")
+          .attr(
+            "transform",
+            "translate(" +
+            (margin.right + 500) +
+            "," +
+            (margin.bottom + 80) +
+            ")"
+          )
+          .style("font-size", "25px")
+          .attr("alignment-baseline", "middle");
+
+        legendg
+          .append("rect")
+          .attr("x", rectx - offset + 10)
+          .attr("y", recty - 10)
+          .attr("width", 230)
+          .attr("height", 70)
+          .style("stroke", "black")
+          .style("fill", "none");
+
+        legendg
+          .append("text")
+          .attr("x", rectx - offset + 10)
+          .attr("y", recty - 30)
+          .style("font-size", "30px")
+          .text("Dimensionality");
+
+        legendg
+          .append("rect")
+          .attr("x", rectx - offset + 10)
+          .attr("y", recty + 100)
+          .attr("width", 230)
+          .attr("height", 270)
+          .style("stroke", "black")
+          .style("fill", "none");
+
+        legendg
+          .append("text")
+          .attr("x", rectx - offset + 10)
+          .attr("y", recty + 90)
+          .style("font-size", "30px")
+          .text("Layout");
+
+        for (var j = 0; j < dimsArr.length; j++) {
+          legendg
+            .append("rect")
+            .attr("x", rectx)
+            .attr("y", recty + offset * j)
+            .attr("width", legrectwidth)
+            .attr("height", legrectheight)
+            .style("fill", colorDims(j));
+
+          legendg
+            .append("text")
+            .attr("x", labx)
+            .attr("y", laby + offset * j)
+            .text(dimsArr[j]);
+        }
+
+        for (var j = 0; j < layoutArr.length; j++) {
+          legendg
+            .append("rect")
+            .attr("x", rectx)
+            .attr("y", recty + offset * (j + 4))
+            .attr("width", legrectwidth)
+            .attr("height", legrectheight)
+            .style("fill", colorLayout(j));
+
+          legendg
+            .append("text")
+            .attr("x", labx)
+            .attr("y", laby + offset * (j + 4))
+            .text(layoutArr[j]);
+        }
+      }
+    );
+  </script>
+</body>
+
+</html>

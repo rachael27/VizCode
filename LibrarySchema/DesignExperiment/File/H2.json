@@ -1,0 +1,30 @@
+{
+    "name": "root",
+    "children": [
+        {
+            "name": "A",
+            "children": [
+                {
+                    "name": "L1"
+                },
+                {
+                    "name": "L3"
+                }
+            ]
+        },
+        {
+            "name": "B",
+            "children": [
+                {
+                    "name": "L2"
+                },
+                {
+                    "name": "L4"
+                },
+                {
+                    "name": "L9"
+                }
+            ]
+        }
+    ]
+}

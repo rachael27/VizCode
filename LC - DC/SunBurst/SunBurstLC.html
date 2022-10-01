@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+    <title>SunBurst Viz - LCC </title>
+    </head>
+    <style>
+        path {
+          stroke: #fff;
+        }
+        </style>
+
+    <body>
+        <button id="zoom_in" onclick="zoomin()">+</button>
+    <button id="zoom_out" onclick="zoomout()">-</button>
+    <br>
+    <br>
+    <button id="rotate" onclick="rotateviz()">Rotate Viz</button> <button id="sort" onclick="rotateviz()">Sort A-Z Viz</button>
+    <br>
+    <br>
+    <input type="text" id="searchtext" value="England"></input>
+    <button id="search" onclick="searchnode()">Search</button>
+    
+    <br>
+    <br>
+    
+        <button onclick="clearColor()">Clear Color</button>
+        <button onclick="clearCaptions()">Clear Captions</button>
+        <button onclick="addCaptions()">Add Captions</button>
+    
+    
+        <div id="lccontent">
+            <h1>Library of Congress</h1>
+    
+        </div>
+        <div id="space"></div>
+       
+    
+        </div>
+    
+    
+        <script src="https://code.jquery.com/jquery-1.7.2.js"></script>
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script type="text/javascript">
+    
+           
+    
+    
+    
+            var data = []; var lccdata = []; var sortedlccdata = []; var dcdata = []; var lcset = new Set();
+            var dcset = new Set();
+    
+           
+    
+    
+            d3.csv("LC-DC.csv", function (data) {
+    
+                //console.log(data.length);
+                for (i = 0; i < 1200; i++) {
+                //start reading lcc file
+                    if (!lcset.has(data[i].lccchild)) {
+    
+                       
+                        if(data[i].lccchild=="LCC"){
+                        lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild });
+                        lcset.add(data[i].lccchild);
+                    }
+    
+                    else { //for every other node that isnt the root
+    
+    var lccode=data[i].lccchild.split(" ");
+    //console.log(data[i].lccchild+" "+lccode.length);
+    if(lccode.length==1) //if there is a space in the lcchild
+    {
+        if(lccode[0].length==1){ //if it is a single letter eg. A
+     //   console.log(data[i].lccchild);
+        lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild });
+        lcset.add(data[i].lccchild);
+        }
+    
+        else if(lccode[0].length==2){ //if it is a DOUBLE letter eg. AC add A,AC
+     //   console.log(data[i].lccchild.charAt(0)+" "+data[i].lccchild.charAt(0)+data[i].lccchild.charAt(1));
+        lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild.charAt(0)+" "+data[i].lccchild.charAt(0)+data[i].lccchild.charAt(1) });
+        lcset.add(data[i].lccchild);
+        }
+    }
+    
+    else{  //size of array is more than 1
+    //console.log("lccode "+lccode[0]+lccode[0].length);
+    if(lccode[0].length==1){ //if it is a single letter on 1 side of the array eg. A 100
+    //    console.log("l1 "+data[i].lccchild);
+    lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild });
+    lcset.add(data[i].lccchild);
+    }
+    
+    else if(lccode[0].length==2){ //if it is a double letter on 1 side of the array eg. AC 100
+    //    console.log("l2 "+data[i].lccchild.charAt(0)+" "+data[i].lccchild.charAt(0)+data[i].lccchild.charAt(1));
+    lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild.charAt(0)+" "+data[i].lccchild.charAt(0)+data[i].lccchild.charAt(1) });
+    lcset.add(data[i].lccchild);
+    }
+    
+    }
+    
+                       
+                    }
+    
+    
+    
+                      
+                    }
+                    //finish reading lcc file
+                    
+    
+    
+    
+    
+                  
+                } //finish reading csv file
+    
+    
+                console.log(lccdata);
+             
+                sortedlccdata = lccdata.slice().sort((a, b) => d3.ascending(a.lcccaption, b.lcccaption));
+                console.log(sortedlccdata);
+
+               
+          
+            var root = d3.stratify()
+    .id(function(d) { return d.lccchild;})
+    .parentId(function(d) { return d.lccparent; })
+    (lccdata);
+
+   // console.log(root);
+
+    root.sum(function(d) {
+     //  console.log(d); 
+        return root.count();
+    });
+
+
+  //  console.log(root);
+ 
+ 
+  var path= svg.selectAll("path")
+       .data(partition(root).descendants())
+     .enter()
+     .append("g")
+     .append("path")
+       .attr("d", arc)
+       .style("fill", function(d) { 
+         //  console.log(d);
+        return color(d.data.lccclass.charAt(0)); }) 
+        /*
+        .attr("opacity",function(d){
+            var opacity_value=1;
+            if (d.depth==1)
+            opacity_value=0.8;
+
+            else if (d.depth==2)
+            opacity_value=0//.6;
+
+            else if (d.depth==3)
+            opacity_value=0.4;
+
+
+            return opacity_value;
+        })  
+        */
+        //return color((d.children ? d : d.parent).data.lccclass.charAt(0)); })
+       .on("click", click)
+       .append("title")
+       .text(function(d) { 
+         return d.data.lccchild+" \n"+d.data.lcccaption});
+
+
+
+      var labeltext=path.select("g")
+      .data(partition(root).descendants())
+     .enter()
+     .append("text")
+     .style("fill", "black")
+     .attr("transform", function(d) { 
+             return "rotate(" + computeTextRotation(d) + ")"; 
+          })
+          .attr("x", function(d) { 
+              /*
+              if(d.depth==2)
+              return 120+y(d.y0);
+              else if(d.depth==3)
+              return 125+y(d.y0);
+              else
+              */
+             return y(d.y0); 
+          })
+          .attr("dx", "6") // margin
+          .attr("dy", ".55em") // vertical-align
+       .text(function(d) { 
+        let label="";
+           if (d.depth<=1 && d.depth>=0)
+           label=d.data.lccchild+" "+d.data.lcccaption.substring(0,15);
+           //elselabel=
+         return label});
+         
+     
+ 
+ function click(dj) {
+   svg.transition()
+       .duration(750)
+       .tween("scale", function() {
+         var xd = d3.interpolate(xnew.domain(), [dj.x0, dj.x1]),
+             yd = d3.interpolate(y.domain(), [dj.y0, 1]),
+             yr = d3.interpolate(y.range(), [dj.y0 ? 20 : 0, radius]);
+             return function(t) {
+              xnew.domain(xd(t));
+               y.domain(yd(t)).range(yr(t));
+             };
+       })
+       
+     .selectAll("path")
+
+       .attrTween("d", function(d) {
+     //dj is the clicked node and d is the rotating list of all nodes
+      flag=0;
+        while(l<dj.descendants().length){
+        //    console.log(l+" d:"+d.data.lcccaption+" dj:"+dj.data.lcccaption+" "+dj.descendants()[l].data.lcccaption);
+           if(d==dj || d.data.lcccaption==dj.descendants()[l].data.lcccaption){
+
+            if(d.data.lcccaption==dj.descendants()[l].data.lcccaption)
+            l++;
+          // console.log("INDSIDE IF RETURN"+d.data.name);
+           flag=1;
+            return function() {
+            // console.log("sel "+d.data.name);
+                 return arc_sel(d); 
+             }; 
+         }
+             else 
+             {
+            //     console.log("INDSIDE ELSE RETURN"+d.data.name);
+            //     console.log(xnew_unsel(d.x0)+" "+xnew_unsel(d.x1));
+                 
+                 return function() {
+                 //  console.log("unsel 0 "+d.data.name);
+                 return arc_unsel(d); 
+             }; 
+         }
+         }
+         if(flag==0)
+             {
+           //      console.log("INDSIDE FLAG RETURN"+d.data.name);
+           //      console.log(xnew_unsel(d.x0)+" "+xnew_unsel(d.x1));
+                 return function() {
+              //console.log("unsel 1 "+d.data.name);
+                 return arc_unsel(d); 
+             }; 
+         }
+        
+         });
+
+
+         svg.selectAll("text")
+         .remove();
+       
+      /*
+       svg.selectAll("text")
+       .attr("transform", function(d) { 
+           
+             return "rotate(" + newComputeTextRotation(d) + ")"; 
+          })
+          .attr("x", function(d) { 
+            console.log(d.y0+" "+x(d.y0)+" "+xnew(d.y0));
+                 return xnew(d.y0);
+            
+          })
+          .attr("dx", "16") // margin
+          .attr("dy", ".55em") // vertical-align
+          .text(function(d) { 
+        let label="";
+           if (d.depth<=1 && d.depth>=1)
+           label=d.data.lccchild+" "+d.data.lcccaption.substring(0,15);
+           //elselabel=
+         return label});
+    */
+    }
+    
+ 
+     function computeTextRotation(d) {
+  return (x((d.x0 + d.x1)/2) - Math.PI / 2) / Math.PI * 180;
+}
+ 
+function newComputeTextRotation(d) {
+  return (xnew_unsel((d.x0 + d.x1)/2) - Math.PI / 2) / Math.PI * 180;
+}
+
+ d3.select(self.frameElement).style("height", height + "px");
+ 
+
+                
+            });
+
+        
+
+
+
+
+            var width = 1500,
+    height = 1500,
+    radius = (Math.min(width, height) / 2) - 10;
+
+    //console.log((Math.min(width, height) / 2) - 10);
+
+var formatNumber = d3.format(",d");
+var l=0,flag=0;
+
+var x = d3.scaleLinear()
+    .range([0, 2 * Math.PI]);
+
+var y = d3.scaleSqrt()
+    .range([0,radius]);
+
+    /*
+    console.log("x is from 0 to " +2*Math.PI);
+    console.log(x.domain());
+    console.log(x.range());
+    console.log("y is from 0 to " +radius);
+    console.log(y.domain());
+    console.log(y.range());
+    */
+
+//console.log(d);
+
+var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+var partition = d3.partition();
+
+
+var arc = d3.arc()
+    .startAngle(function(d) { 
+    //  console.log(d);
+     //   console.log(d.x0+" "+x(d.x0));
+        return Math.max(0, Math.min(2 * Math.PI, x(d.x0))); })
+    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x1))); })
+    .innerRadius(function(d) { return Math.max(0, y(d.y0)); })
+    .outerRadius(function(d) { return Math.max(0, y(d.y1)); })
+  //  .padAngle(.02)
+  .padRadius(100)
+  .cornerRadius(8);
+  
+  //console.log(arc);
+    
+
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
+
+    var xnew = d3.scaleLinear()
+    .range([0, Math.PI]);
+
+    var xnew_unsel = d3.scaleLinear()
+    .range([Math.PI, 2 * Math.PI]);
+
+   
+    var arc_sel = d3.arc()
+    .startAngle(function(d) {
+        
+       // console.log(d.data.lcccaption);
+      //  console.log(d.x0+" "+d.x1);
+        //console.log(2*Math.PI+" "+xnew(d.x0)+" "+xnew(d.x1));
+        return Math.max(0, Math.min(Math.PI, xnew(d.x0))); })
+    .endAngle(function(d) { return Math.max(0, Math.min(Math.PI, xnew(d.x1))); })
+    .innerRadius(function(d) { return Math.max(0, y(d.y0)); })
+    .outerRadius(function(d) { return Math.max(0, y(d.y1)); })
+    .padRadius(100)
+  .cornerRadius(8);
+
+  function unsel(value,array){
+  var xnew_unsel = d3.scaleLinear()
+  .domain([d3.extent(array)])
+    .range([Math.PI, 2 * Math.PI]);
+    return xnew_unsel(value);
+  }
+  
+
+    var arc_unsel = d3.arc()
+    .startAngle(function(d) { 
+      //  console.log(d.data.lccclass+" "+d.x0+" "+d.x1);
+    //  console.log(d.x0+" "+d.x1);
+        //console.log(2*Math.PI+" ab "+xnew_unsel(d.x0)+" ab "+xnew_unsel(d.x1));
+        return Math.max(0, Math.min(2*Math.PI, xnew_unsel(d.x0))); })
+    .endAngle(function(d) { 
+        return Math.max(0, Math.min(2*Math.PI, xnew_unsel(d.x1))); })
+    .innerRadius(function(d) { return Math.max(0, y(d.y0)); })
+    .outerRadius(function(d) { return Math.max(0, y(d.y1)); })
+    .padRadius(100)
+  .cornerRadius(8);
+
+      /*
+
+BLUE 3-4
+ORANGE 3.5-4.5
+LIGHT ORANGE 4.5-5
+GREEN 5-5.5
+LIGHT GREEN 5-5.2
+RED 5.8-6
+PINK 5-6
+
+
+    */
+
+console.log(Math.PI);
+console.log(2*Math.PI);
+  
+
+            </script>
+        </body>
+        </html>   

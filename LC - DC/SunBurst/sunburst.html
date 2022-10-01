@@ -1,0 +1,308 @@
+<!-- Styles -->
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+
+  #chartdiv {
+    width: 100%;
+    height: 100%;
+  }
+
+</style>
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/plugins/sunburst.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+  am4core.ready(function() {
+    // Themes begin
+    am4core.useTheme(am4themes_animated);
+    // Themes end
+
+    // create chart
+    var chart = am4core.create("chartdiv", am4plugins_sunburst.Sunburst);
+    chart.padding(0, 0, 0, 0);
+    chart.radius = am4core.percent(98);
+
+    chart.data = [{
+        name: "SPYWARE",
+        color: "#845EC2",
+        children: [{
+            name: "spyware",
+            color:"#d65db1",
+            children: [{
+                name: "Suspicious HTTP Evasion..",
+                 color: "#dba2ca",
+                value: 60
+              },
+              {
+                name: "Suspicious TLS Evasion..",
+                   color: "#bf67a5",
+                value: 60
+              },
+              {
+                name: "XMRig Miner..",
+                   color: "#9e3780",
+                value: 60,
+              },
+            ],
+          },
+
+          {
+            name: "dns-wildfire",
+              color:"#ff6f91",
+            children: [{
+                name: "generic:api.mobengine",
+                color:"#db6984",
+                value: 60
+              },
+              {
+                name: "generic:iva-hacking",
+                  color:"#c45872",
+                value: 60
+              },
+              {
+                name: "generic:mbsld.com",
+                  color:"#963049",
+                value: 60
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "VULNERABILITY",
+          color:"#b3b300",
+        children: [{
+            name: "brute-force",
+            color:"#b55f31",
+            children: [{
+                name: "DNS ANY Request",
+                color:"#ebcbb9",
+                value: 60
+              },
+              {
+                name: "HTTP Unauth. Err",
+                  color:"#c98e6d",
+                value: 60
+              },
+              {
+                name: "HTTP Unauth. Brute Force Attack",
+                  color:"#ba734a",
+                value: 60
+              },
+              {
+                name: "HTTP WWW-Authentication..",
+                  color:"#e38046",
+                value: 60
+              },
+              {
+                name: "LDAP Auth. Via BIND Req.",
+                  color:"#d97f4a",
+                value: 60,
+              },
+              {
+                name: "Palo Alto N/w Firewall VPN..",
+                  color:"#b55b26",
+                value: 60
+              },
+              {
+                name: "SIP Reg. Req. Attempt",
+                  color:"#cc6123",
+                value: 60
+              },
+              {
+                name: "SSH2 Login Attempt",
+                  color:"#cf4e04",
+                value: 60
+              },
+            ],
+          },
+
+          {
+            name: "code-execution",
+              color:"#8a1507",
+            children: [{
+                name: "Gen. HHTP CSS Attempt",
+                color:"#d4928a",
+                value: 60,
+              },
+              {
+                name: "HTTP CSS Attempt",
+                  color:"#bf594d",
+                value: 60
+              },
+              {
+                name: "HTTP CSS Vulnerability",
+                  color:"#a3392c",
+                value: 60,
+              },
+              {
+                name: "ThinkPHP Remote Cmd Exe.",
+                  color:"#992112",
+                value: 60,
+              },
+              {
+                name: "raSMP User-Agent Parsing CSS",
+                  color:"#700e02",
+                value: 60,
+              },
+            ],
+          },
+
+          {
+            name: "code-obfuscation",
+              color:"#ffc75f",
+            children: [{
+                name: "JavaScript Obfus. Detd.",
+                color:"#e3a83b",
+                value: 60
+              },
+              {
+                name: "VBScript Obfus.",
+                     color:"#d1911b",
+                value: 60
+              },
+            ],
+          },
+
+          {
+            name: "sql-injection",
+              color:"#ff9671",
+            children: [{
+              name: "HTTP S.I Attempt",
+                color:"#ff9671",
+              value: 60
+            }],
+          },
+
+          {
+            name: "info-leak",
+              color:"#299940",
+            children: [{
+                name: "DNS Zone Transfer IXFR Attempt",
+                color:"#49b861",
+                value: 60
+              },
+              {
+                name: "DNS Zone Transfer IXFR Res.",
+                  color:"#3bb355",
+                value: 60
+              },
+              {
+                name: "HTTP Dir. Traversal Vul.",
+                  color:"#179632",
+                value: 60
+              },
+              {
+                name: "HTTP Options Method",
+                  color:"#0f8728",
+                value: 60
+              },
+              {
+                name: "OpenSSL Empty SNI Extn.",
+                  color:"#067d1f",
+                value: 60
+              },
+            ],
+          },
+
+          {
+            name: "dos",
+              color:"#773b80",
+            children: [{
+              name: "Suspicious HTTP field",
+                color:"#773b80",
+              value: 60,
+            }, ],
+          },
+
+          {
+            name: "protocol-anomaly",
+              color:"#282685",
+            children: [{
+                name: "Abnormal SSL Traffic",
+                color:"#2924f2",
+                value: 60
+              },
+              {
+                name: "Non-RFC Comp. HTTP p80",
+                  color:"#2d2aa3",
+                value: 60,
+              },
+              {
+                name: "Non-RFC Comp. SSL Traffic p443",
+                  color:"#131169",
+                value: 60,
+              },
+            ],
+          },
+
+          {
+            name: "unknown",
+              color:"#c40836",
+            children: [{
+              name: "Wordpress-4.7.1",
+                color:"#c40836",
+              value: 60
+            }],
+          },
+        ],
+      }
+    ];
+
+    chart.colors.step = 3;
+    chart.fontSize = 10;
+    chart.innerRadius = am4core.percent(10);
+
+    // define data fields
+    chart.dataFields.value = "value";
+    chart.dataFields.name = "name";
+    chart.dataFields.children = "children";
+      chart.dataFields.color = "color";
+
+    var level0SeriesTemplate = new am4plugins_sunburst.SunburstSeries();
+    level0SeriesTemplate.hiddenInLegend = true;
+    chart.seriesTemplates.setKey("0", level0SeriesTemplate)
+
+    // this makes labels to be hidden if they don't fit
+    level0SeriesTemplate.labels.template.truncate = false;
+    level0SeriesTemplate.labels.template.hideOversized = false;
+
+    level0SeriesTemplate.labels.template.adapter.add("rotation", function(rotation, target) {
+      target.maxWidth = target.dataItem.slice.radius - target.dataItem.slice.innerRadius - 10;
+      target.maxHeight = Math.abs(target.dataItem.slice.arc * (target.dataItem.slice.innerRadius + target.dataItem.slice.radius) / 2 * am4core.math.RADIANS);
+
+      return rotation;
+    })
+
+/*
+    var level1SeriesTemplate = level0SeriesTemplate.clone();
+    chart.seriesTemplates.setKey("1", level1SeriesTemplate)
+    level1SeriesTemplate.fillOpacity = 0.80;
+    level1SeriesTemplate.hiddenInLegend = true;
+
+    var level2SeriesTemplate = level0SeriesTemplate.clone();
+    chart.seriesTemplates.setKey("2", level2SeriesTemplate)
+    level2SeriesTemplate.fillOpacity = 0.60;
+    level2SeriesTemplate.hiddenInLegend = true;
+
+    var level3SeriesTemplate = level0SeriesTemplate.clone();
+    chart.seriesTemplates.setKey("3", level3SeriesTemplate)
+    level3SeriesTemplate.fillOpacity = 0.40;
+    level3SeriesTemplate.hiddenInLegend = true;
+    */
+
+    // chart.legend = new am4charts.Legend();
+  }); // end am4core.ready()
+
+</script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>
+amCharts

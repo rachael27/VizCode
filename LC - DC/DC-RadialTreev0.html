@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    
+    <style>
+
+	
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #9b8f8f;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 12px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: rgb(43, 83, 143);
+	  stroke-width: 0.5px;
+	}
+	
+
+
+        </style>
+        
+
+
+</head>
+<!-- Load d3.js -->
+<body>
+  <button onclick="clearColor()">Clear All</button>
+    <div id="dccontent"></div>
+    
+
+<script src="https://code.jquery.com/jquery-1.7.2.js"></script>
+
+<script src="https://d3js.org/d3.v4.js"></script>
+
+   
+    <script type="text/javascript">
+
+        
+
+var data=[]; var dcdata=[]; var dcparent="";
+var dcset=new Set();
+
+dcdata.push({"lccparent":"na","lccchild":"na","lcccaption":"na","lcid":"na",
+"dcchild":"DC","dcparent":"","dccaption":"DC ROOT"});
+
+dcdata.push({"lccparent":"na","lccchild":"na","lcccaption":"na","lcid":"na",
+  "dcchild":"000","dcparent":"DC","dccaption":"Computer science, information & general works"});
+dcset.add("000");
+
+dcdata.push({"lccparent":"na","lccchild":"na","lcccaption":"na","lcid":"na",
+"dcchild":"100","dcparent":"DC","dccaption":"Philosophy & psychology"});
+dcset.add("100");
+
+dcdata.push({"lccparent":"na","lccchild":"na","lcccaption":"na","lcid":"na",
+  "dcchild":"200","dcparent":"DC","dccaption":"Religion"});
+dcset.add("200");
+
+dcdata.push({"lccparent":"na","lccchild":"na","lcccaption":"na","lcid":"na",
+  "dcchild":"300","dcparent":"DC","dccaption":"Social sciences"});
+dcset.add("300");
+
+dcdata.push({"lccparent":"na","lccchild":"na","lcccaption":"na","lcid":"na",
+  "dcchild":"400","dcparent":"DC","dccaption":"Language"});
+dcset.add("400");
+
+dcdata.push({"lccparent":"na","lccchild":"na","lcccaption":"na","lcid":"na",
+  "dcchild":"500","dcparent":"DC","dccaption":"Pure Science"});
+dcset.add("500");
+
+dcdata.push({"lccparent":"na","lccchild":"na","lcccaption":"na","lcid":"na",
+  "dcchild":"600","dcparent":"DC","dccaption":"Technology"});
+dcset.add("600");
+
+dcdata.push({"lccparent":"na","lccchild":"na","lcccaption":"na","lcid":"na",
+  "dcchild":"700","dcparent":"DC","dccaption":"Arts & recreation"});
+dcset.add("700");
+
+dcdata.push({"lccparent":"na","lccchild":"na","lcccaption":"na","lcid":"na",
+  "dcchild":"800","dcparent":"DC","dccaption":"Literature"});
+dcset.add("800");
+
+dcdata.push({"lccparent":"na","lccchild":"na","lcccaption":"na","lcid":"na",
+  "dcchild":"900","dcparent":"DC","dccaption":"History & geography"});
+dcset.add("900");
+
+   d3.csv("DC.csv",function(data)
+   {
+
+    console.log(data);
+
+for(i=0;i<data.length;i++){
+   // console.log(data[i].dcchild);
+dcparent="";
+data[i].dcchild=data[i].dcchild.toString().replace(" ","");
+    //if dcchild, dcparent and dccaption are same, skip duplicate values
+    if(!dcset.has(data[i].dcchild)){
+
+      if(data[i].dcchild.includes("-")){
+        var range=data[i].dcchild.split("-");
+
+        if(range[0]==range[1])
+        if(!dcset.has(data.dcchild)){
+          dcdata.push({"dcchild":data[i].dcchild,"dcparent":data[i].dcchild.charAt(0)+"00","dccaption":data[i].dccaption});
+        }
+
+
+
+
+for(var r=0;r=range.size;r++)
+{
+        if(range[r].includes(".")){
+ //add dcparent of 362.15=> 362
+dcparent=range[r].substring(0,data[i].dcchild.indexOf("."));
+dcdata.push({"dcchild":range[r],"dcparent":dcparent,"dccaption":data[i].dccaption});
+
+//add dcparent of 362=> 300
+if(!dcset.has(dcparent)){
+  dcset.add(dcparent);
+dcdata.push({"dcchild":dcparent,"dcparent":range[r].charAt(0)+"00","dccaption":data[i].dccaption});
+}
+}
+
+
+     else{
+     dcset.add(range[r]);
+   dcparent=range[r].charAt(0)+"00";
+   dcdata.push({"dcchild":range[r],"dcparent":dcparent,"dccaption":data[i].dccaption});
+      }
+
+
+      }
+
+
+
+
+
+
+
+
+      }
+
+     else if(data[i].dcchild.includes(".")){
+ //add dcparent of 362.15=> 362
+dcparent=data[i].dcchild.substring(0,data[i].dcchild.indexOf("."));
+dcdata.push({"dcchild":data[i].dcchild,"dcparent":dcparent,"dccaption":data[i].dccaption});
+
+//add dcparent of 362=> 300
+if(!dcset.has(dcparent)){
+  dcset.add(dcparent);
+dcdata.push({"dcchild":dcparent,"dcparent":data[i].dcchild.charAt(0)+"00","dccaption":data[i].dccaption});
+}
+}
+
+
+     else{
+     dcset.add(data[i].dcchild);
+   dcparent=data[i].dcchild.charAt(0)+"00";
+   dcdata.push({"dcchild":data[i].dcchild,"dcparent":dcparent,"dccaption":data[i].dccaption});
+      }
+
+    }
+
+
+
+
+
+}
+console.log(dcset);
+console.log(dcdata);
+
+
+   // console.log(data.columns);
+            var dcchild = data.columns[0]; 
+            var dcparent = "dcparent"; 
+            stratify = d3.stratify() 
+                        .id(function(d){
+                            return d[dcchild];
+                        }) 
+                        .parentId(function(d){
+                         // console.log(d[parent]);
+                            return d[dcparent];
+                        });
+            var dcstratify=stratify(dcdata);
+      //      console.log(stratify);
+
+            
+
+
+
+
+
+
+var dcmargin = {top: 100, right: 110, bottom: -100, left: 120},
+    height = 960 - dcmargin.right - dcmargin.left,
+    width = 800 - dcmargin.top - dcmargin.bottom,
+    rectW = 70;
+    rectH = 30;
+    //bbox = NaN,
+    maxTextLength = 0;
+
+
+
+
+
+
+
+var dcroot = d3.hierarchy(dcstratify);
+
+console.log(dcroot.descendants());
+console.log(dcroot.links());
+
+
+var updateddcnodes;
+var updateddclinks;
+
+
+var dcsvg = d3.select("#dccontent")
+.append("svg")
+    .attr("width",1000)
+    .attr("height",1000);
+    
+    var g=dcsvg
+    .append("g")
+   .attr("transform", "translate(" + (width / 2 + 40) + "," + (height / 2 + 90) + ")");
+  var  radius = 400;
+ 
+  
+
+    var dctree = d3.tree()
+    .size([2 * Math.PI, radius])
+    .separation(function(a, b) { return (a.parent == b.parent ? 1 : 10) / a.depth; });
+
+    var dcroot = dctree(d3.hierarchy(dcstratify));
+
+var dclink = g.selectAll(".link")
+.data(dcroot.links())
+// .data(root.links().filter(function(d) { return d.source.depth <=1 }))
+  .enter()
+  .append("path")
+    .attr("class", "link")
+    .attr("d", d3.linkRadial()
+        .angle(function(d) { return d.x; })
+        .radius(function(d) { return d.y; }));
+
+var dcnode = g.selectAll(".node")
+.data(dcroot.descendants())
+//  .data(root.descendants().filter(function(d) { return d.depth <= 2 }))
+  .enter()
+  .append("g")
+    .attr("class", function(d) 
+    { return "node" + (d.children ? " node--internal" : " node--leaf"); })
+    .attr("transform", function(d) { return "translate(" + radialPoint(d.x, d.y) + ")"; })
+    
+    
+    .on("dblclick",function(d){ 
+      updateddcnodes=d.descendants();
+      updateddclinks=d.links();
+      update(updateddcnodes,updateddclinks);
+      alert(d.descendants()+"node was double clicked");
+    })
+
+    .on("click",function(d){
+
+var filtered = dcnode.filter(function(e) {
+            return d.descendants().indexOf(e) >= 1
+        });
+
+filtered.selectAll("text").style("fill", "yellow");
+
+    })
+    .on("mouseover", function(d) {
+        var filtered = dcnode.filter(function(e) {
+            return d.ancestors().indexOf(e) > -1
+        });
+      //  console.log(filtered);
+    		filtered.selectAll("circle").style("fill", "red");
+    filtered.selectAll("text").style("fill", "red");
+    
+    })
+    .on("mouseout", function(d) {
+        var filtered = dcnode.filter(function(e) {
+            return d.ancestors().indexOf(e) > -1
+        });
+    		filtered.selectAll("circle").style("fill", "#555");
+    filtered.selectAll("text").style("fill", "#555");
+    });
+   
+   
+
+dcnode.append("text")
+.style("font-size","10px")
+    .attr("dy", "0.9em")
+    .attr("x", function(d) { return d.x < Math.PI === !d.children ? -20 : 15; })
+    .attr("text-anchor", function(d) { return d.x < Math.PI === !d.children ? "start" : "end"; })
+    .attr("transform", function(d) { return "rotate(" + (d.x < Math.PI ? d.x - Math.PI / 2 : d.x + Math.PI / 2) * 180 / Math.PI + ")"; })
+    .text(function(d) { 
+       // console.log(d); 
+     //  return d.data.data.dcchild;
+       return d.data.data.dccaption; 
+        });
+
+
+
+
+
+
+
+
+
+
+        function update(updateddcnodes,updateddclinks)
+{
+  dcsvg.selectAll('.node').remove();
+  dcsvg.selectAll('.link').remove();
+console.log(updateddcnodes);
+
+
+//updatednodes=root(updatednodes);
+//updatedlinks=root(updatedlinks);
+
+
+  var dclink = g.selectAll(".link")
+.data(updateddclinks)
+// .data(root.links().filter(function(d) { return d.source.depth <=1 }))
+  .enter()
+  .append("path")
+    .attr("class", "link")
+    .attr("d", d3.linkRadial()
+        .angle(function(d) { return d.x; })
+        .radius(function(d) { return d.y; }));
+        
+
+var dcnode = g.selectAll(".node")
+.data(updateddcnodes)
+//  .data(root.descendants().filter(function(d) { return d.depth <= 2 }))
+  .enter()
+  .append("g")
+    .attr("class", function(d) 
+    { return "node" + (d.children ? " node--internal" : " node--leaf"); })
+    .attr("transform", function(d) { return "translate(" + radialPoint(d.x, d.y) + ")"; })
+    .on("dblclick",function(d){ 
+      update();
+      alert(d.descendants()+"node was double clicked");
+    })
+
+    .on("click",function(d){
+
+var filtered = dcnode.filter(function(e) {
+            return d.descendants().indexOf(e) >= 1
+        });
+
+filtered.selectAll("text").style("fill", "yellow");
+
+    })
+    .on("mouseover", function(d) {
+        var filtered = dcnode.filter(function(e) {
+            return d.ancestors().indexOf(e) > -1
+        });
+        console.log(filtered);
+    		filtered.selectAll("circle").style("fill", "red");
+    filtered.selectAll("text").style("fill", "red");
+    
+    })
+    .on("mouseout", function(d) {
+        var filtered = dcnode.filter(function(e) {
+            return d.ancestors().indexOf(e) > -1
+        });
+    		filtered.selectAll("circle").style("fill", "#555");
+    filtered.selectAll("text").style("fill", "#555");
+    });
+   
+   
+
+dcnode.append("text")
+.style("font-size","10px")
+    .attr("dy", "0.9em")
+    .attr("x", function(d) { return d.x < Math.PI === !d.children ? -20 : 15; })
+    .attr("text-anchor", function(d) { return d.x < Math.PI === !d.children ? "start" : "end"; })
+    .attr("transform", function(d) { return "rotate(" + (d.x < Math.PI ? d.x - Math.PI / 2 : d.x + Math.PI / 2) * 180 / Math.PI + ")"; })
+    .text(function(d) { 
+       // console.log(d); 
+      // return d.data.data.dcchild;
+        return d.data.data.dccaption; 
+        });
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+ 
+});
+
+function clearColor()
+{
+  d3.select("#dccontent")
+  .select("svg")
+  .select("g")
+  .selectAll("g")
+  //.selectAll("circle").style("fill", "black")
+  .selectAll("text").style("fill", "black");
+}
+ 
+function radialPoint(x, y) {
+  return [(y = +y) * Math.cos(x -= Math.PI / 2), y * Math.sin(x)];
+}
+
+
+
+    
+
+
+
+
+
+
+
+ 
+
+
+ 
+        
+
+
+        
+     
+    </script>
+  </body>
+</html>

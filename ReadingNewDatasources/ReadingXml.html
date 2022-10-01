@@ -1,0 +1,149 @@
+<html>
+    <body>
+        <button onclick="download_csv()">Download CSV</button> 
+<script type="text/javascript">
+
+var xmltext="";
+
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                xmltext = rawFile.responseText;
+                //console.log(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+
+readTextFile("logA.xml");
+
+
+
+parser = new DOMParser();
+xmlDoc = parser.parseFromString(xmltext,"text/xml");
+var fname="";
+var hitcount="";
+
+let csvContent="File Name, HitCount \n";
+
+
+var branch=xmlDoc.documentElement.getElementsByTagName("branch");
+var leaf="";
+var dirname="";
+var dir="dir";
+
+
+
+
+for(var br=1;br<branch.length;br++)
+{
+    
+    dirname= branch[br].getElementsByTagName("attribute")[0].getAttribute("value");
+console.log("dir"+dirname);
+ row=dirname+", "+dir+"\n";
+ csvContent += row;
+    
+
+    
+    for(var lf=0;lf<branch[br].childNodes.length;lf++)
+    {
+
+        if(branch[br].childNodes[lf].nodeName=="leaf"){
+        //console.log(branch[br].childNodes[lf].nodeName);
+    fname=branch[br].childNodes[lf].getElementsByTagName("attribute")[0].getAttribute("value");
+    hitcount=branch[br].childNodes[lf].getElementsByTagName("attribute")[1].getAttribute("value");
+
+    row = fname+", "+hitcount+"\n";
+    csvContent += row;
+
+        }
+    }
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+for(var i=0;i<100;i++){
+    if(leaf[i].getElementsByTagName("attribute")[0].hasAttribute("value")){
+        fname=leaf[i].getElementsByTagName("attribute")[0].getAttribute("value");
+console.log(leaf[i].getElementsByTagName("attribute")[0].getAttribute("value"));
+    }
+
+if(leaf[i].getElementsByTagName("attribute")[1].hasAttribute("value")){
+    hitcount=leaf[i].getElementsByTagName("attribute")[1].getAttribute("value")
+console.log(leaf[i].getElementsByTagName("attribute")[1].getAttribute("value"));
+}
+
+
+
+
+    row = fname+", "+hitcount+"\n";
+    csvContent += row;
+
+
+}
+console.log(csvContent);
+*/
+
+
+document.write("/Users/rachaelfernandez/Desktop/"+csvContent);
+
+function download_csv(){
+
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'FileHitCount.csv';
+    hiddenElement.click();
+}
+
+/*
+
+console.log(branch[0].childNodes[3]);
+
+//console.log(branch[0].getElementsByTagName("attribute")[0].getAttribute("value"));
+//console.log(branch[1].getElementsByTagName("attribute")[0].getAttribute("value"));
+//console.log(branch[2].getElementsByTagName("attribute")[0].getAttribute("value"));
+
+//console.log(branch[2].getElementsByTagName("leaf")[0].getElementsByTagName("attribute")[0].getAttribute("value"));
+
+//console.log(branch[3].getElementsByTagName("attribute")[0].getAttribute("value"));
+
+
+
+
+//console.log(x[i].getElementsByTagName("attribute")[2].hasAttribute("value"));
+//console.log(x[i].getElementsByTagName("attribute")[2].getAttribute("value"));
+
+
+
+console.log(xmlDoc.documentElement.getElementsByTagName("branch")[1].getElementsByTagName("attribute")[1].getAttribute("value"));
+*/
+
+</script>
+
+
+
+    </body>
+</html>

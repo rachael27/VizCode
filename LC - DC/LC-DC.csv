@@ -1,0 +1,1281 @@
+lccparent,lccchild,lcccaption,dcchild,dccaption
+,LCC,LCC,na,na
+LCC,A,General Works,na,na
+A,AC,Collections. Series. Collected works,081 - 089,General collections in specific languages
+A,AE,Encyclopedias,031 - 039,Encyclopedias & books of facts
+A,AG,Dictionaries and other general reference works,30,Encyclopedias & books of facts
+A,AI,Newspapers--Indexes,071 - 079,Geographic treatment of journalism & newspapers
+A,AI,Periodicals--Indexes,50,"Magazines, journals & serials"
+A,AM,Museums. Collectors and collecting,69,"Associations, organizations & museums"
+A,AN,Newspapers,071 - 079,Geographic treatment of journalism & newspapers
+A,AP,General periodicals,50,"Magazines, journals & serials"
+A,AS,Academies and learned societies,060 - 068,"Associations, organizations & museums"
+A,AY,Yearbooks. Almanacs. Directories,30,Encyclopedias & books of facts
+A,AZ,History of scholarship and learning. The humanities,1,Knowledge
+A,AZ,History of scholarship and learning. The humanities,1.1,Intellectual life
+A,AZ,History of scholarship and learning. The humanities,1.2,Scholarship & learning
+A,AZ,History of scholarship and learning. The humanities,1.3,Humanities
+LCC,B,Philosophy,100 - 109,Philosophy
+LCC,B,Philosophy,180,"Ancient, medieval & Eastern philosophy"
+LCC,B,Philosophy,190,Modern western philosophy
+B,BC,Logic,160,Logic
+B,BD,Speculative philosophy,110,Metaphysics
+B,BD,Speculative philosophy,120,Epistemology
+B,BD,Speculative philosophy,140,Philosophical schools of thought
+B,BF,Psychology,150,Psychology
+BF,BF 1001+,Parapsychology,130,"Astrology, parapsychology & the occult"
+B,BH,Aesthetics,111.85,Aesthetics--philosophy
+B,BJ,Ethics,na,na
+BJ,BJ 1-1725,Ethics,170,Ethics
+BJ,BJ 1801-2195,Social usages. Etiquette,395,Etiquette (Manners)
+B,BL,Religions. Mythology.,200,Religion
+B,BL,Religions. Mythology.,210,Philosophy & theory of religion
+B,BL,Religions. Mythology.,291 - 295,Comparative religion; Religions other than Christianity
+B,BL,Religions. Mythology.,299,Other religions
+B,BM,Judaism,296,Judaism
+B,BP,"Islam. Bahaism. Theosophy, etc.",297,"Islam, Babism, Bahai Faith"
+B,BQ,Buddhism,294.3,Buddhism
+B,BR,Christianity,230 - 230.7,Christianity & Christian theology
+B,BR,Christianity,270,History of Christianity
+B,BS,Bible,220,The Bible
+B,BT,Christian doctrinal theology,231 - 239,Christianity & Christian theology
+B,BV,Practical Theology,240,Christian practice & observance
+B,BV,Practical Theology,250,Christian pastoral practice & religious orders
+B,BV,Practical Theology,260,"Church organization, social work & worship"
+B,BX,Christian Denominations,280,Christian denominations
+B,BX,Christian Denominations,305.6,Religious groups
+B,BX,Christian Denominations,322.1,Religious organizations & groups
+LCC,C,Auxiliary sciences of history (General),na,na
+C,CB,History of civilization,909,World history
+C,CC,Archaeology,930.1,Archaeology
+C,CD,Diplomatics. Archives. Seals,929.1 - 929.3,Genealogy; Family histories; Genealogical sources
+CD,CD 5001-6471,Diplomatics. Archives. Seals,737.6,"Engraved seals, signets, stamps"
+C,CE,Technical chronology. Calendar,529 - 529.5,Chronology
+C,CJ,Numismatics,737,Numismatics & sigillography
+C,CN,Inscriptions. Epigraphy,411.7,Paleography
+C,CR,Heraldry,929.6,Heraldry
+C,CR,Heraldry,929.7,"Royal houses, peerage, gentry, orders of knighthood"
+C,CS,Genealogy,929.1 - 929.4,Genealogy; Family histories; Genealogical sources
+C,CT,Biography (General),920,Biography & genealogy
+C,CT,Biography (General),920.1 - 920.7,Biography of specific classes of persons
+LCC,D,"World History and History of Europe, Asia, Africa, Australia, New Zealand, etc.",na,na
+D,DU,Oceania (South Seas),na,na
+DU,DU 125,Australian aborigines,305.89915,Australian aborigines
+DU,DU 125,Australian aborigines,994.0049915,Australian aborigines--History
+DU,DU 145,Australian Capital Territory. Canberra,994.7,Australian Capital Territory
+DU,DU 150-180,New South Wales,994.4,New South Wales--History
+DU,DU 182-198,Tasmania. Van Diemen's Land,994.6,Tasmania--History
+DU,DU 1-950,"Oceania (South Seas), History of",919 - 919.8,Oceania--Description & travel; Oceania--Geography
+DU,DU 1-950,"Oceania (South Seas), History of",990 - 998,Islands of the Pacific
+DU,DU 200-230,Victoria,994.5,Victoria
+DU,DU 250-280,Queensland,994.3,Queensland
+DU,DU 300-330,South Australia,994.23,South Australia
+DU,DU 350-380,Western Australia,994.1,Western Australia
+DU,DU 390,Central Australia,994.2,Central Australia
+DU,DU 391,Northern Australia,994.29,Northern Australia
+DU,DU 392-398,Northern Territory of Australia,994.29,Northern Territory
+DU,DU 400-430,New Zealand,993,New Zealand
+DU,DU 422.8-424,Maoris,305.899442,Maori (New Zealand people)
+DU,DU 422.8-424,Maoris,993.0049944,Maori (New Zealand people)
+DU,DU 490,Melanesia (General),919.5 - 919.509,Oceania--Description & travel; Oceania--Geography
+DU,DU 490,Melanesia (General),995 - 995.009,Oceania--History
+DU,DU 500,Micronesia (General),996.5,Pacific Islands (Trust Territory)
+DU,DU 620-629,Hawaiian Islands. Hawaii,996.9,Hawaii
+DU,DU 739-747,New Guinea,995 - 995.7,New Guinea
+DU,DU 80-398,Australia,919.4,Australia--Description & travel
+DU,DU 80-398,Australia,994,Australia
+DU,DU 810-819,Samoan Islands,996.13,American Samoa
+D,DX,Romanies,na,na
+DX,DX 101-301,"Gypsies, History of",305.891497,Romanies--social aspects
+DX,DX 101-301,"Gypsies, History of",909.0491497,Romanies
+LCC,E,America,917.3,United States--description and travel
+LCC,E,America,917-917.09,Geography of and travel in North America
+LCC,E,America,970-970.05,General history of North America
+LCC,E,America,973,United States
+E,E 11-143,America,917-917.09,Geography of and travel in North America
+E,E 11-143,America,970-970.05,General history of North America
+E,E 31-49.2,North America,917-917.09,Geography of and travel in North America
+E,E 31-49.2,North America,970-970.05,General history of North America
+E,E 51-73,Pre-Columbian America. The Indians,970.00497,American native peoples
+E,E 51-73,Pre-Columbian America. The Indians,970.011,Earliest history to 1492
+E,E 75-99,Indians of North America,305.897,American native peoples--social aspects
+E,E 75-99,Indians of North America,970.00497,American native peoples
+E,E 81-83,Indian wars,973-973.08,United States--History
+E,E 99,Indian tribes and cultures,305.897,American native peoples--social aspects
+E,E 99,Indian tribes and cultures,970.00497,American native peoples
+E,E 101-135,Discovery of America and early explorations,970.01,Early history to 1599
+E,E 103-110,Pre-Columbian period,970.011,Earliest history to 1492
+E,E 111-120,Columbus,970.015,"Columbus, Christopher--North American history"
+E,E 121-135,Post-Columbian period. El Dorado,970.01,Early history to 1599
+E,E 141-143,Descriptive accounts of America. Earliest to 1810,917,Geography of and travel in North America
+E,E 151-887,United States,917.3,United States--description and travel
+E,E 151-887,United States,973,United States
+E,E 183.7-183.9,Diplomatic history. Foreign and general relations,327.73,Foreign relations--United States
+E,E 184.5-185.98,Afro-Americans,305.896073,African Americans--social aspects
+E,E 184.5-185.98,Afro-Americans,973.0496073,African Americans
+E,E 186+,"Thirteen North American Colonies before 1776,",973.2,"Colonial period, 1607-1775"
+E,E 186-199,Colonial history (1607-1775),973.2,"Colonial period, 1607-1775"
+E,E 196,"King William's War, 1689-1697",973.25,"Colonial period, 1689-1732"
+E,E 197,"Queen Anne's War, 1702-1713",973.25,"Colonial period, 1689-1732"
+E,E 198,"King George's War, 1744-1748",973.26,"Period of extension of English rule, 1732-1763"
+E,E 199,"French and Indian War, 1755-1763",973.26,"Period of extension of English rule, 1732-1763"
+E,E 201-298,"The Revolution, 1775-1783",973.3,"Periods of Revolution and Confederation, 1775-1789"
+E,E 300-453,"Revolution to the Civil War, 1775/1783-1861",973.4-973.6,"Constitutional period, 1789-1809, 1809-1861"
+E,E 302.5-302.6,Biography (Late eighteenth century),973.3092,"United States--History--Revolution, 1775-1783 --Personal narratives"
+E,E 303-309,"Confederation, 1783-1789",973.318,"Period of confederation, 1783-1789"
+E,E 310-337,"Constitutional period, 1789-1809",973.4,"Constitutional period, 1789-1809"
+E,E 311-320,"Washington's administrations, 1789-1797",973.41-973.43,"Administration of George Washington, 1789-1797"
+E,E 321-330,"John Adams' administration, 1797-1801",973.44,"Administration of John Adams, 1797-1801"
+E,E 323,"Troubles with France, 1796-1800",327.73,Foreign relations--United States
+E,E 323,"Troubles with France, 1796-1800",973.44,"Administration of John Adams, 1797-1801"
+E,E 331-337,"Jefferson's administrations, 1801-1809",973.46-973.48,"Administration of Thomas Jefferson, 1801-1809"
+E,E 333,"Purchase of Louisiana, 1803",327.73,Foreign relations--United States
+E,E 333,"Purchase of Louisiana, 1803",973.46,"Administration of Thomas Jefferson, 1801-1809"
+E,E 335,"War with Tripoli, 1801-1805",973.47,"Tripolitan War, 1801-1805"
+E,E 337.5,Nineteenth century (General),973.5-973.509,United States--Civilization--19th century
+E,E 341-370,"Madison's administrations, 1809-1817",973.51-973.53,"Administration of James Madison, 1809-1817"
+E,E 351.5-364.9,War of 1812,973.52,"War of 1812, 1812-1815"
+E,E 365,"War with Algeria, 1815",973.53,"War with Algiers, 1815"
+E,E 371-375,"Monroe's administrations, 1817-1825",973.54,"Administration of James Monroe, 1817-1825"
+E,E 373,"Missouri Compromise, 1820",326.0973,Slavery and emancipation--United States
+E,E 373,"Missouri Compromise, 1820",973.7113,"Wilmot Proviso, 1847, and compromises"
+E,E 376-380,"John Quincy Adams' administration, 1825-1829",973.55,"Administration of John Quincy Adams, 1825-1829"
+E,E 381-385,"Jackson's administrations, 1829-1837",973.56,"Administration of Andrew Jackson, 1829-1837"
+E,E 386-390,"Van Buren's administration, 1837-1841",973.57,"Administration of Martin Van Buren, 1837-1841"
+E,E 391-392,"Harrison's (W. H.) administration, March 4-April 4, 1841",973.58,"Administrations of William Henry Harrison and John Tyler, 1841-1845"
+E,E 396-400,"Tyler's administration, April 4, 1841-1845",973.58,"Administrations of William Henry Harrison and John Tyler, 1841-1845"
+E,E 398,"Northeastern boundary disputes, 1783-1845",327.73,Foreign relations--United States
+E,E 401-415.2,"Mexican War, 1846-1848",973.62,"Mexican War, 1845-1848"
+E,E 415.6-440.5,"Middle nineteenth century, 1845/1848-1861",973.6,United States--Politics and government--1845-1861
+E,E 416-420,"Polk's administration, 1856-1849",973.61,"Administration of James Knox Polk, 1845-1849"
+E,E 421-423,"Taylor's administration, 1849-July 9, 1850",973.63,"Administration of Zachary Taylor, 1849-1850"
+E,E 423,"Slavery question, 1849-1853",306.3620973,Slavery--United States
+E,E 423,"Slavery question, 1849-1853",326.0973,Slavery and emancipation--United States
+E,E 426-430,"Fillmore's administration, July 9, 1850-1853",973.64,"Administration of Millard Fillmore, 1850-1853"
+E,E 431-435,"Pierce's administration, 1853-1857",973.66,"Administration of Franklin Pierce, 1853-1857"
+E,E 433,"Slavery question, 1853-1857",306.3620973,Slavery--United States
+E,E 433,"Slavery question, 1853-1857",326.0973,Slavery and emancipation--United States
+E,E 436-440.5,"Buchanan's administration, 1857-1861",973.68,"Administration of James Buchanan, 1857-1861"
+E,E 438,"Slavery question, 1557-1861",306.3620973,Slavery--United States
+E,E 438,"Slavery question, 1557-1861",326.0973,Slavery and emancipation--United States
+E,E 441-453,Slavery in the United States. Antislavery movements,306.3620973,Slavery--United States
+E,E 441-453,Slavery in the United States. Antislavery movements,326.0973,Slavery and emancipation--United States
+E,E 441-453,Slavery in the United States. Antislavery movements,973.7114,Abolition movement
+E,E 456-459,"Lincoln's administrations, 1861-April 15, 1865",973.7-973.7109,"Administration of Abraham Lincoln, 1861-1865"
+E,E 456-655,"Civil War period, 1861-1865",973.7,"Administration of Abraham Lincoln, 1861-1865; Civil War"
+E,E 461-655,"Civil War, 1861-1865",973.7,"Administration of Abraham Lincoln, 1861-1865; Civil War"
+E,E 482-489,Confederate States of America,973.713,The South and secession
+E,E 661-738,"Late nineteenth century, 1865-1900",973.8,"Reconstruction period, 1865-1901"
+E,E 666-670,"Johnson's administration, April 15, 1865-1869",973.81,"Administration of Andrew Johnson, 1865-1869"
+E,E 668,"Reconstruction, 1865-1877",973.8-973.809,"Reconstruction period, 1865-1901"
+E,E 669,"Purchase of Alaska, 1867",327.73,Foreign relations--United States
+E,E 671-680,"Grant's administrations, 1869-1877",973.82,"Administration of Ulysses Simpson Grant, 1869-1877"
+E,E 681-685,"Hayes' administration, 1877-1881",973.83,"Administration of Rutherford Birchard Hayes, 1877-1881"
+E,E 686-687.9,"Garfield's administration, March 4-September 19, 1881",973.84,"Administrations of James Abram Garfield and Chester Alan Arthur, 1881-1885"
+E,E 691-695,"Arthur's administration, September 19, 1881-1885",973.84,"Administrations of James Abram Garfield and Chester Alan Arthur, 1881-1885"
+E,E 696-700,"Cleveland's first administration, 1885-1889",973.85,"First administration of Grover Cleveland, 1885-1889"
+E,E 701-705,"Benjamin Harrison's administration, 1889-1893",973.86,"Administration of Benjamin Harrison, 1889-1893"
+E,E 706-710,"Cleveland's second administration, 1893-1897",973.87,"Second administration of Grover Cleveland, 1893-1897"
+E,E 711-738,"McKinley's first administration, 1897-1901",973.88,"Administration of William McKinley, 1897-1901"
+E,E 713,"Annexation in 1898 of Hawaii, Philippines, and Puerto Rico",327.73,Foreign relations--United States
+E,E 714-735,War of 1898 (Spanish-American War),973.89,"Spanish-American War, 1898"
+E,E 740-837.7,Twentieth century,973.91,1901-1953
+E,E 751,"McKinley's second administration, March 4-Sept 14, 1901",973.88,"Administration of William McKinley, 1897-1901"
+E,E 756-760,"Theodore Roosevelt's administrations, Sept 14, 1901-1909",973.911,"Administration of Theodore Roosevelt, 1901-1909"
+E,E 761-765,"Taft's administration, 1909-1913",973.912,"Administration of William Howard Taft, 1909-1913"
+E,E 766-783,"Wilson's administrations, 1913-1921",973.913,"Administration of Woodrow Wilson, 1913-1921"
+E,E 768,"Purchase of Danish West Indies (Virgin Islands, 1917)",327.73,Foreign relations--United States
+E,E 785-786,"Harding's administration, 1921-August 2, 1923",973.914,"Administration of Warren Gamaliel Harding, 1921-1923"
+E,E 791-796,"Coolidge's administration, August 2, 1923-1929",973.915,"Administration of Calvin Coolidge, 1923-1929"
+E,E 801-805,"Hoover's administration, 1929-1933",973.916,"Administration of Herbert Clark Hoover, 1929-1933"
+E,E 806-812,"Roosevelt's (F. D.) administrations, 1933-Apr 12, 1945",973.917,"Administration of Franklin Delano Roosevelt, 1933-1945"
+E,E 813-816,"Truman's administrations, April 12, 1945-1953",973.918,"Administration of Harry S Truman, 1945-1953"
+E,E 835-837.7,"Eisenhower's administrations, 1953-1961",973.921,"Administration of Dwight David Eisenhower, 1953-1961"
+E,E 838-889,"Later twentieth century, 1961-",973.92,1953-2001
+E,E 841-843,"Kennedy's administration, 1961-November 22, 1963",973.922,"Administration of John Fitzgerald Kennedy, 1961-1963"
+E,E 846-851,"Johnson's administrations, November 22, 1963-1969",973.923,"Administration of Lyndon Baines Johnson, 1963-1969"
+E,E 855-861,"Nixon's administrations, 1969-August 9, 1974",973.924,"Administration of Richard Milhous Nixon, 1969-1974"
+E,E 865-868,"Ford's administration, August 9, 1974-1977",973.925,"Administration of Gerald Rudolph Ford, 1974-1977"
+E,E 872-875,"Carter's administration, 1977-1981",973.926,"Administration of Jimmy (James Earl) Carter, 1977-1981"
+E,E 876-880,"Reagan's administrations, 1981-1989",973.927,"Administration of Ronald Reagan, 1981-1989"
+E,E 881-884,"Bush's administration, 1989-1993",973.928,"Administration of George Bush, 1989-1993"
+E,E 885-887,"Clinton's administrations, 1993-2001",973.929,"Administration of Bill Clinton, 1993-2001"
+E,E 895+,Twenty-first century,973.93,2001-
+E,E 902,"George W. Bush's administration, 2001",973.931,"Administration of George W. Bush, 2001"
+LCC,F,History: America,917-918,America--description & travel
+LCC,F,History: America,917.4 -917.409,Northeastern U. S. (New England & Middle Atlantic states)--description & travel
+LCC,F,History: America,970-980,History of North America
+F,F 1-15,New England,917.4 -917.409,Northeastern U. S. (New England & Middle Atlantic states)--description & travel
+F,F 1-15,New England,974 -974.04,Northeastern U. S. (New England & Middle Atlantic states)
+F,F 1-975,United States local history,917.4 -917.9,Specific states of United States--description & travel
+F,F 1-975,United States local history,974 -979,Specific states of United States
+F,F 16-30,Maine,917.41,Maine--description & travel
+F,F 16-30,Maine,974.1,Maine
+F,F 31-45,New Hampshire,917.42,New Hampshire--description & travel
+F,F 31-45,New Hampshire,974.2,New Hampshire
+F,F 46-60,Vermont,917.43,Vermont--description & travel
+F,F 46-60,Vermont,974.3,Vermont
+F,F 61-75,Massachusetts,917.44,Massachusetts--description & travel
+F,F 61-75,Massachusetts,974.4,Massachusetts
+F,F 76-90,Rhode Island,917.45,Rhode Island--description & travel
+F,F 76-90,Rhode Island,974.5,Rhode Island
+F,F 91-105,Connecticut,917.46,Connecticut--description & travel
+F,F 91-105,Connecticut,974.6,Connecticut
+F,F 106,Atlantic coast. Middle Atlantic States,917.4 -917.409,Northeastern U. S. (New England & Middle Atlantic states)--description & travel
+F,F 106,Atlantic coast. Middle Atlantic States,974 -974.04,Northeastern U. S. (New England & Middle Atlantic states)
+F,F 116-130,New York,917.47,New York (State)--description & travel
+F,F 116-130,New York,974.7,New York (State)
+F,F 122.1,New Netherlands to 1664,974.702,New York (State)--1620-1776
+F,F 131-145,New Jersey,917.49,New Jersey--description & travel
+F,F 131-145,New Jersey,974.9,New Jersey
+F,F 146-160,Pennsylvania,917.48,Pennsylvania--description & travel
+F,F 146-160,Pennsylvania,974.8,Pennsylvania
+F,F 161-175,Delaware,917.51,Delaware--description & travel
+F,F 161-175,Delaware,975.1,Delaware
+F,F 167,"New Sweden (Dutch possession, 1655-1664)",975.102,Delaware--1620-1776
+F,F 176-190,Maryland,917.52,Maryland--description & travel
+F,F 176-190,Maryland,975.2,Maryland
+F,F 191-205,District of Columbia. Washington,917.53,District of Columbia (Washington)--description & travel
+F,F 191-205,District of Columbia. Washington,975.3,District of Columbia (Washington)
+F,F 206-220,The South. South Atlantic States,917.5 -917.504,Southeastern United States (South Atlantic states)--description & travel
+F,F 206-220,The South. South Atlantic States,975 -975.04,Southeastern United States (South Atlantic states)
+F,F 221-235,Virginia,917.55,Virginia--description & travel
+F,F 221-235,Virginia,975.5,Virginia
+F,F 236-250,West Virginia,917.54,West Virginia--description & travel
+F,F 236-250,West Virginia,975.4,West Virginia
+F,F 251-265,North Carolina,917.56,North Carolina--description & travel
+F,F 251-265,North Carolina,975.6,North Carolina
+F,F 266-280,South Carolina,917.57,South Carolina--description & travel
+F,F 266-280,South Carolina,975.7,South Carolina
+F,F 281-295,Georgia,917.58,Georgia--description & travel
+F,F 281-295,Georgia,975.8,Georgia
+F,F 296-301,Gulf States. West Florida,917.6 -917.609,South central United States; Gulf Coast states--description & travel
+F,F 296-301,Gulf States. West Florida,976 -976.04,South central United States; Gulf Coast states
+F,F 301,"British East and West Florida, 1763-1783",975.901,Early history to 1763
+F,F 301,"British East and West Florida, 1763-1783",975.902,"English period, 1763-1783"
+F,F 306-320,Florida,917.59,Florida--description & travel
+F,F 306-320,Florida,975.9,Florida
+F,F 314,"Florida, Early to 1821",975.01 -975.903,Florida--History--To 1821
+F,F 321-335,Alabama,917.61,Alabama--description & travel
+F,F 321-335,Alabama,976.1,Alabama
+F,F 336-350,Mississippi,917.62,Mississippi--description & travel
+F,F 336-350,Mississippi,976.2,Mississippi
+F,F 350.5-355,Mississippi River and Valley. Middle West,917.7 -917.709,North central United States; Lake states--description & travel
+F,F 350.5-355,Mississippi River and Valley. Middle West,977 -977.03,North central United States; Lake states
+F,F 366-380,Louisiana,917.63,Louisiana--description & travel
+F,F 366-380,Louisiana,976.3,Louisiana
+F,F 372,"French Louisiana, 1698-1803",976.302,"French period, 1718-1763"
+F,F 372,"French Louisiana, 1698-1803",976.304,"French and territorial periods, 1803-1812"
+F,F 381-395,Texas,917.64,Texas--description & travel
+F,F 381-395,Texas,976.4,Texas
+F,F 396,Old Southwest. Lower Mississippi Valley,917.6 -917.609,South central United States; Gulf Coast states--description & travel
+F,F 396,Old Southwest. Lower Mississippi Valley,976 -976.04,South central United States; Gulf Coast states
+F,F 406-420,Arkansas,917.67,Arkansas--description & travel
+F,F 406-420,Arkansas,976.7,Arkansas
+F,F 431-445,Tennessee,917.68,Tennessee--description & travel
+F,F 431-445,Tennessee,976.8,Tennessee
+F,F 446-460,Kentucky,917.69,Kentucky--description & travel
+F,F 446-460,Kentucky,976.9,Kentucky
+F,F 461-475,Missouri,917.78,Missouri--description & travel
+F,F 461-475,Missouri,977.8,Missouri
+F,F 476-485,Old Northwest. Northwest Territory,917.7 -917.709,North central United States; Lake states--description & travel
+F,F 476-485,Old Northwest. Northwest Territory,977 -977.03,North central United States; Lake states
+F,F 486-500,Ohio,917.71,Ohio--description & travel
+F,F 486-500,Ohio,977.1,Ohio
+F,F 516-520,Ohio River and Valley,917.7 -917.709,North central United States; Lake states--description & travel
+F,F 516-520,Ohio River and Valley,977 -977.03,North central United States; Lake states
+F,F 521-535,Indiana,917.72,Indiana--description & travel
+F,F 521-535,Indiana,977.2,Indiana
+F,F 536-550,Illinois,917.73,Illinois--description & travel
+F,F 536-550,Illinois,977.3,Illinois
+F,F 550.5-553.2,Lake Region. Great Lakes,917.7 -917.709,North central United States; Lake states--description & travel
+F,F 550.5-553.2,Lake Region. Great Lakes,977 -977.03,North central United States; Lake states
+F,F 561-575,Michigan,917.74,Michigan--description & travel
+F,F 561-575,Michigan,977.4,Michigan
+F,F 576-590,Wisconsin,917.75,Wisconsin--description & travel
+F,F 576-590,Wisconsin,977.5,Wisconsin
+F,F 590.3-596.3,"West, The. Trans-Mississippi Region. Great Plains",917.8 -917.809,Western United States--description & travel
+F,F 590.3-596.3,"West, The. Trans-Mississippi Region. Great Plains",978 -978.03,Western United States
+F,F 597,"Northwest, The",917.8 -917.809,Western United States--description & travel
+F,F 597,"Northwest, The",978 -978.03,Western United States
+F,F 598,Missouri River and Valley,917.8 -917.809,Western United States--description & travel
+F,F 598,Missouri River and Valley,978 -978.03,Western United States
+F,F 601-615,Minnesota,917.76,Minnesota--description & travel
+F,F 601-615,Minnesota,977.6,Minnesota
+F,F 616-630,Iowa,917.77,Iowa--description & travel
+F,F 616-630,Iowa,977.7,Iowa
+F,F 631-645,North Dakota,917.84,North Dakota--description & travel
+F,F 631-645,North Dakota,978.4,North Dakota
+F,F 646-660,South Dakota,917.83,South Dakota--description & travel
+F,F 646-660,South Dakota,978.3,South Dakota
+F,F 661-675,Nebraska,917.82,Nebraska--description & travel
+F,F 661-675,Nebraska,978.2,Nebraska
+F,F 676-690,Kansas,917.81,Kansas--description & travel
+F,F 676-690,Kansas,978.1,Kansas
+F,F 691-705,Oklahoma,917.66,Oklahoma--description & travel
+F,F 691-705,Oklahoma,976.6,Oklahoma
+F,F 721-722,Rocky Mountains. Yellowstone National Park,917.8 -917.809,Western United States--description & travel
+F,F 721-722,Rocky Mountains. Yellowstone National Park,917.8752,Yellowstone National Park--description & travel
+F,F 721-722,Rocky Mountains. Yellowstone National Park,978 -978.03,Western United States
+F,F 721-722,Rocky Mountains. Yellowstone National Park,978.752,Yellowstone National Park
+F,F 726-740,Montana,917.86,Montana--description & travel
+F,F 726-740,Montana,978.6,Montana
+F,F 741-755,Idaho,917.96,Idaho--description & travel
+F,F 741-755,Idaho,979.6,Idaho
+F,F 756-770,Wyoming,917.87,Wyoming--description & travel
+F,F 756-770,Wyoming,978.7,Wyoming
+F,F 771-785,Colorado,917.88,Colorado--description & travel
+F,F 771-785,Colorado,978.8,Colorado
+F,F 786-790,"New Southwest. Colorado River, Canyon, and Valley",917.9 -917.909,Great Basin and Pacific Slope region--description & travel
+F,F 786-790,"New Southwest. Colorado River, Canyon, and Valley",917.913,Colorado Plateau region--description & travel
+F,F 786-790,"New Southwest. Colorado River, Canyon, and Valley",979 -979.03,Great Basin and Pacific Slope region
+F,F 786-790,"New Southwest. Colorado River, Canyon, and Valley",979.13,Colorado Plateau region
+F,F 791-805,New Mexico,917.89,New Mexico--description & travel
+F,F 791-805,New Mexico,978.9,New Mexico
+F,F 806-820,Arizona,917.91,Arizona--description & travel
+F,F 806-820,Arizona,979.1,Arizona
+F,F 821-835,Utah,917.92,Utah--description & travel
+F,F 821-835,Utah,979.2,Utah
+F,F 836-850,Nevada,917.93,Nevada--description & travel
+F,F 836-850,Nevada,979.3,Nevada
+F,F 850.5-851.5,Pacific States,917.9 -917.909,Great Basin and Pacific Slope region--description & travel
+F,F 850.5-851.5,Pacific States,979 -979.03,Great Basin and Pacific Slope region
+F,F 851.7,Cascade Range,917.95 -917.9509,Oregon--description & travel
+F,F 851.7,Cascade Range,979.5 -979.504,Oregon
+F,F 852-854,Pacific Northwest. Columbia River & Valley.,917.95 -917.9509,Oregon--description & travel
+F,F 852-854,Pacific Northwest. Columbia River & Valley.,917.97,Washington--description & travel
+F,F 852-854,Pacific Northwest. Columbia River & Valley.,979.5 -979.504,Oregon
+F,F 852-854,Pacific Northwest. Columbia River & Valley.,979.7,Washington
+F,F 856-870,California,917.94,California--description & travel
+F,F 856-870,California,979.4,California
+F,F 871-885,Oregon,917.95,Oregon--description & travel
+F,F 871-885,Oregon,979.5,Oregon
+F,F 886-900,Washington,917.97,Washington--description & travel
+F,F 886-900,Washington,979.7,Washington
+F,F 901-951,Alaska,917.98,Alaska--description & travel
+F,F 901-951,Alaska,979.8,Alaska
+F,F 951,Bering Sea and Aleutian Islands,917.984,Southwestern Alaska--description & travel
+F,F 951,Bering Sea and Aleutian Islands,979.84,Southwestern Alaska
+F,F 965,Territories of the United States (General),325.373,Colonization by the United States
+F,F 970,Insular possessions of the United States (General),325.373,Colonization by the United States
+F,F 975,"Central American, West Indian",325.373,Colonization by the United States
+F,F 1001-1140,Canada,917.1,Canada--description & travel
+F,F 1001-1140,British America. Canada,917.1,Canada--description & travel
+F,F 1001-1140,Canada,971,Canada
+F,F 1001-1140,British America. Canada,971,Canada
+F,"F 1030, F 1038","New France and Acadia, 1600-1763",971.01 -971.018,Early history to 1763
+F,"F 1030, F 1038","New France and Acadia, 1600-1763",971.601 -971.604,Early history to 1763
+F,F 1035.8,Maritime provinces. Atlantic coast of Canada,917.15 -917.1509,Atlantic Provinces; Maritime Provinces--description & travel
+F,F 1035.8,Maritime provinces. Atlantic coast of Canada,971.5 -971.504,Atlantic Provinces; Maritime Provinces
+F,F 1036-1040,Nova Scotia. Acadia,917.16,Nova Scotia--description & travel
+F,F 1036-1040,Nova Scotia. Acadia,971.6,Nova Scotia
+F,F 1041-1045,New Brunswick,917.151 -917.155,New Brunswick--description & travel
+F,F 1041-1045,New Brunswick,971.51 -971.55,New Brunswick
+F,F 1046-1049.7,Prince Edward Island,917.17,Prince Edward Island--description & travel
+F,F 1046-1049.7,Prince Edward Island,971.7,Prince Edward Island
+F,F 1050,"St. Lawrence Gulf, River and Valley (General)",917.14 -917.1409,Quebec--description & travel
+F,F 1050,"St. Lawrence Gulf, River and Valley (General)",971.4 -971.404,Quebec
+F,F 1051-1055,Quebec,917.14,Quebec--description & travel
+F,F 1051-1055,Quebec,971.4,Quebec
+F,F 1056-1059.7,Ontario,917.13,Ontario--description & travel
+F,F 1056-1059.7,Ontario,971.3,Ontario
+F,F 1060-1060.97,Canadian Northwest. Northwest Territories,917.12 -917.1209,Western Canada--description & travel
+F,F 1060-1060.97,Canadian Northwest. Northwest Territories,971.2 -971.203,Western Canada
+F,F 1061-1065,Manitoba,917.127,Manitoba--description & travel
+F,F 1061-1065,Manitoba,971.27,Manitoba
+F,F 1067,Assiniboia,917.12 -917.1209,Western Canada--description & travel
+F,F 1067,Assiniboia,917.124 -917.12409,Saskatchewan--description & travel
+F,F 1067,Assiniboia,971.2 -971.202,Western Canada
+F,F 1067,Assiniboia,971.24 -971.2402,Saskatchewan
+F,F 1070-1074.7,Saskatchewan,917.124,Saskatchewan--description & travel
+F,F 1070-1074.7,Saskatchewan,971.24,Saskatchewan
+F,F 1075-1080,Alberta,917.123,Alberta--description & travel
+F,F 1075-1080,Alberta,971.23,Alberta
+F,F 1086-1089.7,British Columbia,917.11,British Columbia--description & travel
+F,F 1086-1089.7,British Columbia,971.1,British Columbia
+F,F 1090,Rocky Mountains of Canada,917.11 -917.1109,Rocky Mountains--Canada--description & travel
+F,F 1090,Rocky Mountains of Canada,971.1 -971.104,Rocky Mountains--Canada
+F,F 1090.5,Arctic regions,917.19 -917.1909,Canadian Arctic--description & travel
+F,F 1090.5,Arctic regions,971.9 -971.903,Canadian Arctic
+F,F 1091-1095.5,Yukon,917.191,Yukon Territory--description & travel
+F,F 1091-1095.5,Yukon,971.91,Yukon Territory
+F,F 1096-1100.5,Mackenzie,917.193,Northwest Territories (1999- )--description & travel
+F,F 1096-1100.5,Mackenzie,971.93,Northwest Territories (1999- )
+F,F 1101-1105.7,Franklin,917.1952,Baffin Region (Qikiqtaaluk Region)--description & travel
+F,F 1101-1105.7,Franklin,971.952,Baffin Region (Qikiqtaaluk Region)
+F,F 1106-1110.5,Keewatin,917.1958,Keewatin Region (Kivallik Region)--description & travel
+F,F 1106-1110.5,Keewatin,971.958,Keewatin Region (Kivallik Region)
+F,F 1121-1139,Newfoundland,917.18 -917.181,Newfoundland--description & travel
+F,F 1121-1139,Newfoundland,971.8 -971.81,Newfoundland
+F,F 1135-1139,Labrador,917.182,Labrador--description & travel
+F,F 1135-1139,Labrador,971.82,Labrador
+F,F 1140,Labrador Peninsula,917.141 -917.14109,Northern region--description & travel
+F,F 1140,Labrador Peninsula,971.41 -971.4104,Northern region
+F,F 1141-1145.2,Nunavut,971.95,Nunavut
+F,F 1170,Saint Pierre and Miquelon,917.188,Saint Pierre and Miquelon--description & travel
+F,F 1170,Saint Pierre and Miquelon,971.88,Saint Pierre and Miquelon
+F,F 1201-1392,Mexico,917.2 -917.27,Mexico--description & travel
+F,F 1201-1392,Mexico,972 -972.7,Mexico
+F,F 1201-3799,Latin America. Spanish America,917.2,Mexico--description & travel
+F,F 1201-3799,Latin America. Spanish America,918,Geography of and travel in South America
+F,F 1201-3799,Latin America. Spanish America,972,Middle America Mexico
+F,F 1201-3799,Latin America. Spanish America,980,General history of South America
+F,F 1401-1419,Latin America (General),918 -918.09,Geography of and travel in South America
+F,F 1401-1419,Latin America (General),980 -980.4,General history of South America
+F,F 1421-1440,Central America,917.28 -917.2809,Central America--description & travel
+F,F 1421-1440,Central America,972.8 -972.805,Central America
+F,F 1435-1435.3,Mayas,305.897415,Mayas--social aspects
+F,F 1435-1435.3,Mayas,917.281 -917.28109,Guatemala--description & travel
+F,F 1435-1435.3,Mayas,972.6,Southern Gulf states of Mexico
+F,F 1435-1435.3,Mayas,972.81,Guatemala
+F,F 1441+,British Honduras (Belize),917.282,Belize--description & travel
+F,F 1441+,British Honduras (Belize),972.82,Belize
+F,F 1441-1457,Belize,917.282,Belize--description & travel
+F,F 1441-1457,Belize,972.82,Belize
+F,F 1461-1477,Guatemala,917.281,Guatemala--description & travel
+F,F 1461-1477,Guatemala,972.81,Guatemala
+F,F 1481-1497,Salvador (El Salvador),917.284,El Salvador--description & travel
+F,F 1481-1497,Salvador (El Salvador),972.84,El Salvador
+F,F 1501-1517,Honduras,917.283,Honduras--description & travel
+F,F 1501-1517,Honduras,972.83,Honduras
+F,F 1521-1537,Nicaragua,917.285,Nicaragua--description & travel
+F,F 1521-1537,Nicaragua,972.85,Nicaragua
+F,F 1541-1557,Costa Rica,917.286,Costa Rica--description & travel
+F,F 1541-1557,Costa Rica,972.86,Costa Rica
+F,F 1561-1577,Panama,917.287,Panama--description & travel
+F,F 1561-1577,Panama,972.87,Panama
+F,F 1569.C2,Canal Zone. Panama Canal,917.2875,Canal Area--description & travel
+F,F 1569.C2,Canal Zone. Panama Canal,972.875,Canal Area
+F,F 1601-1629,West Indies,917.29 -917.2909,West Indies (Antilles) and Bermuda--description & travel
+F,F 1601-1629,West Indies,972.9 -972.905,West Indies (Antilles) and Bermuda
+F,F 1630+,Bermuda,917.299,Bermuda--description & travel
+F,F 1630+,Bermuda,972.99,Bermuda
+F,F 1630-1640,Bermudas,917.299,Bermuda--description & travel
+F,F 1630-1640,Bermudas,972.99,Bermuda
+F,F 1650+,Bahamas,917.296,Bahama Islands--description & travel
+F,F 1650+,Bahamas,972.96,Bahama Islands
+F,F 1650-1660,Bahamas,917.296,Bahama Islands--description & travel
+F,F 1650-1660,Bahamas,972.96,Bahama Islands
+F,F 1741-1991,Greater Antilles,917.29 -917.295,Greater Antilles--description & travel
+F,F 1741-1991,Greater Antilles,972.9 -972.95,Greater Antilles
+F,F 1751-1854.9,Cuba,917.291,Cuba--description & travel
+F,F 1751-1854.9,Cuba,972.91,Cuba
+F,F 1861-1896,Jamaica,917.292,Jamaica and Cayman Islands--description & travel
+F,F 1861-1896,Jamaica,972.92,Jamaica and Cayman Islands
+F,F 1900-1941,Haiti (Island). Hispaniola,917.293 -917.294,Dominican Republic; Haiti--description & travel
+F,F 1900-1941,Haiti (Island). Hispaniola,972.93 -972.94,Dominican Republic; Haiti
+F,F 1912-1930,Haiti (Republic),917.294,Haiti--description & travel
+F,F 1912-1930,Haiti (Republic),972.94,Haiti
+F,F 1931-1941,Dominican Republic,917.293,Dominican Republic--description & travel
+F,F 1931-1941,Dominican Republic,972.93,Dominican Republic
+F,F 1951-1983,Puerto Rico,917.295,Puerto Rico--description & travel
+F,F 1951-1983,Puerto Rico,972.95,Puerto Rico
+F,F 1991,Navassa,917.29,West Indies (Antilles) and Bermuda--description & travel
+F,F 1991,Navassa,972.9,West Indies (Antilles) and Bermuda
+F,F 2001-2152,Lesser Antilles,917.29,West Indies (Antilles) and Bermuda--description & travel
+F,F 2001-2152,Lesser Antilles,917.297 -917.298,Lesser Antilles (Caribbees)--description & travel
+F,F 2001-2152,Lesser Antilles,972.9,West Indies (Antilles) and Bermuda
+F,F 2001-2152,Lesser Antilles,972.97 -972.98,Lesser Antilles (Caribbees)
+F,F 2006,Leeward Islands,917.297 -917.29709,Leeward Islands--description & travel
+F,F 2006,Leeward Islands,972.97 -972.97009,Leeward Islands
+F,F 2011,Windward Islands,917.2984 -917.298409,Windward Islands--description & travel
+F,F 2011,Windward Islands,972.984 -972.984009,Windward Islands
+F,F 2016,Islands along Venezuela coast,917.298 -917.29809,Windward and other southern islands--description & travel
+F,F 2016,Islands along Venezuela coast,917.2983 -917.298309,Trinidad and Tobago--description & travel
+F,F 2016,Islands along Venezuela coast,972.98 -972.9805,Windward and other southern islands
+F,F 2016,Islands along Venezuela coast,972.983 -972.983009,Trinidad and Tobago
+F,F 2033-2129,Lesser Antilles. Caribbees,917.297 -917.298,Lesser Antilles (Caribbees)--description & travel
+F,F 2033-2129,Lesser Antilles. Caribbees,972.97 -972.98,Lesser Antilles (Caribbees)
+F,F 2131+,British West Indies,917.29,West Indies (Antilles) and Bermuda--description & travel
+F,F 2131+,British West Indies,972.9,West Indies (Antilles) and Bermuda
+F,F 2131-2133,British West Indies,917.29,West Indies (Antilles) and Bermuda--description & travel
+F,F 2131-2133,British West Indies,972.9,West Indies (Antilles) and Bermuda
+F,F 2136,Virgin Islands of the United States,917.29722,Virgin Islands of the United States--description & travel
+F,F 2136,Virgin Islands of the United States,972.9722,Virgin Islands of the United States
+F,F 2141,Netherlands West Indies. Dutch West Indies,917.2986,Netherlands islands--description & travel
+F,F 2141,Dutch West Indies,917.2986,Netherlands islands--description & travel
+F,F 2141,Netherlands West Indies. Dutch West Indies,972.986,Netherlands islands
+F,F 2141,Dutch West Indies,972.986,Netherlands islands
+F,F 2151,French West Indies,917.2976,Guadeloupe--description & travel
+F,F 2151,French West Indies,972.976,Guadeloupe
+F,F 2155-2191,Caribbean area. Caribbean Sea,917.29 -917.2909,West Indies (Antilles) and Bermuda--description & travel
+F,F 2155-2191,Caribbean area. Caribbean Sea,972.9 -972.905,West Indies (Antilles) and Bermuda
+F,F 2201-3799,South America,918,Geography of and travel in South America
+F,F 2201-3799,South America,980,General history of South America
+F,F 2251-2299,Colombia,918.61,Colombia--description & travel
+F,F 2251-2299,Colombia,986.1,Colombia
+F,F 2301-2349,Venezuela,918.7,Venezuela--description & travel
+F,F 2301-2349,Venezuela,987,Venezuela
+F,F 2351,Guiana,918.8 -918.809,Guiana--description & travel
+F,F 2351,Guiana,988 -988.03,Guiana
+F,F 2361+,British Guiana,918.81,Guyana--description & travel
+F,F 2361+,British Guiana,988.1,Guyana
+F,F 2361-2391,Guyana. British Guiana,918.81,Guyana--description & travel
+F,F 2361-2391,Guyana. British Guiana,988.1,Guyana
+F,F 2401,Dutch Guinea,918.83,Surinam (Suriname)--description & travel
+F,F 2401,Dutch Guinea,988.3,Surinam (Suriname)
+F,F 2401-2431,Surinam,918.83,Surinam (Suriname)--description & travel
+F,F 2401-2431,Surinam,988.3,Surinam (Suriname)
+F,F 2441+,French Guiana,918.82,French Guiana (Guyane)--description & travel
+F,F 2441+,French Guiana,988.2,French Guiana (Guyane)
+F,F 2441-2471,French Guiana,918.82,French Guiana (Guyane)--description & travel
+F,F 2441-2471,French Guiana,988.2,French Guiana (Guyane)
+F,F 2501-2659,Brazil,918.1,Brazil--description & travel
+F,F 2501-2659,Brazil,981,Brazil
+F,F 2529,"French Colony in Brazil, 1555-1567",981.032,"Period of hereditary captaincies, 1533-1762"
+F,F 2532,"Dutch Colony in Brazil, 1625-1661",981.032,"Period of hereditary captaincies, 1533-1762"
+F,F 2661-2699,Paraguay,918.92,Paraguay--description & travel
+F,F 2661-2699,Paraguay,989.2,Paraguay
+F,F 2701-2799,Uruguay,918.95,Uruguay--description & travel
+F,F 2701-2799,Uruguay,989.5,Uruguay
+F,F 2801-3021,Argentina,918.2,Argentina--description & travel
+F,F 2801-3021,Argentina,982,Argentina
+F,F 3031+,Falkland Islands,919.711,Falkland Islands (Islas Malvinas)--description & travel
+F,F 3031+,Falkland Islands,997.11,Falkland Islands (Islas Malvinas)
+F,F 3031-3031.5,Falkland Islands,919.711,Falkland Islands (Islas Malvinas)--description & travel
+F,F 3031-3031.5,Falkland Islands,997.11,Falkland Islands (Islas Malvinas)
+F,F 3051-3285,Chile,918.3,Chile--description & travel
+F,F 3051-3285,Chile,983,Chile
+F,F 3301-3359,Bolivia,918.4,Bolivia--description & travel
+F,F 3301-3359,Bolivia,984,Bolivia
+F,F 3401-3619,Peru,918.5,Peru--description & travel
+F,F 3401-3619,Peru,985,Peru
+F,F 3701-3799,Ecuador,918.66,Ecuador--description & travel
+F,F 3701-3799,Ecuador,986.6,Ecuador
+LCC,G,Geography (General),910 - 912,Geography & travel
+G,GA,Mathematical geography. Cartography,526,Mathematical geography
+G,GB,Physical geography,551.4 - 551.45,Geomorphology
+G,GC,Oceanography,551.46 - 551.47,Oceanography
+G,GE,Environmental sciences,333.7 - 333.709,Natural resources & energy
+G,GF,Human ecology. Anthropogeography,304 - 304.2,Factors affecting social behavior; Human ecology
+G,GN,Anthropology,302.3 - 302.4,Social interaction
+G,GN,Anthropology,305,Social groups
+G,GN,Anthropology,306.3,Economic institutions
+G,GN,Anthropology,306.8,Marriage & family
+G,GN,Anthropology,599.9,Physical anthropology
+G,GR,Folklore,398.2 - 398.4,Folk literature
+G,GR,Folklore,398.8,Rhymes & rhyming games
+G,GT,Manners and customs (General),390 - 394,"Customs, etiquette & folklore"
+G,GV,Recreation. Leisure,790,"Sports, games & entertainment"
+G,GV,Recreation. Leisure,796,Athletic & outdoor sports & games
+G,GV,Recreation. Leisure,796.4,"Weight lifting, track & field, gymnastics"
+G,GV,Recreation. Leisure,797,Aquatic & air sports
+GV,GV 1019.2-1038.2,Motor sports,796.7,Driving motor vehicles
+GV,GV 1040-1059,Cycling. Bicycling,796.6,Cycling & related activities
+GV,GV 1060.5-1098,Track and field athletics,796.42,Track & field
+GV,GV 1100-1150.9,Fighting sports. Martial arts,796.8,Combat sports
+GV,GV 1151-1190,Shooting,799.3,Shooting other than game
+GV,GV 1199-1570,Games and amusements,793,Indoor games & amusements
+GV,GV 1199-1570,Games and amusements,794,Indoor games of skill
+GV,GV 1199-1570,Games and amusements,795,Games of chance
+GV,GV 191.2-200.66,Outdoor life. Outdoor recreation,796.5,Outdoor life
+GV,GV 460-555,Gymnastics. Gymnastic exercises,796.44 - 796.47,Gymnastics
+GV,GV 545.5-548,Weight training. Weight lifting. Body building,796.41,Weight lifting
+GV,GV 750-770.27,Air sports,797.5,Air sports
+GV,GV 770.3- 840,Water sports,797.1 - 797.3,Aquatic sports
+GV,GV 840.7-857,Winter sports,796.9,Ice & snow sports
+GV,GV 861-1017,Ball games,796.3,Ball games
+LCC,H,Social sciences,na,na
+H,H 1-99,Social sciences (General),300 - 300.9,"Social sciences, sociology & anthropology"
+H,HA,Statistics,310,Collections of general statistics
+H,HB,Economic theory. Demography,330 - 330.1,"Systems, schools, theories"
+H,HB,Economic theory. Demography,339,Macroeconomics & related topics
+H,HC,Economic history and conditions,330.9,Economic situation & conditions
+H,HD,Economic history and conditions,331,Labor economics
+H,HD,Economic history and conditions,333 - 333.5,Economics of land
+H,HD,Economic history and conditions,338,Production
+H,HE,Transportation and communications,383 - 388,Communications & transportation
+H,HF,Commerce,337,International economics
+H,HF,Commerce,381,Internal commerce (Domestic trade)
+H,HF,Commerce,382,International commerce (Foreign trade)
+H,HF,Commerce,650,Management & public relations
+H,HF,Commerce,651,Office services
+H,HF,Commerce,657,Accounting
+H,HF,Commerce,658,General management
+H,HF,Commerce,659.1,Advertising
+H,HG,Finance,332,Financial economics
+H,HJ,Public finance,336,Public finance
+H,HQ,The Family. Marriage. Women,649.1 - 641.7,Child rearing & home care of children
+H,HV,Sign language. Gesture--Systems of speech of the deaf,419,Sign languages
+H,HX,Socialism. Communism. Anarchism,335,Socialism & related systems
+LCC,J,Political science,na,na
+J,JA,Political science,320 - 320.09,Political science
+LCC,K,Law in general. Comparative and uniform law. Jurisprudence,340 - 340.5,Law
+K,KZ,Law of nations,341,International law
+LCC,L,Education (General),370,Education
+LCC,L,Education (General),370.1,Philosophy & theory
+LCC,L,Education (General),370.3,Education--Dictionaries
+LCC,L,Education (General),370.5,Education--Periodicals
+LCC,L,Education (General),370.7,"Education, research, related topics"
+LCC,L,Education (General),370.8,History & description with respect to kinds of persons
+L,LA,History of education,370.9,"Historical, geographic, persons treatment"
+L,LB,Theory and practice of education,370.15,Educational psychology
+L,LB,Theory and practice of education,371,Schools & activities; special education
+L,LB,Theory and practice of education,372,Elementary education
+L,LB,Theory and practice of education,373,Secondary education
+L,LB,Theory and practice of education,378.1,Organization & activities in higher education
+L,LB,Theory and practice of education,378.2,Academic degrees & related topics
+L,LB,Theory and practice of education,378.3,Student aid & related topics
+L,LC,Special aspects of education,306.43,Education--sociology
+L,LC,Special aspects of education,370.11,Education for specific objectives
+L,LC,Special aspects of education,371.82,Specific kinds of students
+L,LC,Special aspects of education,374,Adult education
+L,LC,Special aspects of education,379,Public policy issues in education
+L,LD,Individual institutions - United States,378.73 - 378.79,Higher education--United States
+L,LE,Individual institutions - America (except United States),378.8,Universities & colleges--Latin America
+L,LF,Individual institutions - Europe,378.4,Higher education--Europe
+L,LG,"Individual institutions - Asia, Africa, Oceania",378.5 - 378.6,Higher education--Africa
+L,LH,College and school magazines and newspapers,378,Higher education
+L,LT,Textbooks,na,na
+LCC,M,Musical Works,782 - 788,"Ensembles, voices, instruments"
+M,ML,Literature on music,780,Music
+M,MT,Musical instruction and study,781 - 781.4,General principles & musical forms
+LCC,N,Visual arts (General),700,The arts; Fine and decorative arts
+LCC,N,Visual arts (General),701,Philosophy of fine & decorative arts
+LCC,N,Visual arts (General),702,Miscellany of fine & decorative arts
+LCC,N,Visual arts (General),703,Dictionaries of fine & decorative arts
+LCC,N,Visual arts (General),704,Special topics of fine & decorative arts
+LCC,N,Visual arts (General),705,Serial publications of fine & decorative arts
+LCC,N,Visual arts (General),706,Organizations & management
+LCC,N,Visual arts (General),707,"Education, research, related topics"
+LCC,N,Visual arts (General),708,"Galleries, museums, private collections"
+LCC,N,Visual arts (General),709,"Historical, geographic, persons treatment"
+N,NA,Architecture,711,Area planning (Civic art)
+N,NA,Architecture,720,Architecture
+N,NB,Sculpture,730,Plastic arts; Sculpture
+N,NC,Drawing. Design. Illustration,740,Drawing & decorative arts
+N,NC,Drawing. Design. Illustration,741,Drawing & drawings
+N,NC,Drawing. Design. Illustration,742,Perspective
+N,NC,Drawing. Design. Illustration,743,Drawing & drawings by subject
+N,ND,Painting,750,Painting & paintings
+N,NE,Print media,760,Graphic arts; Printmaking & prints
+N,NK,Decorative arts. Applied arts,745,Decorative arts
+N,NK,Decorative arts. Applied arts,746,Textile arts
+N,NK,Decorative arts. Applied arts,747,Interior decoration
+N,NK,Decorative arts. Applied arts,748,Glass
+N,NK,Decorative arts. Applied arts,749,Furniture & accessories
+N,NX,Arts in general,700.1,Philosophy of the arts
+N,NX,Arts in general,700.4,Special topics of the arts
+N,NX,Arts in general,700.5,Serial publications of the arts
+N,NX,Arts in general,700.9,"Historical, geographic, persons treatment of the arts"
+LCC,P,Philology. Linguistics,400 - 418,Language; Linguistics
+LCC,P,Philology. Linguistics,491.993 - 491.998,Other Indo-European languages
+P,P 1078,Philology. Linguistics,499.94,Etruscan language
+P,P 117-117.5,Sign language. Gesture--General,419,Sign languages
+P,PA,Greek & Latin languages & literatures,470,Latin & Italic languages
+P,PA,Greek & Latin languages & literatures,480,Classical & modern Greek languages
+P,PA,Greek & Latin languages & literatures,870,Latin & Italic literatures
+P,PA,Greek & Latin languages & literatures,880,Classical & modern Greek literatures
+P,PB,Modern languages. Celtic languages,491.6,Celtic languages
+P,PB,Modern languages. Celtic languages,891.6,Celtic literatures
+PB,PB 1 - 431,Modern languages. Celtic languages--General,410,Linguistics
+P,PC,Romance languages,849,Provencal & Catalan literatures
+P,PC,Romance languages,859,Romanian & Rhaeto-Romanic literatures
+PC,PC 2001 - 3761,Romance languages,440,French & related languages
+PC,PC 4001+,Romance languages,460,Spanish & Portuguese languages
+PC,PC 601 - 1984,Romance languages,450,"Italian, Romanian & related languages"
+P,PD,Germanic languages. Scandinavian languages,430 - 438,German & related languages
+P,PD,Germanic languages. Scandinavian languages,439.5 - 439.8,North Germanic languages (Nordic languages)
+P,PD,Germanic languages. Scandinavian languages,439.9,East Germanic languages
+P,PE,English language,420,English & Old English Languages
+P,PF,West Germanic languages,430 - 438,German & related languages
+P,PF,West Germanic languages,439.2 - 439.4,Low Germanic languages
+P,PF,West Germanic languages,839.2,Frisian literature
+P,PG,"Slavic, Baltic, Albanian languages & literatures",491.7,East Slavic languages; Russian language
+P,PG,"Slavic, Baltic, Albanian languages & literatures",491.8,Slavic (Slavonic) languages
+P,PG,"Slavic, Baltic, Albanian languages & literatures",491.9 - 491.991,Baltic languages; Albanian language
+P,PG,"Slavic, Baltic, Albanian languages & literatures",891.7,East Slavic literatures; Russian literature
+P,PG,"Slavic, Baltic, Albanian languages & literatures",891.8,Slavic (Slavonic) literatures
+P,PG,"Slavic, Baltic, Albanian languages & literatures",891.9 - 891.991,Baltic literatures; Albanian literature
+P,PH,"Finno-Ugric, Basque languages & literatures",494.4,Samoyedic languages
+P,PH,"Finno-Ugric, Basque languages & literatures",494.5,Finno-Ugric languages
+P,PH,"Finno-Ugric, Basque languages & literatures",499.92,Basque language
+P,PH,"Finno-Ugric, Basque languages & literatures",894.5,Finno-Ugric literatures
+P,PH,"Finno-Ugric, Basque languages & literatures",899.92,Basque literature
+P,PJ,Oriental languages & literatures--Yiddish language,439.1,Yiddish language
+P,PJ,Oriental languages & literatures,492,Afro-Asiatic languages; Semitic languages
+P,PJ,Oriental languages & literatures,493 - 493.5,Non-Semitic Afro-Asiatic languages
+P,PJ,Oriental languages & literatures,499.95,Sumerian language
+P,PJ,Oriental languages & literatures--Yiddish literature,839.1,Yiddish literature
+P,PJ,Oriental languages & literatures,892,Afro-Asiatic literatures; Semitic literatures
+P,PJ,Oriental languages & literatures,893 - 893.5,Non-Semitic Afro-Asiatic literatures
+P,PJ,Oriental languages & literatures,899.95,Sumerian literature
+P,PK,Indo-Iranian language & literature,491.1 - 491.5,Indo-Iranian languages
+P,PK,Indo-Iranian language & literature,499.96,Caucasian languages
+P,PK,Indo-Iranian language & literature,891.1 - 891.5,Indo-Iranian literatures
+P,PK,Indo-Iranian language & literature,899.96,Caucasian literatures
+PK,PK 8001 - 8499,Indo-Iranian language & literature,491.992,Armenian language
+PK,PK 8501 - 8835,Indo-Iranian language & literature,891.992,Armenian literature
+P,PL,"Languages of Eastern Asia, Africa, Oceania",494 - 494.3,Ural-Altaic languages
+P,PL,"Languages of Eastern Asia, Africa, Oceania",494.6,Ainu language
+P,PL,"Languages of Eastern Asia, Africa, Oceania",494.8,Dravidian languages
+P,PL,"Languages of Eastern Asia, Africa, Oceania",495,Languages of East & Southeast Asia
+P,PL,"Languages of Eastern Asia, Africa, Oceania",499.1 - 499.5,Austronesian & other languages
+P,PL,"Languages of Eastern Asia, Africa, Oceania",894 - 894.4,Ural-Altaic literatures
+P,PL,"Languages of Eastern Asia, Africa, Oceania",894.6,Ainu literature
+P,PL,"Languages of Eastern Asia, Africa, Oceania",894.8,Dravidian literatures
+P,PL,"Languages of Eastern Asia, Africa, Oceania",895,Literatures of East & Southeast Asia
+P,PL,"Languages of Eastern Asia, Africa, Oceania",899.1 - 899.5,Austronesian & other literatures
+PL,PL 8000 - 8844,"Languages of Eastern Asia, Africa, Oceania",493.7,Chadic languages
+PL,PL 8000 - 8844,"Languages of Eastern Asia, Africa, Oceania",496,African languages
+PL,PL 8000 - 8844,"Languages of Eastern Asia, Africa, Oceania",893.7,Chadic literatures
+PL,PL 8000 - 8844,"Languages of Eastern Asia, Africa, Oceania",896,African literatures
+P,PM,"Hyperborean, Indian, & artificial languages",494.6,"Altaic, Uralic, Hyperborean, Dravidian languages"
+P,PM,"Hyperborean, Indian, & artificial languages",497,North American native languages
+P,PM,"Hyperborean, Indian, & artificial languages",498,South American native languages
+P,PM,"Hyperborean, Indian, & artificial languages",499.99,Artificial languages
+P,PM,"Hyperborean, Indian, & artificial languages",897,Literatures of North American native languages
+P,PM,"Hyperborean, Indian, & artificial languages",898,Literatures of South American native languages
+P,PN,Literature (General),800 - 809,"Literature, rhetoric & criticism"
+P,PQ,Literature,na,na
+PQ,PQ 1 - 3999,"French, Italian, Spanish, & Portuguese literatures",840,French & related literatures
+PQ,PQ 4001 - 5999,"French, Italian, Spanish, & Portuguese literatures",850,"Italian, Romanian & related literatures"
+PQ,PQ 6001+,"French, Italian, Spanish, & Portuguese literatures",860,Spanish & Portuguese literatures
+P,PR,English literature,820,English & Old English (Anglo-Saxon) literatures
+P,PS,American literature,810,American literature in English
+P,PT,German literature,830,German & related literatures
+P,PZ,Juvenile belles lettres,na,na
+LCC,Q,Science (General),500,Natural sciences & mathematics
+LCC,Q,Science (General),501,Philosophy of science
+LCC,Q,Science (General),502,Miscellany
+LCC,Q,Science (General),503,Dictionaries & encyclopedias
+LCC,Q,Science (General),505,Serial publications
+LCC,Q,Science (General),506,Organizations & management
+LCC,Q,Science (General),507,"Education, research, related topics"
+LCC,Q,Science (General),509,"Historical, geographic, persons treatment"
+Q,QA,Mathematics,3,Systems
+Q,QA,Mathematics,510,Mathematics
+QA,QA 75.5 - 76.95,Mathematics,004 - 006,Data processing; Computer science
+Q,QB,Astronomy,520,Astronomy & allied sciences
+Q,QB,Astronomy,521,Celestial mechanics
+Q,QB,Astronomy,522,"Techniques, equipment, materials"
+Q,QB,Astronomy,523,Specific celestial bodies & phenomena
+Q,QB,Astronomy,525,Earth (Astronomical geography)
+Q,QB,Astronomy,528,Ephemerides
+Q,QB,Astronomy,529,Chronology
+Q,QC,Physics,530,Physics
+Q,QD,Chemistry,540,Chemistry & allied sciences
+Q,QE,Geology,550,Earth sciences
+Q,QE,Geology,551,"Geology, hydrology, meteorology"
+Q,QE,Geology,552,Petrology
+Q,QE,Geology,553,Economic geology
+Q,QE,Geology,554,Earth sciences of Europe
+Q,QE,Geology,555,Earth sciences of Asia
+Q,QE,Geology,556,Earth sciences of Africa
+Q,QE,Geology,557,Earth sciences of North America
+Q,QE,Geology,558,Earth sciences of South America
+Q,QE,Geology,559,Earth sciences of other areas
+QE,QE 701+,Geology--Paleontology,560 - 561,Paleontology; Paleozoology
+Q,QH,Biology (General),576,Genetics & evolution
+Q,QH,Biology (General),577,Ecology
+Q,QH,Biology (General),578,Natural history of organisms
+QH,QHN,Natural history (General),508,Natural history
+Q,QK,Botany,571,Physiology & related subjects
+Q,QK,Botany,572,Biochemistry
+Q,QK,Botany,573,Specific systems in animals
+Q,QK,Botany,575,Specific parts of & physiological systems in plants
+Q,QK,Botany,579.4 - 579.8,"Protozoa, fungi, mushrooms, lichens, algae"
+Q,QK,Botany,580,Plants
+Q,QL,Zoology,590,Animals
+Q,QM,Human anatomy,611,"Human anatomy, cytology, histology"
+Q,QP,Physiology,571,Physiology & related subjects
+Q,QP,Physiology,572,Biochemistry
+Q,QP,Physiology,573,Specific systems in animals
+Q,QP,Physiology,612,Human physiology
+Q,QR,Microbiology,579 - 579.3,Microorganisms
+Q,QS,Human Anatomy,611,"Human anatomy, cytology, histology"
+QS,QS 1-132,Anatomy,611,"Human anatomy, cytology, histology"
+QS,QS 504-539,Histology,362.1783,Organ & tissue banks
+QS,QS 504-539,Histology,611.018,Cytology & histology
+QS,QS 604-681,Embryology,612.64,Physiology of embryo & fetus
+QS,QS 604-681,Embryology,616.043,Congenital diseases
+Q,QT,Physiology,612,Human physiology
+QT,QT 104-172,Human Physiology,612,Human physiology
+QT,QT 1-33.1,Physiology (General),612,Human physiology
+QT,QT 180-275,Physiology & Hygiene,613,Promotion of health
+QT,QT 180-275,Physiology & Hygiene,617.1027,Athletic injuries
+Q,QU,Biochemistry,612.015,Biochemistry
+Q,QU,Biochemistry,613.2,Dietetics
+Q,QV,Pharmacology,615.1,Drugs (Materia medica)
+QV,QV 11,Pharmacology--History,615.109,Drugs (Materia medica)--history
+QV,QV 1-370,Pharmacology (General),615.1,Drugs (Materia medica)
+QV,QV 1-370,Pharmacology (General),615.2,Inorganic drugs
+QV,QV 1-370,Pharmacology (General),615.3,Organic drugs
+QV,QV 1-370,Pharmacology (General),615.7,Pharmacodynamics
+QV,QV 600-667,Toxicology,615.9,Toxicology
+QV,QV 701-835,Pharmacy and Pharmaceutics,615.1,Drugs (Materia medica)
+QV,QV 701-835,Pharmacy and Pharmaceutics,615.2,Inorganic drugs
+QV,QV 701-835,Pharmacy and Pharmaceutics,615.3,Organic drugs
+QV,QV 701-835,Pharmacy and Pharmaceutics,615.4,Practical pharmacy
+QV,QV 701-835,Pharmacy and Pharmaceutics,615.7,Pharmacodynamics
+Q,QW,Microbiology and Immunology,616.01,Medical microbiology
+Q,QW,Microbiology and Immunology,616.079,Immunity
+Q,QX,Parasitology,616.96,Parasitic diseases
+Q,QY,Clinical Pathology,616.07,Pathology
+QY,QY 11,Clinical Pathology--History,616.0709,Pathology--history
+Q,QZ,Pathology,571.9,Diseases--Pathology
+Q,QZ,Pathology,616.07,Pathology
+Q,QZ,Pathology,616.992,Tumors
+Q,QZ,Pathology,616.993,Benign tumors
+Q,QZ,Pathology,616.994,Cancers
+Q,QZ,Pathology,636.089607,Veterinary pathology
+QZ,QZ 11,Pathology--History,616.0709,Pathology--history
+LCC,S,Agriculture (General),630,Agriculture
+LCC,S,Agriculture (General),631 - 631.4,"Techniques, equipment, materials"
+LCC,S,Agriculture (General),631.6,"Clearing, drainage, revegetation"
+LCC,S,Agriculture (General),631.7,Water conservation
+LCC,S,Agriculture (General),631.8,"Fertilizers, soil conditioners, growth regulators"
+S,SB,Plant culture,581.6,Miscellaneous nontaxonomic kinds of plants
+S,SB,Plant culture,631.5,Cultivation & harvesting
+S,SB,Plant culture,632,"Plant injuries, diseases, pests"
+S,SB,Plant culture,633,Field & plantation crops
+S,SB,Plant culture,634.1 - 634.6,Orchards & their fruits
+S,SB,Plant culture,634.7,Berries & herbaceous tropical & subtropical fruits
+S,SB,Plant culture,634.8,Grapes
+S,SB,Plant culture,635,Garden crops (Horticulture)
+S,SD,Forestry,634.9,Forestry
+S,SF,Animal culture,636,Animal husbandry
+S,SF,Animal culture,637,Processing dairy & related products
+S,SF,Animal culture,638,Insect culture
+S,SF,Animal culture,798,Equestrian sports & animal racing
+S,SH,Aquaculture. Fisheries. Angling,639.2,"Commercial fishing, whaling, sealing"
+S,SH,Aquaculture. Fisheries. Angling,639.3,Culture of cold-blooded vertebrates; Fish culture
+S,SH,Aquaculture. Fisheries. Angling,639.4,Mollusk fisheries & culture
+S,SH,Aquaculture. Fisheries. Angling,639.5,Crustacean fisheries
+S,SH,Aquaculture. Fisheries. Angling,639.6,Crustacean culture
+S,SH,Aquaculture. Fisheries. Angling,639.7,Harvest & culture of invertebrates other than mollusks & crustaceans
+S,SH,Aquaculture. Fisheries. Angling,639.8,Aquaculture
+S,SH,Aquaculture. Fisheries. Angling,799.1,Fishing
+S,SK,Hunting sports,639.1,Hunting
+S,SK,Hunting sports,639.9,Conservation of biological resources
+S,SK,Hunting sports,799.2,Hunting
+LCC,T,Technology (General),600,Technology (Applied sciences)
+LCC,T,Technology (General),601,Philosophy & theory
+LCC,T,Technology (General),602,Miscellany
+LCC,T,Technology (General),603,Dictionaries & encyclopedias
+LCC,T,Technology (General),604,"Technical drawing, hazardous materials technology"
+LCC,T,Technology (General),605,Serial publications
+LCC,T,Technology (General),606,Organizations
+LCC,T,Technology (General),607,"Education, research, related topics"
+LCC,T,Technology (General),608,Inventions & patents
+LCC,T,Technology (General),609,"Historical, geographic, persons treatment"
+LCC,T,Technology (General),620.8,Human factors & safety engineering
+T,TA,Engineering (General). Civil engineering,526.9,Surveying
+T,TA,Engineering (General). Civil engineering,624,Civil engineering
+T,TA,Engineering (General). Civil engineering,624.1,Structural engineering & underground construction
+T,TA,Engineering (General). Civil engineering,629.04,Transportation engineering
+T,TA,Engineering (General). Civil engineering,681.2,"Testing, measuring, sensing instruments"
+T,TC,Hydraulic engineering,627,Hydraulic engineering
+T,TD,Environmental technology. Sanitary engineering,363.7,Environmental problems
+T,TD,Environmental technology. Sanitary engineering,628,Sanitary & municipal engineering
+T,TE,Highway engineering. Roads and pavements,625.7 - 625.8,Engineering of roads
+T,TG,Bridge engineering,624.2 - 625.8,Bridges--Design and construction
+T,TH,Building construction,690,Buildings
+T,TJ,Mechanical engineering and machinery,604.2,Technical drawing
+T,TJ,Mechanical engineering and machinery,621.1,Steam engineering
+T,TJ,Mechanical engineering and machinery,621.2,Hydraulic-power technology
+T,TJ,Mechanical engineering and machinery,621.4,"Engines, power plants, propulsion systems"
+T,TJ,Mechanical engineering and machinery,621.5,"Pneumatic, vacuum, low-temperature technologies"
+T,TJ,Mechanical engineering and machinery,621.6,"Blowers, fans, pumps"
+T,TJ,Mechanical engineering and machinery,621.8,Machine engineering
+T,TJ,Mechanical engineering and machinery,621.9,Tools
+T,TJ,Mechanical engineering and machinery,625.26,Locomotives
+T,TJ,Mechanical engineering and machinery,629.8,Automatic control engineering
+T,TJ,Mechanical engineering and machinery,681,Precision instruments & other devices
+T,TK,Electrical engineering. Electronics. Nuclear engineering,621.3,Electrical engineering
+T,TK,Electrical engineering. Electronics. Nuclear engineering,621.48,Nuclear engineering
+T,TL,Motor vehicles. Aeronautics. Astronautics,629.1,Aerospace engineering
+T,TL,Motor vehicles. Aeronautics. Astronautics,629.2,"Motor land vehicles, cycles"
+T,TL,Motor vehicles. Aeronautics. Astronautics,629.3,"Air-cushion vehicles (Ground-effect machines, Hovercraft)"
+T,TL,Motor vehicles. Aeronautics. Astronautics,629.4,Astronautics
+T,TN,Mining engineering. Metallurgy,622,Mining & related operations
+T,TN,Mining engineering. Metallurgy,669,Metallurgy
+T,TP,Chemical technology,660,Chemical engineering
+T,TR,Photography,621.367,Technological photography & photo-optics
+T,TR,Photography,770,Photography & photographs
+T,TS,Manufactures,658.5,Management of production
+T,TS,Manufactures,664.7,"Grains, other seeds, their derived products"
+T,TS,Manufactures,664.9,Meats & allied foods
+T,TS,Manufactures,670,Manufacturing
+T,TS,Manufactures,681.1,"Instruments for measuring time, counting & calculating machines"
+T,TS,Manufactures,683,Hardware & household appliances
+T,TS,Manufactures,683.3,Locksmithing
+T,TS,Manufactures,683.4,Small firearms
+T,TS,Manufactures,684.1,Furniture
+T,TS,Manufactures,685,"Leather, fur goods, related products"
+T,TT,Handicrafts. Arts and crafts,646.1,Sewing materials & equipment
+T,TT,Handicrafts. Arts and crafts,646.2,Sewing & related operations
+T,TT,Handicrafts. Arts and crafts,646.3,Clothing & accessories
+T,TT,Handicrafts. Arts and crafts,646.4,Clothing & accessories construction
+T,TT,Handicrafts. Arts and crafts,646.72,"Care of hair, face, skin"
+T,TT,Handicrafts. Arts and crafts,745.5,Handicrafts
+T,TT,Handicrafts. Arts and crafts,745.7,Decorative coloring
+T,TT,Handicrafts. Arts and crafts,746,Textile arts
+T,TX,Home economics. Hospitality industry,613.2,Dietetics
+T,TX,Home economics. Hospitality industry,640,Home economics & family living
+T,TX,Home economics. Hospitality industry,641,Food & drink
+T,TX,Home economics. Hospitality industry,642,Meals & table service
+T,TX,Home economics. Hospitality industry,643,Housing & household equipment
+T,TX,Home economics. Hospitality industry,644,Household utilities
+T,TX,Home economics. Hospitality industry,645,Household furnishings
+T,TX,Home economics. Hospitality industry,646,"Sewing, clothing, personal living"
+T,TX,Home economics. Hospitality industry,647,Management of public households
+T,TX,Home economics. Hospitality industry,648,Housekeeping
+LCC,U,Military science (General),355.02,War & warfare
+LCC,U,Military science (General),355.1,Military life & customs
+LCC,U,Military science (General),355.4,Military operations
+LCC,U,Military science (General),355.5,Military training
+LCC,U,Military science (General),355.82,Specific kinds of weapons (ordnance)
+LCC,U,Military science (General),623.4,Ordnance
+U,UA,"Armies: Organization, distribution, military situation",355.03,Military situation & policy
+U,UA,"Armies: Organization, distribution, military situation",355.3 - 355.31,Organization & personnel of military forces
+U,UA,"Armies: Organization, distribution, military situation",355.35,Combat units according to field of service
+U,UB,Military administration,355.2 - 355.23,Military resources
+U,UB,Military administration,355.22,Human resources
+U,UB,Military administration,355.23,Civilian workers
+U,UB,Military administration,355.33,Personnel & their hierarchy
+U,UB,Military administration,355.34,Noncombat services
+U,UB,Military administration,355.6,Military administration
+U,UB,Military administration,355.7,Military installations
+U,UB,Military administration,362.86,Veterans
+U,UC,Maintenance and transportation,355.24 - 355.29,Strategic materials
+U,UC,Maintenance and transportation,355.621,Supply administration
+U,UC,Maintenance and transportation,355.8,Military equipment & supplies; Weapons (Ordnance)
+U,UD,Infantry,355.54,Basic training
+U,UD,Infantry,356,Foot forces & warfare
+U,UE,Cavalry. Armor,357,Mounted forces & warfare
+U,UE,Cavalry. Armor,358.18,Armored forces
+U,UF,Artillery,355.82,Specific kinds of weapons (ordnance)
+U,UF,Artillery,358.1,Missile forces; army artillery & armored forces
+U,UF,Artillery,358.12,Army artillery forces
+U,UF,Artillery,358.13,Antiaircraft artillery forces
+U,UF,Artillery,358.16,Coast artillery forces
+U,UF,Artillery,623.4,Ordnance
+U,UG,Military engineering. Air forces,358.17,Guided missile forces
+U,UG,Military engineering. Air forces,358.2,Army engineering
+U,UG,Military engineering. Air forces,358.3,"Chemical, biological, radiological warfare"
+U,UG,Military engineering. Air forces,358.4,Air forces & warfare
+U,UG,Military engineering. Air forces,358.8,Space forces
+U,UG,Military engineering. Air forces,623,Military & nautical engineering
+U,UH,Other services,355.34,Noncombat services
+LCC,V,Naval science (General),359 - 359.009,Sea (Naval) forces & warfare
+LCC,V,Naval science (General),359.009,Naval history
+LCC,V,Naval science (General),359.1,Navy life
+LCC,V,Naval science (General),359.4 - 359.5,Naval operations & training
+LCC,V,Naval science (General),359.7,Naval installations
+LCC,V,Naval science (General),359.82,Specific kinds of weapons (ordnance)
+LCC,V,Naval science (General),359.83,Transportation equipment & supplies
+LCC,V,Naval science (General),359.93,Submarine forces
+LCC,V,Naval science (General),623.82,Nautical craft
+V,VA,"Navies Organization, distribution, naval situation",359.03,Situation & policy
+V,VA,"Navies Organization, distribution, naval situation",359.3 - 359.32,Organization & personnel of naval forces
+V,VA,"Navies Organization, distribution, naval situation",359.7,Naval installations
+V,VB,Naval administration,359.6,Naval administration
+V,VB,Naval administration,362.86,Veterans
+V,VC,Naval maintenance,359.8,Naval equipment & supplies; Naval weapons
+V,VD,Naval seamen,359.338,Seamen
+V,VE,Marines,359.96,Marine forces
+V,VF,Naval ordnance,623.4,Ordnance
+V,VG,Minor services of navies,359.94,Naval air forces
+V,VG,Minor services of navies,359.96,Marine forces
+V,VG,Minor services of navies,359.97,Coast guard
+V,VK,Navigation. Merchant marine,387.1,Ports
+V,VK,Navigation. Merchant marine,527,Celestial navigation
+V,VK,Navigation. Merchant marine,623.88,Seamanship
+V,VK,Navigation. Merchant marine,623.89,Navigation
+V,VM,Naval architecture. Shipbuilding. Marine engineering,623.81,Naval architecture
+V,VM,Naval architecture. Shipbuilding. Marine engineering,623.82,Nautical craft
+V,VM,Naval architecture. Shipbuilding. Marine engineering,623.83,Shipyards
+V,VM,Naval architecture. Shipbuilding. Marine engineering,623.84,Hulls of nautical craft
+V,VM,Naval architecture. Shipbuilding. Marine engineering,623.85,Engineering systems of nautical craft
+V,VM,Naval architecture. Shipbuilding. Marine engineering,623.86,Equipment & outfit of nautical craft
+V,VM,Naval architecture. Shipbuilding. Marine engineering,623.87,Power plants of nautical craft
+LCC,W,Medical Profession,362.1,Diseases (Human)--social services
+LCC,W,Medical Profession,610,Medical sciences; Medicine
+W,W 100-275,Medical Service Plans,362.1042,Diseases (Human)--social services--social aspects
+W,W 100-275,Medical Service Plans,368.382,Health insurance
+W,W 1-96,Medical Profession--General,362.1,Diseases (Human)--social services
+W,W 1-96,Medical Profession--General,610,Medical sciences; Medicine
+W,W 322-323,Other Medical Services,362.1,Diseases (Human)--social services
+W,W 322-323,Other Medical Services,362.1042,Diseases (Human)--social services--social aspects
+W,W 601-925,Forensic Medicine & Dentistry,614.1,Forensic medicine
+W,WA,Public health,362.1,Diseases (Human)--social services
+W,WA,Public Health,614,Incidence & prevention of disease
+WA,WA 11,Public Health--History,362.109,Diseases (Human)--history
+WA,WA 11,Public Health--History,614.09,Incidence & prevention of disease--history
+WA,WA 1-106,Public Health (General),362.1,Diseases (Human)--social services
+WA,WA 1-106,Public Health (General),614,Incidence & prevention of disease
+WA,WA 250-292,Accident and Injury Prevention,363.1,Public safety programs
+WA,WA 250-292,Accident and Injury Prevention,613.6,Special topics of health & safety
+WA,WA 250-292,Accident and Injury Prevention,616.0252,First aid
+WA,WA 250-292,Accident and Injury Prevention,617.10262,First aid
+WA,WA 300-395,Health Problems (special pops.),362.1042,Diseases (Human)--social services--social aspects
+WA,WA 300-395,Health Problems (special pops.),362.108,Services to specific kinds of persons with physical illnesses
+WA,WA 400-495,"Occup. Med., Health and Hygiene",362.1969803,Industrial & occupational medicine
+WA,WA 400-495,"Occup. Med., Health and Hygiene",613.62,Industrial & occupational health
+WA,WA 400-495,"Occup. Med., Health and Hygiene",616.9803,Industrial & occupational medicine
+WA,WA 525-590,Health Admin. and Organization,362.1,Diseases (Human)--social services
+WA,WA 670-847,Sanitation and Environ. Control,363.7,Environmental problems
+WA,WA 670-847,Sanitation and Environ. Control,628,Sanitary & municipal engineering
+WA,WA 900-950,Statistics and Surveys,362.10723,Health services--surveys--descriptive research
+WA,WA 900-950,Statistics and Surveys,614.42,Incidence
+W,WB,Practice of Medicine,610,Medical sciences; Medicine
+W,WB,Practice of Medicine,615.5,Therapeutics
+W,WB,Practice of Medicine,615.6,Methods of administering medication
+W,WB,Practice of Medicine,615.8,Specific therapies & kinds of therapies
+W,WB,Practice of Medicine,616,Diseases
+WB,WB 930,Homeopathy,615.532,Homeopathy
+W,WC,Infectious/Communicable Disease,362.1969,Other diseases; Communicable diseases
+W,WC,Infectious/Communicable Disease,614.5,Incidence of & public measures to prevent diseases
+W,WC,Infectious/Communicable Disease,616.9,Other diseases; Communicable diseases
+WC,WC 11,Infectious/Comm. Dis.--History,362.1969009,Other diseases; Communicable diseases--history
+WC,WC 11,Infectious/Comm. Dis.--History,616.909,Other diseases; Communicable diseases--history
+WC,WC 1-100,Infectious/Comm. Dis. (General),362.1969,Other diseases; Communicable diseases
+WC,WC 1-100,Infectious/Comm. Dis. (General),616.9,Other diseases; Communicable diseases
+WC,WC 140-185,Sexually Transmitted Diseases,362.196951,Sexually transmitted diseases
+WC,WC 140-185,Sexually Transmitted Diseases,616.951,Sexually transmitted diseases
+WC,WC 195-425,Infection/Bacterial Infections,362.19692,Bacterial & viral diseases
+WC,WC 195-425,Infection/Bacterial Infections,616.92,Bacterial & viral diseases
+WC,WC 500-593,Virus Diseases,362.196925,Viral diseases
+WC,WC 500-593,Virus Diseases,362.1969792,Acquired immune deficiency syndrome (AIDS)
+WC,WC 500-593,Virus Diseases,616.925,Viral diseases
+WC,WC 500-593,Virus Diseases,616.9792,Acquired immune deficiency syndrome (AIDS)
+WC,WC 680-950,Tropical and Parasitic Diseases,362.19696,Parasitic diseases
+WC,WC 680-950,Tropical and Parasitic Diseases,362.1969883,Tropical diseases
+WC,WC 680-950,Tropical and Parasitic Diseases,616.96,Parasitic diseases
+WC,WC 680-950,Tropical and Parasitic Diseases,616.9883,Tropical diseases
+W,WD,Metabolic Diseases,na,na
+WD,WD 200-226,Metabolic Diseases,362.19639,Nutritional & metabolic diseases
+WD,WD 200-226,Metabolic Diseases,616.39,Nutritional & metabolic diseases
+WD,WD 400-430,Animal Poisons,615.94,Animal poisons
+WD,WD 500-530,Plant Poisons,615.952,Plant & microorganism poisons
+WD,WD 600-675,Diseases by Physical Agents,362.196989,Diseases due to physical agents
+WD,WD 600-675,Diseases by Physical Agents,616.989,Diseases due to physical agents
+WD,WD 700-758,Aviation and Space Medicine,362.1969802,Aviation medicine
+WD,WD 700-758,Aviation and Space Medicine,362.1969802,Space medicine
+WD,WD 700-758,Aviation and Space Medicine,616.980213,Aviation medicine
+WD,WD 700-758,Aviation and Space Medicine,616.980214,Space medicine
+W,WE,Musculoskeletal System,362.1967,Diseases of musculoskeletal system
+W,WE,Musculoskeletal System,362.19747,Musculoskeletal system--surgery
+W,WE,Musculoskeletal System,611.7,"Musculoskeletal system, integument"
+W,WE,Musculoskeletal System,612.7,"Musculoskeletal system, integument"
+W,WE,Musculoskeletal System,616.7,Diseases of musculoskeletal system
+W,WE,Musculoskeletal System,617.47,Musculoskeletal system--surgery
+WE,WE 11,Musculoskel. System--History,362.1967009,Diseases of musculoskeletal system--history
+WE,WE 11,Musculoskel. System--History,616.7009,Diseases of musculoskeletal system--history
+WE,WE 168-190,Orthopaedics,362.1967,Diseases of musculoskeletal system
+WE,WE 168-190,Orthopaedics,616.7,Diseases of musculoskeletal system
+W,WF,Respiratory System,362.1962,Diseases of respiratory system
+W,WF,Respiratory System,362.196995,Tuberculosis
+W,WF,Respiratory System,362.19754,Respiratory system--surgery
+W,WF,Respiratory System,611.2,Respiratory organs
+W,WF,Respiratory System,612.2,Respiration
+W,WF,Respiratory System,616.2,Diseases of respiratory system
+W,WF,Respiratory System,616.995,Tuberculosis
+W,WF,Respiratory System,617.54,Thorax (Chest) & respiratory system
+WF,WF 11,Respiratory System--History,362.1962009,Diseases of respiratory system--history
+WF,WF 11,Respiratory System--History,616.2009,Diseases of respiratory system--history
+W,WG,Cardiovascular System,362.1961,Diseases of cardiovascular system
+W,WG,Cardiovascular System,362.19741,Cardiovascular system--surgery
+W,WG,Cardiovascular System,611.1,Cardiovascular organs
+W,WG,Cardiovascular System,612.1,Cardiovascular system
+W,WG,Cardiovascular System,616.1,Diseases of cardiovascular system
+W,WG,Cardiovascular System,617.41,Cardiovascular system--surgery
+WG,WG 11,Cardiovascular System--History,362.1961009,Diseases of cardiovascular system--history
+WG,WG 11,Cardiovascular System--History,616.1009,Diseases of cardiovascular system--history
+W,WH,Hemic/Lymph. Systems,362.19615,Diseases of blood
+W,WH,Hemic/Lymph. Systems,362.19642,Diseases of lymphatic system
+W,WH,Hemic/Lymph. Systems,611.0185,Blood & lymph elements
+W,WH,Hemic/Lymph. Systems,611.42,Lymphatic system
+W,WH,Hemic/Lymph. Systems,611.46,Lymphatic glands
+W,WH,Hemic/Lymph. Systems,612.11,Blood
+W,WH,Hemic/Lymph. Systems,612.42,Lymph & lymphatics
+W,WH,Hemic/Lymph. Systems,616.15,Diseases of blood
+W,WH,Hemic/Lymph. Systems,616.42,Diseases of lymphatic system
+WH,WH 11,Hemic/Lymph. Systems--History,362.1961501,Diseases of blood--history
+WH,WH 11,Hemic/Lymph. Systems--History,362.1964201,Diseases of lymphatic system--history
+WH,WH 11,Hemic/Lymph. Systems--History,616.15009,Diseases of blood--history
+WH,WH 11,Hemic/Lymph. Systems--History,616.42009,Diseases of lymphatic system--history
+W,WI,Gastrointestinal System,362.1963,Diseases of digestive system
+W,WI,Gastrointestinal System,362.19743,Digestive system--surgery
+W,WI,Gastrointestinal System,611.3,Digestive tract organs
+W,WI,Gastrointestinal System,612.3,Digestion
+W,WI,Gastrointestinal System,616.3,Diseases of digestive system
+W,WI,Gastrointestinal System,617.43,Digestive system--surgery
+WI,WI 11,Digestive System--History,362.1963009,Diseases of digestive system--history
+WI,WI 11,Digestive System--History,616.3009,Diseases of digestive system--history
+W,WJ,Urogenital System,362.1966,Diseases of the urogenital system
+W,WJ,Urogenital System,362.19746,Urogenital system--surgery
+W,WJ,Urogenital System,611.6,Urogenital organs
+W,WJ,Urogenital System,612.46,Excretion
+W,WJ,Urogenital System,616.6,Diseases of the urogenital system
+W,WJ,Urogenital System,617.46,Urogenital system--surgery
+WJ,WJ 11,Urogenital System--History,362.1966009,Diseases of the urogenital system--history
+WJ,WJ 11,Urogenital System--History,616.6009,Diseases of the urogenital system--history
+W,WK,Endocrine System,362.1964,Endocrine system--human diseases
+W,WK,Endocrine System,362.19744,Endocrine system--surgery
+W,WK,Endocrine System,611.4,Lymphatic & glandular organs
+W,WK,Endocrine System,612.4,"Secretion, excretion, related functions"
+W,WK,Endocrine System,616.4,Endocrine system--human diseases
+W,WK,Endocrine System,617.44,Endocrine system--surgery
+WK,WK 11,Endocrine System--History,362.1964009,Endocrine system--human diseases--history
+WK,WK 11,Endocrine System--History,616.4009,Endocrine system--human diseases--history
+W,WL,Nervous System,362.1968,Diseases of nervous system & mental disorders
+W,WL,Nervous System,362.19748,Nervous system--surgery
+W,WL,Nervous System,611.8,Nervous system
+W,WL,Nervous System,612.8,Nervous functions--Sensory functions
+W,WL,Nervous System,616.8,Diseases of nervous system & mental disorders
+W,WL,Nervous System,617.48,Nervous system
+WL,WL 11,Nervous System--History,362.1968009,Diseases of nervous system & mental disorders--history
+WL,WL 11,Nervous System--History,616.809,Diseases of nervous system & mental disorders--history
+W,WM,Psychiatry--History,na,na
+WM,WM 11,Psychiatry--History,616.89009,Mental disorders--history
+WM,WM 1-105,Psychiatry (General),362.2,Mental & emotional illnesses
+WM,WM 1-105,Psychiatry (General),616.89,Mental disorders
+WM,WM 140-165,Mental Disorders. Diagnosis.,616.89075,Mental illness--psychiatry--diagnosis
+WM,WM 170-197,Neurotic Disorders,362.25,Neuroses
+WM,WM 170-197,Neurotic Disorders,616.852,Neuroses
+WM,WM 200-220,Psychotic Disorders,362.26,Psychoses
+WM,WM 200-220,Psychotic Disorders,616.89,Mental disorders
+WM,WM 270-290,Substance-Related Disorders,362.29,Substance abuse
+WM,WM 270-290,Substance-Related Disorders,616.86,Substance abuse (Drug abuse)
+WM,WM 300-308,Mental Retardation,362.3,Mental retardation
+WM,WM 300-308,Mental Retardation,616.8588,Mental retardation & learning disabilities
+WM,WM 400-460.7,Therapies,616.891,Therapy
+WM,WM 475-611,Other Disorders,616.85,Miscellaneous diseases of nervous system & mental disorders
+W,WN,Radiology/Diagnostic Imaging,362.1960754,Physical diagnosis
+W,WN,Radiology/Diagnostic Imaging,362.1960757,Radiological diagnosis
+W,WN,Radiology/Diagnostic Imaging,615.842,"Radiotherapy (Radiation therapy, Actinotherapy)"
+W,WN,Radiology/Diagnostic Imaging,616.0754,Physical diagnosis
+W,WN,Radiology/Diagnostic Imaging,616.0757,Radiological diagnosis
+WN,WN 11,Radiol./Diag. Imaging--History,616.075409,Physical diagnosis--history
+WN,WN 11,Radiol./Diag. Imaging--History,616.075709,Radiological diagnosis--history
+WN,WN 440,Nuclear Medicine,362.1960758,Radioisotope scanning
+WN,WN 440,Nuclear Medicine,616.07575,Radioisotope scanning
+W,WO,Surgery,362.197,Surgery & related medical specialties
+W,WO,Surgery,617,Surgery & related medical specialties
+WO,WO 11,Surgery--History,362.197009,Surgery--history
+WO,WO 11,Surgery--History,617.09,Surgery--history
+WO,WO 1-149,Surgery (General),362.197,Surgery & related medical specialties
+WO,WO 1-149,Surgery (General),617,Surgery & related medical specialties
+WO,WO 162-198,Surg. Procedure/Armamentarium,362.19705,Surgery utilizing specific instruments & techniques
+WO,WO 162-198,Surg. Procedure/Armamentarium,362.19791,Operative surgery
+WO,WO 162-198,Surg. Procedure/Armamentarium,617.05,Surgery utilizing specific instruments & techniques
+WO,WO 162-198,Surg. Procedure/Armamentarium,617.91,Operative surgery
+WO,WO 200-460,Anesthesia,362.19796,Anesthesiology
+WO,WO 200-460,Anesthesia,617.96,Anesthesiology
+WO,WO 500-517,Operative Surg./Surg. Techniques,362.19705,Surgery utilizing specific instruments & techniques
+WO,WO 500-517,Operative Surg./Surg. Techniques,617.05,Surgery utilizing specific instruments & techniques
+WO,WO 500-517,Operative Surg./Surg. Techniques,617.91,Operative surgery
+WO,WO 600-640,Plastic Surgery,362.19795,Plastic surgery; Organ transplants
+WO,WO 600-640,Plastic Surgery,617.95,Plastic surgery; Organ transplants
+WO,WO 700-820,Traumatic/Industrial/Emerg. Surg.,362.1971,Injuries & wounds
+WO,WO 700-820,Traumatic/Industrial/Emerg. Surg.,362.19799,Military surgery
+WO,WO 700-820,Traumatic/Industrial/Emerg. Surg.,617.1,Injuries & wounds
+WO,WO 700-820,Traumatic/Industrial/Emerg. Surg.,617.99,Military surgery
+WO,WO 925-950,Surgery in Special Age Groups,362.19797,Geriatric surgery
+WO,WO 925-950,Surgery in Special Age Groups,362.19798,Pediatric surgery
+WO,WO 925-950,Surgery in Special Age Groups,617.97,Geriatric surgery
+WO,WO 925-950,Surgery in Special Age Groups,617.98,Pediatric surgery
+W,WP,Gynecology,362.1981,Gynecology
+W,WP,Gynecology,618.1,Gynecology
+WP,WP 1-390,Gynecology (General),362.1981,Gynecology
+WP,WP 1-390,Gynecology (General),611.65,Ovaries & fallopian tubes
+WP,WP 1-390,Gynecology (General),618.1,Gynecology
+WP,WP 400-480,Uterus & Cervix Uteri,362.19814,Diseases of uterus
+WP,WP 400-480,Uterus & Cervix Uteri,618.14,Diseases of uterus
+WP,WP 505-660,Physiology & Functional Disorders,362.1981,Gynecology
+WP,WP 505-660,Physiology & Functional Disorders,612.62,Female reproductive system
+WP,WP 505-660,Physiology & Functional Disorders,618.1,Gynecology
+WP,WP 800-910,Breast,362.19819,Diseases of breast
+WP,WP 800-910,Breast,612.664,Mammary glands & lactation
+WP,WP 800-910,Breast,616.99449,Breast cancer--medicine
+WP,WP 800-910,Breast,618.19,Diseases of breast
+W,WQ,Obstetrics,362.1982,Obstetrics
+W,WQ,Obstetrics,618.2,Obstetrics
+WQ,WQ 11,Obstetrics--History,362.1982009,Obstetrics--history
+WQ,WQ 11,Obstetrics--History,618.2009,Obstetrics--history
+WQ,WQ 1-175,Obstetrics (General),362.1982,Obstetrics
+WQ,WQ 1-175,Obstetrics (General),618.2,Obstetrics
+WQ,WQ 200-260,Pregnancy,362.1982,Obstetrics
+WQ,WQ 200-260,Pregnancy,362.1983,Diseases & complications of pregnancy
+WQ,WQ 200-260,Pregnancy,612.63,Pregnancy & childbirth
+WQ,WQ 200-260,Pregnancy,618.2,Obstetrics
+WQ,WQ 200-260,Pregnancy,618.3,Diseases & complications of pregnancy
+WQ,WQ 300-330,Labor,362.1984,Childbirth (Parturition)--Labor
+WQ,WQ 300-330,Labor,362.1985,Complicated labor (Dystocia)
+WQ,WQ 300-330,Labor,618.4,Childbirth (Parturition)--Labor
+WQ,WQ 300-330,Labor,618.5,Complicated labor (Dystocia)
+WQ,WQ 400-450,Obstetrical Surgery,362.1988,Obstetrical surgery
+WQ,WQ 400-450,Obstetrical Surgery,618.8,Obstetrical surgery
+WQ,WQ 500-505,Puerperium,362.1986,Normal puerperium
+WQ,WQ 500-505,Puerperium,362.1987,Puerperal diseases
+WQ,WQ 500-505,Puerperium,618.6,Normal puerperium
+WQ,WQ 500-505,Puerperium,618.7,Puerperal diseases
+W,WR,Dermatology,362.1965,"Diseases of integument, hair, nails"
+W,WR,Dermatology,362.19677,Diseases of connective tissues
+W,WR,Dermatology,362.197477,Skin--surgery
+W,WR,Dermatology,611.77,Integument
+W,WR,Dermatology,612.79,Integument; Skin
+W,WR,Dermatology,616.5,"Diseases of integument, hair, nails"
+W,WR,Dermatology,616.77,Diseases of connective tissues
+W,WR,Dermatology,617.477,Skin--surgery
+WR,WR 11,Dermatology--History,362.1965009,"Diseases of integument, hair, nails--history"
+WR,WR 11,Dermatology--History,616.5009,"Diseases of integument, hair, nails--history"
+W,WS,Pediatrics,362.19892,Pediatrics
+W,WS,Pediatrics,618.92,Pediatrics
+WS,WS 11,Pediatrics--History,362.19892,Pediatrics--history
+WS,WS 11,Pediatrics--History,618.920009,Pediatrics--history
+W,WT,Geriatrics/Chronic Diseases,362.196044,Chronic diseases
+W,WT,Geriatrics/Chronic Diseases,362.19897,Geriatric disorders
+W,WT,Geriatrics/Chronic Diseases,616.044,Chronic diseases
+W,WT,Geriatrics/Chronic Diseases,618.97,Geriatrics
+WT,WT 11,Geriatrics/Chronic Dis.--History,362.196044,Chronic diseases--history
+WT,WT 11,Geriatrics/Chronic Dis.--History,616.04409,Chronic diseases--history
+W,WU,Dentistry/Oral Surgery,362.197522,Oral region
+W,WU,Dentistry/Oral Surgery,362.1976,Dentistry
+W,WU,Dentistry/Oral Surgery,617.522059,Oral region--surgery
+W,WU,Dentistry/Oral Surgery,617.6,Dentistry
+WU,WU 11,Dentistry/Oral Surg.--History,362.1976009,Dentistry--history
+WU,WU 11,Dentistry/Oral Surg.--History,617.5220591,Oral region--surgery--history
+WU,WU 11,Dentistry/Oral Surg.--History,617.609,Dentistry--history
+W,WV,Otorhinolaryngology,362.19621,"Diseases of nose, larynx, accessory organs"
+W,WV,Otorhinolaryngology,362.19622,"Diseases of larynx, glottis, vocal cords, epiglottis"
+W,WV,Otorhinolaryngology,362.19751,Otorhinolaryngology
+W,WV,Otorhinolaryngology,362.1978,Otology & audiology
+W,WV,Otorhinolaryngology,616.21,"Diseases of nose, larynx, accessory organs"
+W,WV,Otorhinolaryngology,616.22,"Diseases of larynx, glottis, vocal cords, epiglottis"
+W,WV,Otorhinolaryngology,617.51,Head
+W,WV,Otorhinolaryngology,617.8,Otology & audiology
+WV,WV 11,Otorhinolaryngology--History,362.1975101,Otorhinolaryngology--history
+WV,WV 11,Otorhinolaryngology--History,617.5109,Head--history
+W,WW,Ophthalmology,362.1977,Ophthalmology
+W,WW,Ophthalmology,617.7,Ophthalmology
+WW,WW 11,Ophthalmology--History,362.1977009,Ophthalmology--history
+WW,WW 11,Ophthalmology--History,617.709,Ophthalmology--history
+W,WX,Hospitals & Health Facilities,362.11,Hospitals & related institutions
+WX,WX 11,Hospitals/Health Fac.--History,362.1109,Hospitals & related institutions--history
+W,WY,Nursing,362.173,Nurses--health services
+W,WY,Nursing,610.73,Nursing
+WY,WY 11,Nursing--History,362.17309,Nurses--health services--history
+WY,WY 11,Nursing--History,610.7309,Nursing--history
+W,WZ,History of Medicine,362.109,Diseases (Human)--history
+W,WZ,History of Medicine,610.9,Medicine--history
+LCC,Z,"Bibliography, Library Science",na,na
+Z,Z 40-104.5,Books. Writing. Paleography. Libraries. Bibliography,652-653,Processes of written communication; Shorthand
+Z,Z 40-104.5,Books. Writing. Paleography. Libraries. Bibliography,686,Printing & related activities
+Z,Z 40-104.5,Books. Writing. Paleography. Libraries. Bibliography,745.6,"Calligraphy, heraldic design, illumination"
+Z,Z 105-115.5,Books. Writing. Paleography. Libraries. Bibliography,90,"Manuscripts, rare books, other rare printed materials"
+Z,Z 105-115.5,Books. Writing. Paleography. Libraries. Bibliography,417.7,Paleography
+Z,Z 116-659,Books. Writing. Paleography. Libraries. Bibliography,2,Books
+Z,Z 116-659,Books. Writing. Paleography. Libraries. Bibliography,70.5,Publishing
+Z,Z 116-659,Books. Writing. Paleography. Libraries. Bibliography,686,Printing & related activities
+Z,Z 662-1000.5,Books. Writing. Paleography. Libraries. Bibliography,20,Library & information sciences
+Z,Z 699-699.5,Books. Writing. Paleography. Libraries. Bibliography,025.04-025.06,Information storage & retrieval systems
+Z,Z 1001-8999,Books. Writing. Paleography. Libraries. Bibliography,10,Bibliography
+Z,ZA,Information resources (General),na,na
+ZA,ZA 3150-3159,Information resources (General),27,"General libraries, archives, information centers"
+ZA,ZA 3201-3250,Information resources (General),303.4833,Information technology--social effects
+ZA,ZA 4050-4480,Information resources (General),025.04-025.06,Information storage & retrieval systems
+ZA,ZA 4050-4480,Information resources (General),25.524,Information search & retrieval
+ZA,ZA 5060-5185,Information resources (General),25.04,Information storage & retrieval systems

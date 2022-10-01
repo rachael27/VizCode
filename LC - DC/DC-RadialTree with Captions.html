@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+    <title>LCC/DC Radial Tree</title>
+
+    <style>
+        .node {
+            cursor: pointer;
+        }
+
+        .node circle {
+            fill: #9b8f8f;
+            stroke: steelblue;
+            stroke-width: 3px;
+        }
+
+        .node text {
+            font: 12px sans-serif;
+        }
+
+        .link {
+            fill: none;
+            stroke: hsl(216, 54%, 36%);
+            stroke-width: 0.5px;
+        }
+
+        div.tooltip {
+            position: absolute;
+            text-align: center;
+            width: 200px;
+            height: 50px;
+            padding: 2px;
+            font: 12px sans-serif;
+            background: lightsteelblue;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+
+        /*
+        #lccontent, #dccontent, #space {
+           
+  display: inline-block;
+}
+*/
+    </style>
+
+
+
+</head>
+<!-- Load d3.js -->
+
+<body>
+    <button onclick="clearColor()">Clear Color</button>
+    <button onclick="clearCaptions()">Clear Captions</button>
+    <button onclick="addCaptions()">Add Captions</button>
+    <div id="lccontent">
+        <h1>Library of Congress</h1>
+
+    </div>
+    <div id="space"></div>
+    <div id="dccontent">
+        <h1>Dewey Decimal System</h1>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-1.7.2.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script type="text/javascript">
+
+        var div = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+
+
+        var data = []; var lccdata = []; var dcdata = []; var lcset = new Set();
+        var dcset = new Set();
+
+        dcdata.push({
+            //  "lccparent": "na", "lccchild": "na", "lcccaption": "na", "lcid": "na",
+            "dcchild": "DC", "dcparent": "", "dccaption": "DC ROOT", "dcclass": "root"
+        });
+
+        dcdata.push({
+            // "lccparent": "na", "lccchild": "na", "lcccaption": "na", "lcid": "na",
+            "dcchild": "000", "dcparent": "DC", "dccaption": "Computer science, information & general works", "dcclass": ""
+        });
+        dcset.add("000");
+
+        dcdata.push({
+            // "lccparent": "na", "lccchild": "na", "lcccaption": "na", "lcid": "na",
+            "dcchild": "100", "dcparent": "DC", "dccaption": "Philosophy & psychology", "dcclass": ""
+        });
+        dcset.add("100");
+
+        dcdata.push({
+            // "lccparent": "na", "lccchild": "na", "lcccaption": "na", "lcid": "na",
+            "dcchild": "200", "dcparent": "DC", "dccaption": "Religion", "dcclass": ""
+        });
+        dcset.add("200");
+
+        dcdata.push({
+            //"lccparent": "na", "lccchild": "na", "lcccaption": "na", "lcid": "na",
+            "dcchild": "300", "dcparent": "DC", "dccaption": "Social sciences", "dcclass": ""
+        });
+        dcset.add("300");
+
+        dcdata.push({
+            // "lccparent": "na", "lccchild": "na", "lcccaption": "na", "lcid": "na",
+            "dcchild": "400", "dcparent": "DC", "dccaption": "Language", "dcclass": ""
+        });
+        dcset.add("400");
+
+        dcdata.push({
+            // "lccparent": "na", "lccchild": "na", "lcccaption": "na", "lcid": "na",
+            "dcchild": "500", "dcparent": "DC", "dccaption": "Pure Science", "dcclass": ""
+        });
+        dcset.add("500");
+
+        dcdata.push({
+            // "lccparent": "na", "lccchild": "na", "lcccaption": "na", "lcid": "na",
+            "dcchild": "600", "dcparent": "DC", "dccaption": "Technology", "dcclass": ""
+        });
+        dcset.add("600");
+
+        dcdata.push({
+            // "lccparent": "na", "lccchild": "na", "lcccaption": "na", "lcid": "na",
+            "dcchild": "700", "dcparent": "DC", "dccaption": "Arts & recreation", "dcclass": ""
+        });
+        dcset.add("700");
+
+        dcdata.push({
+            //  "lccparent": "na", "lccchild": "na", "lcccaption": "na", "lcid": "na",
+            "dcchild": "800", "dcparent": "DC", "dccaption": "Literature", "dcclass": ""
+        });
+        dcset.add("800");
+
+        dcdata.push({
+            //  "lccparent": "na", "lccchild": "na", "lcccaption": "na", "lcid": "na",
+            "dcchild": "900", "dcparent": "DC", "dccaption": "History & geography", "dcclass": ""
+        });
+        dcset.add("900");
+
+
+
+
+
+        d3.csv("LC-DC.csv", function (data) {
+
+            //console.log(data.length);
+            for (i = 0; i < 1200; i++) {
+            //start reading lcc file
+                if (!lcset.has(data[i].lccchild)) {
+
+                   
+                    if(data[i].lccchild=="LCC"){
+                    lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild });
+                    lcset.add(data[i].lccchild);
+                }
+
+                else { //for every other node that isnt the root
+
+var lccode=data[i].lccchild.split(" ");
+console.log(data[i].lccchild+" "+lccode.length);
+if(lccode.length==1) //if there is a space in the lcchild
+{
+    if(lccode[0].length==1){ //if it is a single letter eg. A
+    console.log(data[i].lccchild);
+    lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild });
+    lcset.add(data[i].lccchild);
+    }
+
+    else if(lccode[0].length==2){ //if it is a DOUBLE letter eg. AC add A,AC
+    console.log(data[i].lccchild.charAt(0)+" "+data[i].lccchild.charAt(0)+data[i].lccchild.charAt(1));
+    lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild.charAt(0)+" "+data[i].lccchild.charAt(0)+data[i].lccchild.charAt(1) });
+    lcset.add(data[i].lccchild);
+    }
+}
+
+else{  //size of array is more than 1
+console.log("lccode "+lccode[0]+lccode[0].length);
+if(lccode[0].length==1){ //if it is a single letter on 1 side of the array eg. A 100
+    console.log("l1 "+data[i].lccchild);
+lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild });
+lcset.add(data[i].lccchild);
+}
+
+else if(lccode[0].length==2){ //if it is a double letter on 1 side of the array eg. AC 100
+    console.log("l2 "+data[i].lccchild.charAt(0)+" "+data[i].lccchild.charAt(0)+data[i].lccchild.charAt(1));
+lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild.charAt(0)+" "+data[i].lccchild.charAt(0)+data[i].lccchild.charAt(1) });
+lcset.add(data[i].lccchild);
+}
+
+}
+
+                   
+                }
+
+
+
+                  
+                }
+                //finish reading lcc file
+                
+
+
+
+
+                /*
+                if (!lcset.has(data[i].lccchild)) {
+                    if(data[i].lccchild=="LCC"){
+                    lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild });
+                }
+
+                else if(data[i].lccchild.length==1){
+                    lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild.charAt(0) });
+                }
+
+                else if(data[i].lccchild.length==2){
+                    lccdata.push({ "lccchild": data[i].lccchild, "lccparent": data[i].lccparent, "lcccaption": data[i].lcccaption, "lccclass": data[i].lccchild.charAt(0)+" "+data[i].lccchild.charAt(0)+data[i].lccchild.charAt(1) });
+                }
+                lcset.add(data[i].lccchild);     
+                }
+                */
+                //finish reading lcc file
+
+
+
+
+
+                //start reading dc file
+                dcparent = "";
+
+
+                data[i].dcchild = data[i].dcchild.replace(/\s/g, '');
+                //console.log(data[i].dcchild);
+                //if dcchild, dcparent and dccaption are same, skip duplicate values
+
+                if (!data[i].dcchild.includes("na"))
+                    if (data[i].dcchild.includes("-")) {
+                        // console.log("range "+data[i].dcchild);
+                        var range = data[i].dcchild.split("-");
+
+                        // if(range[0]==range[1])
+
+                        /*
+                        if(!dcset.has(data.dcchild)){
+                          dcdata.push({"dcchild":data[i].dcchild,"dcparent":data[i].dcchild.charAt(0)+"00","dccaption":data[i].dccaption});
+                        }
+                */
+
+                        //console.log("-"+range[0]+" "+range[1]);
+                        //970-970.05
+                        for (var r = 0; r < range.length; r++) {
+                            // console.log(range[r]);
+                            //add dcparent of 362.15=> 362
+                            if (range[r].includes(".")) {
+                                dcparent = range[r].substring(0, range[r].indexOf("."));
+                                if (!dcset.has(range[r])) {
+                                    //         console.log(dcparent+" "+range[r]);
+
+                                    //console.log(range[r]+" parent "+dcparent);
+                                    dcdata.push({ "dcchild": range[r], "dcparent": dcparent, "dccaption": data[i].dccaption, "dcclass": data[i].lccchild });
+                                    dcset.add(range[r]);
+                                    //console.log(" "+range[r]+" "+dcparent);
+                                }
+
+                                //add dcparent of 362=> 300
+                                if (!dcset.has(dcparent)) {
+                                    // console.log(dcparent+" parentx100 "+range[r].charAt(0)+"00");
+                                    dcset.add(dcparent);
+                                    dcdata.push({ "dcchild": dcparent, "dcparent": range[r].charAt(0) + "00", "dccaption": data[i].dccaption, "dcclass": data[i].lccchild });
+                                }
+
+                            }
+
+                            else {
+                                //   console.log("with - without .");
+                                if (!dcset.has(range[r])) {
+                                    dcset.add(range[r]);
+                                    dcparent = range[r].charAt(0) + "00";
+                                    // console.log(range[r]+" "+dcparent);
+                                    dcdata.push({ "dcchild": range[r], "dcparent": dcparent, "dccaption": data[i].dccaption, "dcclass": data[i].lccchild });
+                                }
+                            }
+
+                        }
+
+
+
+
+
+
+
+
+                    }
+
+                    else if (data[i].dcchild.includes(".")) {
+                        //add dcparent of 362.15=> 362
+
+                        //console.log("only .");
+                        dcparent = data[i].dcchild.substring(0, data[i].dcchild.indexOf("."));
+                        if (!dcset.has(data[i].dcchild)) {
+
+                            dcdata.push({ "dcchild": data[i].dcchild, "dcparent": dcparent, "dccaption": data[i].dccaption, "dcclass": data[i].lccchild });
+                            dcset.add(data[i].dcchild);
+                            //console.log(data[i].dcchild+ " "+ dcparent);
+                        }
+
+
+                        //add dcparent of 362=> 300
+                        if (!dcset.has(dcparent)) {
+                            dcset.add(dcparent);
+                            // console.log(dcparent+ " parent x100"+ data[i].dcchild.charAt(0)+"00");
+                            dcdata.push({ "dcchild": dcparent, "dcparent": data[i].dcchild.charAt(0) + "00", "dccaption": data[i].dccaption, "dcclass": data[i].lccchild });
+                        }
+                    }
+
+
+                    else {
+                        //    console.log("without - or .");
+                        if (!dcset.has(data[i].dcchild)) {
+                            dcset.add(data[i].dcchild);
+                            dcparent = data[i].dcchild.charAt(0) + "00";
+                            dcdata.push({ "dcchild": data[i].dcchild, "dcparent": dcparent, "dccaption": data[i].dccaption, "dcclass": data[i].lccchild });
+                            //    console.log(data[i].dcchild+" "+dcparent);
+                        }
+                    }
+                //finish reading dc file
+
+            } //finish reading csv file
+
+
+            console.log(lccdata);
+            console.log(dcdata);
+
+
+
+            // STRATIFY PARAMS
+            //setting stratify params for LCC
+            //  console.log(data.columns);
+            var lccchild = "lccchild";
+            //console.log(child);
+            var lccparent = "lccparent";
+            stratify = d3.stratify()
+                .id(function (d) {
+                    return d[lccchild];
+                })
+                .parentId(function (d) {
+                    return d[lccparent];
+                });
+            var lccstratify = stratify(lccdata);
+            //   console.log(lccstratify);
+
+
+            //setting stratify params for DC
+            //     console.log(data.columns);
+            var dcchild = "dcchild";
+            var dcparent = "dcparent";
+            stratify = d3.stratify()
+                .id(function (d) {
+                    return d[dcchild];
+                })
+                .parentId(function (d) {
+                    // console.log(d[parent]);
+                    return d[dcparent];
+                });
+            var dcstratify = stratify(dcdata);
+            //      console.log(stratify);
+
+
+
+            // SETTING MARGINS 
+            
+           var lccmargin = { top: 100, right: 110, bottom: -100, left: 120 },
+                height = 1000 - lccmargin.right - lccmargin.left,
+                width = 1000 - lccmargin.top - lccmargin.bottom,
+                rectW = 70;
+            rectH = 30;
+            //bbox = NaN,
+            maxTextLength = 0;
+            
+
+            var dcmargin = { top: 100, right: 110, bottom: -100, left: 120 },
+                height = 1000 - dcmargin.right - dcmargin.left,
+                width = 1000 - dcmargin.top - dcmargin.bottom,
+                rectW = 70;
+            rectH = 30;
+            //bbox = NaN,
+            maxTextLength = 0;
+
+            // MARGINS CLOSE
+
+
+            //COMPUTE LAYOUT FOR LCC + DC
+
+            var lccroot = d3.hierarchy(lccstratify);
+            //  console.log(lccroot.descendants());
+            //  console.log(lccroot.links());
+
+
+            var dcroot = d3.hierarchy(dcstratify);
+            // console.log(dcroot.descendants());
+            // console.log(dcroot.links());
+
+            //LAYOUT OVER 
+
+
+            //SETTING UP LCC PROPERTIES FOR SVG, TREE, NODES AND LINKS
+
+            d3.select("#lccontent").append("h4")
+            .text("Total no. of nodes "+lccdata.length);
+                //.style("font-size", "8px");
+
+                
+
+
+            var lccsvg = d3.select("#lccontent")
+                .append("svg")
+                .attr("width", 2000)
+                .attr("height", 2000);
+
+            var g = lccsvg
+                .append("g")
+                .attr("transform", "translate(" + (width + 100) + "," + (height  + 90) + ")");
+            var radius = 700;
+
+
+            var lcctree = d3.tree()
+                .size([2 * Math.PI, radius])
+                .separation(function (a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+
+            var lccroot = lcctree(d3.hierarchy(lccstratify));
+                
+
+            var lcclink = g.selectAll(".link")
+                .data(lccroot.links())
+                // .data(root.links().filter(function(d) { return d.source.depth <=1 }))
+                .enter()
+                .append("path")
+                .attr("class", "link")
+                .attr("d", d3.linkRadial()
+                    .angle(function (d) { return d.x; })
+                    .radius(function (d) { return d.y; }));
+
+
+            var lccnode = g.selectAll(".node")
+                .data(lccroot.descendants())
+                //  .data(root.descendants().filter(function(d) { return d.depth <= 2 }))
+                .enter()
+                .append("g")
+                .attr("class", function (d) {
+                    return d.data.data.lccclass;
+                })
+                .attr("class", function (d) { return "node" + (d.children ? " node--internal" : " node--leaf")+" "+d.data.data.lccclass; })
+                .attr("transform", function (d) { return "translate(" + radialPoint(d.x, d.y) + ")"; })
+
+
+                .on("dblclick", function (d) {
+                    updatedlccnodes = d.descendants();
+                    updatedlcclinks = d.links();
+                    updatelcc(updatedlccnodes, updatedlcclinks);
+                    //   alert(d.descendants() + "node was double clicked");
+                })
+
+                .on("click", function (d) {
+                    console.log("clicked");
+                  
+                    var htmlclass = d.data.data.lccclass;
+            
+                   // console.log(htmlclass.charAt(0));
+                    dcsvg.selectAll("."+htmlclass).selectAll("text").style("fill", "blue");
+                    
+                    //console.log(lccsvg.selectAll(".F"));
+                    lccsvg.selectAll("."+htmlclass).selectAll("text").style("fill", "blue");
+                   // console.log(lccsvg.selectAll("g[class^=node]"));
+                   // lccsvg.selectAll("g[class^=F]").selectAll("text").style("fill", "blue");           
+                    
+                    /*
+                   var k=lccsvg.selectAll("g").filter(function(d){
+                       console.log(d);
+
+                      /if(d.data.data.lccclass.startsWith(htmlclass))
+                       return d;
+                   });
+k.selectAll("text").style("fill","blue");
+console.log(k);
+*/
+
+                    /*
+console.log(lccsvg.selectAll("g[class^="+htmlclass+"]"));
+                    lccsvg.selectAll("g[class^="+htmlclass+"]").selectAll("text").style("fill", "blue");           
+                    
+                    */
+
+    
+
+
+
+/*
+$('*[class^="text"]') 
+*/       
+
+
+                   
+
+                    /*
+                                        var filtered = lccnode.filter(function (e) {
+                                            return d.descendants().indexOf(e) >= 1
+                                        });
+                    
+                                        filtered.selectAll("text").style("fill", "yellow");
+                    */
+                })
+                .on("mouseover", function (d) {
+
+
+
+                    var filtered = lccnode.filter(function (e) {
+                        return d.ancestors().indexOf(e) > -1
+                    });
+                    //  console.log(filtered);
+                    filtered.selectAll("circle").style("fill", "red");
+                    filtered.selectAll("text").style("fill", "red");
+
+                    div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    div.html(d.data.data.lcccaption + "<br/>" + d.data.data.lccchild)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+
+
+
+                })
+                .on("mouseout", function (d) {
+                    var filtered = lccnode.filter(function (e) {
+                        return d.ancestors().indexOf(e) > -1
+                    });
+                    filtered.selectAll("circle").style("fill", "#555");
+                    filtered.selectAll("text").style("fill", "#555");
+
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+
+
+                });
+
+            lccnode.append("text")
+                .style("font-size", "12px")
+                .attr("dy", "0.31em")
+                .attr("x", function (d) { return d.x < Math.PI === !d.children ? 6 : -6; })
+                .attr("text-anchor", function (d) { return d.x < Math.PI === !d.children ? "start" : "end"; })
+                .attr("transform", function (d) { return "rotate(" + (d.x < Math.PI ? d.x - Math.PI / 2 : d.x + Math.PI / 2) * 180 / Math.PI + ")"; })
+                .text(function (d) {
+                    // console.log(d); 
+                    // return "hi"; });
+                    return d.data.data.lcccaption;
+                });
+
+            // SETTING UP OVER FOR LCC
+
+
+
+            var spacesvg = d3.select("#space")
+                .append("svg")
+                .attr("width", 100)
+                .attr("height", 100);
+
+
+
+            //SETTING UP DC PROPERTIES FOR SVG, TREE, NODES AND LINKS
+
+            d3.select("#dccontent").append("h4")
+            .text("Total no. of nodes "+dcdata.length);
+
+            var dcsvg = d3.select("#dccontent")
+                .append("svg")
+                .attr("width", 2000)
+                .attr("height", 2000);
+
+            var g = dcsvg
+                .append("g")
+                .attr("transform", "translate(" + (width  + 40) + "," + (height + 120) + ")");
+            var radius = 800;
+
+
+
+            var dctree = d3.tree()
+                .size([2 * Math.PI, radius])
+                .separation(function (a, b) { return (a.parent == b.parent ? 1 : 10) / a.depth; });
+
+            var dcroot = dctree(d3.hierarchy(dcstratify));
+
+            var dclink = g.selectAll(".link")
+                .data(dcroot.links())
+                // .data(root.links().filter(function(d) { return d.source.depth <=1 }))
+                .enter()
+                .append("path")
+                .attr("class", "link")
+                .attr("d", d3.linkRadial()
+                    .angle(function (d) { return d.x; })
+                    .radius(function (d) { return d.y; }));
+
+            var dcnode = g.selectAll(".node")
+                .data(dcroot.descendants())
+                //  .data(root.descendants().filter(function(d) { return d.depth <= 2 }))
+                .enter()
+                .append("g")
+                .attr("class", function (d) {
+                    return d.data.data.dcclass;
+                })
+                .attr("class", function (d) { return "node" + (d.children ? " node--internal" : " node--leaf")+" "+d.data.data.dcclass; })
+
+                .attr("transform", function (d) { return "translate(" + radialPoint(d.x, d.y) + ")"; })
+
+
+                .on("dblclick", function (d) {
+                    updateddcnodes = d.descendants();
+                    updateddclinks = d.links();
+                    updatedc(updateddcnodes, updateddclinks);
+                    //  alert(d.descendants()+"node was double clicked");
+                })
+
+                .on("click", function (d) {
+
+/*
+                    var filtered = dcnode.filter(function (e) {
+                        return d.descendants().indexOf(e) >= 1
+                    });
+*/
+                    var htmlclass = d.data.data.dcclass;
+                   dcsvg.selectAll("."+htmlclass).selectAll("text").style("fill", "purple");
+                    lccsvg.selectAll("."+htmlclass).selectAll("text").style("fill", "purple");
+
+                })
+                .on("mouseover", function (d) {
+                    var filtered = dcnode.filter(function (e) {
+                        return d.ancestors().indexOf(e) > -1
+                    });
+                    //  console.log(filtered);
+                    filtered.selectAll("circle").style("fill", "red");
+                    filtered.selectAll("text").style("fill", "red");
+
+                    div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    div.html(d.data.data.dccaption + "<br/>" + d.data.data.dcchild)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+
+                })
+                .on("mouseout", function (d) {
+                    var filtered = dcnode.filter(function (e) {
+                        return d.ancestors().indexOf(e) > -1
+                    });
+                    filtered.selectAll("circle").style("fill", "#555");
+                    filtered.selectAll("text").style("fill", "#555");
+
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+
+
+                });
+
+
+
+            dcnode.append("text")
+                .style("font-size", "8px")
+                .attr("dy", "0.9em")
+                .attr("x", function (d) { return d.x < Math.PI === !d.children ? -20 : 15; })
+                .attr("text-anchor", function (d) { return d.x < Math.PI === !d.children ? "start" : "end"; })
+                .attr("transform", function (d) { return "rotate(" + (d.x < Math.PI ? d.x - Math.PI / 2 : d.x + Math.PI / 2) * 180 / Math.PI + ")"; })
+                .text(function (d) {
+                    // console.log(d); 
+                    //  return d.data.data.dcchild;
+                    return d.data.data.dccaption;
+                });
+
+
+            // SETTING UP OVER FOR DC
+
+
+
+
+
+
+
+
+            //UPDATE FOR LCC
+            function updatelcc(updatedlccnodes, updatedlcclinks) {
+
+                lccsvg.selectAll('.node').remove();
+                lccsvg.selectAll('.link').remove();
+                console.log("Reached");
+                console.log(updatedlccnodes);
+                console.log(updatedlcclinks);
+
+
+                //updatednodes=root(updatednodes);
+                //updatedlinks=root(updatedlinks);
+
+
+                var lcclink = lccsvg.selectAll("g").selectAll(".link")
+                    .data(updatedlcclinks)
+                    // .data(root.links().filter(function(d) { return d.source.depth <=1 }))
+                    .enter()
+                    .append("path")
+                    .attr("class", "link")
+                    .attr("d", d3.linkRadial()
+                        .angle(function (d) { return d.x; })
+                        .radius(function (d) { return d.y; }));
+
+
+                var lccnode = lccsvg.selectAll("g").selectAll(".node")
+                    .data(updatedlccnodes)
+                    //  .data(root.descendants().filter(function(d) { return d.depth <= 2 }))
+                    .enter()
+                    .append("g")
+                    .attr("class", function (d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
+                    .attr("transform", function (d) { return "translate(" + radialPoint(d.x, d.y) + ")"; })
+                    .on("dblclick", function (d) {
+                      //  updatelcc();
+                        //    alert(d.descendants() + "node was double clicked");
+                    })
+
+                    .on("click", function (d) {
+
+                        var filtered = lccnode.filter(function (e) {
+                            return d.descendants().indexOf(e) >= 1
+                        });
+
+                        filtered.selectAll("text").style("fill", "yellow");
+
+                    })
+                    .on("mouseover", function (d) {
+                        var filtered = lccnode.filter(function (e) {
+                            return d.ancestors().indexOf(e) > -1
+                        });
+                        console.log(filtered);
+                        filtered.selectAll("circle").style("fill", "red");
+                        filtered.selectAll("text").style("fill", "red");
+
+                        div.transition()
+                            .duration(200)
+                            .style("opacity", .9);
+                        div.html(d.data.data.lcccaption + "<br/>" + d.data.data.lccchild)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px");
+
+                    })
+                    .on("mouseout", function (d) {
+                        var filtered = lccnode.filter(function (e) {
+                            return d.ancestors().indexOf(e) > -1;
+                        });
+                        filtered.selectAll("circle").style("fill", "#555");
+                        filtered.selectAll("text").style("fill", "#555");
+
+                        div.transition()
+                            .duration(500)
+                            .style("opacity", 0);
+
+
+
+                    });
+
+
+
+                lccnode.append("text")
+                    .style("font-size", "10px")
+                    .attr("dy", "0.9em")
+                    .attr("x", function (d) { return d.x < Math.PI === !d.children ? -20 : 15; })
+                    .attr("text-anchor", function (d) { return d.x < Math.PI === !d.children ? "start" : "end"; })
+                    .attr("transform", function (d) { return "rotate(" + (d.x < Math.PI ? d.x - Math.PI / 2 : d.x + Math.PI / 2) * 180 / Math.PI + ")"; })
+                    .text(function (d) {
+                        // console.log(d); 
+                        return d.data.data.lcccaption;
+                        //    return d.data.data.caption; 
+                    });
+
+            }
+            //UPDATE OVER FOR LCC
+
+
+
+
+
+
+            //UPDATE START FOR DC
+
+            function updatedc(updateddcnodes, updateddclinks) {
+                dcsvg.selectAll('.node').remove();
+                dcsvg.selectAll('.link').remove();
+                console.log(updateddcnodes);
+
+
+                //updatednodes=root(updatednodes);
+                //updatedlinks=root(updatedlinks);
+
+
+                var dclink = g.selectAll(".link")
+                    .data(updateddclinks)
+                    // .data(root.links().filter(function(d) { return d.source.depth <=1 }))
+                    .enter()
+                    .append("path")
+                    .attr("class", "link")
+                    .attr("d", d3.linkRadial()
+                        .angle(function (d) { return d.x; })
+                        .radius(function (d) { return d.y; }));
+
+
+                var dcnode = g.selectAll(".node")
+                    .data(updateddcnodes)
+                    //  .data(root.descendants().filter(function(d) { return d.depth <= 2 }))
+                    .enter()
+                    .append("g")
+                    .attr("class", function (d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
+                    .attr("transform", function (d) { return "translate(" + radialPoint(d.x, d.y) + ")"; })
+
+                    .on("dblclick", function (d) {
+                       // update();
+                        //  alert(d.descendants()+"node was double clicked");
+                    })
+
+                    .on("click", function (d) {
+
+                        var filtered = dcnode.filter(function (e) {
+                            return d.descendants().indexOf(e) >= 1;
+                        });
+
+                        filtered.selectAll("text").style("fill", "yellow");
+
+                    })
+                    .on("mouseover", function (d) {
+                        var filtered = dcnode.filter(function (e) {
+                            return d.ancestors().indexOf(e) > -1;
+                        });
+                        console.log(filtered);
+                        filtered.selectAll("circle").style("fill", "red");
+                        filtered.selectAll("text").style("fill", "red");
+
+                        div.transition()
+                            .duration(200)
+                            .style("opacity", .9);
+                        div.html(d.data.data.dccaption + "<br/>" + d.data.data.dcchild)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px");
+
+                    })
+                    .on("mouseout", function (d) {
+                        var filtered = dcnode.filter(function (e) {
+                            return d.ancestors().indexOf(e) > -1
+                        });
+                        filtered.selectAll("circle").style("fill", "#555");
+                        filtered.selectAll("text").style("fill", "#555");
+
+                        div.transition()
+                            .duration(500)
+                            .style("opacity", 0);
+
+                    });
+
+
+
+                dcnode.append("text")
+                    .style("font-size", "10px")
+                    .attr("dy", "0.9em")
+                    .attr("x", function (d) { return d.x < Math.PI === !d.children ? -20 : 15; })
+                    .attr("text-anchor", function (d) { return d.x < Math.PI === !d.children ? "start" : "end"; })
+                    .attr("transform", function (d) { return "rotate(" + (d.x < Math.PI ? d.x - Math.PI / 2 : d.x + Math.PI / 2) * 180 / Math.PI + ")"; })
+                    .text(function (d) {
+                        // console.log(d); 
+                        // return d.data.data.dcchild;
+                        return d.data.data.dccaption;
+                    });
+
+
+
+
+
+            }
+
+            //UPDATE OVER FOR DC
+
+
+
+        });
+
+
+
+        function radialPoint(x, y) {
+            return [(y = +y) * Math.cos(x -= Math.PI / 2), y * Math.sin(x)];
+        }
+
+        function clearColor() {
+            d3.select("#lccontent")
+                .select("svg")
+                .select("g")
+                .selectAll("g")
+                //.selectAll("circle").style("fill", "black")
+                .selectAll("text").style("fill", "black");
+
+
+            d3.select("#dccontent")
+                .select("svg")
+                .select("g")
+                .selectAll("g")
+                //.selectAll("circle").style("fill", "black")
+                .selectAll("text").style("fill", "black");
+
+
+        }
+
+
+        function clearCaptions() {
+            d3.select("#lccontent")
+                .select("svg")
+                .select("g")
+                .selectAll("g")
+                //.selectAll("circle").style("fill", "black")
+                .selectAll("text").style("opacity", 0);
+
+
+            d3.select("#dccontent")
+                .select("svg")
+                .select("g")
+                .selectAll("g")
+                //.selectAll("circle").style("fill", "black")
+                .selectAll("text").style("opacity", 0);
+
+
+        }
+
+
+        function addCaptions() {
+            d3.select("#lccontent")
+                .select("svg")
+                .select("g")
+                .selectAll("g")
+                //.selectAll("circle").style("fill", "black")
+                .selectAll("text").style("opacity", 1);
+
+
+            d3.select("#dccontent")
+                .select("svg")
+                .select("g")
+                .selectAll("g")
+                //.selectAll("circle").style("fill", "black")
+                .selectAll("text").style("opacity", 1);
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

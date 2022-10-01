@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <title>DATASET</title>
+  </head>
+  <body>
+    <div id="dynamiccontent">
+      <h1 id="qnltitle"></h1>
+      <h1 id="uosetitle"></h1>
+    </div>
+    <div id="content"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script>
+      var dataset;
+      d3.csv("File/HistoryOfPolitics28ISBN.csv", function (qnl) {
+        d3.csv("File/AllClassJ.csv", function (uose) {
+          var numbooks = 0;
+          var books = [];
+          const stime = new Date();
+          let starttime = stime.getTime();
+          var qnlbooks = 0;
+
+          var uoseisbn = [],
+            qnlisbn = [];
+          // qnlbooks = 9;
+          //  qnlbooks = 10;
+          qnlbooks = qnl.length;
+
+          // console.log(qnl.length + " " + uose.length);
+
+          for (var q = 0; q < qnl.length; q++) {
+            if (qnl[q].ISBN.length != 0) {
+              //qnlisbn = qnl[q].ISBN.split(";");
+              //   console.log(qnl[q].Title);
+              //   console.log(qnl[q].ISBN);
+
+              for (var u = 0; u < uose.length; u++) {
+                if (uose[u].ISBN.length != 0) {
+                  //   console.log(uose[u].Title);
+                  uoseisbn = uose[u].ISBN.split(";");
+                  //   console.log(uoseisbn);
+
+                  for (var uisbn = 0; uisbn < uoseisbn.length; uisbn++) {
+                    //  console.log(uoseisbn);
+                    //   console.log(qnl[q].ISBN);
+                    // if (qnlisbn.length > 0)
+                    // console.log("QNL: " + q + " UOS-E: " + u);
+                    if (qnl[q].ISBN.includes(uoseisbn[uisbn])) {
+                      console.log("ITS A MATCH: " + q + " ");
+
+                      /*
+                      console.log(
+                        "Book title: " + qnl[q].Title + " " + uose[u].Title
+                      );
+*/
+                      // console.log(qnl[q].CallNumber);
+
+                      books.push({
+                        title: qnl[q].Title,
+                        isbn: uoseisbn[uisbn],
+                        qnlcn: qnl[q].CallNumber,
+                        usocn: uose[u].CallNumber,
+                      });
+
+                      numbooks++;
+                      break;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          console.log("Total number of common books " + numbooks);
+          console.log(books);
+          const etime = new Date();
+          let endtime = etime.getTime();
+          console.log(
+            "Total time " +
+              Math.round((endtime - starttime) / 1000) +
+              " seconds"
+          );
+          d3.select("#content")
+            .append("h1")
+            .text("Number of QNL books checked for similarity: " + qnlbooks);
+
+          d3.select("#content")
+            .append("h1")
+            .text("Number of similar books: " + numbooks);
+
+          //books.push("The history of Iran");
+          /*
+          d3.select("#content")
+            .append("h2")
+            .text("Similar books are: " + books);
+*/
+
+          //  console.log(books);
+
+          d3.select("#content")
+            .append("h2")
+            .text(
+              "Total time taken: " +
+                Math.round((endtime - starttime) / 1000) +
+                " second(s)"
+            );
+        });
+      });
+    </script>
+  </body>
+</html>

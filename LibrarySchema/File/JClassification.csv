@@ -1,0 +1,173 @@
+type,classmark,name
+class,JA ,Generalities
+object,JA 000,Introduction to politics in general
+object,JA 10,Periodicals
+object,JA 100,"Current trends, research activities etc"
+object,JA 200,Methodology
+object,JA 300,Meetings
+object,JA 400,Reference materials
+object,JA 500,Biographical sources
+object,JA 600,Bibliography
+object,JA 620,Miscellaneous
+class,JB ,Political thought
+object,JB 000,General
+object,JB 110,Antiquity
+object,JB 120,Middle ages
+object,JB 130,16th century
+object,JB 140,17th century
+object,JB 150,18th century
+object,JB 160,19th century
+object,JB 166, Marx and Engels (original works)
+object,JB 167, Marx and Engels (works about)
+object,JB 170,20th century
+object,JB 200,"Fundamental concepts and ideologies, e.g. power, revolution, sovereignty"
+object,JB 210,Democracy
+object,JB 220,Socialism
+object,JB 230,"Communism, Marxism, Bolshevism"
+object,JB 240,Nationalism
+object,JB 250,"Totalitarianism, fascism"
+object,JB 260,Liberalism
+object,JB 270,Conservatism
+object,JB 280,Anarchism
+object,JB 290,Pacifism
+object,JB 300,Radicalism
+class,JC ,Government and public administration
+object,JC 10,General
+object,JC 20,Commonwealth politics
+object,JC 30,Annual Reports of government departments
+object,JC 60,Administration
+object,JC 70,Local government
+object,JC 80,Colonial government
+object,JC 100,Primary source material
+object,JC 1000,The state: general
+object,JC 1100,Federal states
+object,JC 1200,Corporation; corporate state
+object,JC 2000,Comparative analysis of political systems
+object,JC 2100,Governments general and comparative
+object,JC 2110-2190,"Studies of national governments, structure and political functioning"
+object,JC 2500,Current political situation
+object,JC 3000,Heads of state
+object,JC 3100,Executive incl cabinets
+object,JC 3200,Legislative
+object,JC 3300,Judiciary
+object,JC 3400,"Relations between the powers (i.e. legislative, etc)"
+object,JC 3500,"Advisory bodies, commissions, “Think tanks”, etc"
+object,JC 4000,"Freedoms and civil rights; state security: general and comparative, Human rights (for UK legal aspects see KD)"
+object,JC 4500,Economic and social functions of government
+object,JC 5000,Science and government: general
+object,JC 5010,Periodicals
+object,JC 5020,"Essays, etc"
+object,JC 5110-5180 ,Science and government
+object,JC 5200,Manpower problems
+object,JC 5210,Recruitment
+object,JC 5220,Training
+object,JC 5230,Employment
+object,JC 5240,Management
+object,JC 5300,"Occupational patterns of scientists, including motivation"
+object,JC 5400,Occupational patterns of technologists
+object,JC 5500,"Research, innovation and invention: general"
+object,JC 5510,Industrial organisations
+object,JC 5520,Educational institutions
+object,JC 5530,"Defence programmes (Obsolete,"
+object,JC 5540,Space programmes (do not use
+object,JC 5550,Peaceful use of nuclear energy
+object,JC 6100,"Public administration, bureaucracy"
+object,JC 6200,Civil service
+object,JC 7000,Local government: theory
+object,JC 7100,Local government general and comparative.
+object,JC 8000,"Colonialism, imperialism: theory and ideology"
+object,JC 8100,Colonial theories and ideologies.
+object,JC 8110-8180,"Colonial ideologies, by colonisers"
+object,JC 8200,Administration of colonies
+object,JC 8300,History of colonisation
+object,JC 8400,Administrations of colonies
+class,JD ,Political behaviour : participation in governmental process
+object,JD 210,International communism periodicals - not for communism all parties
+object,JD 1000,Political sociology general Influences on government
+object,JD 1100,Pressure groups in general
+object,JD 1200,Labour influences
+object,JD 1300,Rural influences
+object,JD 1400,Middle class influences
+object,JD 1500,Business influences
+object,JD 1600,Ideological influences
+object,JD 1700,"Military influences (including studies of actual military regimes, e.g. in Africa)"
+object,JD 1800,Religious influences
+object,JD 1900,Ethnic and racial groups
+object,JD 2000,Political parties and social movements: theory and analysis
+object,JD 2100,"Political parties: general and descriptive, including works on international political parties such as the Communist movement"
+object,JD 2110-2180,National political parties - including history
+object,JD 3000,Political behaviour: theory and analysis
+object,JD 3100,"Political attitudes, participation and protest: general descriptive, including e.g. women’s suffrage, students in politics, community politics as"
+object,JD 3200,"Political elites, meritocracy sociology of elites)"
+object,JD 3300,"Propaganda and mass media (hardly used, do not use from now on)"
+object,JD 3310,Political propaganda
+object,JD 3320,Mass media in politics
+object,JD 3400,"Elections, electoral and voting behaviour"
+object,JD 3500,"Electoral systems, electoral reform"
+class,JE ,International relations
+object,JE 000,Theory and methods of study Periodicals
+object,JE 10,General periodicals and annuals
+object,JE 20,International law periodicals
+object,JE 30,International organisations periodicals
+object,JE 100,History of international thought
+object,JE 1000,Treaties
+object,JE 1100,International law
+object,JE 1110,"Space law, law of waterways, maritime law"
+object,JE 1120,"Governments in international life, diplomacy and diplomatic status"
+object,JE 1130,"Individuals in international life, private international law (conflict of laws)"
+object,JE 1140,Law of war and international criminal jurisdiction
+object,JE 1150,"Genocide, war crimes"
+object,JE 1170,"Neutrality (legal aspects in time of war, as distinct from neutralism, meaning non- alignism)"
+object,JE 1200,"International community, world government: general, global governance, supranationalism"
+object,JE 1210,International civil service 1300 United Nations: general
+object,JE 1310,"United Nations: organisation, functions, Security Council, Secretary General, veto"
+object,JE 1320,Admission to membership
+object,JE 1330,General Assembly
+object,JE 1340,Relations with national states
+object,JE 1350,"International Court of Justice, international tribunals, mediation"
+object,JE 1360,International Criminal Court
+object,JE 1400,Special agencies: general
+object,JE 1411,F.A.O.
+object,JE 1412,International Maritime Consultative Organisation
+object,JE 1414,I.L.O.
+object,JE 1416,UNESCO
+object,JE 1417,UNICEF
+object,JE 1418,W.H.O.
+object,JE 1500,Tasks of international organisations: general
+object,JE 1510,"Maintenance of peace, collective security, arbitration"
+object,JE 1520,"Disarmament, relative balance of nuclear power"
+object,JE 1530,Development of international law
+object,JE 1540,Human rights (see also JC 4100) and generally prefer JC
+object,JE 1550,Technical assistance
+object,JE 1560,Trusteeship
+object,JE 1600,Other inter-governmental organisations
+object,JE 1610,"Inter-American system, Organisation of American States"
+object,JE 1620," Atlantic Community, NATO"
+object,JE 1621, Commonwealth
+object,JE 1625,Organisation of African Unity
+object,JE 1630," European economic integration, EEC, EFTA (cf. HZ 12452 for economic aspects) EC/EU"
+object,JE 1631," Council of Europe, European Parliament, Court of Justice of the European Communities. For justice, home affairs and “Third Pillar” see KJE 97"
+object,JE 1633, Coal and Steel Community
+object,JE 1634, Nordic Council
+object,JE 1636,Euratom 1640 Arab League
+object,JE 1650,"SEATO, CENTO, ANZUS"
+object,JE 1700,International non-governmental organisations
+object,JE 2000,International relations
+object,JE 2080,"Conflict theory, game theory"
+object,JE 2090,"Alliance and coalition theory, risk management, bargaining theory"
+object,JE 2200,International relations systems: general histories of development 2210 International relations before 1919
+object,JE 2220,International relations 1919-1945
+object,JE 2230,League of Nations: functions and history
+object,JE 2240, International relations after 1945 Special topics
+object,JE 2241, The West
+object,JE 2242, Soviet bloc
+object,JE 2243," Third world, neutralism, non-alignment"
+object,JE 2244, East-West relations: general
+object,JE 2245," Peaceful coexistence, détentea"
+object,JE 2246, Antarctica
+object,JE 2300,"Foreign policy (obsolete, class instead in history. Materials here should be reclassified, when possible)"
+object,JE 2500,"Civil war, internal, insurrectionary guerrilla war, terrorism"
+class,JF ,Political change and development
+object,JF 000,General and comparative
+object,JF 10,Periodicals
+object,JF 100-900,By area (state politics e.g. JF 210)

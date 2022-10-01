@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    
+    <style>
+.cell {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+        </style>
+        
+
+
+</head>
+<!-- Load d3.js -->
+<body>
+
+    <div id="chart"></div>
+
+<script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+<script src="https://d3js.org/d3.v3.js"></script>
+
+   
+    <script>
+
+        
+        var apps=[]; var treemaparr=[]; var treemapnewarr=[];
+        var dataobj=[];
+        var value=1;
+        var data = d3.csv("QUlogfile.csv", function(error, data) {
+            if (error)
+              throw error;
+
+             
+
+              for (var i = 0; i < data.length; i++) {
+//console.log(data[i].Application);
+
+if(!apps.includes(data[i].Application)){
+apps.push(data[i].Application);
+treemaparr.push({"name":data[i].Application,"value":value++});
+}
+              }
+
+              for (var i = 0; i < treemaparr.length; i++) {
+
+console.log("NAME "+treemaparr[i].name);
+var domains=treemaparr[i].name.split("-");
+console.log(domains.length);
+
+var flag=0;
+if(domains.length==1){
+treemapnewarr.push({"name":treemaparr[i].name,"value":treemaparr[i].value});
+console.log("ONE "+domains[0]+domains.length);
+}
+
+else if(domains.length==2){
+    for(var j = 0; j < treemapnewarr.length; j++) {
+
+    if(treemapnewarr[j].name==domains[0]){
+    treemapnewarr[j].children.push({"name":domains[1],"value":treemaparr[i].value})
+    flag=1;
+    }}
+    
+    if(flag==0)
+treemapnewarr.push({"name":domains[0],"children":[
+{
+    "name":domains[1],
+    "value": treemaparr[i].value
+}]});
+    
+}
+else if(domains.length==3)
+treemapnewarr.push({"name":domains[0],"children":[
+{
+    "name":domains[1],
+    "children":[{
+        "name":domains[2],
+    "value": treemaparr[i].value
+        }]
+    
+}]
+
+});
+              }
+
+              
+//console.log(apps);
+              console.log(treemaparr);
+              console.log(treemapnewarr);
+           
+
+
+        });
+       
+
+
+
+
+
+
+
+    var w = 960; var h = 500; var color = d3.scale.category20();
+  
+  var treemap = d3.layout.treemap()
+      .size([w, h])
+      .sticky(true)
+      .value(function(d) { return d.value; });
+
+     
+ 
+ var div = d3.select("#chart").append("div")
+     .style("position", "relative")
+     .style("width", w + "px")
+     .style("height", h + "px");
+ 
+ d3.json("treedata.json", function(json) {
+   div.data([json]).selectAll("div")
+       .data(treemap.nodes)
+     .enter()
+     .append("div")
+       .attr("class", "cell")
+       .style("background", function(d) { return d.children ? color(d.name) : null; })
+       //.call(cell)
+       .style("left", function(d) { 
+         //  console.log("hello"+d.x);
+           return d.x + "px"; })
+       .style("top", function(d) { return d.y + "px"; })
+       .style("width", function(d) { return d.dx - 1 + "px"; })
+       .style("height", function(d) { return d.dy - 1 + "px"; })
+       .text(function(d) { 
+        //   console.log("data");
+           return d.children ? null : d.name; });
+ 
+ });
+ 
+ function cell() {
+    
+   this
+       .style("left", function(d) { 
+         //  console.log("hello"+d.x);
+           return d.x + "px"; })
+       .style("top", function(d) { return d.y + "px"; })
+       .style("width", function(d) { return d.dx - 1 + "px"; })
+       .style("height", function(d) { return d.dy - 1 + "px"; });
+ }
+
+
+ 
+        
+
+
+        
+     
+    </script>
+  </body>
+</html>
