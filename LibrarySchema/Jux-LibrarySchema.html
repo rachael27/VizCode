@@ -14,8 +14,8 @@
     <script>
 
         d3.queue()
-            .defer(d3.csv, "File/primaryH.csv")
-            .defer(d3.csv, "File/secondaryH.csv")
+            .defer(d3.json, "File/HierStructClassJ.json")
+            .defer(d3.json, "File/HierStructQNL.json")
             .await(function (error, h1, h2) {
                 if (error) throw error;
 
@@ -67,13 +67,15 @@
                 var h1_root = d3.hierarchy(h1_struct);
                 var h2_root = d3.hierarchy(h2_struct);
 
-                //console.log(h1_rootElement.descendants());
-                //console.log(h2_rootElement.descendants());
                 console.log(h1_root.descendants());
 
+                console.log(h1_root.descendants()[0].data);
+                console.log(h2_root.descendants()[0]);
+                //   console.log(h2_rootElement);
 
-                var h1_dims = findDimensions(h1_root);
-                var h2_dims = findDimensions(h2_root);
+
+                var h1_dims = findDimensions(h1_root.descendants()[0]);
+                var h2_dims = findDimensions(h2_root.descendants()[0]);
 
                 console.log(h1_dims);
 
@@ -86,7 +88,10 @@
                     .size([500, 500]);
 
 
-                var h1_tree = tree(h1_root);
+                var h1_tree = tree(h1_root.descendants()[0].data);
+
+                console.log(h1_tree.descendants());
+                console.log(h1_tree.descendants()[0]);
 
 
                 var h1_node = svg
@@ -94,7 +99,7 @@
                     .attr("id", "h1tree")
                     .attr("transform", "translate(" + 100 + "," + 100 + ")")
                     .selectAll(".h1_node")
-                    .data(h1_tree.descendants())
+                    .data(h1_tree.descendants()[0].data)
                     .enter()
                     .append("g")
                     .attr("class", function (d) {
@@ -136,7 +141,7 @@
                 h1_node
                     .append("circle")
                     .attr("cx", function (d) {
-                        // console.log(d);
+                        //console.log(d);
                         // console.log(radialPoint(d.x, d.y));
                         return d.x;
                     })
@@ -150,7 +155,8 @@
                         );
                     })
                     .attr("id", function (d) {
-                        return d.data.data.child
+                        console.log(d.data.child);
+                        return d.data.child
                             .replace(/ /g, "")
                             .replace("(", "")
                             .replace(")", "")
@@ -188,7 +194,7 @@
                     .attr("id", "h2tree")
                     .attr("transform", "translate(" + 2000 + "," + 100 + ")")
                     .selectAll(".h2_node")
-                    .data(h2_tree.descendants())
+                    .data(h2_tree.descendants()[0])
                     .enter()
                     .append("g")
                     .attr("class", function (d) {
@@ -244,7 +250,8 @@
                         );
                     })
                     .attr("id", function (d) {
-                        return d.data.data.child
+                        console.log(d.data.child);
+                        return d.data.child
                             .replace(/ /g, "")
                             .replace("(", "")
                             .replace(")", "")
@@ -268,6 +275,8 @@
 
 
                 /* START OF MERGED TREE */
+
+                console.log(h1_dims);
 
                 var arrDims = compareDimensions(h1_dims, h2_dims);
 
@@ -609,18 +618,20 @@
                 function findDimensions(root) {
                     const arrDims = [];
 
-                    console.log(root);
 
                     for (let i = 0; i <= root.height; i++) {
                         arrDims.push([]);
                     }
 
-                    // console.log(arrDims);
+                    console.log(arrDims);
+
+
 
                     root.eachBefore(function (d) {
                         const str = d.depth;
+                        //console.log(d);
                         //  arrDims[str].push({ "name": d.data.data.child, "depth": d.depth, "height": d.height });
-                        arrDims[str].push(d.data.data.child);
+                        arrDims[str].push(d.data.child);
 
                     });
 
@@ -632,7 +643,7 @@
                     const arrDims = [];
                     const arrDims_obj = [];
 
-                    // console.log(h1);
+                    //  console.log(h1);
                     var maxLevels = h1.length;
                     if (maxLevels < h2.length)
                         maxLevels = h2.length;
@@ -650,8 +661,9 @@
                     var flag = 0;
 
 
+                    // console.log(arrDims);
 
-
+                    //  console.log(h2);
                     // arrDims[i].push(h1[i][ii]);
 
 
@@ -677,7 +689,9 @@
                                 for (let ii = 0; ii < h1[i].length; ii++) {
                                     //flag = "blue";
                                     if (h2[j][jj] == h1[i][ii]) {
+                                        console.log(h2[j][jj]);
                                         if (i > j) {
+
                                             if (!arrDims[i].includes(h2[j][jj]))
                                                 arrDims[i].push(h2[j][jj]);
 
