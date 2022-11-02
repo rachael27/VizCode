@@ -1,9 +1,0 @@
-child,parent
-root,
-a,root
-b,root
-l1,a
-l3,a
-l4,b
-l2,b
-l9,b

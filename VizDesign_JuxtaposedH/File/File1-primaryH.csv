@@ -1,0 +1,15 @@
+child,parent
+root,
+a,root
+b,root
+c,root
+l1,a
+l3,a
+d0,a
+f,a
+l2,b
+l9,b
+l11,c
+d,d0
+l10,l9
+l4,d

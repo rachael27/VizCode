@@ -31,7 +31,38 @@
         <div class="row">
             <div class="col-3" style="font-size: 30px; margin-left: 20px;">
 
-                <fieldset class="border p-2" style="margin-top:300px;">
+                <fieldset class="border p-2" style="margin-top:150px;">
+                    <legend class="w-auto">Dataset</legend>
+
+                    <br>
+                    <button type="button" id="swapdataset" class="btn btn-primary" style="margin-top:50px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z">
+                            </path>
+                        </svg>
+                        <h2>Swap primary and secondary datasets</h2>
+                    </button>
+
+
+                    <div class="form-check" style="margin-top:20px;">
+                        <input class="form-check-input" type="radio" name="fileversionradio" id="fileversion0radio">
+                        <label class="form-check-label" for="fileversion0radio">
+                            File Version 0 (Default)
+                        </label>
+                    </div>
+
+                    <div class="form-check" style="margin-top:10px;">
+                        <input class="form-check-input" type="radio" name="fileversionradio" id="fileversion1radio"
+                            checked>
+                        <label class="form-check-label" for="fileversion1radio">
+                            File Version 1
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="border p-2" style="margin-top:100px;">
                     <legend class="w-auto">Change color theme</legend>
                     <div class="form-check" style="margin-top:50px;">
                         <input class="form-check-input" type="radio" name="nodecolorradio" id="blueredradio" checked>
@@ -159,665 +190,666 @@
     <script src="https://d3js.org/d3.v4.js"></script>
     <script>
 
+
+
+        var fileversion = "File1";
+        var swapdataset = "h1";
+
+
+
+        d3.select("#swapdataset").on("click", function () {
+            if (d3.select("#fileversion0radio")._groups[0][0].checked == true)
+                fileversion = "File0";
+            else
+                fileversion = "File1";
+
+            if (swapdataset == "h1") {
+                d3.queue()
+                    .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+                    .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
+                    .await(function (error, h1, h2) {
+                        if (error) throw error;
+
+                        else
+                            runScript(h2, h1);
+                    });
+                swapdataset = "h2";
+            }
+            else {
+                d3.queue()
+                    .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+                    .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
+                    .await(function (error, h1, h2) {
+                        if (error) throw error;
+
+                        else
+                            runScript(h1, h2);
+                    });
+                swapdataset = "h1";
+            }
+
+        });
+
+        d3.select("#fileversion0radio").on("change", function () {
+            if (d3.select("#fileversion0radio")._groups[0][0].checked == true)
+                fileversion = "File0";
+
+            d3.queue()
+                .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+                .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
+                .await(function (error, h1, h2) {
+                    if (error) throw error;
+
+                    else
+                        runScript(h1, h2);
+                });
+
+        });
+
+        d3.select("#fileversion1radio").on("change", function () {
+            if (d3.select("#fileversion1radio")._groups[0][0].checked == true)
+                fileversion = "File1";
+
+            d3.queue()
+                .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+                .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
+                .await(function (error, h1, h2) {
+                    if (error) throw error;
+
+                    else
+                        runScript(h1, h2);
+                });
+        });
+
+
         d3.queue()
-            .defer(d3.csv, "File/primaryH.csv")
-            .defer(d3.csv, "File/secondaryH.csv")
+            .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+            .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
             .await(function (error, h1, h2) {
                 if (error) throw error;
 
-                var radius = 10;
+                else
+                    runScript(h1, h2);
+            });
+
+        function runScript(h1, h2) {
+
+            d3.select("#content").select("svg").remove();
+
+            var radius = 10;
 
 
-                d3.select("#solidhollowcircle")
-                    .append("circle")
-                    .attr("cx", 500)
-                    .attr("cy", 500)
-                    .attr("r", 500)
-                    .style("fill", "blue")
-                    .style("stroke-width", "30px")
-                    .style("stroke", "black");
+            d3.select("#solidhollowcircle")
+                .append("circle")
+                .attr("cx", 500)
+                .attr("cy", 500)
+                .attr("r", 500)
+                .style("fill", "blue")
+                .style("stroke-width", "30px")
+                .style("stroke", "black");
 
 
-                var margin = { top: 30, right: 30, bottom: 30, left: 120 },
-                    width = 3000 - margin.left - margin.right,
-                    height = 2500 - margin.top - margin.bottom;
+            var margin = { top: 30, right: 30, bottom: 30, left: 120 },
+                width = 3000 - margin.left - margin.right,
+                height = 2500 - margin.top - margin.bottom;
 
-                var svg = d3
-                    .select("#content")
-                    .append("svg")
-                    .attr("width", width)
-                    .attr("height", height);
-
-
-
-                var tooltip = d3.select("#content")
-                    .append("div")
-                    .style("opacity", 0)
-                    .attr("class", "tooltip")
-                    //.style("background-color", "white")
-                    .style("border", "solid")
-                    //.style("font", "40px times")
-                    .style("border-width", "2px")
-                    .style("border-radius", "5px")
-                    .style("padding", "5px");
+            var svg = d3
+                .select("#content")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
 
 
-                const depthArray = [];
-
-                // console.log(h1);
-
-                stratify = d3
-                    .stratify()
-                    .id(function (d) {
-                        return d.child;
-                    })
-                    .parentId(function (d) {
-                        return d.parent;
-                    });
-
-                var h1_struct = stratify(h1);
-                var h2_struct = stratify(h2);
-
-                console.log(h1_struct);
-
-                var h1_root = d3.hierarchy(h1_struct);
-                var h2_root = d3.hierarchy(h2_struct);
-
-                //console.log(h1_rootElement.descendants());
-                //console.log(h2_rootElement.descendants());
-                console.log(h1_root.descendants());
 
 
-                var h1_dims = findDimensions(h1_root);
-                var h2_dims = findDimensions(h2_root);
 
-                console.log(h1_dims);
+            var tooltip = d3.select("#content")
+                .append("div")
+                .style("opacity", 0)
+                .attr("class", "tooltip")
+                //.style("background-color", "white")
+                .style("border", "solid")
+                //.style("font", "40px times")
+                .style("border-width", "2px")
+                .style("border-radius", "5px")
+                .style("padding", "5px");
 
-                var h1color = "", h2color = "", mergedcolor = "";
 
+            const depthArray = [];
+
+            // console.log(h1);
+
+            stratify = d3
+                .stratify()
+                .id(function (d) {
+                    return d.child;
+                })
+                .parentId(function (d) {
+                    return d.parent;
+                });
+
+            var h1_struct = stratify(h1);
+            var h2_struct = stratify(h2);
+
+            //console.log(h1_struct);
+
+            var h1_root = d3.hierarchy(h1_struct);
+            var h2_root = d3.hierarchy(h2_struct);
+
+            //console.log(h1_rootElement.descendants());
+            //console.log(h2_rootElement.descendants());
+
+            //console.log(h1_root.descendants());
+
+
+            var h1_dims = findDimensions(h1_root);
+            var h2_dims = findDimensions(h2_root);
+
+            //console.log(h1_dims);
+
+            var h1color = "", h2color = "", mergedcolor = "";
+
+            if (d3.select("#blueredradio")._groups[0][0].checked == true) {
+                h1color = "blue";
+                h2color = "red";
+                mergedcolor = "purple";
+            }
+            else if (d3.select("#redgreenradio")._groups[0][0].checked == true) {
+                h1color = "red";
+                h2color = "green";
+                mergedcolor = "brown";
+            }
+            else if (d3.select("#orangeblueradio")._groups[0][0].checked == true) {
+                h1color = "orange";
+                h2color = "blue";
+                mergedcolor = "yellowgreen";
+            }
+
+            h1tree();
+            h2tree();
+
+
+            //var arrDims = compareDimensions(h1_dims, h2_dims);
+            //var hier = createHierarchy(arrDims, h1_root.descendants(), h2_root.descendants());
+
+            // console.log(hier);
+            var hier = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+            var hier_arr = flatten_array(hier);
+            var hier_struct = stratify(hier_arr);
+            console.log(hier_arr);
+            mergedtree();
+
+
+
+            d3.select("#blueredradio").on("change", function () {
                 if (d3.select("#blueredradio")._groups[0][0].checked == true) {
                     h1color = "blue";
                     h2color = "red";
                     mergedcolor = "purple";
                 }
-                else if (d3.select("#redgreenradio")._groups[0][0].checked == true) {
-                    h1color = "red";
-                    h2color = "green";
-                    mergedcolor = "brown";
-                }
-                else if (d3.select("#orangeblueradio")._groups[0][0].checked == true) {
+                h1tree();
+                h2tree();
+                hier = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+                hier_arr = flatten_array(hier);
+                hier_struct = stratify(hier_arr);
+                mergedtree();
+            });
+
+            d3.select("#orangeblueradio").on("change", function () {
+                if (d3.select("#orangeblueradio")._groups[0][0].checked == true) {
                     h1color = "orange";
                     h2color = "blue";
                     mergedcolor = "yellowgreen";
                 }
-
                 h1tree();
                 h2tree();
-
-
-                var arrDims = compareDimensions(h1_dims, h2_dims);
-
-                var hier = createHierarchy(arrDims, h1_root.descendants(), h2_root.descendants());
-
-                var hier_struct = stratify(hier);
-
+                hier = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+                hier_arr = flatten_array(hier);
+                hier_struct = stratify(hier_arr);
                 mergedtree();
+                /*  arrDims = compareDimensions(h1_dims, h2_dims);
+                 hier = createHierarchy(arrDims, h1_root.descendants(), h2_root.descendants());
+                 hier_struct = stratify(hier);
+                 mergedtree(); */
+            });
 
 
-
-                d3.select("#blueredradio").on("change", function () {
-                    if (d3.select("#blueredradio")._groups[0][0].checked == true) {
-                        h1color = "blue";
-                        h2color = "red";
-                        mergedcolor = "purple";
-                    }
-                    h1tree();
-                    h2tree();
-                    arrDims = compareDimensions(h1_dims, h2_dims);
-                    hier = createHierarchy(arrDims, h1_root.descendants(), h2_root.descendants());
-                    hier_struct = stratify(hier);
-                    mergedtree();
-                });
-
-                d3.select("#orangeblueradio").on("change", function () {
-                    if (d3.select("#orangeblueradio")._groups[0][0].checked == true) {
-                        h1color = "orange";
-                        h2color = "blue";
-                        mergedcolor = "yellowgreen";
-                    }
-                    h1tree();
-                    h2tree();
-                    arrDims = compareDimensions(h1_dims, h2_dims);
-                    hier = createHierarchy(arrDims, h1_root.descendants(), h2_root.descendants());
-                    hier_struct = stratify(hier);
-                    mergedtree();
-                });
-
-
-                d3.select("#redgreenradio").on("change", function () {
-                    if (d3.select("#redgreenradio")._groups[0][0].checked == true) {
-                        h1color = "red";
-                        h2color = "green";
-                        mergedcolor = "brown";
-                    }
-                    h1tree();
-                    h2tree();
-                    arrDims = compareDimensions(h1_dims, h2_dims);
-                    hier = createHierarchy(arrDims, h1_root.descendants(), h2_root.descendants());
-                    hier_struct = stratify(hier);
-                    mergedtree();
-                });
-
-                d3.select("#solidshaperadio").on("change", function () {
-                    h1tree();
-                    h2tree();
-                    mergedtree();
-                });
-
-                d3.select("#hollowshaperadio").on("change", function () {
-                    h1tree();
-                    h2tree();
-                    mergedtree();
-                });
-
-                d3.select("#leavessameheightradio").on("change", function () {
-                    mergedtree();
-                });
-
-                d3.select("#leavesdiffheightradio").on("change", function () {
-                    mergedtree();
-                });
-
-                d3.select("#hidenodesradio").on("change", function () {
-                    mergedtree();
-                });
-
-                d3.select("#hidenodesedgesradio").on("change", function () {
-                    mergedtree();
-                });
-
-                d3.select("#shownodesradio").on("change", function () {
-                    mergedtree();
-                });
-
-
-
-
-                /* START OF H1 TREE */
-
-
-                function h1tree() {
-
-                    console.log(h1color + " " + h2color + " " + mergedcolor);
-
-                    d3.select("#h1tree").remove();
-
-                    var tree = d3
-                        .tree()
-                        //.nodeSize([]);
-                        .size([500, 500]);
-
-
-                    var h1_tree = tree(h1_root);
-
-
-                    var h1_node = svg
-                        .append("g")
-                        .attr("id", "h1tree")
-                        .attr("transform", "translate(" + 2000 + "," + 100 + ")")
-                        .selectAll(".h1_node")
-                        .data(h1_tree.descendants())
-                        .enter()
-                        .append("g")
-                        .attr("class", function (d) {
-                            //   console.log(d);
-                            return d.child;
-                        });
-
-                    svg.select("#h1tree")
-                        .append("rect")
-                        .attr('x', -30)
-                        .attr('y', -30)
-                        .attr('width', 600)
-                        .attr('height', 600)
-                        .attr('stroke', 'black')
-                        .attr('fill', 'none');
-
-
-                    var h1_link = h1_node
-                        .append("path")
-                        .data(h1_tree.links())
-                        // .enter()
-                        .attr("class", function (d) {
-                            return "h1_link";
-                        })
-                        //.classed("link", true)
-                        .attr("d", function (d) {
-                            return "M" + d.source.x + "," + d.source.y
-                                + "C" + d.source.x + "," + (d.source.y + d.target.y) / 2
-                                + " " + d.target.x + "," + (d.source.y + d.target.y) / 2
-                                + " " + d.target.x + "," + (d.target.y);
-                        })
-                        .style("opacity", function (d) {
-                            return 0.5;
-                        })
-                        .style("stroke", "#ccc")
-                        .style("fill", "none")
-                        .style("stroke-width", "5px");
-
-                    h1_node
-                        .append("circle")
-                        .attr("cx", function (d) {
-                            // console.log(d);
-                            // console.log(radialPoint(d.x, d.y));
-                            return d.x;
-                        })
-                        .attr("cy", function (d) {
-                            return d.y;
-                        })
-                        .attr("r", function (d) {
-                            console.log(radius);
-                            if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
-                                return radius + "px";
-                            if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
-                                return (radius) + "px";
-                        })
-                        .attr("class", function (d) {
-                            return (
-                                "node" + (d.children ? " node--internal" : " node--leaf")
-                            );
-                        })
-                        .attr("id", function (d) {
-                            return "h1tree_" + d.data.data.child
-                                .replace(/ /g, "")
-                                .replace("(", "")
-                                .replace(")", "")
-                                .toLowerCase();
-                        })
-                        .style("fill", function (d) {
-
-
-                            if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
-                                return h2color;
-                            if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
-                                return h1color;
-
-                        })
-                        // .style("opacity", 1)
-
-                        .style("opacity", function (d) {
-                            return 0.3;
-                        });
-
-                    h1_node
-                        .append("text")
-                        .style("font-size", "20px")
-                        .attr("class", function (d) {
-                            return d.data.data.child
-                                .replace(/ /g, "")
-                                .replace("(", "")
-                                .replace(")", "")
-                                .toLowerCase();
-                        })
-                        .classed("text", true)
-                        .attr("dy", "2em")
-                        .attr("x", function (d) {
-
-                            if ((this.previousSibling).getAttribute("class").includes("leaf"))
-                                return d.x - 8;
-                            else
-                                return d.x + 20;
-                        })
-                        .attr("y", function (d) {
-                            if ((this.previousSibling).getAttribute("class").includes("leaf"))
-                                return d.y - 8;
-                            else
-                                return d.y - 30;
-                        })
-                        .attr("text-anchor", function (d) {
-                            return "start";
-                        })
-
-                        .style("opacity", function (d) {
-                            //  console.log(d);
-                            return 1;
-                        })
-                        .text(function (d) {
-                            // console.log(d);
-                            return d.data.data.child;
-                        });
+            d3.select("#redgreenradio").on("change", function () {
+                if (d3.select("#redgreenradio")._groups[0][0].checked == true) {
+                    h1color = "red";
+                    h2color = "green";
+                    mergedcolor = "#a52a2a";
                 }
+                h1tree();
+                h2tree();
+                hier = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+                hier_arr = flatten_array(hier);
+                hier_struct = stratify(hier_arr);
+                mergedtree();
+            });
 
+            d3.select("#solidshaperadio").on("change", function () {
+                h1tree();
+                h2tree();
+                mergedtree();
+            });
 
-                /* END OF H1 TREE*/
+            d3.select("#hollowshaperadio").on("change", function () {
+                h1tree();
+                h2tree();
+                mergedtree();
+            });
 
+            d3.select("#leavessameheightradio").on("change", function () {
+                mergedtree();
+            });
 
+            d3.select("#leavesdiffheightradio").on("change", function () {
+                mergedtree();
+            });
 
-                /* START OF H2 TREE */
+            d3.select("#hidenodesradio").on("change", function () {
+                mergedtree();
+            });
 
-                function h2tree() {
+            d3.select("#hidenodesedgesradio").on("change", function () {
+                mergedtree();
+            });
 
-                    d3.select("#h2tree").remove();
-
-                    var tree = d3
-                        .tree()
-                        //.nodeSize([]);
-                        .size([500, 500]);
-
-
-                    var h2_tree = tree(h2_root);
-
-
-                    var h2_node = svg
-                        .append("g")
-                        .attr("id", "h2tree")
-                        .attr("transform", "translate(" + 100 + "," + 100 + ")")
-                        .selectAll(".h2_node")
-                        .data(h2_tree.descendants())
-                        .enter()
-                        .append("g")
-                        .attr("class", function (d) {
-                            //   console.log(d);
-                            return d.child;
-                        });
-
-                    svg.select("#h2tree")
-                        .append("rect")
-                        .attr('x', -30)
-                        .attr('y', -30)
-                        .attr('width', 600)
-                        .attr('height', 600)
-                        .attr('stroke', 'black')
-                        .attr('fill', 'none');
-
-
-                    /*  var len = h2_node._groups[0].length;
-     
-                     console.log(h2_node);
-     
-                     var h2_node_sliced = h2_node._groups[0].slice(1, len);
-     
-                     console.log(h2_node_sliced); */
-
-                    var h2_link = h2_node
-                        .append("path")
-                        .data(h2_tree.links())
-                        // .enter()
-                        .attr("class", function (d) {
-                            return "h2_link";
-                        })
-                        //.classed("link", true)
-                        .attr("d", function (d) {
-                            return "M" + d.source.x + "," + d.source.y
-                                + "C" + d.source.x + "," + (d.source.y + d.target.y) / 2
-                                + " " + d.target.x + "," + (d.source.y + d.target.y) / 2
-                                + " " + d.target.x + "," + (d.target.y);
-                        })
-                        .style("opacity", function (d) {
-                            return 0.5;
-                        })
-                        .style("stroke", "#ccc")
-                        .style("fill", "none")
-                        .style("stroke-width", "5px");
-
-                    h2_node
-                        .append("circle")
-                        .attr("cx", function (d) {
-                            // console.log(d);
-                            // console.log(radialPoint(d.x, d.y));
-                            return d.x;
-                        })
-                        .attr("cy", function (d) {
-                            return d.y;
-                        })
-                        .attr("r", function (d) {
-                            if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
-                                return radius + "px";
-                            if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
-                                return (radius + 4) + "px";
-                        })
-                        .attr("class", function (d) {
-                            return (
-                                "node" + (d.children ? " node--internal" : " node--leaf")
-                            );
-                        })
-                        .attr("id", function (d) {
-                            return "h2tree_" + d.data.data.child
-                                .replace(/ /g, "")
-                                .replace("(", "")
-                                .replace(")", "")
-                                .toLowerCase();
-                        })
-                        .style("fill", function (d) {
-                            if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
-                                return h1color;
-                            if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
-                                return "white";
-                        })
-                        .style("stroke", function (d) {
-                            if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
-                                return "none";
-                            if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
-                                return h1color;
-
-                        })
-                        .style("stroke-width", function (d) {
-                            if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
-                                return "0px";
-                            if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
-                                return "5px";
-
-                        })
-
-                        .style("opacity", function (d) {
-                            return 0.3;
-                        });
-
-
-                    h2_node
-                        .append("text")
-                        .style("font-size", "20px")
-                        .attr("class", function (d) {
-                            return d.data.data.child
-                                .replace(/ /g, "")
-                                .replace("(", "")
-                                .replace(")", "")
-                                .toLowerCase();
-                        })
-                        .classed("text", true)
-                        .attr("dy", "2em")
-                        .attr("x", function (d) {
-                            if ((this.previousSibling).getAttribute("class").includes("leaf"))
-                                return d.x - 8;
-                            else
-                                return d.x + 20;
-                        })
-                        .attr("y", function (d) {
-                            if ((this.previousSibling).getAttribute("class").includes("leaf"))
-                                return d.y - 8;
-                            else
-                                return d.y - 30;
-                        })
-                        .attr("text-anchor", function (d) {
-                            return "start";
-                        })
-
-                        .style("opacity", function (d) {
-                            //  console.log(d);
-                            return 1;
-                        })
-                        .text(function (d) {
-                            // console.log(d);
-                            return d.data.data.child;
-                        });
-                }
-
-
-                /* END OF H2 TREE*/
+            d3.select("#shownodesradio").on("change", function () {
+                mergedtree();
+            });
 
 
 
 
-
-                /* START OF MERGED TREE */
-
-
-                function mergedtree() {
-
-                    d3.select("#mergedtree").remove();
-
-                    var hier_root = d3.hierarchy(hier_struct);
-
-                    console.log(hier_root);
-                    console.log(width + " " + height);
+            /* START OF H1 TREE */
 
 
-                    console.log(hier_root);
+            function h1tree() {
+
+                //    console.log(h1color + " " + h2color + " " + mergedcolor);
+
+                d3.select("#h1tree").remove();
+
+                var tree = d3
+                    .tree()
+                    //.nodeSize([]);
+                    .size([500, 500]);
 
 
-                    var tree = d3
-                        .tree()
-                        //.nodeSize([]);
-                        .size([1000, 1000]);
-
-                    var cluster = d3
-                        .cluster()
-                        .size([1000, 1000]);
-
-                    // console.log(d3.select(: ))
+                var h1_tree = tree(h1_root);
 
 
-                    var mergedtree = "";
+                var h1_node = svg
+                    .append("g")
+                    .attr("id", "h1tree")
+                    .attr("transform", "translate(" + 1500 + "," + 100 + ")")
+                    .selectAll(".h1_node")
+                    .data(h1_tree.descendants())
+                    .enter()
+                    .append("g")
+                    .attr("class", function (d) {
+                        //   console.log(d);
+                        return d.child;
+                    });
+
+                svg.select("#h1tree")
+                    .append("rect")
+                    .attr('x', -30)
+                    .attr('y', -30)
+                    .attr('width', 600)
+                    .attr('height', 600)
+                    .attr('stroke', 'black')
+                    .attr('fill', 'none');
 
 
-                    if (d3.select("#leavesdiffheightradio")._groups[0][0].checked == true)
-                        mergedtree = tree(hier_root);
-                    else if (d3.select("#leavessameheightradio")._groups[0][0].checked == true)
-                        mergedtree = cluster(hier_root);
+                var h1_link = h1_node
+                    .append("path")
+                    .data(h1_tree.links())
+                    // .enter()
+                    .attr("class", function (d) {
+                        return "h1_link";
+                    })
+                    //.classed("link", true)
+                    .attr("d", function (d) {
+                        return "M" + d.source.x + "," + d.source.y
+                            + "C" + d.source.x + "," + (d.source.y + d.target.y) / 2
+                            + " " + d.target.x + "," + (d.source.y + d.target.y) / 2
+                            + " " + d.target.x + "," + (d.target.y);
+                    })
+                    .style("opacity", function (d) {
+                        return 0.5;
+                    })
+                    .style("stroke", "#ccc")
+                    .style("fill", "none")
+                    .style("stroke-width", "5px");
 
-                    console.log(mergedtree);
+                h1_node
+                    .append("circle")
+                    .attr("cx", function (d) {
+                        // console.log(d);
+                        // console.log(radialPoint(d.x, d.y));
+                        return d.x;
+                    })
+                    .attr("cy", function (d) {
+                        return d.y;
+                    })
+                    .attr("r", function (d) {
+                        //        console.log(radius);
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return radius + "px";
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return (radius) + "px";
+                    })
+                    .attr("class", function (d) {
+                        return (
+                            "node" + (d.children ? " node--internal" : " node--leaf")
+                        );
+                    })
+                    .attr("id", function (d) {
+                        return "h1tree_" + d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .style("fill", function (d) {
 
-                    console.log(mergedtree.descendants());
-                    console.log(mergedtree)
 
-                    svg
-                        .append("g")
-                        .attr("id", "mergedtree")
-                        .attr("transform",
-                            "translate(" + (margin.left + 600) + "," + (margin.top + 300) + ")");
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return h2color;
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return h1color;
 
-                    var node = svg
-                        .select("#mergedtree")
-                        .selectAll(".node")
-                        .data(mergedtree.descendants())
-                        .enter()
-                        .append("g")
-                        .attr("class", function (d) {
-                            //   console.log(d);
-                            return d.child;
-                        })
-                    // .attr("transform", "translate(" + width / 3 + "," + 100 + ")");
+                    })
+                    // .style("opacity", 1)
 
+                    .style("opacity", function (d) {
+                        return 0.3;
+                    });
 
+                h1_node
+                    .append("text")
+                    .style("font-size", "20px")
+                    .attr("class", function (d) {
+                        return d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .classed("text", true)
+                    .attr("dy", "2em")
+                    .attr("x", function (d) {
 
-
-
-
-                    node
-                        .append("text")
-                        .style("font-size", "40px")
-                        .attr("class", function (d) {
-                            return d.data.data.child
-                                .replace(/ /g, "")
-                                .replace("(", "")
-                                .replace(")", "")
-                                .toLowerCase();
-                        })
-                        .classed("text", true)
-                        .attr("dy", "2em")
-                        .attr("x", function (d) {
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return d.x - 8;
+                        else
                             return d.x + 20;
-                        })
-                        .attr("y", function (d) {
-                            return d.y - 50;
-                        })
-                        .attr("text-anchor", function (d) {
-                            return "start";
-                        })
+                    })
+                    .attr("y", function (d) {
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return d.y - 8;
+                        else
+                            return d.y - 30;
+                    })
+                    .attr("text-anchor", function (d) {
+                        return "start";
+                    })
 
-                        .style("opacity", function (d) {
-                            //  console.log(d);
-                            return 1;
-                        })
-                        .text(function (d) {
-                            // console.log(d);
-                            return d.data.data.child;
-                        });
+                    .style("opacity", function (d) {
+                        //  console.log(d);
+                        return 1;
+                    })
+                    .text(function (d) {
+                        // console.log(d);
+                        return d.data.data.child;
+                    });
+            }
 
 
-                    /* console.log(mergedtree.descendants());
-                    console.log(mergedtree.links()); */
-
-                    if (d3.select("#hollowshaperadio")._groups[0][0].checked == true) {
-                        node
-                            .append("circle")
-                            .attr("cx", function (d) {
-                                // console.log(d);
-                                // console.log(radialPoint(d.x, d.y));
-                                return d.x;
-                            })
-                            .attr("cy", function (d) {
-                                console.log(d.children == undefined);
-                                // if (d3.select("#leavessameheightradio")._groups[0][0].checked == true && d.children == undefined)
-                                //   return 1200;
-                                //else 
-                                return d.y;
-                            })
-                            .attr("r", function (d) {
-
-                                if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
-                                    return (radius + 4) + "px";
-                            })
-                            .attr("class", function (d) {
-                                return (
-                                    "node" + (d.children ? " node--internal" : " node--leaf")
-                                );
-                            })
-                            .attr("id", function (d) {
-                                return "mergedtree_" + d.data.data.child
-                                    .replace(/ /g, "")
-                                    .replace("(", "")
-                                    .replace(")", "")
-                                    .toLowerCase();
-                            })
-                            .style("fill", function (d) {
-                                return "none";
-                            })
-                            .style("stroke", function (d) {
-                                if (d.data.data.shape == "h1" || d.data.data.shape == "merged")
-                                    return h1color;
-                                else return "none";
-                            })
-                            .style("stroke-width", "5px")
-                            .style("opacity", function (d) {
-                                return 1;
-                            })
-                            .on("mouseover", function (d) {
-                                d3.select(this)
-                                    .transition()
-                                    .attr("r", 20);
-                            })
-                            .on("mouseleave", function (d) {
-                                d3.select(this)
-                                    .transition()
-                                    .attr("r", radius + 4);
-
-                            });
-
-                    }
+            /* END OF H1 TREE*/
 
 
 
+            /* START OF H2 TREE */
+
+            function h2tree() {
+
+                d3.select("#h2tree").remove();
+
+                var tree = d3
+                    .tree()
+                    //.nodeSize([]);
+                    .size([500, 500]);
+
+
+                var h2_tree = tree(h2_root);
+
+
+                var h2_node = svg
+                    .append("g")
+                    .attr("id", "h2tree")
+                    .attr("transform", "translate(" + 50 + "," + 100 + ")")
+                    .selectAll(".h2_node")
+                    .data(h2_tree.descendants())
+                    .enter()
+                    .append("g")
+                    .attr("class", function (d) {
+                        //   console.log(d);
+                        return d.child;
+                    });
+
+                svg.select("#h2tree")
+                    .append("rect")
+                    .attr('x', -30)
+                    .attr('y', -30)
+                    .attr('width', 600)
+                    .attr('height', 600)
+                    .attr('stroke', 'black')
+                    .attr('fill', 'none');
+
+
+                /*  var len = h2_node._groups[0].length;
+ 
+                 console.log(h2_node);
+ 
+                 var h2_node_sliced = h2_node._groups[0].slice(1, len);
+ 
+                 console.log(h2_node_sliced); */
+
+                var h2_link = h2_node
+                    .append("path")
+                    .data(h2_tree.links())
+                    // .enter()
+                    .attr("class", function (d) {
+                        return "h2_link";
+                    })
+                    //.classed("link", true)
+                    .attr("d", function (d) {
+                        return "M" + d.source.x + "," + d.source.y
+                            + "C" + d.source.x + "," + (d.source.y + d.target.y) / 2
+                            + " " + d.target.x + "," + (d.source.y + d.target.y) / 2
+                            + " " + d.target.x + "," + (d.target.y);
+                    })
+                    .style("opacity", function (d) {
+                        return 0.5;
+                    })
+                    .style("stroke", "#ccc")
+                    .style("fill", "none")
+                    .style("stroke-width", "5px");
+
+                h2_node
+                    .append("circle")
+                    .attr("cx", function (d) {
+                        // console.log(d);
+                        // console.log(radialPoint(d.x, d.y));
+                        return d.x;
+                    })
+                    .attr("cy", function (d) {
+                        return d.y;
+                    })
+                    .attr("r", function (d) {
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return radius + "px";
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return (radius + 4) + "px";
+                    })
+                    .attr("class", function (d) {
+                        return (
+                            "node" + (d.children ? " node--internal" : " node--leaf")
+                        );
+                    })
+                    .attr("id", function (d) {
+                        return "h2tree_" + d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .style("fill", function (d) {
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return h1color;
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return "white";
+                    })
+                    .style("stroke", function (d) {
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return "none";
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return h1color;
+
+                    })
+                    .style("stroke-width", function (d) {
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return "0px";
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return "5px";
+
+                    })
+
+                    .style("opacity", function (d) {
+                        return 0.3;
+                    });
+
+
+                h2_node
+                    .append("text")
+                    .style("font-size", "20px")
+                    .attr("class", function (d) {
+                        return d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .classed("text", true)
+                    .attr("dy", "2em")
+                    .attr("x", function (d) {
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return d.x - 8;
+                        else
+                            return d.x + 20;
+                    })
+                    .attr("y", function (d) {
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return d.y - 8;
+                        else
+                            return d.y - 30;
+                    })
+                    .attr("text-anchor", function (d) {
+                        return "start";
+                    })
+
+                    .style("opacity", function (d) {
+                        //  console.log(d);
+                        return 1;
+                    })
+                    .text(function (d) {
+                        // console.log(d);
+                        return d.data.data.child;
+                    });
+            }
+
+
+            /* END OF H2 TREE*/
+
+
+
+
+
+            /* START OF MERGED TREE */
+
+
+            function mergedtree() {
+
+                d3.select("#mergedtree").remove();
+
+                var hier_root = d3.hierarchy(hier_struct);
+
+                //    console.log(hier_root);
+                //    console.log(width + " " + height);
+
+
+                //    console.log(hier_root);
+
+
+                var tree = d3
+                    .tree()
+                    //.nodeSize([]);
+                    .size([1000, 1000]);
+
+                var cluster = d3
+                    .cluster()
+                    .size([1000, 1000]);
+
+                // console.log(d3.select(: ))
+
+
+                var mergedtree = "";
+
+
+                if (d3.select("#leavesdiffheightradio")._groups[0][0].checked == true)
+                    mergedtree = tree(hier_root);
+                else if (d3.select("#leavessameheightradio")._groups[0][0].checked == true)
+                    mergedtree = cluster(hier_root);
+
+                //   console.log(mergedtree);
+
+                //   console.log(mergedtree.descendants());
+                // console.log(mergedtree)
+
+                svg
+                    .append("g")
+                    .attr("id", "mergedtree")
+                    .attr("transform",
+                        "translate(" + (margin.left + 400) + "," + (margin.top + 300) + ")");
+
+                var node = svg
+                    .select("#mergedtree")
+                    .selectAll(".node")
+                    .data(mergedtree.descendants())
+                    .enter()
+                    .append("g")
+                    .attr("class", function (d) {
+                        //   console.log(d);
+                        return d.child;
+                    })
+                // .attr("transform", "translate(" + width / 3 + "," + 100 + ")");
+
+
+
+
+
+
+
+
+
+                /* console.log(mergedtree.descendants());
+                console.log(mergedtree.links()); */
+
+                if (d3.select("#hollowshaperadio")._groups[0][0].checked == true) {
                     node
                         .append("circle")
                         .attr("cx", function (d) {
@@ -826,17 +858,16 @@
                             return d.x;
                         })
                         .attr("cy", function (d) {
-                            console.log(d.children == undefined);
+                            // console.log(d.children == undefined);
                             // if (d3.select("#leavessameheightradio")._groups[0][0].checked == true && d.children == undefined)
                             //   return 1200;
                             //else 
                             return d.y;
                         })
                         .attr("r", function (d) {
-                            if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
-                                return radius + "px";
+
                             if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
-                                return (radius - 4) + "px";
+                                return (radius + 4) + "px";
                         })
                         .attr("class", function (d) {
                             return (
@@ -851,572 +882,793 @@
                                 .toLowerCase();
                         })
                         .style("fill", function (d) {
-                            console.log(d.data.data.shape);
-                            if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
-                                return d.data.data.color;
-
-
-                            else if (d3.select("#hollowshaperadio")._groups[0][0].checked == true) {
-                                if (d.data.data.shape == "h1")
-                                    return "white";
-                                else
-                                    return h1color;
-                            }
-
-
-
+                            return "none";
                         })
-                        // .style("opacity", 1)
-
+                        .style("stroke", function (d) {
+                            if (d.data.data.shape == "h1" || d.data.data.shape == "merged")
+                                return h1color;
+                            else return "none";
+                        })
+                        .style("stroke-width", "5px")
                         .style("opacity", function (d) {
                             return 1;
                         })
-                        .on("click", function (d) {
-
-                            //   console.log(d);
-
-
-                            var color = d.data.data.color;
-
-                            // console.log(color);
-
-                            d3.select("#mergedtree").selectAll("circle")
-                                .each(function (d) {
-                                    // console.log(d.data);
-                                    // console.log(this);
-                                    /*   if (color == "purple") {
-                                          d3.select(this).style("opacity", "1");
-                                          d3.select(this.parentNode).select("text")
-                                              .style("opacity", "1");
-                                      }
-      
-                                      else  */
-
-                                    if (color == mergedcolor) {
-                                        d3.select("#mergedtree").selectAll("circle").style("opacity", "1");
-                                        d3.select("#mergedtree").selectAll("text").style("opacity", "1");
-                                        d3.select("#mergedtree").selectAll("path").style("opacity", "0.5");
-                                        d3.selectAll(".altlink").remove();
-
-                                    }
-                                    else {
-                                        if (color == h1color) {
-
-                                            d3.selectAll(".altlink").remove();
-
-                                            if ((d.data.data.color == h1color || d.data.data.color == mergedcolor)) {
-
-                                                d3.select(this).style("opacity", "1");
-                                                d3.select(this.parentNode).select("text")
-                                                    .style("opacity", "1");
-
-                                            }
-                                            else {
-
-                                                /*  if (d.data.data.alternateparent != "") {
-                                                     console.log(".link " + d.data.data.parent + "-" + d.data.data.child);
-                                                     d3.select("#mergedtree").select(".link " + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
-                                                 } */
-
-                                                //console.log(".link " + d.data.data.parent + "-" + d.data.data.child);
-                                                d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
-                                                d3.select(this).style("opacity", "0");
-                                                d3.select(this.parentNode).select("text")
-                                                    .style("opacity", "0");
-                                            }
-                                        }
-
-                                        else {
-                                            if ((d.data.data.color == h2color || d.data.data.color == mergedcolor)) {
-
-
-
-
-                                                d3.select(this).style("opacity", "1");
-                                                d3.select(this.parentNode).select("text")
-                                                    .style("opacity", "1");
-
-                                                if (d.data.data.alternateparent != '' && d.data.data.alternateparent != "root") {
-                                                    var altparent = d.data.data.alternateparent;
-                                                    var child = d.data.data.child;
-                                                    var parent = d.data.data.parent;
-
-                                                    if (d3.select("#hidenodesedgesradio")._groups[0][0].checked == true)
-                                                        d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
-
-                                                    d3.select("#mergedtree").append("path")
-                                                        .attr("class", function (d) {
-                                                            return "altlink";
-                                                        })
-                                                        .classed(altparent + "-" + child, true)
-                                                        .attr("d", function (d) {
-
-
-
-                                                            var sourcex = d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].__data__.x;
-                                                            var sourcey = d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].__data__.y;
-                                                            var targetx = d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].__data__.x;
-                                                            var targety = d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].__data__.y;
-
-
-
-                                                            return "M" + sourcex + "," + sourcey
-                                                                + "C" + sourcex + "," + (sourcey + targety) / 2
-                                                                + " " + targetx + "," + ((sourcey) + targety) / 2
-                                                                + " " + targetx + "," + targety;
-                                                        })
-                                                        .style("opacity", function (d) {
-                                                            return 0.5;
-                                                        })
-                                                        .style("stroke", "red")
-                                                        .style("stroke-dasharray", ("3,3"))
-                                                        .style("fill", "none")
-                                                        .style("stroke-width", "5px");
-
-                                                }
-                                            }
-                                            else {
-
-
-                                                // d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
-
-                                                if (d3.select("#hidenodesradio")._groups[0][0].checked == true || d3.select("#hidenodesedgesradio")._groups[0][0].checked == true) {
-                                                    d3.select(this).style("opacity", "0");
-                                                    d3.select(this.parentNode).select("text")
-                                                        .style("opacity", "0");
-
-                                                    console.log(d.data.data.child);
-                                                    console.log(d.data.data.parent);
-                                                    console.log(d.data.data);
-
-                                                    if (d3.select("#hidenodesedgesradio")._groups[0][0].checked == true)
-                                                        d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
-
-
-                                                }
-
-                                                else if (d3.select("#shownodesradio")._groups[0][0].checked == true) {
-                                                    d3.select(this).style("opacity", "1");
-                                                    d3.select(this.parentNode).select("text")
-                                                        .style("opacity", "1");
-                                                }
-
-
-                                            }
-
-                                        }
-
-
-                                    }
-                                })
-                        })
                         .on("mouseover", function (d) {
-                            var circle_id = this.getAttribute("id");
-                            circle_id = circle_id.split("_")[1];
-                            //console.log(circle_id);
-
-
-
                             d3.select(this)
                                 .transition()
-                                .attr("r", 15);
-
-
-                            d3.select("#h1tree")
-                                .select("#h1tree_" + circle_id)
-                                .style("opacity", 1);
-
-                            d3.select("#h2tree")
-                                .select("#h2tree_" + circle_id)
-                                .style("opacity", 1);
-
-
-                            // console.log(h1_root.descendants());
-
-                            for (var i = 1; i < h1_root.descendants().length; i++) {
-                                if (h1_root.descendants()[i].data.data.child == circle_id) {
-                                    var children = (h1_root.descendants()[0]).path(h1_root.descendants()[i]);
-                                    // console.log(children);
-
-                                    var node_id;
-                                    for (var j = 0; j < children.length; j++) {
-                                        // console.log(children[j]);
-                                        node_id = children[j].data.id;
-                                        // console.log(node_id);
-                                        //console.log(children[j]);
-                                        d3.select("#h1tree").select("#h1tree_" + node_id).style("opacity", "1");
-                                    }
-
-                                }
-                            }
-
-
-                            for (var i = 1; i < h2_root.descendants().length; i++) {
-                                if (h2_root.descendants()[i].data.data.child == circle_id) {
-                                    var children = (h2_root.descendants()[0]).path(h2_root.descendants()[i]);
-                                    // console.log(children);
-
-                                    var node_id;
-                                    for (var j = 0; j < children.length; j++) {
-                                        // console.log(children[j]);
-                                        node_id = children[j].data.id;
-                                        // console.log(node_id);
-                                        //console.log(children[j]);
-                                        d3.select("#h2tree").select("#h2tree_" + node_id).style("opacity", "1");
-                                    }
-
-                                }
-                            }
-
-
-
+                                .attr("r", 20);
                         })
                         .on("mouseleave", function (d) {
-
-                            var circle_id = this.getAttribute("id");
-                            circle_id = circle_id.split("_")[1];
-
-
-
-                            if (d3.select("#solidshaperadio")._groups[0][0].checked == true) {
-                                d3.select(this)
-                                    .transition()
-                                    .attr("r", radius);
-                            }
-                            if (d3.select("#hollowshaperadio")._groups[0][0].checked == true) {
-                                d3.select(this)
-                                    .transition()
-                                    .attr("r", radius - 4);
-                            }
-
-
-
-
-                            d3.select("#h1tree")
-                                .select("#h1tree_" + circle_id)
+                            d3.select(this)
                                 .transition()
-                                .style("opacity", 0.3);
-
-                            d3.select("#h2tree")
-                                .select("#h2tree_" + circle_id)
-                                .style("opacity", 0.3);
-
-
-                            for (var i = 1; i < h1_root.descendants().length; i++) {
-                                if (h1_root.descendants()[i].data.data.child == circle_id) {
-                                    var children = (h1_root.descendants()[0]).path(h1_root.descendants()[i]);
-                                    // console.log(children);
-
-                                    var node_id;
-                                    for (var j = 0; j < children.length; j++) {
-                                        // console.log(children[j]);
-                                        node_id = children[j].data.id;
-                                        // console.log(node_id);
-                                        //console.log(children[j]);
-                                        d3.select("#h1tree").select("#h1tree_" + node_id).style("opacity", "0.3");
-                                    }
-
-                                }
-                            }
-
-
-                            for (var i = 1; i < h2_root.descendants().length; i++) {
-                                if (h2_root.descendants()[i].data.data.child == circle_id) {
-                                    var children = (h2_root.descendants()[0]).path(h2_root.descendants()[i]);
-                                    // console.log(children);
-
-                                    var node_id;
-                                    for (var j = 0; j < children.length; j++) {
-                                        // console.log(children[j]);
-                                        node_id = children[j].data.id;
-                                        // console.log(node_id);
-                                        //console.log(children[j]);
-                                        d3.select("#h2tree").select("#h2tree_" + node_id).style("opacity", "0.3");
-                                    }
-
-                                }
-                            }
+                                .attr("r", radius + 4);
 
                         });
 
-
-                    var link = node
-                        .append("path")
-                        .data(mergedtree.links())
-                        // .enter()
-                        .attr("class", function (d) {
-                            return "link " + d.source.data.data.child + "-" + d.target.data.data.child;
-                        })
-                        //.classed("link", true)
-                        .attr("d", function (d) {
-                            return "M" + d.source.x + "," + d.source.y + 10
-                                + "C" + d.source.x + "," + (d.source.y + 10 + d.target.y) / 2
-                                + " " + d.target.x + "," + (d.source.y + d.target.y) / 2
-                                + " " + d.target.x + "," + (d.target.y + 10);
-                        })
-                        .style("opacity", function (d) {
-                            return 0.5;
-                        })
-                        .style("stroke", "#ccc")
-                        .style("fill", "none")
-                        .style("stroke-width", "5px")
-
-
                 }
 
 
-                /* END OF MERGED TREE */
+
+                node
+                    .append("circle")
+                    .attr("cx", function (d) {
+                        // console.log(d);
+                        // console.log(radialPoint(d.x, d.y));
+                        return d.x;
+                    })
+                    .attr("cy", function (d) {
+                        //            console.log(d.children == undefined);
+                        // if (d3.select("#leavessameheightradio")._groups[0][0].checked == true && d.children == undefined)
+                        //   return 1200;
+                        //else 
+                        return d.y;
+                    })
+                    .attr("r", function (d) {
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return radius + "px";
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return (radius - 4) + "px";
+                    })
+                    .attr("class", function (d) {
+                        return (
+                            "node" + (d.children ? " node--internal" : " node--leaf")
+                        );
+                    })
+                    .attr("id", function (d) {
+                        return "mergedtree_" + d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .style("fill", function (d) {
+                        //            console.log(d.data.data.shape);
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return d.data.data.color;
 
 
-
-
-
-                function createHierarchy(arrDims, h1, h2) {
-
-                    /* var h1color = "", h2color = "", mergedcolor = "";
-                    if (d3.select("#blueredradio")._groups[0][0].checked == true) {
-                        h1color = "blue";
-                        h2color = "red";
-                        mergedcolor = "purple";
-                    }
-                    else if (d3.select("#redgreenradio")._groups[0][0].checked == true) {
-                        h1color = "red";
-                        h2color = "green";
-                        mergedcolor = "brown";
-                    } */
-
-                    var hier = [];
-                    hier.push({ "child": "root", "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
-                    var hier_str = "";
-                    for (let j = 1; j < arrDims.length; j++) {
-
-                        for (let jj = 0; jj < arrDims[j].length; jj++) {
-                            // console.log(arrDims[j][jj]);
-
-                            if (arrDims[j][jj].color == mergedcolor) {
-                                var h1_details = parent(arrDims[j][jj], h1);
-                                var h2_details = parent(arrDims[j][jj], h2);
-
-                                if (h1_details[1] < h2_details[1])
-                                    hier.push({ "child": arrDims[j][jj].name, "parent": h1_details[0], "alternateparent": h2_details[0], "color": mergedcolor, "shape": "merged" });
-
-                                else
-                                    hier.push({ "child": arrDims[j][jj].name, "parent": h2_details[0], "alternateparent": h1_details[0], "color": mergedcolor, "shape": "merged" });
-
-                            }
-
-                            else if (arrDims[j][jj].color == h2color) {
-                                hier.push({ "child": arrDims[j][jj].name, "parent": parent(arrDims[j][jj], h1)[0], "alternateparent": "", "color": h2color, "shape": "h2" });
-
-                            }
-
-                            else {
-                                hier.push({ "child": arrDims[j][jj].name, "parent": parent(arrDims[j][jj], h2)[0], "alternateparent": "", "color": h1color, "shape": "h1" });
-                            }
-
-
-                        }
-                    }
-                    console.log(hier);
-                    return hier;
-
-                }
-
-
-                function parent(element, array) {
-                    // console.log(element);
-                    // console.log(array);
-                    for (var i = 0; i < array.length; i++) {
-
-                        if (array[i].data.data.child == element.name) {
-                            if (element.name == "root")
-                                return ["", array[i].data.data.height];
+                        else if (d3.select("#hollowshaperadio")._groups[0][0].checked == true) {
+                            if (d.data.data.shape == "h1")
+                                return "white";
                             else
-                                return [array[i].data.data.parent, array[i].data.parent.height];
+                                return h1color;
                         }
-                    }
-                }
-
-                function findDimensions(root) {
-                    const arrDims = [];
-
-                    // console.log(root);
-
-                    for (let i = 0; i <= root.height; i++) {
-                        arrDims.push([]);
-                    }
-
-                    // console.log(arrDims);
-
-                    root.eachBefore(function (d) {
-                        const str = d.depth;
-                        //  arrDims[str].push({ "name": d.data.data.child, "depth": d.depth, "height": d.height });
-                        arrDims[str].push(d.data.data.child);
-
-                    });
-
-                    return arrDims;
-                }
-
-
-                function compareDimensions(h1, h2) {
-                    const arrDims = [];
-                    const arrDims_obj = [];
-
-                    // console.log(h1);
-                    var maxLevels = h1.length;
-                    if (maxLevels < h2.length)
-                        maxLevels = h2.length;
-
-                    // console.log(maxLevels);
-
-                    for (let i = 0; i < maxLevels; i++) {
-                        arrDims.push([]);
-                        arrDims_obj.push([]);
-                    }
-
-                    //  console.log(arrDims);
-                    //arrDims[0].push({ "name": "root", "color": "purple" });
-                    arrDims[0].push("root");
-                    var flag = 0;
 
 
 
+                    })
+                    // .style("opacity", 1)
 
-                    // arrDims[i].push(h1[i][ii]);
+                    .style("opacity", function (d) {
+                        return 1;
+                    })
+                    .on("click", function (d) {
 
-
-                    /* for (let j = 1; j < h2.length; j++) {
-                        for (let jj = 0; jj < h2[j].length; jj++) {
-                            arrDims[j].push({ "name": h2[j][jj], "color": "red" });
-                        }
-                    }
-        */
-
-                    /*  for (let i = 1; i < h1.length; i++) {
-                         for (let ii = 0; ii < h1[i].length; ii++) {
-                             arrDims[i].push({ "name": h2[i][ii], "color": "red" });
-                         }
-                     } */
+                        //   console.log(d);
 
 
-                    for (let j = 1; j < h2.length - 1; j++) {
-                        //flag = "";
-                        for (let jj = 0; jj < h2[j].length; jj++) {
-                            // flag = "red";
-                            for (let i = 1; i < h1.length - 1; i++) {
-                                for (let ii = 0; ii < h1[i].length; ii++) {
-                                    //flag = "blue";
-                                    if (h2[j][jj] == h1[i][ii]) {
-                                        if (i > j) {
-                                            if (!arrDims[i].includes(h2[j][jj]))
-                                                arrDims[i].push(h2[j][jj]);
+                        var color = d.data.data.color;
+
+                        // console.log(color);
+
+                        d3.select("#mergedtree").selectAll("circle")
+                            .each(function (d) {
+                                // console.log(d.data);
+                                // console.log(this);
+                                /*   if (color == "purple") {
+                                      d3.select(this).style("opacity", "1");
+                                      d3.select(this.parentNode).select("text")
+                                          .style("opacity", "1");
+                                  }
+  
+                                  else  */
+
+                                if (color == mergedcolor) {
+                                    d3.select("#mergedtree").selectAll("circle").style("opacity", "1");
+                                    d3.select("#mergedtree").selectAll("text").style("opacity", "1");
+                                    d3.select("#mergedtree").selectAll("path").style("opacity", "0.5");
+                                    d3.selectAll(".altlink").remove();
+
+                                }
+                                else {
+
+                                    if (color == h1color) {
+
+                                        //d3.selectAll(".altlink").remove();
+
+                                        if ((d.data.data.color == h1color || d.data.data.color == mergedcolor)) {
+
+
+
+                                            d3.select(this).style("opacity", "1");
+                                            d3.select(this.parentNode).select("text")
+                                                .style("opacity", "1");
 
                                         }
-                                        //arrDims[i].push({ "name": h2[j][jj], "color": "purple" });
                                         else {
-                                            if (!arrDims[j].includes(h2[j][jj]))
-                                                arrDims[j].push(h2[j][jj]);
+
+                                            /*  if (d.data.data.alternateparent != "") {
+                                                 console.log(".link " + d.data.data.parent + "-" + d.data.data.child);
+                                                 d3.select("#mergedtree").select(".link " + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
+                                             } */
+
+                                            //console.log(".link " + d.data.data.parent + "-" + d.data.data.child);
+                                            console.log(this);
+                                            console.log(d.data);
+                                            d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
+                                            d3.select(this).style("opacity", "0");
+                                            d3.select(this.parentNode).select("text")
+                                                .style("opacity", "0");
+
+                                            if (d.children)
+                                                for (var i = 0; i < d.children.length; i++) {
+                                                    console.log(d.children[i].data.data.child);
+                                                    d3.select("#mergedtree").select("." + d.data.data.child + "-" + d.children[i].data.data.child).style("opacity", "0");
+
+
+
+                                                    /////
+
+                                                    var altparent = d.children[i].data.data.alternateparent;
+                                                    if (altparent != '' && altparent != "root") {
+
+                                                        var child = d.children[i].data.data.child;
+                                                        var parent = d.data.data.parent;
+
+                                                        console.log(altparent + " " + child);
+
+                                                        // if (d3.select("#hidenodesedgesradio")._groups[0][0].checked == true)
+
+
+                                                        d3.select("#mergedtree").append("path")
+                                                            .attr("class", function (d) {
+                                                                return "altlink";
+                                                            })
+                                                            .classed(altparent + "-" + child, true)
+                                                            .attr("d", function (d) {
+
+
+
+                                                                var sourcex = d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].__data__.x;
+                                                                var sourcey = d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].__data__.y;
+                                                                var targetx = d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].__data__.x;
+                                                                var targety = d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].__data__.y;
+
+
+                                                                console.log(sourcex + " " + sourcey);
+                                                                console.log(targetx + " " + targety);
+
+                                                                return "M" + sourcex + "," + sourcey
+                                                                    + "C" + sourcex + "," + (sourcey + targety) / 2
+                                                                    + " " + targetx + "," + ((sourcey) + targety) / 2
+                                                                    + " " + targetx + "," + targety;
+                                                            })
+                                                            .style("opacity", function (d) {
+                                                                return 0.5;
+                                                            })
+                                                            .style("stroke", "red")
+                                                            .style("stroke-dasharray", ("3,3"))
+                                                            .style("fill", "none")
+                                                            .style("stroke-width", "5px");
+
+                                                    }
+
+                                                    ////////
+                                                }
                                         }
-                                        //    arrDims[j].push({ "name": h2[j][jj], "color": "purple" });
-                                        // flag = "purple";
                                     }
 
-                                    else
-                                        if (!arrDims[j].includes(h2[j][jj]))
-                                            arrDims[j].push(h2[j][jj]);
-                                    //arrDims[j].push({ "name": h2[j][jj], "color": "red" });
+                                    else {
+                                        if ((d.data.data.color == h2color || d.data.data.color == mergedcolor)) {
+
+
+
+
+                                            d3.select(this).style("opacity", "1");
+                                            d3.select(this.parentNode).select("text")
+                                                .style("opacity", "1");
+
+                                            if (d.data.data.alternateparent != '' && d.data.data.alternateparent != "root") {
+                                                var altparent = d.data.data.alternateparent;
+                                                var child = d.data.data.child;
+                                                var parent = d.data.data.parent;
+
+                                                if (d3.select("#hidenodesedgesradio")._groups[0][0].checked == true)
+                                                    d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
+
+                                                d3.select("#mergedtree").append("path")
+                                                    .attr("class", function (d) {
+                                                        return "altlink";
+                                                    })
+                                                    .classed(altparent + "-" + child, true)
+                                                    .attr("d", function (d) {
+
+
+
+                                                        var sourcex = d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].__data__.x;
+                                                        var sourcey = d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].__data__.y;
+                                                        var targetx = d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].__data__.x;
+                                                        var targety = d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].__data__.y;
+
+
+
+                                                        return "M" + sourcex + "," + sourcey
+                                                            + "C" + sourcex + "," + (sourcey + targety) / 2
+                                                            + " " + targetx + "," + ((sourcey) + targety) / 2
+                                                            + " " + targetx + "," + targety;
+                                                    })
+                                                    .style("opacity", function (d) {
+                                                        return 0.5;
+                                                    })
+                                                    .style("stroke", "red")
+                                                    .style("stroke-dasharray", ("3,3"))
+                                                    .style("fill", "none")
+                                                    .style("stroke-width", "5px");
+
+                                            }
+                                        }
+                                        else {
+
+
+
+
+                                            // d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
+
+                                            if (d3.select("#hidenodesradio")._groups[0][0].checked == true || d3.select("#hidenodesedgesradio")._groups[0][0].checked == true) {
+                                                d3.select(this).style("opacity", "0");
+                                                d3.select(this.parentNode).select("text")
+                                                    .style("opacity", "0");
+
+                                                /* console.log(d.data.data.child);
+                                                console.log(d.data.data.parent);
+                                                console.log(d.data.data); */
+
+                                                if (d3.select("#hidenodesedgesradio")._groups[0][0].checked == true)
+                                                    d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
+
+
+                                            }
+
+                                            else if (d3.select("#shownodesradio")._groups[0][0].checked == true) {
+                                                d3.select(this).style("opacity", "1");
+                                                d3.select(this.parentNode).select("text")
+                                                    .style("opacity", "1");
+                                            }
+
+
+                                        }
+
+                                    }
 
 
                                 }
-                            }
-
-
-                        }
-                    }
-
-
-                    for (let j = h2.length - 1; j < h2.length; j++) {
-
-                        for (let jj = 0; jj < h2[j].length; jj++) {
-
-                            for (let i = h1.length - 1; i < h1.length; i++) {
-                                for (let ii = 0; ii < h1[i].length; ii++) {
-
-
-                                    if (!arrDims[j].includes(h2[j][jj]))
-                                        arrDims[j].push(h2[j][jj]);
-
-                                    if (!arrDims[j].includes(h1[i][ii]))
-                                        arrDims[j].push(h1[i][ii]);
+                            })
+                    })
+                    .on("mouseover", function (d) {
+                        var circle_id = this.getAttribute("id");
+                        circle_id = circle_id.split("_")[1];
+                        //console.log(circle_id);
 
 
 
+                        d3.select(this)
+                            .transition()
+                            .attr("r", 15);
+
+
+                        d3.select("#h1tree")
+                            .select("#h1tree_" + circle_id)
+                            .style("opacity", 1);
+
+                        d3.select("#h2tree")
+                            .select("#h2tree_" + circle_id)
+                            .style("opacity", 1);
+
+
+                        // console.log(h1_root.descendants());
+
+                        for (var i = 1; i < h1_root.descendants().length; i++) {
+                            if (h1_root.descendants()[i].data.data.child == circle_id) {
+                                var children = (h1_root.descendants()[0]).path(h1_root.descendants()[i]);
+                                // console.log(children);
+
+                                var node_id;
+                                for (var j = 0; j < children.length; j++) {
+                                    // console.log(children[j]);
+                                    node_id = children[j].data.id;
+                                    // console.log(node_id);
+                                    //console.log(children[j]);
+                                    d3.select("#h1tree").select("#h1tree_" + node_id).style("opacity", "1");
                                 }
+
                             }
+                        }
 
+
+                        for (var i = 1; i < h2_root.descendants().length; i++) {
+                            if (h2_root.descendants()[i].data.data.child == circle_id) {
+                                var children = (h2_root.descendants()[0]).path(h2_root.descendants()[i]);
+                                // console.log(children);
+
+                                var node_id;
+                                for (var j = 0; j < children.length; j++) {
+                                    // console.log(children[j]);
+                                    node_id = children[j].data.id;
+                                    // console.log(node_id);
+                                    //console.log(children[j]);
+                                    d3.select("#h2tree").select("#h2tree_" + node_id).style("opacity", "1");
+                                }
+
+                            }
+                        }
+
+
+
+                    })
+                    .on("mouseleave", function (d) {
+
+                        var circle_id = this.getAttribute("id");
+                        circle_id = circle_id.split("_")[1];
+
+
+
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true) {
+                            d3.select(this)
+                                .transition()
+                                .attr("r", radius);
+                        }
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true) {
+                            d3.select(this)
+                                .transition()
+                                .attr("r", radius - 4);
+                        }
+
+
+
+
+                        d3.select("#h1tree")
+                            .select("#h1tree_" + circle_id)
+                            .transition()
+                            .style("opacity", 0.3);
+
+                        d3.select("#h2tree")
+                            .select("#h2tree_" + circle_id)
+                            .style("opacity", 0.3);
+
+
+                        for (var i = 1; i < h1_root.descendants().length; i++) {
+                            if (h1_root.descendants()[i].data.data.child == circle_id) {
+                                var children = (h1_root.descendants()[0]).path(h1_root.descendants()[i]);
+                                // console.log(children);
+
+                                var node_id;
+                                for (var j = 0; j < children.length; j++) {
+                                    // console.log(children[j]);
+                                    node_id = children[j].data.id;
+                                    // console.log(node_id);
+                                    //console.log(children[j]);
+                                    d3.select("#h1tree").select("#h1tree_" + node_id).style("opacity", "0.3");
+                                }
+
+                            }
+                        }
+
+
+                        for (var i = 1; i < h2_root.descendants().length; i++) {
+                            if (h2_root.descendants()[i].data.data.child == circle_id) {
+                                var children = (h2_root.descendants()[0]).path(h2_root.descendants()[i]);
+                                // console.log(children);
+
+                                var node_id;
+                                for (var j = 0; j < children.length; j++) {
+                                    // console.log(children[j]);
+                                    node_id = children[j].data.id;
+                                    // console.log(node_id);
+                                    //console.log(children[j]);
+                                    d3.select("#h2tree").select("#h2tree_" + node_id).style("opacity", "0.3");
+                                }
+
+                            }
+                        }
+
+                    });
+                // console.log(mergedtree.links());
+
+                node
+                    .append("text")
+                    .style("font-size", "40px")
+                    .attr("class", function (d) {
+                        return d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .classed("text", true)
+                    .attr("dy", "2em")
+                    .attr("x", function (d) {
+                        // console.log(this);
+                        // console.log(this.previousSibling);
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return d.x - 10;
+                        else
+                            return d.x + 20;
+                    })
+                    .attr("y", function (d) {
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return d.y - 20;
+                        else
+                            return d.y - 40;
+                    })
+                    .attr("text-anchor", function (d) {
+                        return "start";
+                    })
+
+                    .style("opacity", function (d) {
+                        //  console.log(d);
+                        return 1;
+                    })
+                    .text(function (d) {
+                        // console.log(d);
+                        return d.data.data.child;
+                    });
+
+                var link = node
+                    .append("path")
+                    .data(mergedtree.links())
+                    // .enter()
+                    .attr("class", function (d) {
+                        return "link " + d.source.data.data.child + "-" + d.target.data.data.child;
+                    })
+                    //.classed("link", true)
+                    .attr("d", function (d) {
+                        return "M" + d.source.x + "," + parseInt(d.source.y + 10)
+                            + "C" + d.source.x + "," + (d.source.y + 10 + d.target.y) / 2
+                            + " " + d.target.x + "," + (d.source.y + d.target.y) / 2
+                            + " " + d.target.x + "," + (d.target.y + 10);
+                    })
+                    .style("opacity", function (d) {
+                        return 0.5;
+                    })
+                    .style("stroke", "#ccc")
+                    .style("fill", "none")
+                    .style("stroke-width", "5px");
+
+
+
+
+            }
+
+
+            /* END OF MERGED TREE */
+
+
+
+
+
+            function createHierarchy(arrDims, h1, h2) {
+
+                /*  console.log(arrDims);
+                 console.log(h1);
+                 console.log(h2); */
+
+                var hier = [];
+                hier.push({ "child": "root", "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+                var hier_str = "";
+                for (let j = 1; j < arrDims.length; j++) {
+
+                    for (let jj = 0; jj < arrDims[j].length; jj++) {
+                        // console.log(arrDims[j][jj]);
+
+                        if (arrDims[j][jj].color == mergedcolor) {
+                            var h1_details = parent(arrDims[j][jj], h1);
+                            var h2_details = parent(arrDims[j][jj], h2);
+
+                            if (h1_details[1] < h2_details[1])
+                                hier.push({ "child": arrDims[j][jj].name, "parent": h1_details[0], "alternateparent": h2_details[0], "color": mergedcolor, "shape": "merged" });
+
+                            else
+                                hier.push({ "child": arrDims[j][jj].name, "parent": h2_details[0], "alternateparent": h1_details[0], "color": mergedcolor, "shape": "merged" });
 
                         }
-                    }
 
-                    var h1_union = [];
-                    /* for (var i = 1; i < h1.length; i++) {
-                        h1_union = h1_union.concat(h1[i - 1], h1[i]);
-                    } */
-
-                    for (var i = 0; i < h1.length; i++) {
-                        h1_union = d3.merge([h1_union, h1[i]]);
-                    }
-
-                    var h2_union = [];
-                    for (var i = 0; i < h2.length; i++) {
-                        h2_union = d3.merge([h2_union, h2[i]]);
-                    }
-
-                    console.log(h1_union);
-                    console.log(h2_union);
-
-
-                    /*  var h1color = "", h2color = "", mergedcolor = "";
-                     if (d3.select("#blueredradio")._groups[0][0].checked == true) {
-                         h1color = "blue";
-                         h2color = "red";
-                         mergedcolor = "purple";
-                     }
-                     else if (d3.select("#redgreenradio")._groups[0][0].checked == true) {
-                         h1color = "red";
-                         h2color = "green";
-                         mergedcolor = "brown";
-                     } */
-
-                    console.log(h1color + " " + h2color + " " + mergedcolor);
-
-
-                    for (let j = 0; j < arrDims.length; j++) {
-
-                        for (let jj = 0; jj < arrDims[j].length; jj++) {
-
-                            if (h1_union.includes(arrDims[j][jj]) && h2_union.includes(arrDims[j][jj]))
-                                arrDims_obj[j].push({ "name": arrDims[j][jj], "color": mergedcolor, "shape": "merged" });
-
-                            else if (h1_union.includes(arrDims[j][jj]) && !h2_union.includes(arrDims[j][jj]))
-                                arrDims_obj[j].push({ "name": arrDims[j][jj], "color": h2color, "shape": "h2" });
-
-                            else if (!h1_union.includes(arrDims[j][jj]) && h2_union.includes(arrDims[j][jj]))
-                                arrDims_obj[j].push({ "name": arrDims[j][jj], "color": h1color, "shape": "h1" });
-
-
+                        else if (arrDims[j][jj].color == h2color) {
+                            hier.push({ "child": arrDims[j][jj].name, "parent": parent(arrDims[j][jj], h1)[0], "alternateparent": "", "color": h2color, "shape": "h2" });
 
                         }
+
+                        else {
+                            hier.push({ "child": arrDims[j][jj].name, "parent": parent(arrDims[j][jj], h2)[0], "alternateparent": "", "color": h1color, "shape": "h1" });
+                        }
+
+
                     }
+                }
+                //  console.log(hier);
+                return hier;
+
+            }
 
 
+            function parent(element, array) {
+                // console.log(element);
+                // console.log(array);
+                for (var i = 0; i < array.length; i++) {
 
-                    console.log(arrDims_obj);
-                    return arrDims_obj;
+                    if (array[i].data.data.child == element.name) {
+                        if (element.name == "root")
+                            return ["", array[i].data.data.height];
+                        else
+                            return [array[i].data.data.parent, array[i].data.parent.height];
+                    }
+                }
+            }
+
+
+            function findDimensions(root) {
+                const arrDims = [];
+
+                //console.log(root);
+
+                for (let i = 0; i <= root.height; i++) {
+                    arrDims.push([]);
                 }
 
-            });
+                // console.log(arrDims);
+
+                root.eachBefore(function (d) {
+                    const str = d.depth;
+                    //  arrDims[str].push({ "name": d.data.data.child, "depth": d.depth, "height": d.height });
+                    arrDims[str].push(d.data.data.child);
+
+                });
+
+                return arrDims;
+            }
+
+            function parent_desc(element, array) {
+
+                //console.log(element);
+                //console.log(array);
+                var child = array.filter(function (el) {
+
+                    if (element == el.data.id) {
+                        //console.log(element + " " + el.parent.data.id);
+                        return el.parent.data.id;
+                    }
+
+                });
+                //console.log(child[0].parent.data.id);
+                return child[0].parent.data.id;
+            }
+
+            function level_desc(element, array) {
+                /*  console.log(element);
+                 console.log(array); */
+                for (let i = 0; i < array.length; i++) {
+                    for (let ii = 0; ii < array[i].length; ii++) {
+                        if (array[i][ii].child == element || array[i][ii] == element) {
+                            //  console.log(i);
+                            return i;
+                        }
+                    }
+                }
+            }
+
+            function flatten_array(array) {
+                var hier_arr = [];
+
+                for (var h = 0; h < hier.length; h++) {
+                    for (var hh = 0; hh < hier[h].length; hh++) {
+                        hier_arr.push(hier[h][hh]);
+                    }
+                }
+
+                //console.log(hier_arr);
+
+
+                return hier_arr;
+            }
+
+            function compareDimensions(h2, h1, h2_dims, h1_dims) {
+                /* console.log(h1);
+                console.log(h2);
+
+                console.log(h1_dims);
+                console.log(h2_dims); */
+
+
+                var hier = [];
+                var arrDims = [];
+
+
+                var arrDims_flat = [];
+
+
+                var maxLevels = Math.max(h1.length, h2.length);
+
+                for (let i = 0; i < maxLevels; i++) {
+                    arrDims.push([]);
+                    hier.push([]);
+                    //arrDims_obj.push([]);
+                }
+
+
+                //console.log(arrDims);
+
+
+
+
+                for (let j = 0; j < h1.length; j++) {
+                    for (let jj = 0; jj < h1[j].length; jj++) {
+                        flag = 0;
+                        for (let i = 0; i < h2.length; i++) {
+
+                            if (h2[i].includes(h1[j][jj]))
+                                flag = i;
+
+                        }
+                        if (flag < j) {
+                            if (flag == 0) { // if the element is not present in h2
+                                // arrDims[j].push({ "name": h1[j][jj], "color": h1color, "shape": "h1" });
+                                var parent = parent_desc(h1[j][jj], h1_dims);
+                                //var level=level(parent, hier);
+                                //hier[level].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": h1color, "shape": "h1" });
+                                hier[j].push({ "child": h1[j][jj], "parent": parent, "alternateparent": "", "color": h1color, "shape": "h1" });
+
+                            }
+                            else { //element is present in both but at a higher level in j
+                                // arrDims[j].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                                var parent = parent_desc(h1[j][jj], h1_dims);
+                                var level = level_desc(parent, hier);
+                                hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h2_dims), "color": mergedcolor, "shape": "merged" });
+
+                                // hier[j].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+                            }
+                        }
+                        else { //element is present in both
+                            // arrDims[flag].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                            /*  console.log(h1[j][jj]);
+                             console.log(h2_dims);
+                             console.log(hier); */
+
+                            if (h1[j][jj] == "root")
+                                hier[flag].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+
+                            else {
+                                var parent = parent_desc(h1[j][jj], h2_dims);
+                                var level = level_desc(parent, hier);
+                                //  console.log(parent + " " + level);
+                                if (level != undefined)
+                                    hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+                                else {
+                                    parent = parent_desc(h1[j][jj], h2_dims);
+                                    /*    console.log(parent);
+                                       console.log(h2); */
+                                    level = level_desc(parent, h2);
+                                    //   console.log(parent + " " + level);
+                                    hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h1_dims), "color": mergedcolor, "shape": "merged" });
+                                }
+                                //hier[flag].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+                            }
+                        }
+
+                        arrDims_flat.push(h1[j][jj]);
+
+                    }
+                }
+
+                //element is only present in h2
+                for (let i = 0; i < h2.length; i++) {
+                    for (let ii = 0; ii < h2[i].length; ii++) {
+                        if (!arrDims_flat.includes(h2[i][ii])) {
+                            // arrDims[i].push({ "name": h2[i][ii], "color": h2color, "shape": "h2" });
+                            var parent = parent_desc(h2[i][ii], h2_dims);
+                            hier[i].push({ "child": h2[i][ii], "parent": parent, "alternateparent": "", "color": h2color, "shape": "h2" });
+                            //hier[i].push({ "child": h2[i][ii], "parent": "", "alternateparent": "", "color": h2color, "shape": "h2" });
+                            //  arrDims[i].push(h2[i][ii]);
+                            arrDims_flat.push(h2[i][ii]);
+                        }
+
+                    }
+                }
+
+
+                //console.log(arrDims_flat);
+                /*  console.log(arrDims);
+                 console.log(hier); */
+
+                return hier;
+            }
+
+
+            /*
+function compareDimensions(h2, h1) {
+                //console.log(h1);
+                //console.log(h2);
+
+                var arrDims = [];
+
+                var arrDims_flat = [];
+
+                var maxLevels = Math.max(h1.length, h2.length);
+
+                for (let i = 0; i < maxLevels; i++) {
+                    arrDims.push([]);
+                    //arrDims_obj.push([]);
+                }
+
+
+                //console.log(arrDims);
+
+                for (let j = 0; j < h1.length; j++) {
+                    for (let jj = 0; jj < h1[j].length; jj++) {
+                        flag = 0;
+                        for (let i = 0; i < h2.length; i++) {
+
+                            if (h2[i].includes(h1[j][jj]))
+                                flag = i;
+
+                        }
+                        if (flag < j) {
+                            if (flag == 0) // if the element is not present in h2
+                                arrDims[j].push({ "name": h1[j][jj], "color": h1color, "shape": "h1" });
+                            else //element is present in both
+                                arrDims[j].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                        }
+                        else { //element is present in both
+                            arrDims[flag].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                        }
+
+                        arrDims_flat.push(h1[j][jj]);
+
+                    }
+                }
+
+
+                for (let i = 0; i < h2.length; i++) {
+                    for (let ii = 0; ii < h2[i].length; ii++) {
+                        if (!arrDims_flat.includes(h2[i][ii])) {
+                            arrDims[i].push({ "name": h2[i][ii], "color": h2color, "shape": "h2" });
+                            //  arrDims[i].push(h2[i][ii]);
+                            arrDims_flat.push(h2[i][ii]);
+                        }
+
+                    }
+                }
+
+
+                //console.log(arrDims_flat);
+                //console.log(arrDims);
+
+                return arrDims;
+            }
+            */
+
+
+
+
+        }
 
     </script>
 </body>
