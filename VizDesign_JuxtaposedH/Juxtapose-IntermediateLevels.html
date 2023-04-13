@@ -47,7 +47,8 @@
 
 
                     <div class="form-check" style="margin-top:20px;">
-                        <input class="form-check-input" type="radio" name="fileversionradio" id="fileversion0radio">
+                        <input class="form-check-input" type="radio" name="fileversionradio" id="fileversion0radio"
+                            checked>
                         <label class="form-check-label" for="fileversion0radio">
                             File Version 0 (Default)
                         </label>
@@ -61,13 +62,7 @@
                     </div>
 
 
-                    <div class="form-check" style="margin-top:10px;">
-                        <input class="form-check-input" type="radio" name="fileversionradio" id="fileversion2radio"
-                            checked>
-                        <label class="form-check-label" for="fileversion2radio">
-                            Supermarket Dataset
-                        </label>
-                    </div>
+
                 </fieldset>
 
                 <fieldset class="border p-2" style="margin-top:100px;">
@@ -200,7 +195,7 @@
 
 
 
-        var fileversion = "File2";
+        var fileversion = "File0";
         var swapdataset = "h1";
 
 
@@ -210,8 +205,7 @@
                 fileversion = "File0";
             else if (d3.select("#fileversion1radio")._groups[0][0].checked == true)
                 fileversion = "File1";
-            else
-                fileversion = "File2";
+
 
             if (swapdataset == "h1") {
                 d3.queue()
@@ -383,8 +377,8 @@
             //var hier = createHierarchy(arrDims, h1_root.descendants(), h2_root.descendants());
 
             // console.log(hier);
-            var hier = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
-            var hier_arr = flatten_array(hier);
+            var hier_arr = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+            //var hier_arr = flatten_array(hier);
             var hier_struct = stratify(hier_arr);
             console.log(hier_arr);
             mergedtree();
@@ -399,8 +393,8 @@
                 }
                 h1tree();
                 h2tree();
-                hier = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
-                hier_arr = flatten_array(hier);
+                hier_arr = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+                //hier_arr = flatten_array(hier);
                 hier_struct = stratify(hier_arr);
                 mergedtree();
             });
@@ -413,8 +407,8 @@
                 }
                 h1tree();
                 h2tree();
-                hier = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
-                hier_arr = flatten_array(hier);
+                hier_arr = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+                //hier_arr = flatten_array(hier);
                 hier_struct = stratify(hier_arr);
                 mergedtree();
                 /*  arrDims = compareDimensions(h1_dims, h2_dims);
@@ -432,8 +426,8 @@
                 }
                 h1tree();
                 h2tree();
-                hier = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
-                hier_arr = flatten_array(hier);
+                hier_arr = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+                //hier_arr = flatten_array(hier);
                 hier_struct = stratify(hier_arr);
                 mergedtree();
             });
@@ -808,11 +802,11 @@
                 var tree = d3
                     .tree()
                     //.nodeSize([]);
-                    .size([1500, 1000]);
+                    .size([1000, 1000]);
 
                 var cluster = d3
                     .cluster()
-                    .size([1500, 1000]);
+                    .size([1000, 1000]);
 
                 // console.log(d3.select(: ))
 
@@ -827,14 +821,17 @@
 
                 //   console.log(mergedtree);
 
-                //   console.log(mergedtree.descendants());
-                // console.log(mergedtree)
+                //console.log(mergedtree.descendants());
+                //console.log(mergedtree);
+
+                //var descendants = recomputePositions_nodes(mergedtree.descendants());
+                //mergedtree.links()=recomputePositions_links(mergedtree.links());
 
                 svg
                     .append("g")
                     .attr("id", "mergedtree")
                     .attr("transform",
-                        "translate(" + (margin.left + 400) + "," + (margin.top + 750) + ")");
+                        "translate(" + (margin.left + 400) + "," + (margin.top + 700) + ")");
 
                 var node = svg
                     .select("#mergedtree")
@@ -856,8 +853,10 @@
 
 
 
-                /* console.log(mergedtree.descendants());
-                console.log(mergedtree.links()); */
+
+
+                //for (var i = 0; i < mergedtree.descendants())
+                //console.log(mergedtree.links()); 
 
                 if (d3.select("#hollowshaperadio")._groups[0][0].checked == true) {
                     node
@@ -865,6 +864,7 @@
                         .attr("cx", function (d) {
                             // console.log(d);
                             // console.log(radialPoint(d.x, d.y));
+
                             return d.x;
                         })
                         .attr("cy", function (d) {
@@ -872,7 +872,20 @@
                             // if (d3.select("#leavessameheightradio")._groups[0][0].checked == true && d.children == undefined)
                             //   return 1200;
                             //else 
-                            return d.y;
+
+                            /*   if (d.data.data.level % 1 == 0) //{
+                                  // d.y = d.y;
+                                  return d.y;
+                              // }
+                              else //{
+                                  // d.y = d.y - 150;
+                                  return d.y - 150;
+                              // } */
+
+                            var y = 0;
+
+                            y = (d.data.data.level === 0 ? 50 : d.data.data.level * 300);
+                            return y;
                         })
                         .attr("r", function (d) {
 
@@ -918,6 +931,48 @@
                 }
 
 
+                /* var sym = d3.symbol(d3.symbolCross).size(19300);
+
+                node
+                    .append("path")
+                    .attr("d", sym)
+                    .style("fill", "yellow")
+                    .style("stroke", "black")
+                    .style("stroke-width", "5")
+                    .attr("transform", "translate(100,100)");
+ */
+
+                var symbolGenerator = d3.symbol()
+                    .type(d3.symbolCross)
+                    .size(250);
+
+                var pathData = symbolGenerator();
+
+                node
+                    .append("path")
+                    .attr('d', pathData)
+                    .style("stroke", "black")
+                    .style("stroke-width", "0.5")
+                    .style("fill", "white")
+                    .attr("transform", "rotate(45)");
+                // return "translate(" + x + "," + y + "rotate(45))";
+
+
+
+                /*  node
+                     .append("path")
+                     .attr('d', pathData)
+                     .style("stroke", "black")
+                     .style("stroke-width", "0.5")
+                     .style("fill", "white")
+                     .attr("transform", function (d) {
+                         return "rotate(45)";
+                         // return "translate(" + x + "," + y + "rotate(45))";
+                     }
+                     ); */
+
+
+
 
                 node
                     .append("circle")
@@ -927,11 +982,26 @@
                         return d.x;
                     })
                     .attr("cy", function (d) {
-                        //            console.log(d.children == undefined);
-                        // if (d3.select("#leavessameheightradio")._groups[0][0].checked == true && d.children == undefined)
-                        //   return 1200;
-                        //else 
-                        return d.y;
+                        var y = d.y;
+
+                        //  console.log(d);
+
+                        y = (d.data.data.level === 0 ? 50 : d.data.data.level * 300);
+
+                        /* y = (d.depth === 0 ? 50 : d.depth * 300);
+
+                        if (d.data.data.level % 1 == 0)
+                            y = d.y;
+                        else {
+                            if (d.data.data.level < d.depth)
+                                y = d.y - 150;
+
+                            else
+                                y = d.y + 150;
+                        } */
+
+                        return y;
+
                     })
                     .attr("r", function (d) {
                         if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
@@ -1098,7 +1168,8 @@
                                             d3.select(this.parentNode).select("text")
                                                 .style("opacity", "1");
 
-                                            if (d.data.data.alternateparent != '' && d.data.data.alternateparent != "root") {
+                                            //if (d.data.data.alternateparent != '' && d.data.data.alternateparent != "root") {
+                                            if (d.data.data.alternateparent != '') {
                                                 var altparent = d.data.data.alternateparent;
                                                 var child = d.data.data.child;
                                                 var parent = d.data.data.parent;
@@ -1111,20 +1182,44 @@
                                                         return "altlink";
                                                     })
                                                     .classed(altparent + "-" + child, true)
-                                                    .attr("d", function (d) {
+                                                    .attr("d", function (di) {
+
+                                                        console.log(di);
+
+                                                        //console.log(d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0]);
+                                                        //console.log(d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0]);
+                                                        //console.log(d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].getAttribute("cy"));
+
+                                                        var sourcex = parseInt(d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].getAttribute("cx"));
+                                                        var sourcey = parseInt(d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].getAttribute("cy"));
+                                                        var targetx = parseInt(d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].getAttribute("cx"));
+                                                        var targety = parseInt(d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].getAttribute("cy"));
 
 
+                                                        console.log(sourcex + " " + sourcey);
+                                                        console.log(targetx + " " + targety);
 
-                                                        var sourcex = d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].__data__.x;
-                                                        var sourcey = d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].__data__.y;
-                                                        var targetx = d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].__data__.x;
-                                                        var targety = d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].__data__.y;
+                                                        /*
+                                                        <path class="altlink y-z" d="M947,440C1000,487.5 1000,487.5 947,540" style="opacity: 0.5; stroke: red; stroke-dasharray: 3, 3; fill: none; stroke-width: 5px;"></path>
+                                                        */
+
+                                                        if (targety < sourcey) {
+                                                            //console.log("RECURSIVE PARENT");
+                                                            //console.log(d);
+
+                                                            return "M" + targetx + "," + (targety - radius)
+                                                                + "L" + targetx + "," + (targety - 50)
+                                                                + "L" + (targetx + 50) + "," + (targety - 50)
+                                                                + "L " + (sourcex + 50) + "," + (sourcey + 50)
+                                                                + "L" + (sourcex) + "," + (sourcey + 50)
+                                                                + "L" + sourcex + "," + (sourcey + radius);
+
+                                                        }
 
 
-
-                                                        return "M" + sourcex + "," + sourcey
+                                                        else return "M" + sourcex + "," + sourcey
                                                             + "C" + sourcex + "," + (sourcey + targety) / 2
-                                                            + " " + targetx + "," + ((sourcey) + targety) / 2
+                                                            + " " + targetx + "," + (sourcey + targety) / 2
                                                             + " " + targetx + "," + targety;
                                                     })
                                                     .style("opacity", function (d) {
@@ -1304,6 +1399,11 @@
                     });
                 // console.log(mergedtree.links());
 
+
+
+
+
+
                 node
                     .append("text")
                     .style("font-size", "40px")
@@ -1325,10 +1425,41 @@
                             return d.x + 20;
                     })
                     .attr("y", function (d) {
+
+                        var y = 0;
+
+                        y = (d.data.data.level === 0 ? 50 : d.data.data.level * 300);
+
+                        /*  if (d.data.data.level % 1 == 0)
+                             y = d.y;
+                         else
+                             y = d.y - 150; 
+
+                        /////
+
+                        if (d.data.data.level % 1 == 0)
+                            y = d.y;
+                        else {
+                            if (d.data.data.level < d.depth)
+                                y = d.y - 150;
+
+                            else
+                                y = d.y + 150;
+                        }
+                        */
+
+                        //////
+
+
+
+
+
                         if ((this.previousSibling).getAttribute("class").includes("leaf"))
-                            return d.y - 20;
+                            y = y - 20;
                         else
-                            return d.y - 40;
+                            y = y - 40;
+
+                        return y;
                     })
                     .attr("text-anchor", function (d) {
                         return "start";
@@ -1352,10 +1483,40 @@
                     })
                     //.classed("link", true)
                     .attr("d", function (d) {
-                        return "M" + d.source.x + "," + parseInt(d.source.y + 10)
-                            + "C" + d.source.x + "," + (d.source.y + 10 + d.target.y) / 2
-                            + " " + d.target.x + "," + (d.source.y + d.target.y) / 2
-                            + " " + d.target.x + "," + (d.target.y + 10);
+                        /* console.log(d);
+                        console.log(d.source.data.data.child + " " + d.target.data.data.child);
+                        console.log(sourcey + " " + targety);
+                        console.log(d.target.data.data.level);
+                        console.log(d.target.data.data.level % 1); */
+
+
+                        var sourcex = d.source.x, sourcey = d.source.y, targetx = d.target.x, targety = d.target.y;
+
+                        //console.log(d);
+
+                        sourcey = d.source.data.data.level === 0 ? 50 : d.source.data.data.level * 300;
+                        targety = d.target.data.data.level === 0 ? 50 : d.target.data.data.level * 300;
+
+
+                        /*   if (d.target.data.data.level < d.target.depth)
+                              targety = targety - 150;
+                          else if (d.target.data.data.level > d.target.depth)
+                              targety = targety + 150;
+  
+                          if (d.source.data.data.level < d.source.depth)
+                              sourcey = sourcey - 150;
+  
+                          else if (d.source.data.data.level > d.source.depth)
+                              sourcey = sourcey + 150; */
+
+
+                        //console.log(sourcey + " " + targety);
+
+
+                        return "M" + sourcex + "," + parseInt(sourcey + 10)
+                            + "C" + sourcex + "," + (sourcey + 10 + targety) / 2
+                            + " " + targetx + "," + (sourcey + targety) / 2
+                            + " " + targetx + "," + (targety + 10);
                     })
                     .style("opacity", function (d) {
                         return 0.5;
@@ -1364,6 +1525,91 @@
                     .style("fill", "none")
                     .style("stroke-width", "5px");
 
+                var flag = [];
+
+                node
+                    .append("line")
+                    .attr("x1", function (d) {
+                        //console.log(d);
+                        if (d.data.data.level % 1 == 0 && !flag.includes(d.data.data.level)) {
+                            flag.push(d.data.data.level);
+                            return -100;
+                        }
+
+                    })
+                    .attr("y1", function (d) {
+
+
+                        if (d.data.data.level == 0)
+                            return 50;
+                        else
+                            if (d.data.data.level % 1 == 0)
+                                return d.data.data.level * 300;
+                    })
+                    .attr("x2", function (d) {
+                        if (d.data.data.level % 1 == 0)
+                            return 1100;
+                    })
+                    .attr("y2", function (d) {
+                        if (d.data.data.level == 0)
+                            return 50;
+                        else
+                            if (d.data.data.level % 1 == 0)
+                                return d.data.data.level * 300;
+                    })
+                    .style("stroke", "grey")
+                    .style("stroke-width", 10)
+                    .style("stroke-dasharray", "6,60")
+                    .style("opacity", "0.1");
+
+                flag = [];
+
+                node
+                    .append("text")
+                    .attr("class", function (d, i) {
+                        //console.log("text-level" + d.depth);
+                        //console.log(i);
+                        return "text-level" + d.data.data.level;
+                    })
+                    .style("font-size", "20px")
+                    .attr("dy", "2em")
+                    //.attr("x", -150)
+                    .attr("x", function (d) {
+                        if (!flag.includes(d.data.data.level))
+                            return -150;
+
+                    })
+                    .attr("y", function (d) {
+
+                        if (d.data.data.level == 0) {
+                            flag.push(d.data.data.level);
+                            return 50;
+                        }
+                        else
+                            if (d.data.data.level % 1 == 0) {
+                                flag.push(d.data.data.level);
+                                return d.data.data.level * 300;
+                            }
+
+
+                    })
+                    .attr("text-anchor", function (d) {
+                        return "start";
+                    })
+
+                    .style("opacity", function (d, i) {
+                        //console.log(i);
+                        //console.log(d3.select("#content").select("#mergedtree").selectAll(".text-level" + d.depth)._groups[0]);
+                        //if (d3.select("#content").select("#mergedtree").selectAll(".text-level" + d.depth)._groups[0].length == 0)
+                        return 1;
+                        //else
+                        //   return 0;
+                    })
+                    .text(function (d) {
+                        // console.log(d);
+                        if (d.data.data.level % 1 == 0)
+                            return "Level: " + d.data.data.level;
+                    });
 
 
 
@@ -1374,6 +1620,14 @@
 
 
 
+            function recomputePositions_nodes(descendants) {
+                console.log(descendants);
+
+                if (!d.data.data.level % 2 == 0)
+
+
+                    return descendants;
+            }
 
 
             function createHierarchy(arrDims, h1, h2) {
@@ -1463,7 +1717,8 @@
                 var child = array.filter(function (el) {
 
                     if (element == el.data.id) {
-                        //console.log(element + " " + el.parent.data.id);
+                        //  console.log(element);
+                        // console.log(element + " " + el.parent.data.id);
                         return el.parent.data.id;
                     }
 
@@ -1472,15 +1727,46 @@
                 return child[0].parent.data.id;
             }
 
+
             function level_desc(element, array) {
-                /*  console.log(element);
-                 console.log(array); */
+                //console.log(element);
+                //console.log(array);
                 for (let i = 0; i < array.length; i++) {
                     for (let ii = 0; ii < array[i].length; ii++) {
                         if (array[i][ii].child == element || array[i][ii] == element) {
-                            //  console.log(i);
+                            //console.log(i);
                             return i;
                         }
+                    }
+                }
+            }
+
+            function parent_hier(element, array) {
+
+                //console.log(element);
+                //console.log(array);
+
+                for (i = 0; i < array.length; i++)
+                    //console.log(i);
+                    if (element == array[i].child) {
+                        //console.log("MATCH");
+                        //console.log(element + " " + array[i].child);
+                        return array[i].parent;
+                    }
+
+
+                //console.log(child[0].parent.data.id);
+
+            }
+
+
+            function level_hier(element, array) {
+                //console.log(array);
+                //console.log(element);
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i].child == element) {
+                        //console.log(array[i].level);
+                        return array[i].level;
                     }
                 }
             }
@@ -1500,180 +1786,336 @@
                 return hier_arr;
             }
 
+
             function compareDimensions(h2, h1, h2_dims, h1_dims) {
-                /* console.log(h1);
-                console.log(h2);
-
-                console.log(h1_dims);
-                console.log(h2_dims); */
-
+                /*  console.log(h1);
+                 console.log(h2);
+ 
+                 console.log(h1_dims);
+                 console.log(h2_dims);
+  */
 
                 var hier = [];
-                var arrDims = [];
+                //var arrDims = [];
 
 
-                var arrDims_flat = [];
+                var hier_flat = [];
+                var index = 0;
 
 
                 var maxLevels = Math.max(h1.length, h2.length);
 
-                for (let i = 0; i < maxLevels; i++) {
-                    arrDims.push([]);
-                    hier.push([]);
-                    //arrDims_obj.push([]);
-                }
+
+
 
 
                 //console.log(arrDims);
 
+                for (var i = 0; i < h1.length; i++) {
+                    for (var ii = 0; ii < h1[i].length; ii++) {
+                        for (var j = 0; j < h2.length; j++) {
+                            if (h2[j].includes(h1[i][ii])) {
 
-
-
-                for (let j = 0; j < h1.length; j++) {
-                    for (let jj = 0; jj < h1[j].length; jj++) {
-                        flag = 0;
-                        for (let i = 0; i < h2.length; i++) {
-
-                            if (h2[i].includes(h1[j][jj]))
-                                flag = i;
-
-                        }
-                        if (flag < j) {
-                            if (flag == 0) { // element is only present in h1 and not in h2
-                                // arrDims[j].push({ "name": h1[j][jj], "color": h1color, "shape": "h1" });
-                                var parent = parent_desc(h1[j][jj], h1_dims);
-                                //var level=level(parent, hier);
-                                //hier[level].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": h1color, "shape": "h1" });
-                                hier[j].push({ "child": h1[j][jj], "parent": parent, "alternateparent": "", "color": h1color, "shape": "h1" });
-
-                            }
-                            else { //element is present in both but at a higher level in h1/j
-                                // arrDims[j].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
-                                var parent = parent_desc(h1[j][jj], h1_dims);
-                                var level = level_desc(parent, hier);
-                                hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h2_dims), "color": mergedcolor, "shape": "merged" });
-
-                                // hier[j].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
-                            }
-                        }
-                        else { //element is present in both
-                            // arrDims[flag].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
-                            /*  console.log(h1[j][jj]);
-                             console.log(h2_dims);
-                             console.log(hier); */
-
-                            if (h1[j][jj] == "root")
-                                hier[flag].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
-
-                            else {
-                                var parent = parent_desc(h1[j][jj], h2_dims);
-                                var level = level_desc(parent, hier);
-                                //  console.log(parent + " " + level);
-                                if (level != undefined)
-                                    hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h1_dims), "color": mergedcolor, "shape": "merged" });
-                                else {
-                                    parent = parent_desc(h1[j][jj], h2_dims);
-                                    /*    console.log(parent);
-                                       console.log(h2); */
-                                    level = level_desc(parent, h2);
-                                    //   console.log(parent + " " + level);
-                                    hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h1_dims), "color": mergedcolor, "shape": "merged" });
+                                if (h1[i][ii] == "root") {
+                                    hier_flat.push(h1[i][ii]);
+                                    hier.push({ "child": h1[i][ii], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged", "level": 0 });
                                 }
-                                //hier[flag].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+
+                                else
+                                    if (!hier_flat.includes(h1[i][ii])) {
+
+                                        //var parent = parent_desc(h1[i][ii], h1_dims);
+                                        var lev1 = level_desc(h1[i][ii], h1);
+
+                                        //parent = parent_desc(h1[i][ii], h2_dims);
+                                        var lev2 = level_desc(h1[i][ii], h2);
+
+                                        //console.log(h1[i][ii]);
+                                        //console.log(lev1 + " " + lev2);
+                                        var avg_level = (lev1 + lev2) / 2;
+
+                                        //index = avg_level;
+                                        //console.log(avg_level + " " + index);
+
+
+                                        hier.push({ "child": h1[i][ii], "parent": parent_desc(h1[i][ii], h1_dims), "alternateparent": parent_desc(h1[i][ii], h2_dims), "color": mergedcolor, "shape": "merged", "level": avg_level });
+
+
+
+                                        hier_flat.push(h1[i][ii]);
+                                    }
+
+                            }
+
+                        }
+                    }
+                }
+
+
+                for (var i = 0; i < h1.length; i++) {
+                    for (var ii = 0; ii < h1[i].length; ii++) {
+
+
+                        if (!hier_flat.includes(h1[i][ii])) {
+                            index = i;
+                            //console.log(h1[i][ii]);
+                            hier_flat.push(h1[i][ii]);
+                            hier.push({ "child": h1[i][ii], "parent": parent_desc(h1[i][ii], h1_dims), "alternateparent": "", "color": h1color, "shape": "h1", "level": i });
+                        }
+
+                    }
+                }
+
+
+                for (var j = 0; j < h2.length; j++) {
+                    for (var jj = 0; jj < h2[j].length; jj++) {
+                        var flag = 0;
+
+                        if (!hier_flat.includes(h2[j][jj])) {
+                            //console.log(h2[j][jj] + " j " + j);
+
+                            h2_dims.filter(function (d) {
+                                // console.log(d);
+                                if (d.data.data.child == h2[j][jj]) {
+                                    if (d.children) {
+                                        var children = d.children;
+                                        console.log(children);
+
+                                        //for (var child = 0; child <= children.length; child++) {
+                                        //console.log(children[child]);
+                                        if (hier_flat.includes(children[0].data.data.child)) {
+                                            //console.log("found child");
+                                            //console.log(hier);
+
+                                            console.log(parent_desc(h2[j][jj], h2_dims));
+                                            var parent_index = level_hier(parent_desc(h2[j][jj], h2_dims), hier);
+                                            // var child_index = level_desc(h2[j][jj], h2_dims);
+                                            var child_index = level_hier(children[0].data.data.child, hier);
+                                            console.log(parent_index + " " + child_index);
+                                            console.log(h2[j][jj]);
+                                            hier.push({ "child": h2[j][jj], "parent": parent_desc(h2[j][jj], h2_dims), "alternateparent": "", "color": h2color, "shape": "h2", "level": (parent_index + child_index) / 2 });
+                                            hier_flat.push(h2[j][jj]);
+                                            flag = 1;
+
+                                            for (var h = 0; h < hier.length; h++) {
+                                                if (hier[h].child == children[0].data.data.child)
+                                                    hier[h].alternateparent = h2[j][jj];
+                                            }
+                                        }
+
+
+                                    }
+                                    //}
+                                }
+
+                            });
+
+                            if (flag != 1) {
+                                index = j;
+                                //console.log(h2[j][jj]);
+                                hier.push({ "child": h2[j][jj], "parent": parent_desc(h2[j][jj], h2_dims), "alternateparent": "", "color": h2color, "shape": "h2", "level": j });
+                                hier_flat.push(h2[j][jj]);
                             }
                         }
-
-                        arrDims_flat.push(h1[j][jj]);
-
                     }
                 }
 
-                //element is only present in h2
-                for (let i = 0; i < h2.length; i++) {
-                    for (let ii = 0; ii < h2[i].length; ii++) {
-                        if (!arrDims_flat.includes(h2[i][ii])) {
-                            // arrDims[i].push({ "name": h2[i][ii], "color": h2color, "shape": "h2" });
-                            var parent = parent_desc(h2[i][ii], h2_dims);
-                            hier[i].push({ "child": h2[i][ii], "parent": parent, "alternateparent": "", "color": h2color, "shape": "h2" });
-                            //hier[i].push({ "child": h2[i][ii], "parent": "", "alternateparent": "", "color": h2color, "shape": "h2" });
-                            //  arrDims[i].push(h2[i][ii]);
-                            arrDims_flat.push(h2[i][ii]);
-                        }
+                console.log(hier);
+                //console.log(hier_flat);
 
+
+                for (var h = 1; h < hier.length; h++) {
+                    //console.log(parent_hier(hier[h].child, hier));
+
+                    //if(hier[h].alternateparent)
+
+                    if (hier[h].level == level_hier(parent_hier(hier[h].child, hier), hier)) {
+                        //console.log("MODIFY");
+                        hier[h].level = hier[h].level + 0.25;
                     }
                 }
 
-
-                //console.log(arrDims_flat);
-                /*  console.log(arrDims);
-                 console.log(hier); */
-
+                console.log(hier);
                 return hier;
-            }
 
+            }
 
             /*
-function compareDimensions(h2, h1) {
-                //console.log(h1);
-                //console.log(h2);
-
-                var arrDims = [];
-
-                var arrDims_flat = [];
-
-                var maxLevels = Math.max(h1.length, h2.length);
-
-                for (let i = 0; i < maxLevels; i++) {
-                    arrDims.push([]);
-                    //arrDims_obj.push([]);
-                }
-
-
-                //console.log(arrDims);
-
-                for (let j = 0; j < h1.length; j++) {
-                    for (let jj = 0; jj < h1[j].length; jj++) {
-                        flag = 0;
-                        for (let i = 0; i < h2.length; i++) {
-
-                            if (h2[i].includes(h1[j][jj]))
-                                flag = i;
-
+                        function compareDimensions(h2, h1, h2_dims, h1_dims) {
+                            //   console.log(h1);
+                            //  console.log(h2);
+            
+                            //  console.log(h1_dims);
+                            //  console.log(h2_dims); 
+            
+            
+                            var hier = [];
+                            var arrDims = [];
+            
+            
+                            var arrDims_flat = [];
+            
+            
+                            var maxLevels = Math.max(h1.length, h2.length);
+            
+                            for (let i = 0; i < maxLevels; i++) {
+                                arrDims.push([]);
+                                hier.push([]);
+                                //arrDims_obj.push([]);
+                            }
+            
+            
+                            //console.log(arrDims);
+            
+            
+            
+            
+                            for (let j = 0; j < h1.length; j++) {
+                                for (let jj = 0; jj < h1[j].length; jj++) {
+                                    flag = 0;
+                                    for (let i = 0; i < h2.length; i++) {
+            
+                                        if (h2[i].includes(h1[j][jj]))
+                                            flag = i;
+            
+                                    }
+                                    if (flag < j) {
+                                        if (flag == 0) { // element is only present in h1 and not in h2
+                                            // arrDims[j].push({ "name": h1[j][jj], "color": h1color, "shape": "h1" });
+                                            var parent = parent_desc(h1[j][jj], h1_dims);
+                                            //var level=level(parent, hier);
+                                            //hier[level].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": h1color, "shape": "h1" });
+                                            hier[j].push({ "child": h1[j][jj], "parent": parent, "alternateparent": "", "color": h1color, "shape": "h1" });
+            
+                                        }
+                                        else { //element is present in both but at a higher level in h1/j
+                                            // arrDims[j].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                                            var parent = parent_desc(h1[j][jj], h1_dims);
+                                            var level = level_desc(parent, hier);
+                                            hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h2_dims), "color": mergedcolor, "shape": "merged" });
+            
+                                            // hier[j].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+                                        }
+                                    }
+                                    else { //element is present in both
+                                        // arrDims[flag].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                                        //  console.log(h1[j][jj]);
+                                        // console.log(h2_dims);
+                                        // console.log(hier); 
+            
+                                        if (h1[j][jj] == "root")
+                                            hier[flag].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+            
+                                        else {
+                                            var parent = parent_desc(h1[j][jj], h2_dims);
+                                            var level = level_desc(parent, hier);
+                                            //  console.log(parent + " " + level);
+                                            if (level != undefined)
+                                                hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h1_dims), "color": mergedcolor, "shape": "merged" });
+                                            else {
+                                                parent = parent_desc(h1[j][jj], h2_dims);
+                                                //    console.log(parent);
+                                                //   console.log(h2); 
+                                                level = level_desc(parent, h2);
+                                                //   console.log(parent + " " + level);
+                                                hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h1_dims), "color": mergedcolor, "shape": "merged" });
+                                            }
+                                            //hier[flag].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+                                        }
+                                    }
+            
+                                    arrDims_flat.push(h1[j][jj]);
+            
+                                }
+                            }
+            
+                            //element is only present in h2
+                            for (let i = 0; i < h2.length; i++) {
+                                for (let ii = 0; ii < h2[i].length; ii++) {
+                                    if (!arrDims_flat.includes(h2[i][ii])) {
+                                        // arrDims[i].push({ "name": h2[i][ii], "color": h2color, "shape": "h2" });
+                                        var parent = parent_desc(h2[i][ii], h2_dims);
+                                        hier[i].push({ "child": h2[i][ii], "parent": parent, "alternateparent": "", "color": h2color, "shape": "h2" });
+                                        //hier[i].push({ "child": h2[i][ii], "parent": "", "alternateparent": "", "color": h2color, "shape": "h2" });
+                                        //  arrDims[i].push(h2[i][ii]);
+                                        arrDims_flat.push(h2[i][ii]);
+                                    }
+            
+                                }
+                            }
+            
+            
+                            console.log(arrDims_flat);
+                            // console.log(arrDims);
+                            console.log(hier);
+            
+                            return hier;
                         }
-                        if (flag < j) {
-                            if (flag == 0) // if the element is not present in h2
-                                arrDims[j].push({ "name": h1[j][jj], "color": h1color, "shape": "h1" });
-                            else //element is present in both
-                                arrDims[j].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+            
+            
+            
+                        
+            function compareDimensions(h2, h1) {
+                            //console.log(h1);
+                            //console.log(h2);
+             
+                            var arrDims = [];
+             
+                            var arrDims_flat = [];
+             
+                            var maxLevels = Math.max(h1.length, h2.length);
+             
+                            for (let i = 0; i < maxLevels; i++) {
+                                arrDims.push([]);
+                                //arrDims_obj.push([]);
+                            }
+             
+             
+                            //console.log(arrDims);
+             
+                            for (let j = 0; j < h1.length; j++) {
+                                for (let jj = 0; jj < h1[j].length; jj++) {
+                                    flag = 0;
+                                    for (let i = 0; i < h2.length; i++) {
+             
+                                        if (h2[i].includes(h1[j][jj]))
+                                            flag = i;
+             
+                                    }
+                                    if (flag < j) {
+                                        if (flag == 0) // if the element is not present in h2
+                                            arrDims[j].push({ "name": h1[j][jj], "color": h1color, "shape": "h1" });
+                                        else //element is present in both
+                                            arrDims[j].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                                    }
+                                    else { //element is present in both
+                                        arrDims[flag].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                                    }
+             
+                                    arrDims_flat.push(h1[j][jj]);
+             
+                                }
+                            }
+             
+             
+                            for (let i = 0; i < h2.length; i++) {
+                                for (let ii = 0; ii < h2[i].length; ii++) {
+                                    if (!arrDims_flat.includes(h2[i][ii])) {
+                                        arrDims[i].push({ "name": h2[i][ii], "color": h2color, "shape": "h2" });
+                                        //  arrDims[i].push(h2[i][ii]);
+                                        arrDims_flat.push(h2[i][ii]);
+                                    }
+             
+                                }
+                            }
+             
+             
+                            //console.log(arrDims_flat);
+                            //console.log(arrDims);
+             
+                            return arrDims;
                         }
-                        else { //element is present in both
-                            arrDims[flag].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
-                        }
-
-                        arrDims_flat.push(h1[j][jj]);
-
-                    }
-                }
-
-
-                for (let i = 0; i < h2.length; i++) {
-                    for (let ii = 0; ii < h2[i].length; ii++) {
-                        if (!arrDims_flat.includes(h2[i][ii])) {
-                            arrDims[i].push({ "name": h2[i][ii], "color": h2color, "shape": "h2" });
-                            //  arrDims[i].push(h2[i][ii]);
-                            arrDims_flat.push(h2[i][ii]);
-                        }
-
-                    }
-                }
-
-
-                //console.log(arrDims_flat);
-                //console.log(arrDims);
-
-                return arrDims;
-            }
-            */
+                        */
 
 
 

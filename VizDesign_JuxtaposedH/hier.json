@@ -1,0 +1,130 @@
+[
+    {
+        "child": "root",
+        "parent": "",
+        "alternateparent": "",
+        "color": "purple",
+        "shape": "merged",
+        "level": 0
+    },
+    {
+        "child": "a",
+        "parent": "root",
+        "alternateparent": "root",
+        "color": "purple",
+        "shape": "merged",
+        "level": 1
+    },
+    {
+        "child": "b",
+        "parent": "root",
+        "alternateparent": "root",
+        "color": "purple",
+        "shape": "merged",
+        "level": 1
+    },
+    {
+        "child": "l1",
+        "parent": "c",
+        "alternateparent": "a",
+        "color": "purple",
+        "shape": "merged",
+        "level": 2.5
+    },
+    {
+        "child": "l2",
+        "parent": "c",
+        "alternateparent": "b",
+        "color": "purple",
+        "shape": "merged",
+        "level": 2.5
+    },
+    {
+        "child": "l3",
+        "parent": "d",
+        "alternateparent": "a",
+        "color": "purple",
+        "shape": "merged",
+        "level": 2.5
+    },
+    {
+        "child": "l4",
+        "parent": "d",
+        "alternateparent": "b",
+        "color": "purple",
+        "shape": "merged",
+        "level": 2.5
+    },
+    {
+        "child": "c",
+        "parent": "a",
+        "alternateparent": "",
+        "color": "blue",
+        "shape": "h1",
+        "level": 2
+    },
+    {
+        "child": "d",
+        "parent": "a",
+        "alternateparent": "",
+        "color": "blue",
+        "shape": "h1",
+        "level": 2
+    },
+    {
+        "child": "e",
+        "parent": "b",
+        "alternateparent": "",
+        "color": "blue",
+        "shape": "h1",
+        "level": 2
+    },
+    {
+        "child": "f",
+        "parent": "b",
+        "alternateparent": "",
+        "color": "blue",
+        "shape": "h1",
+        "level": 2
+    },
+    {
+        "child": "l5",
+        "parent": "e",
+        "alternateparent": "",
+        "color": "blue",
+        "shape": "h1",
+        "level": 3
+    },
+    {
+        "child": "l6",
+        "parent": "e",
+        "alternateparent": "",
+        "color": "blue",
+        "shape": "h1",
+        "level": 3
+    },
+    {
+        "child": "l7",
+        "parent": "f",
+        "alternateparent": "",
+        "color": "blue",
+        "shape": "h1",
+        "level": 3
+    },
+    {
+        "child": "l8",
+        "parent": "f",
+        "alternateparent": "",
+        "color": "blue",
+        "shape": "h1",
+        "level": 3
+    },
+    {
+        "child": "l9",
+        "parent": "b",
+        "alternateparent": "",
+        "color": "red",
+        "shape": "h2",
+        "level": 2
+    }
+]

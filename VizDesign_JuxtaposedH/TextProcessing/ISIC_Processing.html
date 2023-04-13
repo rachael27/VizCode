@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script>
+
+        d3.queue()
+            .defer(d3.csv, "../ISIC Files/Rev3_1.csv")
+            .await(function (error, dataset) {
+                if (error) throw error;
+
+                else
+                    runScript(dataset);
+            });
+
+        function runScript(dataset) {
+
+            var alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+            console.log(dataset);
+            var index = -1;
+            var codes = [];
+            var hdata = [];
+            var numbers = [];
+            var hdatastr = "";
+
+
+            for (var d = 0; d < dataset.length; d++) {
+
+                if (alpha.includes(dataset[d].Code)) {
+                    //console.log(dataset[d].Code);
+                    index++;
+                    codes.push({ "code": "", "numbers": [], "description": "" });
+                    codes[index].code = dataset[d].Code;
+                    //codes[index].description = dataset[d].Description;
+                }
+                else {
+                    codes[index].numbers.push(dataset[d].Code);
+                    //codes[index].description = dataset[d].Description;
+                }
+            }
+
+            console.log(dataset);
+            index = -1;
+            hdatastr = "child,parent,description" + '\n';
+            hdatastr = hdatastr + "root,," + '\n';
+            hdata.push({ "child": "root", "parent": "", "description": "" });
+            for (var c = 0; c < codes.length; c++) {
+                index++;
+                hdatastr = hdatastr + codes[c].code + "," + "root" + "," + dataset[index].Description + '\n';
+
+
+                hdata.push({ "child": codes[c].code, "parent": "root", "description": dataset[index].Description });
+
+                numbers = codes[c].numbers;
+                //console.log(codes[c].description);
+                //console.log(numbers);
+                if (numbers[0].length == 1) {
+                    for (var n = 0; n < codes[c].numbers.length; n++) {
+                        index++;
+                        var len = codes[c].numbers[n].length;
+                        if (len == 1) {
+                            hdatastr = hdatastr + codes[c].code + "_" + codes[c].numbers[n] + "," + codes[c].code + "," + dataset[index].Description + '\n';
+                            hdata.push({ "child": codes[c].code + "_" + codes[c].numbers[n], "parent": codes[c].code, "description": dataset[index].Description });
+                        }
+                        else {
+                            hdatastr = hdatastr + codes[c].code + "_" + codes[c].numbers[n] + "," + codes[c].code + "_" + codes[c].numbers[n].substr(0, len - 1) + "," + dataset[index].Description + '\n';
+                            hdata.push({ "child": codes[c].code + "_" + codes[c].numbers[n], "parent": codes[c].code + "_" + codes[c].numbers[n].substr(0, len - 1), "description": dataset[index].Description });
+                        }
+
+                    }
+                }
+                else {
+                    for (var n = 0; n < codes[c].numbers.length; n++) {
+                        index++;
+                        var len = codes[c].numbers[n].length;
+                        if (len == 2) {
+                            hdatastr = hdatastr + codes[c].code + "_" + codes[c].numbers[n] + "," + codes[c].code + "," + dataset[index].Description + '\n';
+                            hdata.push({ "child": codes[c].code + "_" + codes[c].numbers[n], "parent": codes[c].code, "description": dataset[index].Description });
+                        }
+                        else {
+                            hdatastr = hdatastr + codes[c].code + "_" + codes[c].numbers[n] + "," + codes[c].code + "_" + codes[c].numbers[n].substr(0, len - 1) + "," + dataset[index].Description + '\n';
+                            hdata.push({ "child": codes[c].code + "_" + codes[c].numbers[n], "parent": codes[c].code + "_" + codes[c].numbers[n].substr(0, len - 1), "description": dataset[index].Description });
+                        }
+
+                    }
+                }
+            }
+
+            console.log(hdatastr);
+            console.log(hdata);
+
+            /* let xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost:8080");
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    console.log(xhr.status);
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send(hdata); */
+
+
+
+
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>

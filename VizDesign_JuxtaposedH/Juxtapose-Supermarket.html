@@ -210,7 +210,7 @@
                 fileversion = "File0";
             else if (d3.select("#fileversion1radio")._groups[0][0].checked == true)
                 fileversion = "File1";
-            else
+            else if (d3.select("#fileversion2radio")._groups[0][0].checked == true)
                 fileversion = "File2";
 
             if (swapdataset == "h1") {
@@ -271,6 +271,21 @@
                 });
         });
 
+        d3.select("#fileversion2radio").on("change", function () {
+            if (d3.select("#fileversion2radio")._groups[0][0].checked == true)
+                fileversion = "File2";
+
+            d3.queue()
+                .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+                .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
+                .await(function (error, h1, h2) {
+                    if (error) throw error;
+
+                    else
+                        runScript(h1, h2);
+                });
+        });
+
 
         d3.queue()
             .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
@@ -300,8 +315,8 @@
 
 
             var margin = { top: 30, right: 30, bottom: 30, left: 120 },
-                width = 3000 - margin.left - margin.right,
-                height = 2500 - margin.top - margin.bottom;
+                width = 4400 - margin.left - margin.right,
+                height = 3500 - margin.top - margin.bottom;
 
             var svg = d3
                 .select("#content")
@@ -485,7 +500,7 @@
                 var tree = d3
                     .tree()
                     //.nodeSize([]);
-                    .size([500, 500]);
+                    .size([1000, 700]);
 
 
                 var h1_tree = tree(h1_root);
@@ -494,7 +509,7 @@
                 var h1_node = svg
                     .append("g")
                     .attr("id", "h1tree")
-                    .attr("transform", "translate(" + 1500 + "," + 100 + ")")
+                    .attr("transform", "translate(" + 3000 + "," + 100 + ")")
                     .selectAll(".h1_node")
                     .data(h1_tree.descendants())
                     .enter()
@@ -508,8 +523,8 @@
                     .append("rect")
                     .attr('x', -30)
                     .attr('y', -30)
-                    .attr('width', 600)
-                    .attr('height', 600)
+                    .attr('width', 1050)
+                    .attr('height', 800)
                     .attr('stroke', 'black')
                     .attr('fill', 'none');
 
@@ -558,11 +573,8 @@
                         );
                     })
                     .attr("id", function (d) {
-                        return "h1tree_" + d.data.data.child
-                            .replace(/ /g, "")
-                            .replace("(", "")
-                            .replace(")", "")
-                            .toLowerCase();
+                        return "h1tree_" + stringOperations(d.data.data.child);
+
                     })
                     .style("fill", function (d) {
 
@@ -581,13 +593,10 @@
 
                 h1_node
                     .append("text")
-                    .style("font-size", "20px")
+                    .style("font-size", "40px")
                     .attr("class", function (d) {
-                        return d.data.data.child
-                            .replace(/ /g, "")
-                            .replace("(", "")
-                            .replace(")", "")
-                            .toLowerCase();
+                        return stringOperations(d.data.data.child);
+
                     })
                     .classed("text", true)
                     .attr("dy", "2em")
@@ -610,7 +619,11 @@
 
                     .style("opacity", function (d) {
                         //  console.log(d);
-                        return 1;
+                        return 0;
+                    })
+                    .attr("transform", function (d) {
+                        if (d.height == 0)
+                            return "rotate(90," + (d.x) + "," + (d.y + 30) + ")";
                     })
                     .text(function (d) {
                         // console.log(d);
@@ -632,7 +645,7 @@
                 var tree = d3
                     .tree()
                     //.nodeSize([]);
-                    .size([500, 500]);
+                    .size([1000, 700]);
 
 
                 var h2_tree = tree(h2_root);
@@ -655,8 +668,8 @@
                     .append("rect")
                     .attr('x', -30)
                     .attr('y', -30)
-                    .attr('width', 600)
-                    .attr('height', 600)
+                    .attr('width', 1050)
+                    .attr('height', 800)
                     .attr('stroke', 'black')
                     .attr('fill', 'none');
 
@@ -712,11 +725,8 @@
                         );
                     })
                     .attr("id", function (d) {
-                        return "h2tree_" + d.data.data.child
-                            .replace(/ /g, "")
-                            .replace("(", "")
-                            .replace(")", "")
-                            .toLowerCase();
+                        return "h2tree_" + stringOperations(d.data.data.child);
+
                     })
                     .style("fill", function (d) {
                         if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
@@ -746,13 +756,10 @@
 
                 h2_node
                     .append("text")
-                    .style("font-size", "20px")
+                    .style("font-size", "40px")
                     .attr("class", function (d) {
-                        return d.data.data.child
-                            .replace(/ /g, "")
-                            .replace("(", "")
-                            .replace(")", "")
-                            .toLowerCase();
+                        return stringOperations(d.data.data.child);
+
                     })
                     .classed("text", true)
                     .attr("dy", "2em")
@@ -773,8 +780,13 @@
                     })
 
                     .style("opacity", function (d) {
-                        //  console.log(d);
-                        return 1;
+                        //console.log(d);
+
+                        return 0;
+                    })
+                    .attr("transform", function (d) {
+                        if (d.height == 0)
+                            return "rotate(90," + (d.x) + "," + (d.y + 30) + ")";
                     })
                     .text(function (d) {
                         // console.log(d);
@@ -808,11 +820,11 @@
                 var tree = d3
                     .tree()
                     //.nodeSize([]);
-                    .size([1500, 1000]);
+                    .size([4100, 1500]);
 
                 var cluster = d3
                     .cluster()
-                    .size([1500, 1000]);
+                    .size([4100, 1500]);
 
                 // console.log(d3.select(: ))
 
@@ -834,7 +846,7 @@
                     .append("g")
                     .attr("id", "mergedtree")
                     .attr("transform",
-                        "translate(" + (margin.left + 400) + "," + (margin.top + 750) + ")");
+                        "translate(" + (margin.left - 100) + "," + (margin.top + 1000) + ")");
 
                 var node = svg
                     .select("#mergedtree")
@@ -885,11 +897,8 @@
                             );
                         })
                         .attr("id", function (d) {
-                            return "mergedtree_" + d.data.data.child
-                                .replace(/ /g, "")
-                                .replace("(", "")
-                                .replace(")", "")
-                                .toLowerCase();
+                            return "mergedtree_" + stringOperations(d.data.data.child);
+
                         })
                         .style("fill", function (d) {
                             return "none";
@@ -945,11 +954,7 @@
                         );
                     })
                     .attr("id", function (d) {
-                        return "mergedtree_" + d.data.data.child
-                            .replace(/ /g, "")
-                            .replace("(", "")
-                            .replace(")", "")
-                            .toLowerCase();
+                        return "mergedtree_" + stringOperations(d.data.data.child);
                     })
                     .style("fill", function (d) {
                         //            console.log(d.data.data.shape);
@@ -963,6 +968,7 @@
                             else
                                 return h1color;
                         }
+
 
 
 
@@ -1195,20 +1201,24 @@
                             .style("opacity", 1);
 
 
-                        // console.log(h1_root.descendants());
+                        console.log(h1_root.descendants());
 
                         for (var i = 1; i < h1_root.descendants().length; i++) {
-                            if (h1_root.descendants()[i].data.data.child == circle_id) {
+                            //console.log("H1 TREE");
+                            //console.log(stringOperations(h1_root.descendants()[i].data.data.child));
+                            //console.log(circle_id);
+                            if (stringOperations(h1_root.descendants()[i].data.data.child) == circle_id) {
                                 var children = (h1_root.descendants()[0]).path(h1_root.descendants()[i]);
-                                // console.log(children);
+                                console.log(children);
 
                                 var node_id;
                                 for (var j = 0; j < children.length; j++) {
                                     // console.log(children[j]);
-                                    node_id = children[j].data.id;
-                                    // console.log(node_id);
+                                    node_id = stringOperations(children[j].data.id);
+                                    console.log(node_id);
                                     //console.log(children[j]);
                                     d3.select("#h1tree").select("#h1tree_" + node_id).style("opacity", "1");
+                                    d3.select("#h1tree").select("." + node_id).style("opacity", "1");
                                 }
 
                             }
@@ -1216,17 +1226,18 @@
 
 
                         for (var i = 1; i < h2_root.descendants().length; i++) {
-                            if (h2_root.descendants()[i].data.data.child == circle_id) {
+                            if (stringOperations(h2_root.descendants()[i].data.data.child) == circle_id) {
                                 var children = (h2_root.descendants()[0]).path(h2_root.descendants()[i]);
-                                // console.log(children);
+                                console.log(children);
 
                                 var node_id;
                                 for (var j = 0; j < children.length; j++) {
                                     // console.log(children[j]);
-                                    node_id = children[j].data.id;
+                                    node_id = stringOperations(children[j].data.id);
                                     // console.log(node_id);
                                     //console.log(children[j]);
                                     d3.select("#h2tree").select("#h2tree_" + node_id).style("opacity", "1");
+                                    d3.select("#h2tree").select("." + node_id).style("opacity", "1");
                                 }
 
                             }
@@ -1267,17 +1278,18 @@
 
 
                         for (var i = 1; i < h1_root.descendants().length; i++) {
-                            if (h1_root.descendants()[i].data.data.child == circle_id) {
+                            if (stringOperations(h1_root.descendants()[i].data.data.child) == circle_id) {
                                 var children = (h1_root.descendants()[0]).path(h1_root.descendants()[i]);
                                 // console.log(children);
 
                                 var node_id;
                                 for (var j = 0; j < children.length; j++) {
                                     // console.log(children[j]);
-                                    node_id = children[j].data.id;
+                                    node_id = stringOperations(children[j].data.id);
                                     // console.log(node_id);
                                     //console.log(children[j]);
                                     d3.select("#h1tree").select("#h1tree_" + node_id).style("opacity", "0.3");
+                                    d3.select("#h1tree").select("." + node_id).style("opacity", "0");
                                 }
 
                             }
@@ -1285,17 +1297,18 @@
 
 
                         for (var i = 1; i < h2_root.descendants().length; i++) {
-                            if (h2_root.descendants()[i].data.data.child == circle_id) {
+                            if (stringOperations(h2_root.descendants()[i].data.data.child) == circle_id) {
                                 var children = (h2_root.descendants()[0]).path(h2_root.descendants()[i]);
                                 // console.log(children);
 
                                 var node_id;
                                 for (var j = 0; j < children.length; j++) {
                                     // console.log(children[j]);
-                                    node_id = children[j].data.id;
+                                    node_id = stringOperations(children[j].data.id);
                                     // console.log(node_id);
                                     //console.log(children[j]);
                                     d3.select("#h2tree").select("#h2tree_" + node_id).style("opacity", "0.3");
+                                    d3.select("#h2tree").select("." + node_id).style("opacity", "0");
                                 }
 
                             }
@@ -1306,7 +1319,7 @@
 
                 node
                     .append("text")
-                    .style("font-size", "40px")
+                    .style("font-size", "35px")
                     .attr("class", function (d) {
                         return d.data.data.child
                             .replace(/ /g, "")
@@ -1322,18 +1335,25 @@
                         if ((this.previousSibling).getAttribute("class").includes("leaf"))
                             return d.x - 10;
                         else
-                            return d.x + 20;
+                            return d.x - 100;
                     })
-                    .attr("y", function (d) {
+                    .attr("y", function (d, i) {
+                        //console.log(i);
                         if ((this.previousSibling).getAttribute("class").includes("leaf"))
                             return d.y - 20;
                         else
-                            return d.y - 40;
+                            if (i % 2 == 0)
+                                return d.y - 20;
+                            else
+                                return d.y + 10;
                     })
                     .attr("text-anchor", function (d) {
                         return "start";
                     })
-
+                    .attr("transform", function (d) {
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return "rotate(90," + (d.x) + "," + (d.y + 30) + ")";
+                    })
                     .style("opacity", function (d) {
                         //  console.log(d);
                         return 1;
@@ -1609,6 +1629,14 @@
                  console.log(hier); */
 
                 return hier;
+            }
+
+            function stringOperations(str) {
+                return str.replace(/ /g, "")
+                    .replace("'", "")
+                    .replace("(", "")
+                    .replace(")", "")
+                    .toLowerCase();
             }
 
 

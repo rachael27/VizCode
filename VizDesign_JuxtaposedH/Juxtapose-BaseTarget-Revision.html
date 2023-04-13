@@ -1,0 +1,2415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrate the topological structure of both hierarchies</title>
+    <link rel="icon" href="Images/hierarchy3.png">
+
+    <style>
+        .dot {
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/ae1e2e7d99.js" crossorigin="anonymous"></script>
+
+
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2" style="font-size: 30px; margin-left: 20px;">
+
+                <fieldset class="border p-2" style="margin-top:150px;">
+                    <legend class="w-auto">Dataset</legend>
+
+                    <br>
+                    <button type="button" id="swapdataset" class="btn btn-primary" style="margin-top:50px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                            class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z">
+                            </path>
+                        </svg>
+                        <h2>Swap primary and secondary datasets</h2>
+                    </button>
+
+
+                    <div class="form-check" style="margin-top:20px;">
+                        <input class="form-check-input" type="radio" name="fileversionradio" id="fileversion0radio">
+                        <label class="form-check-label" for="fileversion0radio">
+                            File Version 0 (Default)
+                        </label>
+                    </div>
+
+                    <div class="form-check" style="margin-top:10px;">
+                        <input class="form-check-input" type="radio" name="fileversionradio" id="fileversion1radio">
+                        <label class="form-check-label" for="fileversion1radio">
+                            File Version 1
+                        </label>
+                    </div>
+
+                    <div class="form-check" style="margin-top:10px;">
+                        <input class="form-check-input" type="radio" name="fileversionradio" id="fileversion3radio"
+                            checked>
+                        <label class="form-check-label" for="fileversion3radio">
+                            UK SIC - v4 and v3.1
+                        </label>
+                    </div>
+
+
+
+                </fieldset>
+
+                <fieldset class="border p-2" style="margin-top:100px;">
+                    <legend class="w-auto">Change color theme</legend>
+                    <div class="form-check" style="margin-top:50px;">
+                        <input class="form-check-input" type="radio" name="nodecolorradio" id="blueredradio" checked>
+                        <label class="form-check-label" for="blueredradio">
+                            Blue/Red Theme (default)
+                            <br>
+                            <span class="dot" style="background-color: blue;"></span> +
+                            <span class="dot" style="background-color: red;"></span> =
+                            <span class="dot" style="background-color: purple;"></span>
+                        </label>
+                    </div>
+                    <div class="form-check" style="margin-top:20px;">
+                        <input class="form-check-input" type="radio" name="nodecolorradio" id="orangeblueradio">
+                        <label class="form-check-label" for="orangeblueradio">
+                            Orange/Blue Theme
+                            <br>
+                            <span class="dot" style="background-color: orange;"></span> +
+                            <span class="dot" style="background-color: blue;"></span> =
+                            <span class="dot" style="background-color: yellowgreen;"></span>
+                        </label>
+                    </div>
+                    <!--
+                        <div class="form-check" style=" margin-top:20px;">
+                        <input class="form-check-input" type="radio" name="nodecolorradio" id="redgreenradio">
+                        <label class="form-check-label" for="redgreenradio">
+                            Red/Green Theme
+                            <br>
+                            <span class="dot" style="background-color: red;"></span> +
+                            <span class="dot" style="background-color: green;"></span> =
+                            <span class="dot" style="background-color: brown;"></span>
+                        </label>
+                    </div>
+                -->
+                </fieldset>
+
+
+                <fieldset class="border p-2" style="margin-top:100px;">
+                    <legend class="w-auto">Change node shape</legend>
+                    <div class="form-check" style="margin-top:50px; ">
+                        <input class="form-check-input" type="radio" name="nodeshaperadio" id="solidshaperadio">
+                        <label class="form-check-label" for="solidshaperadio">
+                            Solid Circles in different colors
+                            <br>
+                            <span class="dot" style="background-color: blue;"></span> +
+                            <span class="dot" style="background-color: red;"></span> =
+                            <span class="dot" style="background-color: purple;"></span>
+
+                        </label>
+                    </div>
+                    <div class="form-check" style=" margin-top:20px;">
+                        <input class="form-check-input" type="radio" name="nodeshaperadio" id="hollowshaperadio"
+                            checked>
+                        <label class="form-check-label" for="hollowshaperadio">
+                            A combination of hollow and solid circles
+                            <br>
+
+
+                            <span style="background-color: white;  border-color:blue; border-style:solid; border-width: 5px; height: 25px;
+                        width: 25px; border-radius: 50%; display: inline-block;"></span> +
+                            <span class="dot" style="background-color: blue;"></span> =
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="blue"
+                                class="bi bi-record-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            </svg>
+
+
+                        </label>
+                        <g id="solidhollowcircle"></g>
+                    </div>
+                </fieldset>
+
+
+                <fieldset class="border p-2" style="margin-top:100px;">
+                    <legend class="w-auto">Change leaf height</legend>
+                    <div class="form-check" style="margin-top:50px; ">
+                        <input class="form-check-input" type="radio" name="leavesheightradio" id="leavessameheightradio"
+                            checked>
+                        <label class="form-check-label" for="leavessameheightradio">
+                            Set leaves on the same level
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="leavesheightradio"
+                            id="leavesdiffheightradio">
+                        <label class="form-check-label" for="leavesheightradio">
+                            Set leaves based on their height in the tree
+                        </label>
+                    </div>
+                </fieldset>
+
+
+                <fieldset class="border p-2" style="margin-top:100px;">
+                    <legend class="w-auto">Show/hide edges & nodes while re-routing</legend>
+                    <div class="form-check" style="margin-top:50px; ">
+                        <input class="form-check-input" type="radio" name="showhidenodes" id="shownodesradio">
+                        <label class="form-check-label" for="shownodesradio">
+                            Show all nodes during edge re-routing
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="showhidenodes" id="hidenodesradio" checked>
+                        <label class="form-check-label" for="hidenodesradio">
+                            Hide only nodes during edge re-routing
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="showhidenodes" id="hidenodesedgesradio"
+                            checked>
+                        <label class="form-check-label" for="hidenodesedgesradio">
+                            Hide nodes and edges during edge re-routing
+                        </label>
+                    </div>
+                </fieldset>
+
+            </div>
+
+
+            <div id="content" class="col-9">
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script>
+
+
+
+        var fileversion = "File3";
+        var swapdataset = "h1";
+
+
+
+        d3.select("#swapdataset").on("click", function () {
+            if (d3.select("#fileversion0radio")._groups[0][0].checked == true)
+                fileversion = "File0";
+            else if (d3.select("#fileversion1radio")._groups[0][0].checked == true)
+                fileversion = "File1";
+
+
+            if (swapdataset == "h1") {
+                d3.queue()
+                    .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+                    .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
+                    .await(function (error, h1, h2) {
+                        if (error) throw error;
+
+                        else
+                            runScript(h2, h1);
+                    });
+                swapdataset = "h2";
+            }
+            else {
+                d3.queue()
+                    .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+                    .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
+                    .await(function (error, h1, h2) {
+                        if (error) throw error;
+
+                        else
+                            runScript(h1, h2);
+                    });
+                swapdataset = "h1";
+            }
+
+        });
+
+        d3.select("#fileversion0radio").on("change", function () {
+            if (d3.select("#fileversion0radio")._groups[0][0].checked == true)
+                fileversion = "File0";
+
+            d3.queue()
+                .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+                .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
+                .await(function (error, h1, h2) {
+                    if (error) throw error;
+
+                    else
+                        runScript(h1, h2);
+                });
+
+        });
+
+        d3.select("#fileversion1radio").on("change", function () {
+            if (d3.select("#fileversion1radio")._groups[0][0].checked == true)
+                fileversion = "File1";
+
+            d3.queue()
+                .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+                .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
+                .await(function (error, h1, h2) {
+                    if (error) throw error;
+
+                    else
+                        runScript(h1, h2);
+                });
+        });
+
+        d3.select("#fileversion3radio").on("change", function () {
+            if (d3.select("#fileversion3radio")._groups[0][0].checked == true)
+                fileversion = "File3";
+
+            d3.queue()
+                .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+                .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
+                .await(function (error, h1, h2) {
+                    if (error) throw error;
+
+                    else
+                        runScript(h1, h2);
+                });
+        });
+
+
+        d3.queue()
+            .defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+            .defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
+            .await(function (error, h1, h2) {
+                if (error) throw error;
+
+                else
+                    runScript(h1, h2);
+            });
+
+        function runScript(h1, h2) {
+
+            d3.select("#content").select("svg").remove();
+
+            var radius = 13;
+
+
+            d3.select("#solidhollowcircle")
+                .append("circle")
+                .attr("cx", 500)
+                .attr("cy", 500)
+                .attr("r", 500)
+                .style("fill", "blue")
+                .style("stroke-width", "30px")
+                .style("stroke", "black");
+
+
+            var margin = { top: 30, right: 30, bottom: 30, left: 120 },
+                width = 3700 - margin.left - margin.right,
+                height = 2500 - margin.top - margin.bottom;
+
+            var svg = d3
+                .select("#content")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+
+
+
+            if (d3.select("#tooltip").empty())
+                d3.select("#content")
+                    .append("div")
+                    .style("width", "400px")
+                    .style("height", "200px")
+                    .style("position", "absolute")
+                    .style("opacity", 0)
+                    .attr("id", "tooltip")
+                    .style("background-color", "white")
+                    .style("border", "solid")
+                    .style("font-size", "50px")
+                    //.style("font", "40px times")
+                    .style("border-width", "2px")
+                    .style("border-radius", "5px")
+                    .style("padding", "5px");
+
+
+            const depthArray = [];
+
+            // console.log(h1);
+
+            stratify = d3
+                .stratify()
+                .id(function (d) {
+                    return d.child;
+                })
+                .parentId(function (d) {
+                    return d.parent;
+                });
+
+            var h1_struct = stratify(h1);
+            var h2_struct = stratify(h2);
+
+            //console.log(h1_struct);
+
+            var h1_root = d3.hierarchy(h1_struct);
+            var h2_root = d3.hierarchy(h2_struct);
+
+            //console.log(h1_rootElement.descendants());
+            //console.log(h2_rootElement.descendants());
+
+            //console.log(h1_root.descendants());
+
+
+            var h1_dims = findDimensions(h1_root);
+            var h2_dims = findDimensions(h2_root);
+
+            //console.log(h1_dims);
+
+            var h1color = "", h2color = "", mergedcolor = "";
+
+            if (d3.select("#blueredradio")._groups[0][0].checked == true) {
+                h1color = "blue";
+                h2color = "red";
+                mergedcolor = "purple";
+            }
+            else if (d3.select("#redgreenradio")._groups[0][0].checked == true) {
+                h1color = "red";
+                h2color = "green";
+                mergedcolor = "brown";
+            }
+            else if (d3.select("#orangeblueradio")._groups[0][0].checked == true) {
+                h1color = "orange";
+                h2color = "blue";
+                mergedcolor = "yellowgreen";
+            }
+
+            h1tree();
+            h2tree();
+
+
+            //var arrDims = compareDimensions(h1_dims, h2_dims);
+            //var hier = createHierarchy(arrDims, h1_root.descendants(), h2_root.descendants());
+
+            // console.log(hier);
+            var hier_arr = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+            hier_arr = bt_compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+            console.log(hier_arr);
+            //var hier_arr = flatten_array(hier);
+            var hier_struct = stratify(hier_arr);
+            console.log(hier_arr);
+
+            var hier_root = d3.hierarchy(hier_struct);
+            var tree = d3
+                .tree()
+                .nodeSize([6, 0]);
+
+
+            var cluster = d3
+                .cluster()
+                //  .nodeSize([6, 0]);
+                .size([3200, 1500]);
+
+            var mtree = "";
+
+
+            if (d3.select("#leavesdiffheightradio")._groups[0][0].checked == true)
+                mtree = tree(hier_root);
+            else if (d3.select("#leavessameheightradio")._groups[0][0].checked == true)
+                mtree = cluster(hier_root);
+
+            //var data = mtree;
+
+
+
+
+            svg
+                .append("g")
+                .attr("id", "mergedtree")
+                .attr("transform",
+                    "translate(" + (margin.left + 140) + "," + (margin.top + 700) + ")");
+
+            /*
+            svg
+        .append("g")
+        .attr("id", "mergedtree")
+        .attr("transform",
+            "translate(" + (margin.left + 4500) + "," + (margin.top + 800) + ")");
+
+*/
+
+            mergedtree(mtree.descendants(), mtree.links());
+
+
+
+            d3.select("#blueredradio").on("change", function () {
+                if (d3.select("#blueredradio")._groups[0][0].checked == true) {
+                    h1color = "blue";
+                    h2color = "red";
+                    mergedcolor = "purple";
+                }
+                h1tree();
+                h2tree();
+                hier_arr = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+                //hier_arr = flatten_array(hier);
+                hier_struct = stratify(hier_arr);
+                mergedtree(data);
+            });
+
+            d3.select("#orangeblueradio").on("change", function () {
+                if (d3.select("#orangeblueradio")._groups[0][0].checked == true) {
+                    h1color = "orange";
+                    h2color = "blue";
+                    mergedcolor = "yellowgreen";
+                }
+                h1tree();
+                h2tree();
+                hier_arr = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+
+                //hier_arr = flatten_array(hier);
+                hier_struct = stratify(hier_arr);
+                mergedtree(data);
+                /*  arrDims = compareDimensions(h1_dims, h2_dims);
+                 hier = createHierarchy(arrDims, h1_root.descendants(), h2_root.descendants());
+                 hier_struct = stratify(hier);
+                 mergedtree(); */
+            });
+
+
+            d3.select("#redgreenradio").on("change", function () {
+                if (d3.select("#redgreenradio")._groups[0][0].checked == true) {
+                    h1color = "red";
+                    h2color = "green";
+                    mergedcolor = "#a52a2a";
+                }
+                h1tree();
+                h2tree();
+                hier_arr = compareDimensions(h1_dims, h2_dims, h1_root.descendants(), h2_root.descendants());
+                //hier_arr = flatten_array(hier);
+                hier_struct = stratify(hier_arr);
+                mergedtree(data);
+            });
+
+            d3.select("#solidshaperadio").on("change", function () {
+                h1tree();
+                h2tree();
+                mergedtree(data);
+            });
+
+            d3.select("#hollowshaperadio").on("change", function () {
+                h1tree();
+                h2tree();
+                mergedtree(data);
+            });
+
+            d3.select("#leavessameheightradio").on("change", function () {
+                mergedtree(data);
+            });
+
+            d3.select("#leavesdiffheightradio").on("change", function () {
+                mergedtree(data);
+            });
+
+            d3.select("#hidenodesradio").on("change", function () {
+                mergedtree(data);
+            });
+
+            d3.select("#hidenodesedgesradio").on("change", function () {
+                mergedtree(data);
+            });
+
+            d3.select("#shownodesradio").on("change", function () {
+                mergedtree(data);
+            });
+
+
+
+
+            /* START OF H1 TREE */
+
+
+            function h1tree() {
+
+                //    console.log(h1color + " " + h2color + " " + mergedcolor);
+                console.log("H1 TREE");
+                d3.select("#h1tree").remove();
+
+                var tree = d3
+                    .tree()
+                    //.nodeSize([]);
+                    .size([1300, 500]);
+
+
+                var h1_tree = tree(h1_root);
+
+
+                var data_nodes = h1_tree.descendants();
+
+                data_nodes = data_nodes.filter(function (d) {
+                    //console.log(d.children.length);
+                    if (typeof d.children !== 'undefined')
+                        return d;
+
+                });
+
+
+                var data_links = h1_tree.links();
+
+                data_links = data_links.filter(function (d) {
+                    //console.log(d);
+                    if (typeof d.target.children !== 'undefined')
+                        return d;
+
+                });
+
+                //console.log(data);
+
+
+                var h1_node = svg
+                    .append("g")
+                    .attr("id", "h1tree")
+                    .attr("transform", "translate(" + 2100 + "," + 100 + ")")
+                    .selectAll(".h1_node")
+                    .data(data_nodes)
+                    //.data(h1_tree.descendants())
+                    .enter()
+                    .append("g")
+                    .attr("class", function (d) {
+                        //   console.log(d);
+                        return d.child;
+                    });
+
+                svg.select("#h1tree")
+                    .append("rect")
+                    .attr('x', -30)
+                    .attr('y', -30)
+                    .attr('width', 1400)
+                    .attr('height', 600)
+                    .attr('stroke', 'black')
+                    .attr('fill', 'none');
+
+
+                var h1_link = h1_node
+                    .append("path")
+                    //.data(h1_tree.links())
+                    .data(data_links)
+                    // .enter()
+                    .attr("class", function (d) {
+                        return "h1_link";
+                    })
+                    //.classed("link", true)
+                    .attr("d", function (d) {
+                        return "M" + d.source.x + "," + d.source.y
+                            + "C" + d.source.x + "," + (d.source.y + d.target.y) / 2
+                            + " " + d.target.x + "," + (d.source.y + d.target.y) / 2
+                            + " " + d.target.x + "," + (d.target.y);
+                    })
+                    .style("opacity", function (d) {
+                        return 0.5;
+                    })
+                    .style("stroke", "#ccc")
+                    .style("fill", "none")
+                    .style("stroke-width", "5px");
+
+                h1_node
+                    .append("circle")
+                    .attr("cx", function (d) {
+                        // console.log(d);
+                        // console.log(radialPoint(d.x, d.y));
+                        return d.x;
+                    })
+                    .attr("cy", function (d) {
+                        return d.y;
+                    })
+                    .attr("r", function (d) {
+                        //        console.log(radius);
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return (radius - 3) + "px";
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return (radius - 6) + "px";
+                    })
+                    .attr("class", function (d) {
+                        return (
+                            "node" + (d.children ? " node--internal" : " node--leaf")
+                        );
+                    })
+                    .attr("id", function (d) {
+                        return "h1tree_" + d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .style("fill", function (d) {
+
+
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return h2color;
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return h1color;
+
+                    })
+                    // .style("opacity", 1)
+
+                    .style("opacity", function (d) {
+                        return 0.3;
+                    });
+
+                h1_node
+                    .append("text")
+                    .style("font-size", "20px")
+                    .attr("class", function (d) {
+                        return d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .classed("text", true)
+                    .attr("dy", "2em")
+                    .attr("x", function (d) {
+
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return d.x - 8;
+                        else
+                            return d.x + 20;
+                    })
+                    .attr("y", function (d) {
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return d.y - 8;
+                        else
+                            return d.y - 30;
+                    })
+                    .attr("text-anchor", function (d) {
+                        return "start";
+                    })
+
+                    .style("opacity", function (d) {
+                        //  console.log(d);
+                        return 1;
+                    })
+                    .text(function (d) {
+                        // console.log(d);
+                        return d.data.data.child;
+                    });
+            }
+
+
+            /* END OF H1 TREE*/
+
+
+
+            /* START OF H2 TREE */
+
+            function h2tree() {
+
+                d3.select("#h2tree").remove();
+
+                var tree = d3
+                    .tree()
+                    //.nodeSize([]);
+                    .size([1300, 500]);
+
+
+                var h2_tree = tree(h2_root);
+
+
+                var h2_node = svg
+                    .append("g")
+                    .attr("id", "h2tree")
+                    .attr("transform", "translate(" + 50 + "," + 100 + ")")
+                    .selectAll(".h2_node")
+                    .data(h2_tree.descendants())
+                    .enter()
+                    .append("g")
+                    .attr("class", function (d) {
+                        //   console.log(d);
+                        return d.child;
+                    });
+
+                svg.select("#h2tree")
+                    .append("rect")
+                    .attr('x', -30)
+                    .attr('y', -30)
+                    .attr('width', 1500)
+                    .attr('height', 600)
+                    .attr('stroke', 'black')
+                    .attr('fill', 'none');
+
+
+                /*  var len = h2_node._groups[0].length;
+     
+                 console.log(h2_node);
+     
+                 var h2_node_sliced = h2_node._groups[0].slice(1, len);
+     
+                 console.log(h2_node_sliced); */
+
+                var h2_link = h2_node
+                    .append("path")
+                    .data(h2_tree.links())
+                    // .enter()
+                    .attr("class", function (d) {
+                        return "h2_link";
+                    })
+                    //.classed("link", true)
+                    .attr("d", function (d) {
+                        return "M" + d.source.x + "," + d.source.y
+                            + "C" + d.source.x + "," + (d.source.y + d.target.y) / 2
+                            + " " + d.target.x + "," + (d.source.y + d.target.y) / 2
+                            + " " + d.target.x + "," + (d.target.y);
+                    })
+                    .style("opacity", function (d) {
+                        return 0.5;
+                    })
+                    .style("stroke", "#ccc")
+                    .style("fill", "none")
+                    .style("stroke-width", "5px");
+
+                h2_node
+                    .append("circle")
+                    .attr("cx", function (d) {
+                        // console.log(d);
+                        // console.log(radialPoint(d.x, d.y));
+                        return d.x;
+                    })
+                    .attr("cy", function (d) {
+                        return d.y;
+                    })
+                    .attr("r", function (d) {
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return radius + "px";
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return (radius + 4) + "px";
+                    })
+                    .attr("class", function (d) {
+                        return (
+                            "node" + (d.children ? " node--internal" : " node--leaf")
+                        );
+                    })
+                    .attr("id", function (d) {
+                        return "h2tree_" + d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .style("fill", function (d) {
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return h1color;
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return "white";
+                    })
+                    .style("stroke", function (d) {
+                        console.log(h1color);
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return "none";
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return h1color;
+
+                    })
+                    .style("stroke-width", function (d) {
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return "0px";
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return "5px";
+
+                    })
+
+                    .style("opacity", function (d) {
+                        return 0.3;
+                    });
+
+
+                h2_node
+                    .append("text")
+                    .style("font-size", "20px")
+                    .attr("class", function (d) {
+                        return d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .classed("text", true)
+                    .attr("dy", "2em")
+                    .attr("x", function (d) {
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return d.x - 8;
+                        else
+                            return d.x + 20;
+                    })
+                    .attr("y", function (d) {
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return d.y - 8;
+                        else
+                            return d.y - 30;
+                    })
+                    .attr("text-anchor", function (d) {
+                        return "start";
+                    })
+
+                    .style("opacity", function (d) {
+                        //  console.log(d);
+                        return 1;
+                    })
+                    .text(function (d) {
+                        // console.log(d);
+                        return d.data.data.child;
+                    });
+            }
+
+
+            /* END OF H2 TREE*/
+
+
+
+
+
+            /* START OF MERGED TREE */
+
+
+            function mergedtree(nodes, links) {
+
+                d3.select("#mergedtree").selectAll("g").remove();
+
+                console.log(nodes.length);
+                console.log(nodes);
+
+                var node = svg
+                    .select("#mergedtree")
+                    .selectAll(".node")
+                    //.data(mergedtree.descendants())
+                    .data(nodes)
+                    .enter()
+                    .append("g")
+                    .attr("class", function (d) {
+                        //   console.log(d);
+                        return d.child;
+                    });
+
+
+
+                svg
+                    .select("#mergedtree")
+                    .selectAll(".node")
+                    .data(nodes)
+                    .exit()
+                    .transition()
+                    .delay(200)
+                    .remove();
+
+
+
+
+                node
+                    .append("circle")
+                    .attr("cx", function (d) {
+                        return d.x;
+                    })
+                    .attr("cy", function (d) {
+                        var y = (d.data.data.level === 0 ? 50 : d.data.data.level * 300);
+                        return y;
+                    })
+                    .attr("r", function (d) {
+
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return radius + "px";
+
+                        else if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                            return (radius) + "px";
+
+
+
+
+
+                        /*  else if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
+                             return (radius - 6) + "px"; */
+
+
+                    })
+                    .attr("class", function (d) {
+                        return (
+                            "node" + (d.children ? " node--internal" : " node--leaf")
+                        );
+                    })
+                    .attr("id", function (d) {
+                        return "mergedtree_" + d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .style("fill", function (d) {
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
+                            return d.data.data.color;
+
+
+                        else if (d3.select("#hollowshaperadio")._groups[0][0].checked == true) {
+                            if (d.data.data.shape == "h1")
+                                return "white";
+                            else
+                                return h1color;
+                        }
+                    })
+                    .style("stroke", function (d) {
+                        //if (d.data.data.shape == "h1" || d.data.data.shape == "merged")
+                        //  return h1color;
+                        //console.log(d);
+                        if (d.data.data.shape == "h1" || d.data.data.shape == "merged")
+                            return d.data.data.levelcolor;
+
+                        else return "none";
+                    })
+                    .style("stroke-width", "6px")
+                    .style("stroke-dasharray", function (d) {
+                        if (d.data.data.bordertype == "solid")
+                            return "none";
+                        else
+                            return "8,8.5";
+                        //return "10,10";
+
+                    })
+                    .style("opacity", function (d) {
+                        return 1;
+                    })
+                    .on("mouseover", function (d, i) {
+
+                        var text = "Element: " + d.data.data.child + "<br>Parent: " + d.data.data.parent;
+                        d3.select("#tooltip")
+                            .html(text)
+
+                            .style("left", parseInt(d3.event.pageX - 200) + "px")
+                            .style("top", parseInt(d3.event.pageY + 50) + "px")
+                            .style("text-align", "left")
+                            .style("opacity", 1);
+
+                        var circle_id = this.getAttribute("id");
+                        circle_id = circle_id.split("_")[1];
+
+
+                        d3.select(this)
+                            .transition()
+                            .attr("r", 15);
+
+
+                        d3.select("#h1tree")
+                            .select("#h1tree_" + circle_id)
+                            .style("opacity", 1);
+
+                        d3.select("#h2tree")
+                            .select("#h2tree_" + circle_id)
+                            .style("opacity", 1);
+
+
+                        // console.log(h1_root.descendants());
+
+                        for (var i = 1; i < h1_root.descendants().length; i++) {
+                            if (h1_root.descendants()[i].data.data.child == circle_id) {
+                                var children = (h1_root.descendants()[0]).path(h1_root.descendants()[i]);
+                                // console.log(children);
+
+                                var node_id;
+                                for (var j = 0; j < children.length; j++) {
+                                    // console.log(children[j]);
+                                    node_id = children[j].data.id;
+                                    // console.log(node_id);
+                                    //console.log(children[j]);
+                                    d3.select("#h1tree").select("#h1tree_" + node_id).style("opacity", "1");
+                                }
+
+                            }
+                        }
+
+
+                        for (var i = 1; i < h2_root.descendants().length; i++) {
+                            if (h2_root.descendants()[i].data.data.child == circle_id) {
+                                var children = (h2_root.descendants()[0]).path(h2_root.descendants()[i]);
+                                // console.log(children);
+
+                                var node_id;
+                                for (var j = 0; j < children.length; j++) {
+                                    // console.log(children[j]);
+                                    node_id = children[j].data.id;
+                                    // console.log(node_id);
+                                    //console.log(children[j]);
+                                    d3.select("#h2tree").select("#h2tree_" + node_id).style("opacity", "1");
+                                }
+
+                            }
+                        }
+                    })
+                    .on("mouseleave", function (d) {
+                        d3.select(this)
+                            .transition()
+                            .attr("r", radius + 4);
+
+                        d3.select("#tooltip")
+                            .html("")
+                            .style("left", 0)
+                            .style("top", 0)
+                            .style("opacity", 0);
+
+
+                        var circle_id = this.getAttribute("id");
+                        circle_id = circle_id.split("_")[1];
+
+
+
+                        if (d3.select("#solidshaperadio")._groups[0][0].checked == true) {
+                            d3.select(this)
+                                .transition()
+                                .attr("r", radius);
+                        }
+                        if (d3.select("#hollowshaperadio")._groups[0][0].checked == true) {
+                            d3.select(this)
+                                .transition()
+                                .attr("r", radius - 4);
+                        }
+
+                        d3.select("#h1tree")
+                            .select("#h1tree_" + circle_id)
+                            .transition()
+                            .style("opacity", 0.3);
+
+                        d3.select("#h2tree")
+                            .select("#h2tree_" + circle_id)
+                            .style("opacity", 0.3);
+
+
+                        for (var i = 1; i < h1_root.descendants().length; i++) {
+                            if (h1_root.descendants()[i].data.data.child == circle_id) {
+                                var children = (h1_root.descendants()[0]).path(h1_root.descendants()[i]);
+                                // console.log(children);
+
+                                var node_id;
+                                for (var j = 0; j < children.length; j++) {
+                                    // console.log(children[j]);
+                                    node_id = children[j].data.id;
+                                    // console.log(node_id);
+                                    //console.log(children[j]);
+                                    d3.select("#h1tree").select("#h1tree_" + node_id).style("opacity", "0.3");
+                                }
+
+                            }
+                        }
+
+
+                        for (var i = 1; i < h2_root.descendants().length; i++) {
+                            if (h2_root.descendants()[i].data.data.child == circle_id) {
+                                var children = (h2_root.descendants()[0]).path(h2_root.descendants()[i]);
+                                // console.log(children);
+
+                                var node_id;
+                                for (var j = 0; j < children.length; j++) {
+                                    // console.log(children[j]);
+                                    node_id = children[j].data.id;
+                                    // console.log(node_id);
+                                    //console.log(children[j]);
+                                    d3.select("#h2tree").select("#h2tree_" + node_id).style("opacity", "0.3");
+                                }
+
+                            }
+                        }
+
+
+                    })
+                    .on("click", function (d) {
+                        console.log(" CLICK");
+                        if (d3.event.shiftKey) {
+                            console.log(" shift CLICK");
+                            //data.forEach(function (d, i) {
+                            console.log(d.depth + " " + i);
+                            if (d.depth == 2)
+                                d.children = null;
+
+                            else
+                                d.children = d.children;
+                            //});
+
+                            console.log(nodes);
+                            mergedtree(nodes);
+                        }
+                        else {
+
+                            var color = d.data.data.color;
+
+                            // console.log(color);
+
+                            d3.select("#mergedtree").selectAll("circle")
+                                .each(function (d) {
+                                    // console.log(d.data);
+                                    // console.log(this);
+                                    /*   if (color == "purple") {
+                                          d3.select(this).style("opacity", "1");
+                                          d3.select(this.parentNode).select("text")
+                                              .style("opacity", "1");
+                                      }
+                            
+                                      else  */
+
+                                    if (color == mergedcolor) {
+                                        d3.select("#mergedtree").selectAll("circle").style("opacity", "1");
+                                        d3.select("#mergedtree").selectAll("text").style("opacity", "1");
+                                        d3.select("#mergedtree").selectAll("path").style("opacity", "0.5");
+                                        d3.selectAll(".altlink").remove();
+
+                                    }
+                                    else {
+
+                                        if (color == h1color) {
+
+                                            //d3.selectAll(".altlink").remove();
+
+                                            if ((d.data.data.color == h1color || d.data.data.color == mergedcolor)) {
+
+
+
+                                                d3.select(this).style("opacity", "1");
+                                                d3.select(this.parentNode).select("text")
+                                                    .style("opacity", "1");
+
+                                            }
+                                            else {
+
+                                                /*  if (d.data.data.alternateparent != "") {
+                                                     console.log(".link " + d.data.data.parent + "-" + d.data.data.child);
+                                                     d3.select("#mergedtree").select(".link " + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
+                                                 } */
+
+                                                //console.log(".link " + d.data.data.parent + "-" + d.data.data.child);
+                                                //console.log(this);
+                                                //console.log(d.data);
+                                                d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
+                                                d3.select(this).style("opacity", "0");
+                                                d3.select(this.parentNode).select("text")
+                                                    .style("opacity", "0");
+
+                                                if (d.children)
+                                                    for (var i = 0; i < d.children.length; i++) {
+                                                        //console.log(d.children[i].data.data.child);
+                                                        d3.select("#mergedtree").select("." + d.data.data.child + "-" + d.children[i].data.data.child).style("opacity", "0");
+
+
+
+                                                        /////
+
+                                                        var altparent = d.children[i].data.data.alternateparent;
+                                                        if (altparent != '' && altparent != "root") {
+
+                                                            var child = d.children[i].data.data.child;
+                                                            var parent = d.data.data.parent;
+
+                                                            console.log(altparent + " " + child);
+
+                                                            // if (d3.select("#hidenodesedgesradio")._groups[0][0].checked == true)
+
+
+                                                            d3.select("#mergedtree").append("path")
+                                                                .attr("class", function (d) {
+                                                                    return "altlink";
+                                                                })
+                                                                .classed(altparent + "-" + child, true)
+                                                                .attr("d", function (d) {
+
+
+
+                                                                    var sourcex = d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].__data__.x;
+                                                                    var sourcey = d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].__data__.y;
+                                                                    var targetx = d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].__data__.x;
+                                                                    var targety = d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].__data__.y;
+
+
+                                                                    console.log(sourcex + " " + sourcey);
+                                                                    console.log(targetx + " " + targety);
+
+                                                                    return "M" + sourcex + "," + sourcey
+                                                                        + "C" + sourcex + "," + (sourcey + targety) / 2
+                                                                        + " " + targetx + "," + ((sourcey) + targety) / 2
+                                                                        + " " + targetx + "," + targety;
+                                                                })
+                                                                .style("opacity", function (d) {
+                                                                    return 0.5;
+                                                                })
+                                                                .style("stroke", "red")
+                                                                .style("stroke-dasharray", "3,3")
+                                                                .style("fill", "none")
+                                                                .style("stroke-width", "5px");
+
+                                                        }
+
+                                                        ////////
+                                                    }
+                                            }
+                                        }
+
+                                        else {
+                                            if ((d.data.data.color == h2color || d.data.data.color == mergedcolor)) {
+
+
+
+
+                                                d3.select(this).style("opacity", "1");
+                                                d3.select(this.parentNode).select("text")
+                                                    .style("opacity", "1");
+
+                                                //if (d.data.data.alternateparent != '' && d.data.data.alternateparent != "root") {
+                                                if (d.data.data.alternateparent != '') {
+                                                    var altparent = d.data.data.alternateparent;
+                                                    var child = d.data.data.child;
+                                                    var parent = d.data.data.parent;
+
+                                                    if (d3.select("#hidenodesedgesradio")._groups[0][0].checked == true)
+                                                        d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
+
+                                                    d3.select("#mergedtree").append("path")
+                                                        .attr("class", function (d) {
+                                                            return "altlink";
+                                                        })
+                                                        .classed(altparent + "-" + child, true)
+                                                        .attr("d", function (di) {
+
+                                                            console.log(di);
+
+                                                            //console.log(d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0]);
+                                                            //console.log(d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0]);
+                                                            //console.log(d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].getAttribute("cy"));
+
+                                                            var sourcex = parseInt(d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].getAttribute("cx"));
+                                                            var sourcey = parseInt(d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].getAttribute("cy"));
+                                                            var targetx = parseInt(d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].getAttribute("cx"));
+                                                            var targety = parseInt(d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].getAttribute("cy"));
+
+
+                                                            //console.log(sourcex + " " + sourcey);
+                                                            //console.log(targetx + " " + targety);
+
+                                                            /*
+                                                            <path class="altlink y-z" d="M947,440C1000,487.5 1000,487.5 947,540" style="opacity: 0.5; stroke: red; stroke-dasharray: 3, 3; fill: none; stroke-width: 5px;"></path>
+                                                            */
+
+                                                            if (targety == sourcey) {
+                                                                if (sourcex < targetx)
+                                                                    return "M" + sourcex + "," + (sourcey + radius)
+                                                                        + "L" + sourcex + "," + (sourcey + radius + 50)
+                                                                        + "L" + (targetx - radius - 20) + "," + (targety + radius + 50)
+                                                                        + "L" + (targetx - radius - 20) + "," + (targety - radius - 50)
+                                                                        + "L" + (targetx) + "," + (targety - radius - 50)
+                                                                        + "L" + (targetx) + "," + (targety + radius);
+
+
+
+
+                                                                else
+                                                                    return "M" + sourcex + "," + (sourcey + radius)
+                                                                        + "L" + sourcex + "," + (sourcey + radius + 50)
+                                                                        + "L" + (targetx - radius - 20) + "," + (targety + radius + 50)
+                                                                        + "L" + (targetx - radius - 20) + "," + (targety - radius - 50)
+                                                                        + "L" + (targetx) + "," + (targety - radius - 50)
+                                                                        + "L" + (targetx) + "," + (targety + radius);
+
+
+                                                            }
+
+                                                            if (targety < sourcey) {
+                                                                //console.log("RECURSIVE PARENT");
+                                                                //console.log(d);
+
+                                                                return "M" + targetx + "," + (targety - radius)
+                                                                    + "L" + targetx + "," + (targety - 50)
+                                                                    + "L" + (targetx + 50) + "," + (targety - 50)
+                                                                    + "L " + (sourcex + 50) + "," + (sourcey + 50)
+                                                                    + "L" + (sourcex) + "," + (sourcey + 50)
+                                                                    + "L" + sourcex + "," + (sourcey + radius);
+
+                                                            }
+
+
+                                                            else return "M" + sourcex + "," + sourcey
+                                                                + "C" + sourcex + "," + (sourcey + targety) / 2
+                                                                + " " + targetx + "," + (sourcey + targety) / 2
+                                                                + " " + targetx + "," + targety;
+                                                        })
+                                                        .style("opacity", function (d) {
+                                                            return 0.5;
+                                                        })
+                                                        .style("stroke", "red")
+                                                        //.style("stroke-dasharray", ("3,3"))
+                                                        .style("stroke-dasharray", function (d) {
+                                                            if (d.data.data.bordertype == "solid")
+                                                                return "none";
+                                                            else return "8,8.5";
+                                                        })
+                                                        .style("fill", "none")
+                                                        .style("stroke-width", "5px");
+
+                                                }
+                                            }
+                                            else {
+
+
+
+
+                                                // d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
+
+                                                if (d3.select("#hidenodesradio")._groups[0][0].checked == true || d3.select("#hidenodesedgesradio")._groups[0][0].checked == true) {
+                                                    d3.select(this).style("opacity", "0");
+                                                    d3.select(this.parentNode).select("text")
+                                                        .style("opacity", "0");
+
+                                                    /* console.log(d.data.data.child);
+                                                    console.log(d.data.data.parent);
+                                                    console.log(d.data.data); */
+
+                                                    if (d3.select("#hidenodesedgesradio")._groups[0][0].checked == true)
+                                                        d3.select("#mergedtree").select("." + d.data.data.parent + "-" + d.data.data.child).style("opacity", "0");
+
+
+                                                }
+
+                                                else if (d3.select("#shownodesradio")._groups[0][0].checked == true) {
+                                                    d3.select(this).style("opacity", "1");
+                                                    d3.select(this.parentNode).select("text")
+                                                        .style("opacity", "1");
+                                                }
+
+
+                                            }
+
+                                        }
+
+
+                                    }
+                                })
+                        }
+                    });
+
+
+
+
+
+
+                /*
+                                var symbolGenerator = d3.symbol()
+                                    .type(d3.symbolCross)
+                                    .size(250);
+                
+                                var pathData = symbolGenerator();
+                
+                                node
+                                    .append("path")
+                                    .attr('d', pathData)
+                                    .style("stroke", "black")
+                                    .style("stroke-width", "0.5")
+                                    .style("fill", "white")
+                                    .attr("transform", "rotate(45)");
+                */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                node
+                    .append("text")
+                    .style("font-size", "40px")
+                    .attr("class", function (d) {
+                        return d.data.data.child
+                            .replace(/ /g, "")
+                            .replace("(", "")
+                            .replace(")", "")
+                            .toLowerCase();
+                    })
+                    .classed("text", true)
+                    .attr("dy", "2em")
+                    .attr("x", function (d) {
+                        // console.log(this);
+                        // console.log(this.previousSibling);
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            return d.x - 10;
+                        else
+                            return d.x + 20;
+                    })
+                    .attr("y", function (d) {
+
+                        var y = 0;
+
+                        y = (d.data.data.level === 0 ? 50 : d.data.data.level * 300);
+
+
+                        if ((this.previousSibling).getAttribute("class").includes("leaf"))
+                            y = y - 20;
+                        else
+                            y = y - 40;
+
+                        return y;
+                    })
+                    .attr("text-anchor", function (d) {
+                        return "start";
+                    })
+
+                    .style("opacity", function (d) {
+                        //  console.log(d);
+                        return 0;
+                    })
+                    .text(function (d) {
+                        // console.log(d);
+                        return d.data.data.child;
+                    });
+
+                var link = node
+                    .append("path")
+                    .data(links)
+                    // .enter()
+                    .attr("class", function (d) {
+                        return "link " + d.source.data.data.child + "-" + d.target.data.data.child;
+                    })
+                    //.classed("link", true)
+                    .attr("d", function (d) {
+                        /* console.log(d);
+                        console.log(d.source.data.data.child + " " + d.target.data.data.child);
+                        console.log(sourcey + " " + targety);
+                        console.log(d.target.data.data.level);
+                        console.log(d.target.data.data.level % 1); */
+
+
+                        var sourcex = d.source.x, sourcey = d.source.y, targetx = d.target.x, targety = d.target.y;
+
+                        //console.log(d);
+
+                        sourcey = d.source.data.data.level === 0 ? 50 : d.source.data.data.level * 300;
+                        targety = d.target.data.data.level === 0 ? 50 : d.target.data.data.level * 300;
+
+
+                        /*   if (d.target.data.data.level < d.target.depth)
+                              targety = targety - 150;
+                          else if (d.target.data.data.level > d.target.depth)
+                              targety = targety + 150;
+     
+                          if (d.source.data.data.level < d.source.depth)
+                              sourcey = sourcey - 150;
+     
+                          else if (d.source.data.data.level > d.source.depth)
+                              sourcey = sourcey + 150; */
+
+
+                        //console.log(sourcey + " " + targety);
+
+
+                        return "M" + sourcex + "," + parseInt(sourcey + 10)
+                            + "C" + sourcex + "," + (sourcey + 10 + targety) / 2
+                            + " " + targetx + "," + (sourcey + targety) / 2
+                            + " " + targetx + "," + (targety + 10);
+                    })
+                    .style("opacity", function (d) {
+                        return 0.5;
+                    })
+                    .style("stroke", "#ccc")
+                    .style("fill", "none")
+                    .style("stroke-width", "5px");
+
+                var flag = [];
+
+                node
+                    .append("line")
+                    .attr("x1", function (d) {
+                        //console.log(d);
+                        if (d.data.data.level % 1 == 0 && !flag.includes(d.data.data.level)) {
+                            flag.push(d.data.data.level);
+                            return -100;
+                        }
+
+                    })
+                    .attr("y1", function (d) {
+
+
+                        if (d.data.data.level == 0)
+                            return 50;
+                        else
+                            if (d.data.data.level % 1 == 0)
+                                return d.data.data.level * 300;
+                    })
+                    .attr("x2", function (d) {
+                        if (d.data.data.level % 1 == 0)
+                            return 1100;
+                    })
+                    .attr("y2", function (d) {
+                        if (d.data.data.level == 0)
+                            return 50;
+                        else
+                            if (d.data.data.level % 1 == 0)
+                                return d.data.data.level * 300;
+                    })
+                    .style("stroke", "grey")
+                    .style("stroke-width", 10)
+                    .style("stroke-dasharray", "6,60")
+                    .style("opacity", "0.1");
+
+                flag = [];
+
+                node
+                    .append("text")
+                    .attr("class", function (d, i) {
+                        //console.log("text-level" + d.depth);
+                        //console.log(i);
+                        return "text-level" + d.data.data.level;
+                    })
+                    .style("font-size", "20px")
+                    .attr("dy", "2em")
+                    //.attr("x", -150)
+                    .attr("x", function (d) {
+                        if (!flag.includes(d.data.data.level))
+                            return -150;
+
+                    })
+                    .attr("y", function (d) {
+
+                        if (d.data.data.level == 0) {
+                            flag.push(d.data.data.level);
+                            return 50;
+                        }
+                        else
+                            if (d.data.data.level % 1 == 0) {
+                                flag.push(d.data.data.level);
+                                return d.data.data.level * 300;
+                            }
+
+
+                    })
+                    .attr("text-anchor", function (d) {
+                        return "start";
+                    })
+                    .style("opacity", function (d, i) {
+                        //console.log(i);
+                        //console.log(d3.select("#content").select("#mergedtree").selectAll(".text-level" + d.depth)._groups[0]);
+                        //if (d3.select("#content").select("#mergedtree").selectAll(".text-level" + d.depth)._groups[0].length == 0)
+                        return 1;
+                        //else
+                        //   return 0;
+                    })
+                    .text(function (d) {
+                        // console.log(d);
+                        if (d.data.data.level % 1 == 0)
+                            return "Level: " + d.data.data.level;
+                    });
+
+
+
+            }
+
+
+            /* END OF MERGED TREE */
+
+
+
+            function recomputePositions_nodes(descendants) {
+                console.log(descendants);
+
+                if (!d.data.data.level % 2 == 0)
+
+
+                    return descendants;
+            }
+
+
+            function createHierarchy(arrDims, h1, h2) {
+
+                /*  console.log(arrDims);
+                 console.log(h1);
+                 console.log(h2); */
+
+                var hier = [];
+                hier.push({ "child": "root", "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+                var hier_str = "";
+                for (let j = 1; j < arrDims.length; j++) {
+
+                    for (let jj = 0; jj < arrDims[j].length; jj++) {
+                        // console.log(arrDims[j][jj]);
+
+                        if (arrDims[j][jj].color == mergedcolor) {
+                            var h1_details = parent(arrDims[j][jj], h1);
+                            var h2_details = parent(arrDims[j][jj], h2);
+
+                            if (h1_details[1] < h2_details[1])
+                                hier.push({ "child": arrDims[j][jj].name, "parent": h1_details[0], "alternateparent": h2_details[0], "color": mergedcolor, "shape": "merged" });
+
+                            else
+                                hier.push({ "child": arrDims[j][jj].name, "parent": h2_details[0], "alternateparent": h1_details[0], "color": mergedcolor, "shape": "merged" });
+
+                        }
+
+                        else if (arrDims[j][jj].color == h2color) {
+                            hier.push({ "child": arrDims[j][jj].name, "parent": parent(arrDims[j][jj], h1)[0], "alternateparent": "", "color": h2color, "shape": "h2" });
+
+                        }
+
+                        else {
+                            hier.push({ "child": arrDims[j][jj].name, "parent": parent(arrDims[j][jj], h2)[0], "alternateparent": "", "color": h1color, "shape": "h1" });
+                        }
+
+
+                    }
+                }
+                //  console.log(hier);
+                return hier;
+
+            }
+
+
+            function parent(element, array) {
+                // console.log(element);
+                // console.log(array);
+                for (var i = 0; i < array.length; i++) {
+
+                    if (array[i].data.data.child == element.name) {
+                        if (element.name == "root")
+                            return ["", array[i].data.data.height];
+                        else
+                            return [array[i].data.data.parent, array[i].data.parent.height];
+                    }
+                }
+            }
+
+
+            function findDimensions(root) {
+                const arrDims = [];
+
+                //console.log(root);
+
+                for (let i = 0; i <= root.height; i++) {
+                    arrDims.push([]);
+                }
+
+                // console.log(arrDims);
+
+                root.eachBefore(function (d) {
+                    const str = d.depth;
+                    //  arrDims[str].push({ "name": d.data.data.child, "depth": d.depth, "height": d.height });
+                    arrDims[str].push(d.data.data.child);
+
+                });
+
+                return arrDims;
+            }
+
+            function parent_desc(element, array) {
+
+                //console.log(element);
+                //console.log(array);
+                var child = array.filter(function (el) {
+                    //console.log(el);
+
+                    if (element == el.data.data.child) {
+                        //  console.log(element);
+                        // console.log(element + " " + el.parent.data.id);
+                        return el.data.data.parent;
+                    }
+
+                });
+                //console.log(child[0].parent.data.id);
+                //console.log(child);
+                if (child.length == 0)
+                    return "";
+                else
+                    return child[0].parent.data.data.child;
+            }
+
+
+
+            function level_desc(element, array) {
+                //console.log(element);
+                //console.log(array);
+                for (let i = 0; i < array.length; i++) {
+                    for (let ii = 0; ii < array[i].length; ii++) {
+                        if (array[i][ii].child == element || array[i][ii] == element) {
+                            //console.log(i);
+                            return i;
+                        }
+                    }
+                }
+            }
+
+            function parent_hier(element, array) {
+
+                //console.log(element);
+                //console.log(array);
+
+                for (i = 0; i < array.length; i++)
+                    //console.log(i);
+                    if (element == array[i].child) {
+                        //console.log("MATCH");
+                        //console.log(element + " " + array[i].child);
+                        return array[i].parent;
+                    }
+
+
+
+                //console.log(child[0].parent.data.id);
+
+            }
+
+
+            function level_hier(element, array) {
+                //console.log(array);
+                //console.log(element);
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i].child == element) {
+                        //console.log(array[i].level);
+                        return array[i].level;
+                    }
+                }
+            }
+
+            function flatten_array(array) {
+                var hier = [];
+
+                for (var h = 0; h < array.length; h++) {
+                    for (var hh = 0; hh < array[h].length; hh++) {
+                        hier.push(array[h][hh]);
+                    }
+                }
+
+                // console.log(hier);
+
+
+                return hier;
+            }
+
+
+            function compareDimensions(h2, h1, h2_dims, h1_dims) {
+                /*  console.log(h1);
+                 console.log(h2);
+     
+                 console.log(h1_dims);
+                 console.log(h2_dims);
+    */
+
+                var hier = [];
+                //var arrDims = [];
+
+
+                var hier_flat = [];
+                var index = 0;
+
+
+                var maxLevels = Math.max(h1.length, h2.length);
+
+
+
+
+
+                //console.log(arrDims);
+
+                for (var i = 0; i < h1.length; i++) {
+                    for (var ii = 0; ii < h1[i].length; ii++) {
+                        for (var j = 0; j < h2.length; j++) {
+                            if (h2[j].includes(h1[i][ii])) {
+
+                                if (h1[i][ii] == "root") {
+                                    hier_flat.push(h1[i][ii]);
+                                    hier.push({ "child": h1[i][ii], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged", "level": 0 });
+                                }
+
+                                else
+                                    if (!hier_flat.includes(h1[i][ii])) {
+
+                                        //var parent = parent_desc(h1[i][ii], h1_dims);
+                                        var lev1 = level_desc(h1[i][ii], h1);
+
+                                        //parent = parent_desc(h1[i][ii], h2_dims);
+                                        var lev2 = level_desc(h1[i][ii], h2);
+
+                                        //console.log(h1[i][ii]);
+                                        //console.log(lev1 + " " + lev2);
+                                        var avg_level = (lev1 + lev2) / 2;
+
+                                        //index = avg_level;
+                                        //console.log(avg_level + " " + index);
+
+
+                                        hier.push({ "child": h1[i][ii], "parent": parent_desc(h1[i][ii], h1_dims), "alternateparent": parent_desc(h1[i][ii], h2_dims), "color": mergedcolor, "shape": "merged", "level": avg_level });
+
+
+
+                                        hier_flat.push(h1[i][ii]);
+                                    }
+
+                            }
+
+                        }
+                    }
+                }
+
+
+                for (var i = 0; i < h1.length; i++) {
+                    for (var ii = 0; ii < h1[i].length; ii++) {
+
+
+                        if (!hier_flat.includes(h1[i][ii])) {
+                            index = i;
+                            //console.log(h1[i][ii]);
+                            hier_flat.push(h1[i][ii]);
+                            hier.push({ "child": h1[i][ii], "parent": parent_desc(h1[i][ii], h1_dims), "alternateparent": "", "color": h1color, "shape": "h1", "level": i });
+                        }
+
+                    }
+                }
+
+
+                for (var j = 0; j < h2.length; j++) {
+                    for (var jj = 0; jj < h2[j].length; jj++) {
+                        var flag = 0;
+
+                        if (!hier_flat.includes(h2[j][jj])) {
+                            //console.log(h2[j][jj] + " j " + j);
+
+                            h2_dims.filter(function (d) {
+                                // console.log(d);
+                                if (d.data.data.child == h2[j][jj]) {
+                                    if (d.children) {
+                                        var children = d.children;
+                                        //console.log(children);
+
+                                        //for (var child = 0; child <= children.length; child++) {
+                                        //console.log(children[child]);
+                                        if (hier_flat.includes(children[0].data.data.child)) {
+                                            //console.log("found child");
+                                            //console.log(hier);
+
+                                            //console.log(parent_desc(h2[j][jj], h2_dims));
+                                            var parent_index = level_hier(parent_desc(h2[j][jj], h2_dims), hier);
+                                            // var child_index = level_desc(h2[j][jj], h2_dims);
+                                            var child_index = level_hier(children[0].data.data.child, hier);
+                                            //console.log(parent_index + " " + child_index);
+                                            //console.log(h2[j][jj]);
+                                            hier.push({ "child": h2[j][jj], "parent": parent_desc(h2[j][jj], h2_dims), "alternateparent": "", "color": h2color, "shape": "h2", "level": (parent_index + child_index) / 2 });
+                                            hier_flat.push(h2[j][jj]);
+                                            flag = 1;
+
+                                            for (var h = 0; h < hier.length; h++) {
+                                                if (hier[h].child == children[0].data.data.child)
+                                                    hier[h].alternateparent = h2[j][jj];
+                                            }
+                                        }
+
+
+                                    }
+                                    //}
+                                }
+
+                            });
+
+                            if (flag != 1) {
+                                index = j;
+                                //console.log(h2[j][jj]);
+                                hier.push({ "child": h2[j][jj], "parent": parent_desc(h2[j][jj], h2_dims), "alternateparent": "", "color": h2color, "shape": "h2", "level": j });
+                                hier_flat.push(h2[j][jj]);
+                            }
+                        }
+                    }
+                }
+
+                //console.log(hier);
+                //console.log(hier_flat);
+
+
+                for (var h = 1; h < hier.length; h++) {
+                    //console.log(parent_hier(hier[h].child, hier));
+
+                    //if(hier[h].alternateparent)
+
+                    if (hier[h].level == level_hier(parent_hier(hier[h].child, hier), hier)) {
+                        //console.log("MODIFY");
+                        hier[h].level = hier[h].level + 0.25;
+                    }
+                }
+
+                //console.log(hier);
+                return hier;
+
+            }
+
+            function bt_compareDimensions(h2, h1, h2_dims, h1_dims) {
+                //console.log(h1);
+                //console.log(h2);
+
+                //console.log(h1_dims);
+                //console.log(h2_dims);
+
+
+
+                //var arrDims = [];
+
+
+                var hier_flat = [];
+                var index = 0;
+
+                var h1_flat = flatten_array(h1);
+                var h2_flat = flatten_array(h2);
+
+                //console.log(h1_flat);
+                //console.log(h2_flat);
+
+                var maxLevels = Math.max(h1.length, h2.length);
+                var hier = [];
+                var hier_obj = [];
+                var levelcolor = "";
+                var bordertype = "";
+
+                for (let i = 0; i < maxLevels; i++) {
+                    hier.push([]);
+                    //arrDims_obj.push([]);
+                }
+                //console.log(hier);
+                //console.log(hier.length);
+
+                //var lev1 = level_desc(h1[i][ii], h1);
+                //hier.push({ "child": h1[i][ii], "parent": parent_desc(h1[i][ii], h1_dims), "alternateparent": parent_desc(h1[i][ii], h2_dims), "color": mergedcolor, "shape": "merged", "level": avg_level });
+                //hier_flat.push(h1[i][ii]);
+
+
+                for (var i = 0; i < h1.length; i++) {
+                    for (var ii = 0; ii < h1[i].length; ii++) {
+                        //console.log(h1[i][ii] + " " + i);
+                        hier[i].push(h1[i][ii]);
+                        hier_flat.push(h1[i][ii]);
+                        /*
+                        if (!h2_flat.includes(h1[i][ii]))
+                            hier_obj.push({
+                                "child": h1[i][ii],
+                                "parent": parent_desc(h1[i][ii], h1_dims),
+                                "alternateparent": "",
+                                "color": h1color,
+                                "shape": h1,
+                                "level": level_desc(h1[i][ii], h1),
+                                "levelcolor": ""
+                            });
+    
+                        else
+                        */
+                        if (!h2_flat.includes(h1[i][ii]))
+                            //levelcolor = "blue";
+                            hier_obj.push({
+                                "child": h1[i][ii],
+                                "parent": parent_desc(h1[i][ii], h1_dims),
+                                "alternateparent": "",
+                                "color": h1color,
+                                "shape": "h1",
+                                "level": level_desc(h1[i][ii], h1),
+                                "levelcolor": "blue",
+                                "bordertype": "solid"
+                            });
+                    }
+                }
+
+                /* for (var i = 0; i < hier_flat.length; i++) {
+                    console.log(hier_flat[i]);
+                } */
+
+                for (var i = 0; i < h2.length; i++) {
+                    for (var ii = 0; ii < h2[i].length; ii++) {
+                        //console.log(h2[i][ii]);
+                        levelcolor = "blue";
+
+                        if (h1_flat.includes(h2[i][ii])) {
+
+                            //var ancestor = findAncestor(h2[i][ii], h2_dims, h1, h1_dims);
+                            //var ancestor_level = level_desc(ancestor, h1);
+                            //console.log("element " + h2[i][ii] + " " + level_desc(h2[i][ii], h1));
+                            //console.log(h2[i][ii] + " " + ancestor + " " + ancestor_level);
+                            hier[i].push(h2[i][ii]);
+                            hier_flat.push(h2[i][ii]);
+
+
+                            if (level_desc(h2[i][ii], h2) == level_desc(h2[i][ii], h1))
+                                levelcolor = "blue";
+                            else if (level_desc(h2[i][ii], h2) < level_desc(h2[i][ii], h1))
+                                levelcolor = "#32CD32";
+                            else /*if((level_desc(h2[i][ii], h2) > level_desc(h2[i][ii], h1)))*/
+                                levelcolor = "red";
+
+                            if (parent_desc(h2[i][ii], h1_dims) == parent_desc(h2[i][ii], h2_dims))
+                                bordertype = "solid";
+                            else bordertype = "dashed";
+
+
+                            //console.log(parent_desc(h2[i][ii], h2_dims));
+
+                            hier_obj.push({
+                                "child": h2[i][ii],
+                                "parent": parent_desc(h2[i][ii], h1_dims),
+                                "alternateparent": parent_desc(h2[i][ii], h2_dims),
+                                "color": mergedcolor,
+                                "shape": "merged",
+                                "level": level_desc(h2[i][ii], h1),
+                                "levelcolor": levelcolor,
+                                "bordertype": bordertype
+                            });
+
+                            //hier[i].push(h2[i][ii]);
+                            //hier_flat.push(h2[i][ii]);
+                        }
+                    }
+                }
+
+                for (var i = 0; i < h2.length; i++) {
+                    for (var ii = 0; ii < h2[i].length; ii++) {
+
+                        if (!h1_flat.includes(h2[i][ii])) {
+                            //console.log("element not included " + h2[i][ii]);
+                            var ancestor = "";
+                            var child = "";
+                            var fa_result = findAncestor(h2[i][ii], h2_dims, h1, h1_dims);
+                            //console.log(fa_result);
+                            ancestor = fa_result[0];
+                            if (fa_result[1] == 1) {
+
+                                child = fa_result[2];
+                                //console.log(child);
+
+                                for (var h = 0; h < hier_obj.length; h++) {
+                                    console.log(h + " " + hier_obj[h].child);
+                                    /* if (hier_obj[h].child == h2[i][ii]) {
+                                        console.log("DO OBJECT UPDATED");
+                                        hier_obj[h].level = (level_desc(fa_result[0]) + level_desc(fa_result[2])) / 2;
+                                    } */
+                                    if (hier_obj[h].child == child) {
+                                        //console.log("OBJECT UPDATED");
+                                        hier_obj[h].parent = h2[i][ii];
+                                        hier_obj[h].alternateparent = parent_desc(child, h1_dims);
+
+                                    }
+
+                                }
+
+                            }
+                            var ancestor_level = level_desc(ancestor, h1);
+                            //console.log(h2[i][ii] + " " + ancestor + " " + ancestor_level);
+                            hier[ancestor_level + 1].push(h2[i][ii]);
+
+                            if (ancestor == parent_desc(h2[i][ii], h2_dims))
+                                bordertype = "solid";
+                            else bordertype = "dashed";
+
+                            if (fa_result[1] == 1) {
+                                //console.log("updt if");
+                                //console.log(h2[i][ii] + ancestor);
+                                hier_obj.push({
+                                    "child": h2[i][ii],
+                                    "parent": ancestor,
+                                    "alternateparent": parent_desc(h2[i][ii], h2_dims),
+                                    "color": h2color,
+                                    "shape": "h2",
+
+                                    "level": (level_desc(fa_result[0], h1) + level_desc(fa_result[2], h1)) / 2,
+                                    "levelcolor": levelcolor,
+                                    "bordertype": bordertype
+                                });
+                            }
+                            else {
+                                //console.log("updt else");
+                                //console.log(h2[i][ii] + " " + ancestor + " " + parent_desc(h2[i][ii], h2_dims));
+                                hier_obj.push({
+                                    "child": h2[i][ii],
+                                    "parent": parent_desc(h2[i][ii], h2_dims),
+                                    "alternateparent": "",
+                                    "color": h2color,
+                                    "shape": "h2",
+                                    "level": level_desc(parent_desc(h2[i][ii], h2_dims), h2) + 1,
+
+                                    "levelcolor": levelcolor,
+                                    "bordertype": bordertype
+                                });
+                            }
+
+                        }
+                    }
+                }
+
+                //console.log(hier);
+                //console.log(hier_flat);
+                //console.log(hier_obj);
+                return hier_obj;
+
+            }
+
+            function findAncestor(element, h2_array, h1_array, h1_dims) {
+
+                //console.log(flatten_array(h1_array))
+                var flat_h1_array = flatten_array(h1_array);
+                var flag_parent = 0;
+                var flag_child = 0;
+                var child = "";
+
+                var parent = parent_desc(element, h2_array);
+
+                //console.log(element + " " + parent);
+                //console.log(h2_array);
+                //console.log(flat_h1_array);
+                //console.log(h1_dims);
+
+
+                if (flat_h1_array.includes(parent)) {
+                    flag_parent = 1;
+
+                    for (var i = 0; i < h2_array.length; i++) {
+                        if (element == h2_array[i].data.data.child) {
+                            //console.log(h2_array[i].children);
+                            if (typeof h2_array[i].children != "undefined") {
+                                //console.log()
+                                for (var c = 0; c < h2_array[i].children.length; c++) {
+                                    // console.log(h2_array[i].children[c].data.data.child);
+                                    if (flat_h1_array.includes(h2_array[i].children[c].data.data.child)) {
+                                        flag_child = 1;
+                                        child = h2_array[i].children[c].data.data.child;
+                                    }
+                                }
+                            }
+                            else flag_child == 0;
+                        }
+                    }
+                    //console.log("child and parent", child + " ** " + parent);
+                    if (flag_parent == 1 && flag_child == 1) {
+                        //console.log("return");
+                        return [parent, 1, child];
+                    }
+                    else
+                        return [parent, 0, ""];
+                }
+
+                else {
+                    //console.log("entered else");
+                    for (var i = 0; i < h2_array.length; i++) {
+                        //console.log(h2_array[i]);
+                        if (element == h2_array[i].data.data.child) {
+                            //console.log(h2_array[i].ancestors());
+                            //return [parent, 0, ""];
+
+                            for (var anc = 1; anc < h2_array[i].ancestors().length; anc++) {
+                                //console.log(h2_array[i].ancestors()[anc].data.data.child);
+                                if (flat_h1_array.includes(h2_array[i].ancestors()[anc].data.data.child)) {
+                                    //console.log("match found " + h2_array[i].ancestors()[anc].data.data.child);
+                                    return [h2_array[i].ancestors()[anc].data.data.child, 0, ""];
+                                }
+                            }
+
+
+                        }
+                    }
+                }
+            }
+
+            /*
+                        function compareDimensions(h2, h1, h2_dims, h1_dims) {
+                            //   console.log(h1);
+                            //  console.log(h2);
+            
+                            //  console.log(h1_dims);
+                            //  console.log(h2_dims); 
+            
+            
+                            var hier = [];
+                            var arrDims = [];
+            
+            
+                            var arrDims_flat = [];
+            
+            
+                            var maxLevels = Math.max(h1.length, h2.length);
+            
+                            for (let i = 0; i < maxLevels; i++) {
+                                arrDims.push([]);
+                                hier.push([]);
+                                //arrDims_obj.push([]);
+                            }
+            
+            
+                            //console.log(arrDims);
+            
+            
+            
+            
+                            for (let j = 0; j < h1.length; j++) {
+                                for (let jj = 0; jj < h1[j].length; jj++) {
+                                    flag = 0;
+                                    for (let i = 0; i < h2.length; i++) {
+            
+                                        if (h2[i].includes(h1[j][jj]))
+                                            flag = i;
+            
+                                    }
+                                    if (flag < j) {
+                                        if (flag == 0) { // element is only present in h1 and not in h2
+                                            // arrDims[j].push({ "name": h1[j][jj], "color": h1color, "shape": "h1" });
+                                            var parent = parent_desc(h1[j][jj], h1_dims);
+                                            //var level=level(parent, hier);
+                                            //hier[level].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": h1color, "shape": "h1" });
+                                            hier[j].push({ "child": h1[j][jj], "parent": parent, "alternateparent": "", "color": h1color, "shape": "h1" });
+            
+                                        }
+                                        else { //element is present in both but at a higher level in h1/j
+                                            // arrDims[j].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                                            var parent = parent_desc(h1[j][jj], h1_dims);
+                                            var level = level_desc(parent, hier);
+                                            hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h2_dims), "color": mergedcolor, "shape": "merged" });
+            
+                                            // hier[j].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+                                        }
+                                    }
+                                    else { //element is present in both
+                                        // arrDims[flag].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                                        //  console.log(h1[j][jj]);
+                                        // console.log(h2_dims);
+                                        // console.log(hier); 
+            
+                                        if (h1[j][jj] == "root")
+                                            hier[flag].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+            
+                                        else {
+                                            var parent = parent_desc(h1[j][jj], h2_dims);
+                                            var level = level_desc(parent, hier);
+                                            //  console.log(parent + " " + level);
+                                            if (level != undefined)
+                                                hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h1_dims), "color": mergedcolor, "shape": "merged" });
+                                            else {
+                                                parent = parent_desc(h1[j][jj], h2_dims);
+                                                //    console.log(parent);
+                                                //   console.log(h2); 
+                                                level = level_desc(parent, h2);
+                                                //   console.log(parent + " " + level);
+                                                hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h1_dims), "color": mergedcolor, "shape": "merged" });
+                                            }
+                                            //hier[flag].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
+                                        }
+                                    }
+            
+                                    arrDims_flat.push(h1[j][jj]);
+            
+                                }
+                            }
+            
+                            //element is only present in h2
+                            for (let i = 0; i < h2.length; i++) {
+                                for (let ii = 0; ii < h2[i].length; ii++) {
+                                    if (!arrDims_flat.includes(h2[i][ii])) {
+                                        // arrDims[i].push({ "name": h2[i][ii], "color": h2color, "shape": "h2" });
+                                        var parent = parent_desc(h2[i][ii], h2_dims);
+                                        hier[i].push({ "child": h2[i][ii], "parent": parent, "alternateparent": "", "color": h2color, "shape": "h2" });
+                                        //hier[i].push({ "child": h2[i][ii], "parent": "", "alternateparent": "", "color": h2color, "shape": "h2" });
+                                        //  arrDims[i].push(h2[i][ii]);
+                                        arrDims_flat.push(h2[i][ii]);
+                                    }
+            
+                                }
+                            }
+            
+            
+                            console.log(arrDims_flat);
+                            // console.log(arrDims);
+                            console.log(hier);
+            
+                            return hier;
+                        }
+            
+            
+            
+                        
+            function compareDimensions(h2, h1) {
+                            //console.log(h1);
+                            //console.log(h2);
+             
+                            var arrDims = [];
+             
+                            var arrDims_flat = [];
+             
+                            var maxLevels = Math.max(h1.length, h2.length);
+             
+                            for (let i = 0; i < maxLevels; i++) {
+                                arrDims.push([]);
+                                //arrDims_obj.push([]);
+                            }
+             
+             
+                            //console.log(arrDims);
+             
+                            for (let j = 0; j < h1.length; j++) {
+                                for (let jj = 0; jj < h1[j].length; jj++) {
+                                    flag = 0;
+                                    for (let i = 0; i < h2.length; i++) {
+             
+                                        if (h2[i].includes(h1[j][jj]))
+                                            flag = i;
+             
+                                    }
+                                    if (flag < j) {
+                                        if (flag == 0) // if the element is not present in h2
+                                            arrDims[j].push({ "name": h1[j][jj], "color": h1color, "shape": "h1" });
+                                        else //element is present in both
+                                            arrDims[j].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                                    }
+                                    else { //element is present in both
+                                        arrDims[flag].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
+                                    }
+             
+                                    arrDims_flat.push(h1[j][jj]);
+             
+                                }
+                            }
+             
+             
+                            for (let i = 0; i < h2.length; i++) {
+                                for (let ii = 0; ii < h2[i].length; ii++) {
+                                    if (!arrDims_flat.includes(h2[i][ii])) {
+                                        arrDims[i].push({ "name": h2[i][ii], "color": h2color, "shape": "h2" });
+                                        //  arrDims[i].push(h2[i][ii]);
+                                        arrDims_flat.push(h2[i][ii]);
+                                    }
+             
+                                }
+                            }
+             
+             
+                            //console.log(arrDims_flat);
+                            //console.log(arrDims);
+             
+                            return arrDims;
+                        }
+                        */
+
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>
