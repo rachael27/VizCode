@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<header>
+    <button onclick="expandAll()">Expand All</button>
+    <button onclick="collapseAll()">Collapse All</button>
+</header>
+<style>
+    .node {
+        cursor: pointer;
+    }
+
+    .node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+
+    .node text {
+        font: 40px sans-serif;
+    }
+
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1.5px;
+    }
+</style>
+<script src="https://d3js.org/d3.v7.js"></script>
+<script type="text/javascript">
+
+
+    /*
+    
+        function expand(d) {
+            var children = (d.children) ? d.children : d._children;
+            if (d._children) {
+                d.children = d._children;
+                d._children = null;
+            }
+            if (children)
+                children.forEach(expand);
+        }
+    
+        function expandAll() {
+            expand(root);
+            update(root);
+        }
+    
+        function collapseAll() {
+            root.children.forEach(collapse);
+            collapse(root);
+            update(root);
+        }
+    
+        function collapse(d) {
+            if (d.children) {
+                d._children = d.children;
+                d._children.forEach(collapse);
+                d.children = null;
+            }
+        }
+    
+        */
+
+    var margin = { top: 20, right: 120, bottom: 20, left: 120 },
+        width = 1400 - margin.right - margin.left,
+        height = 1200 - margin.top - margin.bottom;
+
+    var i = 0,
+        duration = 750,
+        root;
+
+    var tree = d3.tree()
+        .size([height, width]);
+
+
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.right + margin.left)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.csv("File/File0-primaryH.csv", d3.autoType).then(
+        function (data) {
+
+
+            stratify = d3
+                .stratify()
+                .id(function (d) {
+                    return d.child;
+                })
+                .parentId(function (d) {
+                    return d.parent;
+                });
+
+            var startify_data = stratify(data);
+
+            var data = d3.hierarchy(startify_data);
+
+            var tree = d3
+                .tree()
+                .size([height, width]);
+
+
+            var root = tree(data);
+
+            var nodes_l = root.descendants(),
+                links_l = root.links();
+
+            nodes_l.forEach(function (d) {
+                d.x0 = d.x;
+                d.y0 = d.y;
+                d.position = "expand";
+
+            });
+
+            update(nodes_l, links_l, nodes_l[0]);
+        });
+
+
+
+
+    function update(nodes, links, source) {
+
+        console.log(nodes);
+
+        nodes = nodes.filter(function (el) {
+            if (el.position == "expand") {
+                return el;
+            }
+        });
+
+
+        links = links.filter(function (el) {
+            if (el.target.position == "expand") {
+                return el;
+            }
+        });
+
+
+
+        // Update the nodes…
+        var node = svg.selectAll("g.node")
+            .data(nodes, function (d) {
+                //return d.data.data.child;
+                return d.id || (d.id = ++i);
+            });
+
+        console.log(nodes);
+
+        //console.log("ENTER");
+
+        var nodeEnter = node.enter().append("g")
+            .attr("class", "node")
+            .attr("transform", function (d) {
+                console.log("enter " + d.data.data.child);
+                return "translate(" + source.x + "," + source.y + ")";
+            })
+            .on("click", function (e, d) {
+                console.log(nodes);
+                click(e, d, nodes, links);
+            })
+            .on("mouseover", mouseover)
+            .on("mouseout", mouseout);
+
+        nodeEnter.append("circle")
+            .attr("r", 10)
+            .style("fill", function (d) { return d.children ? "lightsteelblue" : "#fff"; });
+
+        nodeEnter.append("text")
+            .attr("x", function (d) { return d.children ? -10 : 10; })
+            .attr("dy", ".35em")
+            .attr("text-anchor", function (d) { return d.children ? "end" : "start"; })
+            .text(function (d) { return d.name; })
+            .style("fill-opacity", 1);
+
+
+        var nodeUpdate = nodeEnter
+            .merge(node)
+            .transition()
+            .duration(duration)
+            .attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            });
+
+        nodeUpdate.select("circle")
+            .attr("r", 10)
+            .style("fill", function (d) { return d.children ? "lightsteelblue" : "#fff"; });
+
+        nodeUpdate.select("text")
+            .style("fill-opacity", 1);
+
+
+
+        var nodeExit = node
+            .exit()
+            .transition()
+            .duration(duration)
+            .attr("transform", function (d) {
+                return "translate(" + source.x + "," + source.y + ")";
+            })
+            .remove();
+
+        nodeExit.select("circle")
+            .attr("r", 0);
+
+        nodeExit.select("text")
+            .style("fill-opacity", 0);
+
+
+
+
+        var link = svg.selectAll("path.link")
+            .data(links, function (d) {
+                //console.log(d);
+                return d.target.id;
+            });
+
+        console.log(links);
+
+        // Enter any new links at the parent's previous position.
+        var linkEnter = link.enter().insert("path", "g")
+            .attr("class", "link")
+            .attr("d", function (d) {
+                console.log("enter");
+                //console.log(d.source.data.data.child + " " + d.target.data.data.child);
+                //console.log(source.x + " " + source.y);
+                //console.log(d.source.x + " " + d.source.y);
+                //console.log(d.target.x + " " + d.target.y);
+
+                var sourcex = source.x, sourcey = source.y, targetx = source.x, targety = source.y;
+                return "M" + sourcex + "," + parseInt(sourcey + 10)
+                    + "C" + sourcex + "," + (sourcey + 10 + targety) / 2
+                    + " " + targetx + "," + (sourcey + targety) / 2
+                    + " " + targetx + "," + (targety + 10);
+            });
+
+        // Transition links to their new position.
+        linkEnter
+            .merge(link)
+            .transition()
+            .duration(duration)
+            .attr("d", function (d) {
+                console.log("update");
+                var sourcex = d.source.x, sourcey = d.source.y, targetx = d.target.x, targety = d.target.y;
+                return "M" + sourcex + "," + parseInt(sourcey + 10)
+                    + "C" + sourcex + "," + (sourcey + 10 + targety) / 2
+                    + " " + targetx + "," + (sourcey + targety) / 2
+                    + " " + targetx + "," + (targety + 10);
+            });
+
+        // Transition exiting nodes to the parent's new position.
+        link
+            .exit()
+            .transition()
+            .duration(duration)
+            .attr("d", function (d) {
+                console.log("exit");
+                var sourcex = source.x, sourcey = source.y, targetx = source.x, targety = source.y;
+                return "M" + sourcex + "," + parseInt(sourcey + 10)
+                    + "C" + sourcex + "," + (sourcey + 10 + targety) / 2
+                    + " " + targetx + "," + (sourcey + targety) / 2
+                    + " " + targetx + "," + (targety + 10);
+            })
+            .remove();
+
+    }
+
+    function click(e, d, nodes, links) {
+        var descendants = [];
+        d.descendants().forEach(function (des) {
+            descendants.push(des.data.data.child);
+        });
+
+        descendants.splice(0, 1);
+
+        //console.log(descendants);
+
+        if (descendants.length > 0) {
+            for (var l = 0; l < nodes.length; l++) {
+                if (descendants.includes(nodes[l].data.data.child)) {
+                    if (nodes[l].position == "collapse")
+                        nodes[l].position = "expand";
+                    else
+                        nodes[l].position = "collapse";
+                }
+            }
+        }
+        console.log(nodes);
+        update(nodes, links, d);
+    }
+
+    function mouseover(e, d) {
+
+        d3.select(this).append("text")
+            .attr("class", "hover")
+            .attr('transform', function (d) {
+                return 'translate(5, -10)';
+            })
+            .text(d.data.data.child + ": " + d.data.data.parent);
+    }
+
+
+    function mouseout(d) {
+        d3.select(this).select("text.hover").remove();
+    }
+
+
+    d3.select(self.frameElement).style("height", "800px");
+
+
+</script>
+
+<body>
+
+
+
+</body>
+
+</html>
