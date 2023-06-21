@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsing IV-03 XML DATA</title>
+    <link rel="icon" href="Images/hierarchy3.png">
+</head>
+
+<body>
+
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script type="text/javascript">
+
+
+        d3.queue()
+            .defer(d3.xml, "iv03/logs_A_03-02-01.xml")
+            .defer(d3.xml, "iv03/logs_C_03-02-01.xml")
+            .await(function (error, log1, log2) {
+                if (error) throw error;
+
+                else
+                    runScript(log1, log2);
+            });
+
+
+        var struct = [];
+        var str = "";
+        var foldername = [];;
+        function runScript(log1, log2) {
+            //console.log(log1);
+
+
+            var branches = log1.documentElement.getElementsByTagName("branch");
+
+            //struct.push({ "parent": "", "child": "root" });
+            str = "parent,child\n";
+            str = str + ",root\n";
+
+            //console.log(typeof (branches));
+            console.log(branches);
+            folder(branches[0]);
+            //console.log(struct);
+            console.log(str);
+
+        }
+
+        function folder(nodes) {
+
+            //console.log(nodes);
+
+            var title = " ";
+            var fname = "";
+
+
+
+            foldername.push(nodes.children[0].attributes.value.value);
+            //console.log(foldername);
+
+            for (var b = 1; b < nodes.children.length; b++) {
+
+
+                //console.log("b " + b);
+
+                if (nodes.children[b].nodeName == "leaf") {
+                    for (var l = 0; l < nodes.children[b].children.length; l++) {
+                        if (nodes.children[b].children[l].attributes.name.value == "name") {
+                            fname = nodes.children[b].children[l].attributes.value.value;
+
+                            //if (nodes.children[b].children.length == 8)
+                            //  fname = fname + " " + nodes.children[b].children[7].attributes.value.value;
+
+                            str = str + foldername.join("/") + "," + foldername.join("/") + "/" + fname + "\n";
+                            struct.push({ "parent": foldername.join("/"), "child": foldername.join("/") + "/" + fname });
+
+                        }
+
+                    }
+                }
+                else {
+                    struct.push({ "parent": foldername.join("/"), "child": foldername.join("/") + "/" + nodes.children[b].children[0].attributes.value.value });
+                    str = str + foldername.join("/") + "," + foldername.join("/") + "/" + nodes.children[b].children[0].attributes.value.value + "\n";
+                    folder(nodes.children[b]);
+
+                }
+            }
+
+
+            foldername.pop();
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

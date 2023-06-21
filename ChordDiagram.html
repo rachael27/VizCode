@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<body>
+    <div id="my_dataviz"></div>
+    <script type="text/javascript">
+
+
+        var svg = d3.select("#my_dataviz")
+            .append("svg")
+            .attr("width", 2500)
+            .attr("height", 2000)
+            .append("g")
+            .attr("transform", "translate(1200,1000)");
+
+        var innerRadius = 800, outerRadius = 830;
+
+        //DATASET 1
+        // create input data: a square matrix that provides the flow between items
+        /*  var items = ["Adidas", "Converse", "Nike", "Puma", "Under Armor"];
+         var matrix = [
+             [0, 2, 1, 1, 0],
+             [2, 0, 2, 1, 0],
+             [2, 1, 0, 0, 0],
+             [1, 0, 2, 0, 2],
+             [1, 2, 2, 2, 0]
+         ]; */
+
+        /*
+                //DATASET 2
+                var items = ["Apple", "Nokia", "Samsung", "Sony"];
+                var matrix = [
+                    [0, 1, 1, 0],
+                    [2, 0, 2, 1],
+                    [2, 1, 0, 1],
+                    [2, 1, 2, 0]
+                ];
+        */
+
+        //DATASET 3
+        var items = ["Britain", "France", "Germany", "Greece", "Italy", "Spain", "United States"];
+        var matrix = [
+            [0, 0, 1, 0, 0, 1, 0],
+            [0, 0, 0, 0, 0, 2, 2],
+            [0, 0, 0, 2, 3, 3, 1],
+            [2, 0, 0, 0, 2, 0, 0],
+            [3, 1, 2, 0, 0, 0, 1],
+            [2, 3, 1, 0, 2, 1, 0]
+        ];
+
+
+
+        var colorScale = d3.scaleOrdinal().domain(items)
+            .range(["#4e79a7", "#f28e2c", "#e15759", "#76b7b2", "#59a14f", "#D8BFD8"]);
+
+        //directed
+        var chord = d3
+            .chordDirected() //values are generated from the matrix; replace with chord() to see difference 
+            .padAngle(0.05) //padding angle between the outer arc of the items
+            .sortChords(d3.descending) //IMPORTANT: sorting the chords/ribbons
+            (matrix);
+
+
+
+        // outer arc that shows the breakdown of N items
+        var outerArc = svg
+            .datum(chord)
+            .append("g")
+            .selectAll("g")
+            .data(function (d) {
+                return d.groups;
+            })
+            .enter()
+            .append("g");
+
+        outerArc
+            .append("path")
+            .attr("id", function (d, i) {
+                return "outerArc" + i;
+            })
+            .style("fill", function (d, i) {
+                return colorScale(i);
+            })
+            .style("stroke", "black")
+            .style("stroke-width", 1)
+            .attr("d", d3.arc()
+                .innerRadius(innerRadius)
+                .outerRadius(outerRadius)
+            );
+
+
+        // Adding the links/ribbons between the items
+        svg
+            .datum(chord)
+            .append("g")
+            .selectAll("path")
+            .data(function (d) {
+                return d;
+            })
+            .enter()
+            .append("path")
+            .attr("d", d3.ribbonArrow()
+                .radius(innerRadius)
+                .headRadius(30) //setting the radius of the arrows
+            )
+            .attr("class", function (d, i) {
+                return "ribbon" + d.source.index;
+            })
+            .style("fill", function (d) {
+                return colorScale(d.source.index);
+            })
+            //.style("stroke", "black")
+            .style("opacity", 0.7)
+            .style("stroke-width", 1.5);
+
+
+        outerArc.append("text")
+            .attr("dy", ".35em")
+            .attr("text-anchor", function (d) {
+                d.angle = (d.startAngle + d.endAngle) / 2;
+                return d.angle > Math.PI ? "end" : null;
+            })
+            .attr("transform", function (d, i) {
+                //console.log(items[i] + d.angle);
+                //console.log(d.angle < Math.PI);
+                if (items.length <= 5)
+                    return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+                        + "translate(" + (outerRadius + 70) + ")"
+                        + (d.angle < 1 || d.angle > 5 ? "rotate(90)" : "rotate(-90)"); //rotating the labels for readability based on their angle
+                else
+                    return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+                        + "translate(" + (outerRadius + 70) + ")"
+                        + (d.angle < 2 || d.angle > 5 ? "rotate(90)" : "rotate(-90)"); //rotating the labels for readability based on their angle
+
+            })
+
+            .text(function (d, i) {
+                //console.log(d);
+                return items[i];
+            })
+            .style("font-size", 40)
+            .attr("font-weight", "bold")
+            .on("click", function (e, d, i) {
+
+
+                for (let i = 0; i < items.length; i++) {
+                    console.log(d.index + " " + i);
+                    if (i <= d.index) {
+                        console.log(d.index + " " + i + " color");
+                        d3.selectAll(".ribbon" + d.index).style("fill", colorScale(d.index));
+                        d3.selectAll(".ribbon" + i).style("opacity", "0.7");
+                    }
+                    else {
+                        console.log(d.index + " " + i + " white");
+                        d3.selectAll(".ribbon" + i).style("opacity", "0");
+                        //d3.selectAll(".ribbon" + i).style("stroke", "white");
+
+                    }
+                }
+
+
+
+            })
+
+    </script>
+
+</body>
+
+</html>

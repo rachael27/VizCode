@@ -1,0 +1,421 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE tree SYSTEM "treeml.dtd">
+<tree>
+ <declarations>
+  <attributeDecl name="name" type="String"/>
+  <attributeDecl name="length" type="Real"/>
+ </declarations>
+ <branch>
+   <attribute name="name" value="?im57?"/>
+  <branch>
+    <attribute name="name" value="?im1?"/>
+    <attribute name="length" value="0.21659"/>
+   <branch>
+     <attribute name="name" value="?im0?"/>
+     <attribute name="length" value="0.00999"/>
+    <leaf>
+     <attribute name="name" value="SA0421"/>
+     <attribute name="length" value="0.0"/></leaf>
+    <leaf>
+     <attribute name="name" value="SAV0463"/>
+     <attribute name="length" value="0.0"/></leaf>
+   </branch>
+   <leaf>
+    <attribute name="name" value="MW0417"/>
+    <attribute name="length" value="-0.00539"/></leaf>
+  </branch>
+  <branch>
+    <attribute name="name" value="?im56?"/>
+    <attribute name="length" value="1.91648"/>
+   <branch>
+     <attribute name="name" value="?im22?"/>
+     <attribute name="length" value="0.88104"/>
+    <branch>
+      <attribute name="name" value="?im20?"/>
+      <attribute name="length" value="0.58663"/>
+     <leaf>
+      <attribute name="name" value="FN0659"/>
+      <attribute name="length" value="2.17317"/></leaf>
+     <branch>
+       <attribute name="name" value="?im19?"/>
+       <attribute name="length" value="0.81404"/>
+      <branch>
+        <attribute name="name" value="?im17?"/>
+        <attribute name="length" value="0.16264"/>
+       <branch>
+         <attribute name="name" value="?im14?"/>
+         <attribute name="length" value="0.38464"/>
+        <branch>
+         <attribute name="name" value="?im13?"/>
+         <attribute name="length" value="0.62563"/>
+         <branch>
+         <attribute name="name" value="?im9?"/>
+         <attribute name="length" value="1.91456"/>
+         <branch>
+         <attribute name="name" value="?im8?"/>
+         <attribute name="length" value="0.43228"/>
+         <branch>
+         <attribute name="name" value="?im7?"/>
+         <attribute name="length" value="0.82908"/>
+         <branch>
+         <attribute name="name" value="?im6?"/>
+         <attribute name="length" value="1.3146"/>
+         <branch>
+         <attribute name="name" value="?im5?"/>
+         <attribute name="length" value="2.94676"/>
+         <branch>
+         <attribute name="name" value="?im4?"/>
+         <attribute name="length" value="0.05384"/>
+         <leaf>
+         <attribute name="name" value="ydcC"/>
+         <attribute name="length" value="-0.09653"/></leaf>
+         <branch>
+         <attribute name="name" value="?im3?"/>
+         <attribute name="length" value="1.45498"/>
+         <branch>
+         <attribute name="name" value="?im2?"/>
+         <attribute name="length" value="0.19449"/>
+         <leaf>
+         <attribute name="name" value="spyM18_031"/>
+         <attribute name="length" value="0.27183"/></leaf>
+         <leaf>
+         <attribute name="name" value="SP0152"/>
+         <attribute name="length" value="0.07067"/></leaf>
+         </branch>
+         <leaf>
+         <attribute name="name" value="spr0150"/>
+         <attribute name="length" value="-0.18904"/></leaf>
+         </branch>
+         </branch>
+         <leaf>
+         <attribute name="name" value="ORF5"/>
+         <attribute name="length" value="-0.05107"/></leaf>
+         </branch>
+         <leaf>
+         <attribute name="name" value="yaeE_xa"/>
+         <attribute name="length" value="-1.71905"/></leaf>
+         </branch>
+         <leaf>
+         <attribute name="name" value="MW0791"/>
+         <attribute name="length" value="-0.87214"/></leaf>
+         </branch>
+         <leaf>
+         <attribute name="name" value="SA0770"/>
+         <attribute name="length" value="-0.82437"/></leaf>
+         </branch>
+         <leaf>
+         <attribute name="name" value="SAV0838"/>
+         <attribute name="length" value="-0.43228"/></leaf>
+         </branch>
+         <branch>
+         <attribute name="name" value="?im12?"/>
+         <attribute name="length" value="0.30889"/>
+         <branch>
+         <attribute name="name" value="?im11?"/>
+         <attribute name="length" value="1.49285"/>
+         <branch>
+         <attribute name="name" value="?im10?"/>
+         <attribute name="length" value="0.73432"/>
+         <leaf>
+         <attribute name="name" value="atmE"/>
+         <attribute name="length" value="2.4566"/></leaf>
+         <leaf>
+         <attribute name="name" value="yaeE_xc"/>
+         <attribute name="length" value="2.5575"/></leaf>
+         </branch>
+         <leaf>
+         <attribute name="name" value="PM1729"/>
+         <attribute name="length" value="0.85743"/></leaf>
+         </branch>
+         <leaf>
+         <attribute name="name" value="XF0874"/>
+         <attribute name="length" value="2.28245"/></leaf>
+         </branch>
+        </branch>
+        <leaf>
+         <attribute name="name" value="BMEII0336"/>
+         <attribute name="length" value="2.32444"/></leaf>
+       </branch>
+       <branch>
+         <attribute name="name" value="?im16?"/>
+         <attribute name="length" value="1.75874"/>
+        <branch>
+         <attribute name="name" value="?im15?"/>
+         <attribute name="length" value="2.39385"/>
+         <leaf>
+         <attribute name="name" value="lmo2418"/>
+         <attribute name="length" value="-0.01271"/></leaf>
+         <leaf>
+         <attribute name="name" value="lin2513"/>
+         <attribute name="length" value="0.02691"/></leaf>
+        </branch>
+        <leaf>
+         <attribute name="name" value="CC2668"/>
+         <attribute name="length" value="-1.4087"/></leaf>
+       </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="?im18?"/>
+        <attribute name="length" value="2.13834"/>
+       <leaf>
+        <attribute name="name" value="NMB1947"/>
+        <attribute name="length" value="0.28208"/></leaf>
+       <leaf>
+        <attribute name="name" value="NMA0505"/>
+        <attribute name="length" value="-0.24388"/></leaf>
+      </branch>
+     </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="?im21?"/>
+      <attribute name="length" value="2.6864"/>
+     <leaf>
+      <attribute name="name" value="aarA"/>
+      <attribute name="length" value="-0.40355"/></leaf>
+     <leaf>
+      <attribute name="name" value="sfbC"/>
+      <attribute name="length" value="1.59535"/></leaf>
+    </branch>
+   </branch>
+   <branch>
+     <attribute name="name" value="?im55?"/>
+     <attribute name="length" value="1.08804"/>
+    <branch>
+      <attribute name="name" value="?im24?"/>
+      <attribute name="length" value="0.66719"/>
+     <leaf>
+      <attribute name="name" value="HP1577"/>
+      <attribute name="length" value="-0.03401"/></leaf>
+     <branch>
+       <attribute name="name" value="?im23?"/>
+       <attribute name="length" value="0.03891"/>
+      <leaf>
+       <attribute name="name" value="jhp1485"/>
+       <attribute name="length" value="-0.01657"/></leaf>
+      <leaf>
+       <attribute name="name" value="abcD"/>
+       <attribute name="length" value="0.12047"/></leaf>
+     </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="?im54?"/>
+      <attribute name="length" value="1.05544"/>
+     <branch>
+       <attribute name="name" value="?im34?"/>
+       <attribute name="length" value="0.08757"/>
+      <branch>
+        <attribute name="name" value="?im32?"/>
+        <attribute name="length" value="0.8494"/>
+       <branch>
+         <attribute name="name" value="?im28?"/>
+         <attribute name="length" value="0.82377"/>
+        <leaf>
+         <attribute name="name" value="TP0119"/>
+         <attribute name="length" value="0.2653"/></leaf>
+        <branch>
+         <attribute name="name" value="?im27?"/>
+         <attribute name="length" value="0.32685"/>
+         <branch>
+         <attribute name="name" value="?im25?"/>
+         <attribute name="length" value="0.23195"/>
+         <leaf>
+         <attribute name="name" value="BH3480"/>
+         <attribute name="length" value="0.84082"/></leaf>
+         <leaf>
+         <attribute name="name" value="DR1357"/>
+         <attribute name="length" value="0.26698"/></leaf>
+         </branch>
+         <branch>
+         <attribute name="name" value="?im26?"/>
+         <attribute name="length" value="0.17285"/>
+         <leaf>
+         <attribute name="name" value="AGR_L_763"/>
+         <attribute name="length" value="0.0"/></leaf>
+         <leaf>
+         <attribute name="name" value="Atu4488"/>
+         <attribute name="length" value="0.0"/></leaf>
+         </branch>
+        </branch>
+       </branch>
+       <branch>
+         <attribute name="name" value="?im31?"/>
+         <attribute name="length" value="1.93855"/>
+        <branch>
+         <attribute name="name" value="?im30?"/>
+         <attribute name="length" value="0.45339"/>
+         <branch>
+         <attribute name="name" value="?im29?"/>
+         <attribute name="length" value="0.21736"/>
+         <leaf>
+         <attribute name="name" value="yusB"/>
+         <attribute name="length" value="0.51771"/></leaf>
+         <leaf>
+         <attribute name="name" value="BA_0756"/>
+         <attribute name="length" value="0.58229"/></leaf>
+         </branch>
+         <leaf>
+         <attribute name="name" value="YPO1319"/>
+         <attribute name="length" value="0.37039"/></leaf>
+        </branch>
+        <leaf>
+         <attribute name="name" value="Cgl0635"/>
+         <attribute name="length" value="0.19331"/></leaf>
+       </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="?im33?"/>
+        <attribute name="length" value="2.00936"/>
+       <leaf>
+        <attribute name="name" value="PA5504"/>
+        <attribute name="length" value="0.62999"/></leaf>
+       <leaf>
+        <attribute name="name" value="VC0906"/>
+        <attribute name="length" value="0.29451"/></leaf>
+      </branch>
+     </branch>
+     <branch>
+       <attribute name="name" value="?im53?"/>
+       <attribute name="length" value="0.87084"/>
+      <branch>
+        <attribute name="name" value="?im41?"/>
+        <attribute name="length" value="0.15586"/>
+       <branch>
+         <attribute name="name" value="?im40?"/>
+         <attribute name="length" value="0.58314"/>
+        <branch>
+         <attribute name="name" value="?im35?"/>
+         <attribute name="length" value="0.34917"/>
+         <leaf>
+         <attribute name="name" value="Cj0773c"/>
+         <attribute name="length" value="2.77169"/></leaf>
+         <leaf>
+         <attribute name="name" value="STY0273"/>
+         <attribute name="length" value="2.52211"/></leaf>
+        </branch>
+        <branch>
+         <attribute name="name" value="?im39?"/>
+         <attribute name="length" value="1.16833"/>
+         <branch>
+         <attribute name="name" value="?im36?"/>
+         <attribute name="length" value="1.93017"/>
+         <leaf>
+         <attribute name="name" value="lin0311"/>
+         <attribute name="length" value="0.01343"/></leaf>
+         <leaf>
+         <attribute name="name" value="lmo0283"/>
+         <attribute name="length" value="-0.00383"/></leaf>
+         </branch>
+         <branch>
+         <attribute name="name" value="?im38?"/>
+         <attribute name="length" value="1.44831"/>
+         <branch>
+         <attribute name="name" value="?im37?"/>
+         <attribute name="length" value="0.46382"/>
+         <leaf>
+         <attribute name="name" value="sfbC_st"/>
+         <attribute name="length" value="0.0"/></leaf>
+         <leaf>
+         <attribute name="name" value="STY0560"/>
+         <attribute name="length" value="0.0"/></leaf>
+         </branch>
+         <leaf>
+         <attribute name="name" value="PA2351"/>
+         <attribute name="length" value="0.52588"/></leaf>
+         </branch>
+        </branch>
+       </branch>
+       <leaf>
+        <attribute name="name" value="SCL11.14c"/>
+        <attribute name="length" value="2.27124"/></leaf>
+      </branch>
+      <branch>
+        <attribute name="name" value="?im52?"/>
+        <attribute name="length" value="0.66638"/>
+       <branch>
+         <attribute name="name" value="?im42?"/>
+         <attribute name="length" value="2.12584"/>
+        <leaf>
+         <attribute name="name" value="SPy0321"/>
+         <attribute name="length" value="0.20554"/></leaf>
+        <leaf>
+         <attribute name="name" value="BA_0093"/>
+         <attribute name="length" value="1.71936"/></leaf>
+       </branch>
+       <branch>
+         <attribute name="name" value="?im51?"/>
+         <attribute name="length" value="0.36407"/>
+        <branch>
+         <attribute name="name" value="?im44?"/>
+         <attribute name="length" value="0.81491"/>
+         <branch>
+         <attribute name="name" value="?im43?"/>
+         <attribute name="length" value="0.0"/>
+         <leaf>
+         <attribute name="name" value="CPn0279"/>
+         <attribute name="length" value="0.0"/></leaf>
+         <leaf>
+         <attribute name="name" value="CP0479"/>
+         <attribute name="length" value="0.0"/></leaf>
+         </branch>
+         <leaf>
+         <attribute name="name" value="CPj0279"/>
+         <attribute name="length" value="0.0"/></leaf>
+        </branch>
+        <branch>
+         <attribute name="name" value="?im50?"/>
+         <attribute name="length" value="0.26238"/>
+         <branch>
+         <attribute name="name" value="?im46?"/>
+         <attribute name="length" value="0.08633"/>
+         <branch>
+         <attribute name="name" value="?im45?"/>
+         <attribute name="length" value="0.07561"/>
+         <leaf>
+         <attribute name="name" value="SMc03158"/>
+         <attribute name="length" value="0.27484"/></leaf>
+         <leaf>
+         <attribute name="name" value="RSc0921"/>
+         <attribute name="length" value="0.29526"/></leaf>
+         </branch>
+         <leaf>
+         <attribute name="name" value="mll4791"/>
+         <attribute name="length" value="0.36984"/></leaf>
+         </branch>
+         <branch>
+         <attribute name="name" value="?im49?"/>
+         <attribute name="length" value="0.34818"/>
+         <branch>
+         <attribute name="name" value="?im47?"/>
+         <attribute name="length" value="0.0203"/>
+         <leaf>
+         <attribute name="name" value="yaeE_ecK"/>
+         <attribute name="length" value="0.00111"/></leaf>
+         <leaf>
+         <attribute name="name" value="yaeE_ec0"/>
+         <attribute name="length" value="0.00359"/></leaf>
+         </branch>
+         <branch>
+         <attribute name="name" value="?im48?"/>
+         <attribute name="length" value="0.01235"/>
+         <leaf>
+         <attribute name="name" value="yaeE_st"/>
+         <attribute name="length" value="0.0441"/></leaf>
+         <leaf>
+         <attribute name="name" value="YPO1072"/>
+         <attribute name="length" value="0.061"/></leaf>
+         </branch>
+         </branch>
+        </branch>
+       </branch>
+      </branch>
+     </branch>
+    </branch>
+   </branch>
+  </branch>
+  <leaf>
+   <attribute name="name" value="CAC0985"/>
+   <attribute name="length" value="0.57746"/></leaf>
+ </branch>
+</tree>
+

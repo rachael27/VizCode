@@ -18,8 +18,8 @@
 
     .node circle {
         fill: #fff;
-        stroke: steelblue;
-        stroke-width: 1.5px;
+        stroke: blue;
+        stroke-width: 3px;
     }
 
     .node text {
@@ -29,7 +29,7 @@
     .link {
         fill: none;
         stroke: #ccc;
-        stroke-width: 1.5px;
+        stroke-width: 3px;
     }
 </style>
 <script src="https://d3js.org/d3.v7.js"></script>
@@ -161,7 +161,7 @@
         var nodeEnter = node.enter().append("g")
             .attr("class", "node")
             .attr("transform", function (d) {
-                console.log("enter " + d.data.data.child);
+                console.log("enter " + d.data.data.child + " " + source.y);
                 return "translate(" + source.x + "," + source.y + ")";
             })
             .on("click", function (e, d) {
@@ -173,14 +173,14 @@
 
         nodeEnter.append("circle")
             .attr("r", 10)
-            .style("fill", function (d) { return d.children ? "lightsteelblue" : "#fff"; });
+            .style("fill", function (d) { return d.children ? "blue" : "#fff"; });
 
         nodeEnter.append("text")
             .attr("x", function (d) { return d.children ? -10 : 10; })
             .attr("dy", ".35em")
             .attr("text-anchor", function (d) { return d.children ? "end" : "start"; })
             .text(function (d) { return d.name; })
-            .style("fill-opacity", 1);
+            .style("opacity", 1);
 
 
         var nodeUpdate = nodeEnter
@@ -188,15 +188,16 @@
             .transition()
             .duration(duration)
             .attr("transform", function (d) {
+
                 return "translate(" + d.x + "," + d.y + ")";
             });
 
         nodeUpdate.select("circle")
             .attr("r", 10)
-            .style("fill", function (d) { return d.children ? "lightsteelblue" : "#fff"; });
+            .style("fill", function (d) { return d.children ? "blue" : "#fff"; });
 
         nodeUpdate.select("text")
-            .style("fill-opacity", 1);
+            .style("opacity", 1);
 
 
 
