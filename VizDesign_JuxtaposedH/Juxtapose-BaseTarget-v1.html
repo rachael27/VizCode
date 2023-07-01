@@ -1159,6 +1159,7 @@
                 .attr("id", function (d) {
                     return "h1tree_" + d.data.data.child
                         .replace(/\//g, "")
+                        .replace(".", "")
                         .replace(/ /g, "")
                         .replace("(", "")
                         .replace(")", "")
@@ -1382,6 +1383,7 @@
                 .attr("id", function (d) {
                     return "h2tree_" + d.data.data.child
                         .replace(/\//g, "")
+                        .replace(".", "")
                         .replace(/ /g, "")
                         .replace("(", "")
                         .replace(")", "")
@@ -1854,6 +1856,7 @@
                 .attr("id", function (d) {
                     return "h1tree_" + d.data.data.child
                         .replace(/\//g, "")
+                        .replace(".", "")
                         .replace(/ /g, "")
                         .replace("(", "")
                         .replace(")", "")
@@ -2045,6 +2048,7 @@
                 .attr("id", function (d) {
                     return "h2tree_" + d.data.data.child
                         .replace(/\//g, "")
+                        .replace(".", "")
                         .replace(/ /g, "")
                         .replace("(", "")
                         .replace(")", "")
@@ -2642,6 +2646,7 @@
                     .attr("id", function (d) {
                         return "h1tree_" + d.data.data.child
                             .replace(/\//g, "")
+                            .replace(".", "")
                             .replace(/ /g, "")
                             .replace("(", "")
                             .replace(")", "")
@@ -2852,6 +2857,7 @@
                     .attr("id", function (d) {
                         return "h2tree_" + d.data.data.child
                             .replace(/\//g, "")
+                            .replace(".", "")
                             .replace(/ /g, "")
                             .replace("(", "")
                             .replace(")", "")
@@ -3022,7 +3028,8 @@
 
                 var duration = 500;
 
-                //console.log(nodes_data);
+                //for (var i = 0; i < nodes_data.length; i++)
+                //console.log(nodes_data[i].data.data.child + " " + nodes_data[i].position + " " + nodes_data[i].childrenposition);
 
 
                 var node = mergedtree_svg
@@ -3042,7 +3049,7 @@
                     .append("g")
                     .attr("class", "nodes")
                     .attr("transform", function (d, i) {
-                        //console.log("ENTER");
+                        console.log("ENTER " + d.data.data.child);
                         //console.log(source);
                         //console.log(source.y);
                         var y = (source.data.data.level === 0 ? 50 : source.data.data.level * 300);
@@ -3079,7 +3086,8 @@
                     .transition()
                     .duration(duration)
                     .attr("r", function (d) {
-                        //console.log("EXIT");
+                        console.log("EXIT " + d.data.data.child);
+
                         return 0;
                     })
                     .attr("transform", function (d) {
@@ -3320,6 +3328,7 @@
                     .attr("id", function (d) {
                         return "mergedtree_" + d.data.data.child
                             .replace(/\//g, "")
+                            .replace(".", "")
                             .replace(/ /g, "")
                             .replace("(", "")
                             .replace(")", "")
@@ -3805,6 +3814,7 @@
                         .attr("id", function (d) {
                             return "mergedtree_" + d.data.data.child
                                 .replace(/\//g, "")
+                                .replace(".", "")
                                 .replace(/ /g, "")
                                 .replace("(", "")
                                 .replace(")", "")
@@ -4019,10 +4029,10 @@
                     })
                     //.style("stroke", "#ccc")
                     .style("stroke", function (d) {
-                        if (d.source.data.data.shape == "h1" || (d.source.data.data.shape == "h2" && d.source.data.data.linkcolor != "black" && d.target.data.data.linkcolor != "black"))
-                            return "red";
-                        else
-                            return d.target.data.data.linkcolor;
+                        //if (d.source.data.data.shape == "h1" || (d.source.data.data.shape == "h2" && d.source.data.data.linkcolor != "black" && d.target.data.data.linkcolor != "black"))
+                        //  return "red";
+                        //else
+                        return d.target.data.data.linkcolor;
                     })
                     .style("fill", "none")
                     .style("stroke-width", "5px");
@@ -4069,15 +4079,16 @@
                     .forEach(function (d) {
 
 
-                        var altparent = d.target.data.data.alternateparent.replace(/\//g, "");
-                        var child = d.target.data.data.child.replace(/\//g, "");
-                        var parent = d.target.data.data.parent.replace(/\//g, "");
+                        var altparent = d.target.data.data.alternateparent.replace(/\//g, "").replace(".", "");
+                        var child = d.target.data.data.child.replace(/\//g, "").replace(".", "");
+                        var parent = d.target.data.data.parent.replace(/\//g, "").replace(".", "");
 
 
                         if (d.target.data.data.linkcolor == "blue" || d.target.data.data.linkcolor == "red") {
 
 
                             var sourcex = "";
+                            //console.log(child);
 
                             //console.log(d3.select("#mergedtree").select("#mergedtree_" + child));
                             //console.log(d3.select("#mergedtree").select("#mergedtree_" + child));
@@ -4961,6 +4972,7 @@
                         //console.log(h2[i][ii]);
                         levelcolor = h1color;
 
+
                         //found in both
                         if (h1_flat.includes(h2[i][ii])) {
 
@@ -4985,6 +4997,11 @@
 
 
                             //console.log(parent_desc(h2[i][ii], h2_dims));
+                            if (parent_desc(h2[i][ii], h1_dims) == parent_desc(h2[i][ii], h2_dims))
+                                linkcolor = "blue";
+                            else
+                                linkcolor = "black";
+
 
                             hier_obj.push({
                                 "child": h2[i][ii],
@@ -5000,7 +5017,7 @@
                                 "x": 0,
                                 "y": 0,
                                 "description": findDescription(h1_dims, h2[i][ii]),
-                                "linkcolor": "blue"
+                                "linkcolor": linkcolor
                             });
 
                             //hier[i].push(h2[i][ii]);
@@ -5108,7 +5125,7 @@
 
                 //console.log(hier);
                 //console.log(hier_flat);
-                //console.log(hier_obj);
+                console.log(hier_obj);
                 return hier_obj;
 
             }
