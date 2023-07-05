@@ -15,8 +15,8 @@
         console.log("hi");
 
         d3.queue()
-            .defer(d3.csv, "File/Historyofpolitics28ISBNTruncated.csv")
-            // .defer(d3.csv, "File/JClassification.csv")
+            ///.defer(d3.csv, "File/Historyofpolitics28ISBNTruncated.csv")
+            .defer(d3.csv, "File/JClassification.csv")
             .await(function (error, qnl) {
                 if (error) throw error;
                 var unialpha = [];

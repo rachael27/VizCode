@@ -16,8 +16,8 @@
 
 
         d3.queue()
-            .defer(d3.xml, "iv03/logs_A_03-02-01.xml")
-            .defer(d3.xml, "iv03/logs_C_03-02-01.xml")
+            .defer(d3.xml, "iv03/logs_B_03-02-01.xml")
+            .defer(d3.xml, "iv03/logs_D_03-02-01.xml")
             .await(function (error, log1, log2) {
                 if (error) throw error;
 
@@ -28,12 +28,12 @@
 
         var struct = [];
         var str = "";
-        var foldername = [];;
+        var foldername = [];
         function runScript(log1, log2) {
             //console.log(log1);
 
 
-            var branches = log1.documentElement.getElementsByTagName("branch");
+            var branches = log2.documentElement.getElementsByTagName("branch");
 
             //struct.push({ "parent": "", "child": "root" });
             str = "parent,child\n";
@@ -80,9 +80,13 @@
                     }
                 }
                 else {
-                    struct.push({ "parent": foldername.join("/"), "child": foldername.join("/") + "/" + nodes.children[b].children[0].attributes.value.value });
-                    str = str + foldername.join("/") + "," + foldername.join("/") + "/" + nodes.children[b].children[0].attributes.value.value + "\n";
-                    folder(nodes.children[b]);
+                    //console.log(b);
+                    //console.log(nodes.children[b].nodeName);
+                    if (nodes.children[b].nodeName == "branch") {
+                        struct.push({ "parent": foldername.join("/"), "child": foldername.join("/") + "/" + nodes.children[b].children[0].attributes.value.value });
+                        str = str + foldername.join("/") + "," + foldername.join("/") + "/" + nodes.children[b].children[0].attributes.value.value + "\n";
+                        folder(nodes.children[b]);
+                    }
 
                 }
             }

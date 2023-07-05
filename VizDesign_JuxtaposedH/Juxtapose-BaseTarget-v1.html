@@ -420,6 +420,8 @@
                 fileversion = "File0";
             else if (d3.select("#fileversion1radio")._groups[0][0].checked == true)
                 fileversion = "File1";
+            else if (d3.select("#fileversion2radio")._groups[0][0].checked == true)
+                fileversion = "File4";
 
 
             if (swapdataset == "h1") {
@@ -527,10 +529,14 @@
             d3.selectAll("#filterdatacheck").property('checked', false);
             if (d3.select("#fileversion2radio")._groups[0][0].checked == true)
                 fileversion = "File4";
+            //fileversion = "File5";
+
 
             d3.queue()
-                .defer(d3.csv, "File/" + fileversion + "-primaryH-reduced.csv")
-                .defer(d3.csv, "File/" + fileversion + "-secondaryH-reduced.csv")
+                .defer(d3.csv, "File/" + fileversion + "-primaryHA-reduced.csv")
+                .defer(d3.csv, "File/" + fileversion + "-secondaryHB-reduced.csv")
+                //.defer(d3.csv, "File/" + fileversion + "-primaryH.csv")
+                //.defer(d3.csv, "File/" + fileversion + "-secondaryH.csv")
                 .await(function (error, h1, h2) {
                     if (error) throw error;
 
@@ -1158,11 +1164,11 @@
                 })
                 .attr("id", function (d) {
                     return "h1tree_" + d.data.data.child
-                        .replace(/\//g, "")
-                        .replace(".", "")
-                        .replace(/ /g, "")
-                        .replace("(", "")
-                        .replace(")", "")
+                        .replaceAll(/\//g, "")
+                        .replaceAll(".", "")
+                        .replaceAll(" ", "")
+                        .replaceAll("(", "")
+                        .replaceAll(")", "")
                         .toLowerCase();
                 })
                 .style("fill", function (d) {
@@ -1242,9 +1248,9 @@
                 })
                 .attr("class", function (d) {
                     return d.data.data.child
-                        .replace(/ /g, "")
-                        .replace("(", "")
-                        .replace(")", "")
+                        .replaceAll(" ", "")
+                        .replaceAll("(", "")
+                        .replaceAll(")", "")
                         .toLowerCase();
                 })
                 .classed("text", true)
@@ -1382,11 +1388,11 @@
                 })
                 .attr("id", function (d) {
                     return "h2tree_" + d.data.data.child
-                        .replace(/\//g, "")
-                        .replace(".", "")
-                        .replace(/ /g, "")
-                        .replace("(", "")
-                        .replace(")", "")
+                        .replaceAll(/\//g, "")
+                        .replaceAll(".", "")
+                        .replaceAll(" ", "")
+                        .replaceAll("(", "")
+                        .replaceAll(")", "")
                         .toLowerCase();
                 })
                 .style("fill", function (d) {
@@ -1460,9 +1466,9 @@
                 })
                 .attr("class", function (d) {
                     return d.data.data.child
-                        .replace(/ /g, "")
-                        .replace("(", "")
-                        .replace(")", "")
+                        .replaceAll(" ", "")
+                        .replaceAll("(", "")
+                        .replaceAll(")", "")
                         .toLowerCase();
                 })
                 .classed("text", true)
@@ -1855,11 +1861,11 @@
                 })
                 .attr("id", function (d) {
                     return "h1tree_" + d.data.data.child
-                        .replace(/\//g, "")
-                        .replace(".", "")
-                        .replace(/ /g, "")
-                        .replace("(", "")
-                        .replace(")", "")
+                        .replaceAll(/\//g, "")
+                        .replaceAll(".", "")
+                        .replaceAll(" ", "")
+                        .replaceAll("(", "")
+                        .replaceAll(")", "")
                         .toLowerCase();
                 })
                 .style("fill", function (d) {
@@ -1925,9 +1931,9 @@
                 })
                 .attr("class", function (d) {
                     return d.data.data.child
-                        .replace(/ /g, "")
-                        .replace("(", "")
-                        .replace(")", "")
+                        .replaceAll(" ", "")
+                        .replaceAll("(", "")
+                        .replaceAll(")", "")
                         .toLowerCase();
                 })
                 .classed("text", true)
@@ -2047,11 +2053,11 @@
                 })
                 .attr("id", function (d) {
                     return "h2tree_" + d.data.data.child
-                        .replace(/\//g, "")
-                        .replace(".", "")
-                        .replace(/ /g, "")
-                        .replace("(", "")
-                        .replace(")", "")
+                        .replaceAll(/\//g, "")
+                        .replaceAll(".", "")
+                        .replaceAll(" ", "")
+                        .replaceAll("(", "")
+                        .replaceAll(")", "")
                         .toLowerCase();
                 })
                 .style("fill", function (d) {
@@ -2129,9 +2135,9 @@
                 })
                 .attr("class", function (d) {
                     return d.data.data.child
-                        .replace(/ /g, "")
-                        .replace("(", "")
-                        .replace(")", "")
+                        .replaceAll(" ", "")
+                        .replaceAll("(", "")
+                        .replaceAll(")", "")
                         .toLowerCase();
                 })
                 .classed("text", true)
@@ -2295,6 +2301,7 @@
                 mergedcolor = "yellowgreen";
             }
 
+            //no h1 and h2 trees
             h1tree(h1_root);
             h2tree(h2_root);
 
@@ -2315,6 +2322,9 @@
             width = 5000, height = 4500;
 
             var hier_root = d3.hierarchy(hier_struct);
+
+            //console.log(hier_root);
+
             var tree = d3
                 .tree()
                 //.nodeSize([200, 600]);
@@ -2346,11 +2356,13 @@
                     "translate(" + (margin.left + 40) + "," + (margin.top + 800) + ")");
 
 
-            mtree.descendants().forEach(function (d) {
+
+            /* mtree.descendants().forEach(function (d) {
                 //console.log(d.data.data);
                 d.data.data.x = d.x;
                 d.data.data.y = d.y;
-                if (d.data.data.parent == d.data.data.alternateparent && d.data.data.level == d.data.data.alternatelevel) {
+                //if (d.data.data.parent == d.data.data.alternateparent && d.data.data.level == d.data.data.alternatelevel) {
+                if (d.data.data.parent == d.data.data.alternateparent) {
                     d.childrenposition = "collapse";
                     d.position = "collapse";
                     //console.log(d.data.data.child + " all same");
@@ -2365,18 +2377,43 @@
                     //d.position = "expand";
                 }
 
-            });
-
-            //for (let i = 0; i < mtree.descendants().length; i++)
-            //console.log(mtree.descendants()[i].data.data.child + " " + mtree.descendants()[i].position + " " + mtree.descendants()[i].childrenposition);
-            //console.log(mtree.links());
-
-            /* mtree.descendants().forEach(function (d) {
-                d.x0 = d.x;
-                d.y0 = d.y;
- 
- 
             }); */
+
+
+
+
+            for (var m = mtree.descendants().length - 1; m >= 0; m--) {
+                //console.log(mtree.descendants()[m].data.data.child + " " + m);
+                mtree.descendants()[m].data.data.x = mtree.descendants()[m].x;
+                mtree.descendants()[m].data.data.y = mtree.descendants()[m].y;
+                //if (d.data.data.parent == d.data.data.alternateparent && d.data.data.level == d.data.data.alternatelevel) {
+                if (mtree.descendants()[m].data.data.parent == mtree.descendants()[m].data.data.alternateparent && mtree.descendants()[m].position != "expand") {
+                    mtree.descendants()[m].childrenposition = "collapse";
+                    mtree.descendants()[m].position = "collapse";
+                    //console.log(d.data.data.child + " all same");
+                }
+                else {
+                    //console.log("diff");
+                    for (let i = 0; i < mtree.descendants()[m].ancestors().length; i++) {
+                        mtree.descendants()[m].ancestors()[i].position = "expand";
+                        mtree.descendants()[m].childrenposition = "expand";
+                        //console.log(mtree.descendants()[m].ancestors()[i].data.data.child);
+                    }
+                    //d.position = "expand";
+                }
+
+            }
+
+
+            mtree.descendants().forEach(function (d) {
+                if (d.childrenposition == "expand") {
+                    if (d.children)
+                        for (var i = 0; i < d.children.length; i++)
+                            d.children[i].position = "expand";
+                }
+                //console.log(d.data.data.child + " " + d.position + " " + d.childrenposition);
+
+            });
 
 
 
@@ -2645,16 +2682,14 @@
                     })
                     .attr("id", function (d) {
                         return "h1tree_" + d.data.data.child
-                            .replace(/\//g, "")
-                            .replace(".", "")
-                            .replace(/ /g, "")
-                            .replace("(", "")
-                            .replace(")", "")
+                            .replaceAll(/\//g, "")
+                            .replaceAll(".", "")
+                            .replaceAll(" ", "")
+                            .replaceAll("(", "")
+                            .replaceAll(")", "")
                             .toLowerCase();
                     })
                     .style("fill", function (d) {
-
-
                         if (d3.select("#solidshaperadio")._groups[0][0].checked == true)
                             return h2color;
                         if (d3.select("#hollowshaperadio")._groups[0][0].checked == true)
@@ -2714,9 +2749,9 @@
                     })
                     .attr("class", function (d) {
                         return d.data.data.child
-                            .replace(/ /g, "")
-                            .replace("(", "")
-                            .replace(")", "")
+                            .replaceAll(" ", "")
+                            .replaceAll("(", "")
+                            .replaceAll(")", "")
                             .toLowerCase();
                     })
                     .classed("text", true)
@@ -2739,15 +2774,16 @@
                     })
 
                     .style("opacity", function (d) {
-                        if (d3.select("#fileversion3radio")._groups[0][0].checked == true || d3.select("#fileversion2radio")._groups[0][0].checked == true) {
-                            if (d.depth <= 1)
-                                return 1;
-                            else
-                                return 0;
-                        }
-                        //  console.log(d);
-
-                        else return 1;
+                        /*  if (d3.select("#fileversion3radio")._groups[0][0].checked == true || d3.select("#fileversion2radio")._groups[0][0].checked == true) {
+                             if (d.depth <= 1)
+                                 return 1;
+                             else
+                             return 0;
+                         }
+                         //  console.log(d);
+ 
+                         else return 1; */
+                        return 0;
                     })
                     .text(function (d) {
                         // console.log(d);
@@ -2856,11 +2892,11 @@
                     })
                     .attr("id", function (d) {
                         return "h2tree_" + d.data.data.child
-                            .replace(/\//g, "")
-                            .replace(".", "")
-                            .replace(/ /g, "")
-                            .replace("(", "")
-                            .replace(")", "")
+                            .replaceAll(/\//g, "")
+                            .replaceAll(".", "")
+                            .replaceAll(" ", "")
+                            .replaceAll("(", "")
+                            .replaceAll(")", "")
                             .toLowerCase();
                     })
                     .style("fill", function (d) {
@@ -2938,9 +2974,9 @@
                     })
                     .attr("class", function (d) {
                         return d.data.data.child
-                            .replace(/ /g, "")
-                            .replace("(", "")
-                            .replace(")", "")
+                            .replaceAll(" ", "")
+                            .replaceAll("(", "")
+                            .replaceAll(")", "")
                             .toLowerCase();
                     })
                     .classed("text", true)
@@ -2965,15 +3001,16 @@
                     })
 
                     .style("opacity", function (d) {
-                        if (d3.select("#fileversion3radio")._groups[0][0].checked == true || d3.select("#fileversion2radio")._groups[0][0].checked == true) {
-                            if (d.depth <= 1)
-                                return 1;
-                            else
-                                return 0;
-                        }
-                        //  console.log(d);
-
-                        else return 1;
+                        /*  if (d3.select("#fileversion3radio")._groups[0][0].checked == true || d3.select("#fileversion2radio")._groups[0][0].checked == true) {
+                             if (d.depth <= 1)
+                                 return 1;
+                             else
+                             return 0;
+                         }
+                         //  console.log(d);
+ 
+                         else return 1; */
+                        return 0;
                     })
                     .text(function (d) {
                         // console.log(d);
@@ -3028,6 +3065,7 @@
 
                 var duration = 500;
 
+                console.log(nodes_data);
                 //for (var i = 0; i < nodes_data.length; i++)
                 //console.log(nodes_data[i].data.data.child + " " + nodes_data[i].position + " " + nodes_data[i].childrenposition);
 
@@ -3041,6 +3079,18 @@
                     });
 
 
+                /*
+            // Define the zoom function for the zoomable tree
+
+            function zoom() {
+                svgGroup.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+            }
+
+
+            // define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
+            var zoomListener = d3.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
+*/
+
 
 
                 var nodeEnter = node
@@ -3049,7 +3099,7 @@
                     .append("g")
                     .attr("class", "nodes")
                     .attr("transform", function (d, i) {
-                        console.log("ENTER " + d.data.data.child);
+                        //console.log("ENTER " + d.data.data.child);
                         //console.log(source);
                         //console.log(source.y);
                         var y = (source.data.data.level === 0 ? 50 : source.data.data.level * 300);
@@ -3069,8 +3119,12 @@
                     .attr("transform", function (d) {
                         //console.log("UPDATE");
                         //console.log(d);
+                        //console.log(source.data.data.child);
                         var y = (d.data.data.level === 0 ? 50 : d.data.data.level * 300);
+                        //if (source.data.data.child == "root")
                         return "translate(" + d.x + "," + y + ")";
+                        //else
+                        // return "translate(" + source.x + "," + y + ")";
                     });
 
 
@@ -3086,14 +3140,17 @@
                     .transition()
                     .duration(duration)
                     .attr("r", function (d) {
-                        console.log("EXIT " + d.data.data.child);
+                        //console.log("EXIT ");
 
                         return 0;
                     })
                     .attr("transform", function (d) {
                         //console.log(d);
-                        var y = (d.parent.data.data.level === 0 ? 50 : d.parent.data.data.level * 300);
-                        return "translate(" + d.parent.x + "," + y + ")";
+                        //var y = (d.parent.data.data.level === 0 ? 50 : d.parent.data.data.level * 300);
+                        //return "translate(" + d.parent.x + "," + y + ")";
+
+                        var y = (source.data.data.level === 0 ? 50 : source.data.data.level * 300);
+                        return "translate(" + source.x + "," + y + ")";
                     })
                     .remove();
 
@@ -3139,55 +3196,84 @@
                     //console.log(d.data.data.child + " " + d.position);
                     //console.log(d.descendants());
                     var descendants = [];
-                    d.descendants().forEach(function (des) {
-                        //console.log(des.data.data.child);
-                        descendants.push(des.data.data.child);
-                    });
 
-                    descendants.splice(0, 1);
-
-                    //console.log(descendants);
                     if (d.childrenposition == "expand")
                         d.childrenposition = "collapse";
                     else
                         d.childrenposition = "expand";
 
+
+                    d.descendants().forEach(function (des, i) {
+                        console.log(des.data.data.child + " " + i);
+                        if (des.parent)
+                            if (des.parent.childrenposition == "expand")
+                                des.position = "expand";
+                            else {
+                                des.position = "collapse";
+                                des.childrenposition = "collapse";
+                            }
+
+
+                    });
+
+                    descendants.splice(0, 1);
+
+                    //console.log(descendants);
+
+
+
+
+
+
+
+
+
+
                     /* if (descendants.length > 0) {
                         for (var l = 0; l < nodes.length; l++) {
-                            if (descendants.includes(nodes[l].data.data.child)) {
-                                if (nodes[l].position == "collapse")
-                                    nodes[l].position = "expand";
-                                else
-                                    nodes[l].position = "collapse";
-                            }
-                        }
-                    } */
-
-
-
-                    if (descendants.length > 0) {
-                        for (var l = 0; l < nodes.length; l++) {
+                            //if (descendants.includes(nodes[l].data.data.child)) {
                             if (descendants.includes(nodes[l].data.data.child)) {
                                 //console.log(nodes[l].data.data.child + " " + nodes[l].position);
-                                if (d.childrenposition == "collapse")
+
+                                if (nodes[l].parent.childrenposition == "collapse")
                                     nodes[l].position = "collapse";
                                 else
                                     nodes[l].position = "expand";
                             }
                         }
                     }
+ */
 
-
-
-                    /* for (let i = 0; i < nodes.length; i++) {
-                        console.log(nodes[i].data.data.child + " " + nodes[i].position);
- 
+                    /* if (descendants.length > 0) {
+                        for (var l = 0; l < d.children.length; l++) {
+                            //if (descendants.includes(nodes[l].data.data.child)) {
+                            //if (descendants.includes(d.children[l].data.data.child)) {
+                            //console.log(nodes[l].data.data.child + " " + nodes[l].position);
+                            if (d.position == "collapse") {
+                                d.children[l].position = "collapse";
+                                d.children[l].childrenposition = "collapse";
+                            }
+                            else
+                                d.children[l].position = "expand";
+                            d.children[l].childrenposition = "expand";
+                            //}
+                        }
                     } */
 
-
-                    //console.log(links);
                     //console.log(d);
 
+
+
+
+                    /*
+                                        hier_struct = stratify(hier_arr);
+                                width = 5000, height = 4500;
+                                hier_root = d3.hierarchy(hier_struct);
+                                tree = d3
+                                    .tree()
+                                    //.nodeSize([200, 600]);
+                                    .size([width, height]);
+                                    */
 
                     //remove for collapse
                     mergedtree(nodes, links, d);
@@ -3327,11 +3413,11 @@
                     })
                     .attr("id", function (d) {
                         return "mergedtree_" + d.data.data.child
-                            .replace(/\//g, "")
-                            .replace(".", "")
-                            .replace(/ /g, "")
-                            .replace("(", "")
-                            .replace(")", "")
+                            .replaceAll(/\//g, "")
+                            .replaceAll(".", "")
+                            .replaceAll(" ", "")
+                            .replaceAll("(", "")
+                            .replaceAll(")", "")
                             .toLowerCase();
                     })
                     .style("fill", function (d) {
@@ -3356,11 +3442,12 @@
                     // .style("opacity", 1)
 
                     .style("stroke-dasharray", function (d) {
-                        if (d.data.data.bordertype == "solid")
-                            return "none";
-                        else
-
-                            return "8,8.5";
+                        /*  if (d.data.data.bordertype == "solid")
+                             return "none";
+                         else
+ 
+                             return "8,8.5"; */
+                        return "solid";
 
                     })
 
@@ -3813,11 +3900,11 @@
                         })
                         .attr("id", function (d) {
                             return "mergedtree_" + d.data.data.child
-                                .replace(/\//g, "")
-                                .replace(".", "")
-                                .replace(/ /g, "")
-                                .replace("(", "")
-                                .replace(")", "")
+                                .replaceAll(/\//g, "")
+                                .replaceAll(".", "")
+                                .replaceAll(" ", "")
+                                .replaceAll("(", "")
+                                .replaceAll(")", "")
                                 .toLowerCase();
                         })
                         .style("fill", function (d) {
@@ -3834,11 +3921,12 @@
                         })
                         .style("stroke-width", "8px")
                         .style("stroke-dasharray", function (d) {
-                            if (d.data.data.bordertype == "solid")
-                                return "none";
-                            else
-                                return "8,8.5";
+                            /*  if (d.data.data.bordertype == "solid")
+                                 return "none";
+                             else
+                                 return "8,8.5"; */
                             //return "10,10";
+                            return "solid";
 
                         })
                         .style("opacity", function (d) {
@@ -3906,9 +3994,9 @@
                     })
                     .attr("class", function (d) {
                         return d.data.data.child
-                            .replace(/ /g, "")
-                            .replace("(", "")
-                            .replace(")", "")
+                            .replaceAll(" ", "")
+                            .replaceAll("(", "")
+                            .replaceAll(")", "")
                             .toLowerCase();
                     })
                     .classed("text", true)
@@ -3959,13 +4047,14 @@
                     })
 
                     .style("opacity", function (d) {
-                        if (d3.select("#fileversion3radio")._groups[0][0].checked == true) {
-                            if (d.depth <= 2)
-                                return 1;
-                            else
-                                return 0;
-                        }
-                        else return 1;
+                        /*   if (d3.select("#fileversion3radio")._groups[0][0].checked == true) {
+                              if (d.depth <= 2)
+                                  return 1;
+                              else
+                                  return 0;
+                          }
+                          else return 1; */
+                        return 0;
                     })
                     .text(function (d) {
                         // console.log(d);
@@ -4061,7 +4150,7 @@
                     .transition()
                     .duration(duration)
                     .attr("d", function (d) {
-                        console.log("exit");
+                        //console.log("exit");
                         var sourcex = source.x, targetx = source.x;
                         var sourcey = source.data.data.level === 0 ? 50 : source.data.data.level * 300;
                         var targety = source.data.data.level === 0 ? 50 : source.data.data.level * 300;
@@ -4076,35 +4165,35 @@
 
                 //alternate parent links
                 links_data
-                    .forEach(function (d) {
+                    .forEach(function (d, i) {
 
 
-                        var altparent = d.target.data.data.alternateparent.replace(/\//g, "").replace(".", "");
-                        var child = d.target.data.data.child.replace(/\//g, "").replace(".", "");
-                        var parent = d.target.data.data.parent.replace(/\//g, "").replace(".", "");
+                        var altparent = d.target.data.data.alternateparent.replaceAll(/\//g, "").replaceAll(".", "");
+                        var child = d.target.data.data.child.replaceAll(/\//g, "").replaceAll(".", "");
+                        var parent = d.target.data.data.parent.replaceAll(/\//g, "").replaceAll(".", "");
 
 
                         if (d.target.data.data.linkcolor == "blue" || d.target.data.data.linkcolor == "red") {
 
 
                             var sourcex = "";
-                            //console.log(child);
+                            //console.log(child + " " + i);
 
                             //console.log(d3.select("#mergedtree").select("#mergedtree_" + child));
-                            //console.log(d3.select("#mergedtree").select("#mergedtree_" + child));
-                            var targetx = d3.select("#mergedtree").select("#mergedtree_" + child)._groups[0][0].__data__.x;
+                            //console.log(d3.select("#mergedtree").select("#mergedtree_" + child.toLowerCase()));
+                            var targetx = d3.select("#mergedtree").select("#mergedtree_" + child.toLowerCase())._groups[0][0].__data__.x;
 
                             //console.log(targetx);
                             //console.log(parent + " " + d.target.data.data.linkcolor);
                             //console.log(altparent);
                             //console.log(d.target.data.data);
                             if (d.target.data.data.linkcolor == "blue")
-                                sourcex = d3.select("#mergedtree").select("#mergedtree_" + parent)._groups[0][0].__data__.x;
+                                sourcex = d3.select("#mergedtree").select("#mergedtree_" + parent.toLowerCase())._groups[0][0].__data__.x;
 
                             if (d.target.data.data.linkcolor == "red" && altparent != "")
-                                sourcex = d3.select("#mergedtree").select("#mergedtree_" + altparent)._groups[0][0].__data__.x;
+                                sourcex = d3.select("#mergedtree").select("#mergedtree_" + altparent.toLowerCase())._groups[0][0].__data__.x;
                             else
-                                sourcex = d3.select("#mergedtree").select("#mergedtree_" + parent)._groups[0][0].__data__.x;
+                                sourcex = d3.select("#mergedtree").select("#mergedtree_" + parent.toLowerCase())._groups[0][0].__data__.x;
 
 
                             //*********check y pos********
@@ -4461,7 +4550,8 @@
 
                     var node_levels = nodes
                         .filter(function (d) {
-                            // console.log(d);
+                            //console.log(d);
+                            //console.log(d.data.data.child + " level:" + l + " " + d.data.data.level + " " + d.data.data.alternatelevel);
                             if (d.data.data.level == l) {
                                 //console.log("actual " + d.data.data.child + " " + d.data.data.level + " " + d.data.data.alternatelevel);
                                 datapoints.push({ "x": d.x - 20, "y": d.data.data.level === 0 ? 50 : d.data.data.level * 300, "node": d.data.data.child });
@@ -4469,7 +4559,7 @@
                                 return d;
                             }
 
-                            if (d.data.data.alternatelevel == l && d.data.data.alternatelevel != "") {
+                            else if (d.data.data.alternatelevel == l && d.data.data.alternatelevel != "") {
                                 //var offset = 100;
                                 var offset = 0;
                                 if (d.data.data.level < d.data.data.alternatelevel)
@@ -4494,7 +4584,7 @@
                         .y(function (d) {
                             return d.y;
                         })
-                        .curve(d3.curveBasis);
+                        .curve(d3.curveLinear);
 
 
 
@@ -4539,6 +4629,7 @@
                         .attr("stroke-width", 6)
                         .attr("fill", fill)
                         .attr("stroke", function (d) {
+                            //console.log(d);
                             return accent(l);
                         });
 
@@ -4546,7 +4637,7 @@
                 }
 
 
-
+                //console.log(datapoints);
 
 
 
@@ -4743,158 +4834,6 @@
             }
 
 
-            function compareDimensions(h2, h1, h2_dims, h1_dims) {
-                /*  console.log(h1);
-                 console.log(h2);
-     
-                 console.log(h1_dims);
-                 console.log(h2_dims); */
-
-
-                var hier = [];
-                //var arrDims = [];
-
-
-                var hier_flat = [];
-                var index = 0;
-
-
-                var maxLevels = Math.max(h1.length, h2.length);
-
-
-
-
-
-                //console.log(arrDims);
-
-                for (var i = 0; i < h1.length; i++) {
-                    for (var ii = 0; ii < h1[i].length; ii++) {
-                        for (var j = 0; j < h2.length; j++) {
-                            if (h2[j].includes(h1[i][ii])) {
-
-                                if (h1[i][ii] == "root") {
-                                    hier_flat.push(h1[i][ii]);
-                                    hier.push({ "child": h1[i][ii], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged", "level": 0 });
-                                }
-
-                                else
-                                    if (!hier_flat.includes(h1[i][ii])) {
-
-                                        //var parent = parent_desc(h1[i][ii], h1_dims);
-                                        var lev1 = level_desc(h1[i][ii], h1);
-
-                                        //parent = parent_desc(h1[i][ii], h2_dims);
-                                        var lev2 = level_desc(h1[i][ii], h2);
-
-                                        //console.log(h1[i][ii]);
-                                        //console.log(lev1 + " " + lev2);
-                                        var avg_level = (lev1 + lev2) / 2;
-
-                                        //index = avg_level;
-                                        //console.log(avg_level + " " + index);
-
-
-                                        hier.push({ "child": h1[i][ii], "parent": parent_desc(h1[i][ii], h1_dims), "alternateparent": parent_desc(h1[i][ii], h2_dims), "color": mergedcolor, "shape": "merged", "level": avg_level });
-
-
-
-                                        hier_flat.push(h1[i][ii]);
-                                    }
-
-                            }
-
-                        }
-                    }
-                }
-
-
-                for (var i = 0; i < h1.length; i++) {
-                    for (var ii = 0; ii < h1[i].length; ii++) {
-
-
-                        if (!hier_flat.includes(h1[i][ii])) {
-                            index = i;
-                            //console.log(h1[i][ii]);
-                            hier_flat.push(h1[i][ii]);
-                            hier.push({ "child": h1[i][ii], "parent": parent_desc(h1[i][ii], h1_dims), "alternateparent": "", "color": h1color, "shape": "h1", "level": i });
-                        }
-
-                    }
-                }
-
-
-                for (var j = 0; j < h2.length; j++) {
-                    for (var jj = 0; jj < h2[j].length; jj++) {
-                        var flag = 0;
-
-                        if (!hier_flat.includes(h2[j][jj])) {
-                            //console.log(h2[j][jj] + " j " + j);
-
-                            h2_dims.filter(function (d) {
-                                // console.log(d);
-                                if (d.data.data.child == h2[j][jj]) {
-                                    if (d.children) {
-                                        var children = d.children;
-                                        //console.log(children);
-
-                                        //for (var child = 0; child <= children.length; child++) {
-                                        //console.log(children[child]);
-                                        if (hier_flat.includes(children[0].data.data.child)) {
-                                            //console.log("found child");
-                                            //console.log(hier);
-
-                                            //console.log(parent_desc(h2[j][jj], h2_dims));
-                                            var parent_index = level_hier(parent_desc(h2[j][jj], h2_dims), hier);
-                                            // var child_index = level_desc(h2[j][jj], h2_dims);
-                                            var child_index = level_hier(children[0].data.data.child, hier);
-                                            //console.log(parent_index + " " + child_index);
-                                            //console.log(h2[j][jj]);
-                                            hier.push({ "child": h2[j][jj], "parent": parent_desc(h2[j][jj], h2_dims), "alternateparent": "", "color": h2color, "shape": "h2", "level": (parent_index + child_index) / 2 });
-                                            hier_flat.push(h2[j][jj]);
-                                            flag = 1;
-
-                                            for (var h = 0; h < hier.length; h++) {
-                                                if (hier[h].child == children[0].data.data.child)
-                                                    hier[h].alternateparent = h2[j][jj];
-                                            }
-                                        }
-
-
-                                    }
-                                    //}
-                                }
-
-                            });
-
-                            if (flag != 1) {
-                                index = j;
-                                //console.log(h2[j][jj]);
-                                hier.push({ "child": h2[j][jj], "parent": parent_desc(h2[j][jj], h2_dims), "alternateparent": "", "color": h2color, "shape": "h2", "level": j });
-                                hier_flat.push(h2[j][jj]);
-                            }
-                        }
-                    }
-                }
-
-                //console.log(hier);
-                //console.log(hier_flat);
-
-
-                for (var h = 1; h < hier.length; h++) {
-                    //console.log(parent_hier(hier[h].child, hier));
-
-                    //if(hier[h].alternateparent)
-
-                    if (hier[h].level == level_hier(parent_hier(hier[h].child, hier), hier)) {
-                        //console.log("MODIFY");
-                        hier[h].level = hier[h].level + 0.25;
-                    }
-                }
-
-                //console.log(hier);
-                return hier;
-
-            }
 
             function bt_compareDimensions(h2, h1, h2_dims, h1_dims) {
                 //console.log(h1);
@@ -4923,6 +4862,9 @@
                 var levelcolor = "";
                 var bordertype = "";
                 var linkcolor = "";
+                var detailsh1 = "";
+                var detailsh2 = "";
+                var level = "";
 
                 for (let i = 0; i < maxLevels; i++) {
                     hier.push([]);
@@ -4937,30 +4879,48 @@
 
 
                 for (var i = 0; i < h1.length; i++) {
+                    //console.log("h1 " + i);
                     for (var ii = 0; ii < h1[i].length; ii++) {
+
                         //console.log(h1[i][ii] + " " + i);
                         hier[i].push(h1[i][ii]);
                         hier_flat.push(h1[i][ii]);
+
+                        detailsh1 = findDetails(h1_dims, h1[i][ii]);
+                        //console.log(details);
+
 
                         //found only in h1
                         if (!h2_flat.includes(h1[i][ii])) {
                             //levelcolor = "blue";
                             hier_obj.push({
                                 "child": h1[i][ii],
-                                "parent": parent_desc(h1[i][ii], h1_dims),
+                                //"parent": parent_desc(h1[i][ii], h1_dims),
+                                //"level": level_desc(h1[i][ii], h1),
+                                //"bordertype": "solid",
+                                //"description": findDescription(h1_dims, h1[i][ii]),
+
+                                "parent": detailsh1[0],
+                                "level": detailsh1[1],
+                                "description": detailsh1[2],
+
+
                                 "alternateparent": "",
                                 "color": h1color,
                                 "shape": "h1",
-                                "level": level_desc(h1[i][ii], h1),
+
                                 "alternatelevel": "",
                                 "levelcolor": h1color,
-                                "bordertype": "solid",
+
                                 "x": 0,
                                 "y": 0,
-                                "description": findDescription(h1_dims, h1[i][ii]),
+
                                 "linkcolor": "black"
                             });
-                            // break;
+                            //break;
+
+                            h1_flat.splice(h1_flat.indexOf(h1[i][ii]), 1);
+
                         }
                     }
                 }
@@ -4968,13 +4928,19 @@
 
 
                 for (var i = 0; i < h2.length; i++) {
+                    //console.log("h2 " + i);
                     for (var ii = 0; ii < h2[i].length; ii++) {
                         //console.log(h2[i][ii]);
+                        //console.log("h2 " + i + " " + ii);
                         levelcolor = h1color;
+
+                        detailsh1 = findDetails(h1_dims, h2[i][ii]);
+                        detailsh2 = findDetails(h2_dims, h2[i][ii]);
 
 
                         //found in both
                         if (h1_flat.includes(h2[i][ii])) {
+                            //console.log("both");
 
                             //var ancestor = findAncestor(h2[i][ii], h2_dims, h1, h1_dims);
                             //var ancestor_level = level_desc(ancestor, h1);
@@ -4984,39 +4950,58 @@
                             hier_flat.push(h2[i][ii]);
 
 
-                            if (level_desc(h2[i][ii], h2) == level_desc(h2[i][ii], h1))
+                            if (detailsh2[1] == detailsh1[1])
                                 levelcolor = h1color;
-                            else if (level_desc(h2[i][ii], h2) < level_desc(h2[i][ii], h1))
+                            else if (detailsh2[1] < detailsh1[1])
                                 levelcolor = "#4F7942";
                             else /*if((level_desc(h2[i][ii], h2) > level_desc(h2[i][ii], h1)))*/
                                 levelcolor = "red";
 
-                            if (parent_desc(h2[i][ii], h1_dims) == parent_desc(h2[i][ii], h2_dims))
-                                bordertype = "solid";
+                            //if (parent_desc(h2[i][ii], h1_dims) == parent_desc(h2[i][ii], h2_dims))
+                            //  bordertype = "solid";
+
+
                             //else bordertype = "dashed";
 
 
                             //console.log(parent_desc(h2[i][ii], h2_dims));
-                            if (parent_desc(h2[i][ii], h1_dims) == parent_desc(h2[i][ii], h2_dims))
+                            if (detailsh1[0] == detailsh2[0])
                                 linkcolor = "blue";
                             else
                                 linkcolor = "black";
 
 
+
+
                             hier_obj.push({
                                 "child": h2[i][ii],
-                                "parent": parent_desc(h2[i][ii], h1_dims),
-                                "alternateparent": parent_desc(h2[i][ii], h2_dims),
+
+                                //"parent": parent_desc(h2[i][ii], h1_dims),
+                                //"level": level_desc(h2[i][ii], h1),
+                                //"description": findDescription(h1_dims, h2[i][ii]),
+
+                                "parent": detailsh1[0],
+                                "level": detailsh1[1],
+                                "description": detailsh1[2],
+
+
+                                //"alternateparent": parent_desc(h2[i][ii], h2_dims),
+                                //"alternatelevel": level_desc(h2[i][ii], h2),
+
+                                "alternateparent": detailsh2[0],
+                                "alternatelevel": detailsh2[1],
+
+
                                 "color": mergedcolor,
                                 "shape": "merged",
-                                "level": level_desc(h2[i][ii], h1),
-                                "alternatelevel": level_desc(h2[i][ii], h2),
+
+
                                 //"levelcolor": levelcolor,
                                 "levelcolor": h1color,
-                                "bordertype": bordertype,
+                                //"bordertype": bordertype,
                                 "x": 0,
                                 "y": 0,
-                                "description": findDescription(h1_dims, h2[i][ii]),
+
                                 "linkcolor": linkcolor
                             });
 
@@ -5055,6 +5040,8 @@
                                 }
 
                             }
+
+
                             var ancestor_level = level_desc(ancestor, h2);
                             //console.log(h2[i][ii] + " " + ancestor + " " + ancestor_level);
                             hier[ancestor_level + 1].push(h2[i][ii]);
@@ -5066,20 +5053,26 @@
                             if (fa_result[1] == 1) {
                                 //console.log("updt if");
                                 //console.log(h2[i][ii] + ancestor);
+
+
                                 hier_obj.push({
                                     "child": h2[i][ii],
+
                                     "parent": ancestor,
-                                    "alternateparent": parent_desc(h2[i][ii], h2_dims),
+                                    "description": findDescription(h2_dims, h2[i][ii]),
+                                    "level": (level_desc(fa_result[0], h1) + level_desc(fa_result[2], h1)) / 2,
+
+                                    "alternateparent": detailsh2[0],
                                     "color": h2color,
                                     "shape": "h2",
-                                    "level": (level_desc(fa_result[0], h1) + level_desc(fa_result[2], h1)) / 2,
-                                    "alternatelevel": level_desc(h2[i][ii], h2),
+
+                                    "alternatelevel": detailsh2[1],
                                     //"levelcolor": levelcolor,
                                     "levelcolor": h1color,
-                                    "bordertype": bordertype,
+                                    //"bordertype": bordertype,
                                     "x": 0,
                                     "y": 0,
-                                    "description": findDescription(h2_dims, h2[i][ii]),
+
                                     "linkcolor": "red"
 
                                 });
@@ -5092,6 +5085,8 @@
                                 var anc_h1 = level_desc(ancestor, h1);
                                 var anc_h2 = level_desc(ancestor, h2);
 
+                                //detailsh2 = findDetails(h2_dims, h2[i][ii]);
+
                                 if (anc_h1 == undefined)
                                     anc_h1 = 0;
                                 if (anc_h2 == undefined)
@@ -5099,20 +5094,30 @@
                                 //console.log(anc_h1 + " " + anc_h2 + (d3.max([anc_h1, anc_h2]) + 1));
                                 hier_obj.push({
                                     "child": h2[i][ii],
-                                    "parent": parent_desc(h2[i][ii], h2_dims),
+
+                                    //"parent": parent_desc(h2[i][ii], h2_dims),
+                                    //"description": findDescription(h2_dims, h2[i][ii]),
+                                    //"alternatelevel": level_desc(h2[i][ii], h2),
+
+                                    "parent": detailsh2[0],
+                                    "description": detailsh2[2],
+                                    "alternatelevel": detailsh2[1],
+
+
+                                    "level": d3.max([anc_h1, anc_h2]) + 1,
                                     "alternateparent": "",
                                     "color": h2color,
                                     "shape": "h2",
                                     //"level": level_desc(parent_desc(h2[i][ii], h2_dims), h2) + 1,
                                     //"level": ancestor_level + 1,
-                                    "level": d3.max([anc_h1, anc_h2]) + 1,
-                                    "alternatelevel": level_desc(h2[i][ii], h2),
+
+
                                     //"levelcolor": levelcolor,
                                     "levelcolor": h1color,
-                                    "bordertype": bordertype,
+                                    //"bordertype": bordertype,
                                     "x": 0,
                                     "y": 0,
-                                    "description": findDescription(h2_dims, h2[i][ii]),
+
                                     "linkcolor": "red"
                                 });
                                 //break;
@@ -5125,9 +5130,24 @@
 
                 //console.log(hier);
                 //console.log(hier_flat);
-                console.log(hier_obj);
+                //console.log(hier_obj);
                 return hier_obj;
 
+            }
+
+
+            function findDetails(array, element) {
+                var parent = "";
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i].data.data.child == element) {
+                        //console.log(array[i]);
+                        if (array[i].data.data.child != "root")
+                            parent = array[i].parent.data.data.child;
+                        else
+                            parent = "";
+                        return [parent, array[i].depth, array[i].data.data.description];
+                    }
+                }
             }
 
 
@@ -5203,185 +5223,6 @@
                     }
                 }
             }
-
-            /*
-                        function compareDimensions(h2, h1, h2_dims, h1_dims) {
-                            //   console.log(h1);
-                            //  console.log(h2);
-            
-                            //  console.log(h1_dims);
-                            //  console.log(h2_dims); 
-            
-            
-                            var hier = [];
-                            var arrDims = [];
-            
-            
-                            var arrDims_flat = [];
-            
-            
-                            var maxLevels = Math.max(h1.length, h2.length);
-            
-                            for (let i = 0; i < maxLevels; i++) {
-                                arrDims.push([]);
-                                hier.push([]);
-                                //arrDims_obj.push([]);
-                            }
-            
-            
-                            //console.log(arrDims);
-            
-            
-            
-            
-                            for (let j = 0; j < h1.length; j++) {
-                                for (let jj = 0; jj < h1[j].length; jj++) {
-                                    flag = 0;
-                                    for (let i = 0; i < h2.length; i++) {
-            
-                                        if (h2[i].includes(h1[j][jj]))
-                                            flag = i;
-            
-                                    }
-                                    if (flag < j) {
-                                        if (flag == 0) { // element is only present in h1 and not in h2
-                                            // arrDims[j].push({ "name": h1[j][jj], "color": h1color, "shape": "h1" });
-                                            var parent = parent_desc(h1[j][jj], h1_dims);
-                                            //var level=level(parent, hier);
-                                            //hier[level].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": h1color, "shape": "h1" });
-                                            hier[j].push({ "child": h1[j][jj], "parent": parent, "alternateparent": "", "color": h1color, "shape": "h1" });
-            
-                                        }
-                                        else { //element is present in both but at a higher level in h1/j
-                                            // arrDims[j].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
-                                            var parent = parent_desc(h1[j][jj], h1_dims);
-                                            var level = level_desc(parent, hier);
-                                            hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h2_dims), "color": mergedcolor, "shape": "merged" });
-            
-                                            // hier[j].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
-                                        }
-                                    }
-                                    else { //element is present in both
-                                        // arrDims[flag].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
-                                        //  console.log(h1[j][jj]);
-                                        // console.log(h2_dims);
-                                        // console.log(hier); 
-            
-                                        if (h1[j][jj] == "root")
-                                            hier[flag].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
-            
-                                        else {
-                                            var parent = parent_desc(h1[j][jj], h2_dims);
-                                            var level = level_desc(parent, hier);
-                                            //  console.log(parent + " " + level);
-                                            if (level != undefined)
-                                                hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h1_dims), "color": mergedcolor, "shape": "merged" });
-                                            else {
-                                                parent = parent_desc(h1[j][jj], h2_dims);
-                                                //    console.log(parent);
-                                                //   console.log(h2); 
-                                                level = level_desc(parent, h2);
-                                                //   console.log(parent + " " + level);
-                                                hier[level + 1].push({ "child": h1[j][jj], "parent": parent, "alternateparent": parent_desc(h1[j][jj], h1_dims), "color": mergedcolor, "shape": "merged" });
-                                            }
-                                            //hier[flag].push({ "child": h1[j][jj], "parent": "", "alternateparent": "", "color": mergedcolor, "shape": "merged" });
-                                        }
-                                    }
-            
-                                    arrDims_flat.push(h1[j][jj]);
-            
-                                }
-                            }
-            
-                            //element is only present in h2
-                            for (let i = 0; i < h2.length; i++) {
-                                for (let ii = 0; ii < h2[i].length; ii++) {
-                                    if (!arrDims_flat.includes(h2[i][ii])) {
-                                        // arrDims[i].push({ "name": h2[i][ii], "color": h2color, "shape": "h2" });
-                                        var parent = parent_desc(h2[i][ii], h2_dims);
-                                        hier[i].push({ "child": h2[i][ii], "parent": parent, "alternateparent": "", "color": h2color, "shape": "h2" });
-                                        //hier[i].push({ "child": h2[i][ii], "parent": "", "alternateparent": "", "color": h2color, "shape": "h2" });
-                                        //  arrDims[i].push(h2[i][ii]);
-                                        arrDims_flat.push(h2[i][ii]);
-                                    }
-            
-                                }
-                            }
-            
-            
-                            console.log(arrDims_flat);
-                            // console.log(arrDims);
-                            console.log(hier);
-            
-                            return hier;
-                        }
-            
-            
-            
-                        
-            function compareDimensions(h2, h1) {
-                            //console.log(h1);
-                            //console.log(h2);
-             
-                            var arrDims = [];
-             
-                            var arrDims_flat = [];
-             
-                            var maxLevels = Math.max(h1.length, h2.length);
-             
-                            for (let i = 0; i < maxLevels; i++) {
-                                arrDims.push([]);
-                                //arrDims_obj.push([]);
-                            }
-             
-             
-                            //console.log(arrDims);
-             
-                            for (let j = 0; j < h1.length; j++) {
-                                for (let jj = 0; jj < h1[j].length; jj++) {
-                                    flag = 0;
-                                    for (let i = 0; i < h2.length; i++) {
-             
-                                        if (h2[i].includes(h1[j][jj]))
-                                            flag = i;
-             
-                                    }
-                                    if (flag < j) {
-                                        if (flag == 0) // if the element is not present in h2
-                                            arrDims[j].push({ "name": h1[j][jj], "color": h1color, "shape": "h1" });
-                                        else //element is present in both
-                                            arrDims[j].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
-                                    }
-                                    else { //element is present in both
-                                        arrDims[flag].push({ "name": h1[j][jj], "color": mergedcolor, "shape": "merged" });
-                                    }
-             
-                                    arrDims_flat.push(h1[j][jj]);
-             
-                                }
-                            }
-             
-             
-                            for (let i = 0; i < h2.length; i++) {
-                                for (let ii = 0; ii < h2[i].length; ii++) {
-                                    if (!arrDims_flat.includes(h2[i][ii])) {
-                                        arrDims[i].push({ "name": h2[i][ii], "color": h2color, "shape": "h2" });
-                                        //  arrDims[i].push(h2[i][ii]);
-                                        arrDims_flat.push(h2[i][ii]);
-                                    }
-             
-                                }
-                            }
-             
-             
-                            //console.log(arrDims_flat);
-                            //console.log(arrDims);
-             
-                            return arrDims;
-                        }
-                        */
-
-
 
 
         }
