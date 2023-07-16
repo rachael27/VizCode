@@ -1,0 +1,135 @@
+child,parent
+root,
+Electricals and Electronics,root
+Games,root
+Bags,root
+Printed Materials,root
+Medical Supplies,root
+Clothing,root
+Mobile Phones,Electricals and Electronics
+Computers,Electricals and Electronics
+Desktops,Computers
+Software,Computers
+Keyboards and Mice,Computers
+Irons,Electricals and Electronics
+Mixed Blenders,Electricals and Electronics
+Board Games,Games
+Football,Games
+Bags and Backpacks,Bags
+Handbags and Wallets,Bags
+Books,Printed Materials
+Magazines,Printed Materials
+Medicine,Medical Supplies
+Vitamins and Supplements,Medical Supplies
+Women's Clothing,Clothing
+Men's Clothing,Clothing
+Belts ,Men's Clothing
+Scarves,Women's Clothing
+Apple 14 rose gold,Mobile Phones
+Apple 14 space grey,Mobile Phones
+Apple 14 midnight blue,Mobile Phones
+Apple 12 rose gold,Mobile Phones
+Apple 12 midnight blue,Mobile Phones
+iMac 2022 M2,Desktops
+Asus 2022,Desktops
+LG 2022,Desktops
+Samsung 2022,Desktops
+Logitech Keyboard,Keyboards and Mice
+Das Keyboard,Keyboards and Mice
+Gboard Keyboard,Keyboards and Mice
+Monster Keyboard,Keyboards and Mice
+Logitech Mouse,Keyboards and Mice
+Logitech Gaming Mouse pink,Keyboards and Mice
+Scotland Yard Detectives,Board Games
+Monopoly,Board Games
+Business,Board Games
+Jigsaw Puzzle 2000 pieces,Board Games
+Jigsaw Puzzle 3000 pieces,Board Games
+Jigsaw Puzzle 4000 pieces,Board Games
+Jigsaw Puzzle 5000 pieces,Board Games
+Jigsaw Puzzle 10000 pieces,Board Games
+Harry Potter Board Game,Board Games
+Football FIFA Official red,Football
+Football FIFA Official blue,Football
+Football FIFA Official yellow,Football
+Football FIFA Official pink,Football
+Michael Kors Satchel,Bags and Backpacks
+Herschel Backpack,Bags and Backpacks
+Michael Kors Backpack small,Bags and Backpacks
+Michael Kors Backpack large pink,Bags and Backpacks
+Michael Kors Backpack large black,Bags and Backpacks
+Kate Spade Diamond Backpack medium green,Bags and Backpacks
+Kate Spade Wallet ,Handbags and Wallets
+Michael Kors Wallet,Handbags and Wallets
+Michael Kors Messenger Handbag,Handbags and Wallets
+Guess Wallet small cream,Handbags and Wallets
+Guess Wallet small brown,Handbags and Wallets
+Guess Handbag large black,Handbags and Wallets
+Milano Handbag black,Handbags and Wallets
+Harry Potter Book 1,Books
+Harry Potter Book 2,Books
+Harry Potter Book 3,Books
+Harry Potter Book 4,Books
+Harry Potter Book 5,Books
+Harry Potter Book 6,Books
+Harry Potter Book 7,Books
+The Kite Runner,Books
+Top Gear Vol 1,Magazines
+Top Gear Vol 2,Magazines
+Top Gear Vol 3,Magazines
+National Geographic Vol 1,Magazines
+National Geographic Vol 2,Magazines
+The Cat Encyclopedia,Magazines
+Cars and Motors,Magazines
+Femina,Magazines
+Fashion through the years,Magazines
+Loparide,Medicine
+Strepsils,Medicine
+Benadryl Cough Syrup,Medicine
+Vicks Cream,Medicine
+Moov Pain-killer,Medicine
+Purell Hand Sanitizer,Medicine
+Paracetamol,Medicine
+Crocin,Medicine
+Aspirin,Medicine
+Vitamin B-12,Vitamins and Supplements
+Gummy Bear Vitamins,Vitamins and Supplements
+Iron Supplements,Vitamins and Supplements
+Biotin Supplements,Vitamins and Supplements
+Hand hair and nails supplements,Vitamins and Supplements
+Vitamin C supplements,Vitamins and Supplements
+Vitamin D supplements,Vitamins and Supplements
+Annabelle shirt XL black,Women's Clothing
+Annabelle shirt L black,Women's Clothing
+Annabelle shirt M red,Women's Clothing
+Annabelle shirt S white,Women's Clothing
+Mango Taylor Pant XL black,Women's Clothing
+Mango Taylor Pant XL white,Women's Clothing
+Mango Tanktop XL cream,Women's Clothing
+Mango Tanktop XL brown,Women's Clothing
+Desigual spaghetti top L yellow,Women's Clothing
+Joni Shorts L blue,Men's Clothing
+American Polo Shirt M red,Men's Clothing
+American Eagle Jeans XL dark blue,Men's Clothing
+American Eagle Jeans M sky blue,Men's Clothing
+American Eagle Jeans S black,Men's Clothing
+Kappa Tshirt L black,Men's Clothing
+Kappa Tshirt M red,Men's Clothing
+Splash Tshirt M grey,Men's Clothing
+Puma L green,Men's Clothing
+Double Buckle Belt Gold,Belts 
+CC Belt Gold,Belts 
+CC Belt Silver,Belts 
+Single Buckle Silver,Belts 
+Gucci Scarf green,Scarves
+Chanel Scarf white,Scarves
+Chanel Scarf black,Scarves
+LG Iron,Irons
+Ikon Iron,Irons
+Mi Iron,Irons
+Black and Decker Fruit Smoothie Blender,Mixed Blenders
+LG Blender,Mixed Blenders
+Nutri Blender,Mixed Blenders
+Kaspersky Security,Software
+Norton Antivirus,Software
+MS Office 365,Software

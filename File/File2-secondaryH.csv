@@ -1,0 +1,60 @@
+child,parent
+root,
+Mobile Phones,root
+Computers,root
+Software,root
+Keyboards and Mice,root
+Irons,root
+Mixed Blenders,root
+Galaxy A53 black,Mobile Phones
+Galaxy A53 silver,Mobile Phones
+Galaxy A33 white,Mobile Phones
+Galaxy A23 blue,Mobile Phones
+Apple 14 rose gold,Mobile Phones
+Apple 14 space grey,Mobile Phones
+Apple 14 midnight blue,Mobile Phones
+Apple 12 rose gold,Mobile Phones
+Apple 12 midnight blue,Mobile Phones
+Google Pixel,Mobile Phones
+Galaxy A53,Mobile Phones
+Galaxy A43,Mobile Phones
+Galaxy A33,Mobile Phones
+Galaxy A23,Mobile Phones
+Xiaomi,Mobile Phones
+OnePlus,Mobile Phones
+Motorola ,Mobile Phones
+iMac 2022 M2,Computers
+Asus 2022,Computers
+LG 2022,Computers
+Samsung 2022,Computers
+Dell Laptop 2022,Computers
+Macbook Pro 2022 M2 Chip,Computers
+Macbook Pro 2022 M1 Chip,Computers
+Sony Vaio 2022,Computers
+Lenovo Flexi,Computers
+Lenovo Yoga,Computers
+Microsoft Touchpad,Computers
+LG Tablet,Computers
+Logitech Keyboard,Keyboards and Mice
+Das Keyboard,Keyboards and Mice
+Gboard Keyboard,Keyboards and Mice
+Monster Keyboard,Keyboards and Mice
+Logitech Mouse,Keyboards and Mice
+Logitech Gaming Mouse pink,Keyboards and Mice
+LG Iron,Irons
+Ikon Iron,Irons
+Mi Iron,Irons
+Black and Decker Iron,Irons
+Panasonic Iron,Irons
+Godrej Iron,Irons
+Black and Decker Fruit Smoothie Blender,Mixed Blenders
+LG Blender,Mixed Blenders
+Nutri Blender,Mixed Blenders
+Panasonic Power Blender,Mixed Blenders
+Kelvinator Monster Blender,Mixed Blenders
+Haier Puree Blender,Mixed Blenders
+Kaspersky Security,Software
+Norton Antivirus,Software
+MS Office 365,Software
+Windows OS,Software
+Adobe Graphic Designer Package,Software
