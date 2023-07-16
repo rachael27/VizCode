@@ -1,0 +1,274 @@
+<head>
+    <title>DATASET</title>
+</head>
+
+<body>
+    <div id="dynamiccontent">
+        <h1 id="qnltitle"></h1>
+        <h1 id="uosetitle"></h1>
+    </div>
+    <div id="content"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script>
+        var dataset;
+        var cnum = [];
+
+        var genre = [];
+        var gnum = "";
+
+        var sgnum = "";
+        var sgnumhyph = "";
+        var subgenre = [];
+
+        var alphanum = "";
+        var year = "";
+
+        dataset = "child,parent,description\n";
+        dataset = dataset + "root,,LCC Classification\n";
+        var cnum = "";
+
+        var bclass = [
+            "F",
+            "E",
+            "JC",
+            "JX",
+            "DS",
+            "JQ",
+            "JA",
+            "JK",
+            "JS",
+            "JV",
+            "FIC",
+            "JF",
+            "PS",
+            "JZ",
+            "UB",
+            "JN",
+            "Z",
+            "BP",
+            "PR",
+            "PG",
+            "PT",
+            "HD",
+            "HV",
+            "PQ",
+            "JP",
+            "JE",
+            "PL",
+            "PK",
+            "F7",
+            "JL",
+            "J",
+            "PJ",
+            "PZ",
+            "QB",
+            "QL",
+            "BJ",
+            "BF",
+            "QH",
+            "CT",
+            "GV",
+            "PN",
+            "PH",
+            "CP",
+            "PA",
+            "PE",
+            "PC",
+            "LE",
+            "GR",
+            "ML",
+            "F5",
+            "SF",
+            "D",
+            "GF",
+            "BR",
+            "QA",
+            "S",
+            "HN",
+            "F8",
+            "DT",
+            "CL",
+            "PB",
+            "N",
+            "LC",
+            "R",
+            "G",
+            "GN",
+            "DA",
+            "BX",
+            "HQ",
+            "PM",
+            "RC",
+            "FC",
+            "BL",
+            "BQ",
+            "NB",
+            "DG",
+            "SK",
+            "TX",
+            "NC",
+            "QC",
+            "HF",
+            "Q",
+            "ND",
+            "aP",
+            "TR",
+            "H",
+            "TT",
+            "HB",
+            "HX",
+            "Fi",
+            "QK",
+            "BV",
+            "NE",
+            "GB",
+            "RD",
+            "LA",
+            "T",
+            "QP",
+            "TJ",
+            "GC",
+            "QE",
+            "B",
+            "JJ",
+            "ZA",
+            "HC",
+            "U",
+            "RA",
+            "JB",
+            "J?",
+            "AP",
+            "P",
+            "AL",
+            "RK",
+            "NX"
+        ];
+
+        var arabic = /[\u0600-\u06FF]/;
+
+        d3.csv("File/HistoryofPolitics-QNL.csv", function (qnl) {
+
+            console.log(bclass.length);
+
+            for (var i = 0; i < bclass.length; i++) {
+                if (bclass[i].length == 1) {
+                    dataset = dataset + bclass[i] + ",root," + bclass[i] + "\n";
+                }
+                else if (bclass[i].length == 2) {
+
+                    dataset = dataset + bclass[i] + "," + bclass[i].charAt(0) + "," + bclass[i] + "\n";
+
+                    if (!bclass.includes(bclass[i].charAt(0))) {
+                        bclass.push(bclass[i].charAt(0));
+                        dataset = dataset + bclass[i] + "," + bclass[i].charAt(0) + "," + bclass[i] + "\n";
+                    }
+                }
+                else {
+
+                    dataset = dataset + bclass[i] + ",root" + bclass[i] + "\n";
+
+
+                }
+
+                console.log(i);
+            }
+
+
+
+
+
+            for (var i = 0; i < qnl.length; i++) {
+                //console.log(qnl[i]);
+
+                if (!arabic.test(qnl[i].Title)) {
+                    callnum = qnl[i].CallNumber.split("+")[0];
+
+                    /*
+                    if (callnum.split(" ").length == 2) {
+                        gnum = callnum.split(" ")[0];
+                        alphanum = callnum.split(" ")[1];
+                        if (!genre.includes(gnum)) {
+                            genre.push(gnum);
+                        }
+                    }
+                    */
+
+
+
+
+                    if (callnum.charAt(1) != " " && callnum.charAt(2) != " ") {
+
+
+                        if (callnum.slice(0, 3) == "FIC")
+                            callnum = callnum;
+                        else if (callnum.charAt(1) >= '0' && callnum.charAt(1) <= '9')
+                            callnum = callnum.slice(0, 1) + " " + callnum.slice(1, callnum.length);
+
+                        else
+                            callnum = callnum.slice(0, 2) + " " + callnum.slice(2, callnum.length);
+
+                    }
+
+
+                    cnum = callnum.split(" ");
+                    //console.log(cnum.length);
+
+                    //for (var j = 0; j < cnum.length; j++) {
+                    gnum = cnum[0];
+
+                    if (!genre.includes(gnum)) {
+                        genre.push(gnum);
+                    }
+
+                    sgnum = cnum[1];
+
+
+                    if (cnum.length == 4) {
+                        alphanum = cnum[2].replaceAll(".", "");
+                        if (cnum[3].length == 4) {
+                            year = cnum[3];
+                        }
+                    }
+                    else if (cnum.length == 3)
+                        if (cnum[2].length == 4)
+                            year = cnum[2];
+                        else
+                            year = "";
+
+
+                    // if (!subgenre.includes(sgnum)) {
+
+                    sgnumhyph = sgnum.split(".")[0].replaceAll(".", "-");
+                    subgenre.push(sgnumhyph);
+                    //console.log(sgnumhyph);
+                    dataset = dataset + gnum + sgnumhyph + "-" + alphanum.charAt(0) + "-" + year + "," + gnum + "," + qnl[i].Title.split("/")[0] + "\n";
+                    // }
+                    /* else {
+                        sgnumhyph = sgnum.replaceAll(".", "-");
+                        subgenre.push(sgnumhyph);
+                        dataset = dataset + gnum + sgnumhyph + "-" + year + "," + gnum + "," + qnl[i].Title.split("/")[0] + "\n";
+
+                    } */
+
+                    //}
+
+                    //console.log(qnl[i].CallNumber.split("+")[0] + " | " + gnum + " " + sgnum + " " + alphanum + " | y" + year);
+                    //console.log(gnum + " " + sgnum);
+
+                    //console.log(i);
+                }
+            }
+
+
+
+            console.log(dataset);
+            //console.log(genre);
+            //console.log(subgenre);
+        });
+
+
+
+    </script>
+</body>
+
+</html>

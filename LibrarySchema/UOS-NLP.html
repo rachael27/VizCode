@@ -1,0 +1,78 @@
+<head>
+    <title>DATASET</title>
+</head>
+
+<body>
+    <div id="dynamiccontent">
+        <h1 id="qnltitle"></h1>
+        <h1 id="uosetitle"></h1>
+    </div>
+    <div id="content"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script>
+        var dataset;
+        var genre = [];
+        var sgenre = "";
+        var subgenre = [];
+        var callnum = [];
+        var cnumarr = [];
+
+        dataset = "child,parent,description\n";
+        dataset = dataset + "root,,root\n";
+        dataset = dataset + "E,root,E\n";
+
+        d3.csv("File/AllClassE.csv", function (uos) {
+
+
+            for (var i = 0; i < uos.length; i++) {
+                //console.log(uos[i]);
+
+                uos[i].CallNumber
+                    .replace("(", "")
+                    .replace(")", "");
+
+                /* if (uos[i].CallNumber.charAt(1) != "") {
+                    uos[i].CallNumber = uos[i].CallNumber.slice(0, 1) + " " + uos[i].CallNumber.slice(2, uos[i].CallNumber.length);
+                } */
+
+                if (!genre.includes(uos[i].CallNumber.charAt(0)))
+                    genre.push(uos[i].CallNumber.charAt(0));
+
+                console.log(uos[i].CallNumber);
+                sgenre = uos[i].CallNumber.split(" ")[1];
+
+
+                if (!subgenre.includes(sgenre))
+                    subgenre.push(sgenre);
+
+
+
+                //console.log(uos[i].CallNumber);
+                callnum = "E" + sgenre + "-" + uos[i].Author.charAt(0) + "-" + uos[i].PubYear + ",E," + uos[i].Title.replace("/", "");
+                //console.log(callnum);
+                if (!cnumarr.includes(callnum.split(",")[0])) {
+                    cnumarr.push(callnum.split(",")[0]);
+                    dataset = dataset + callnum + "\n";
+                }
+
+
+
+
+
+
+
+
+
+            }
+            //console.log("hi");
+            //console.log(genre);
+            //console.log(subgenre);
+            console.log(dataset);
+        });
+
+
+
+    </script>
+</body>
+
+</html>
