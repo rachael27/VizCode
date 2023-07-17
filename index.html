@@ -3611,16 +3611,16 @@
                     .style("stroke-width", "13px")
                     .attr("fill", "white")
                     .attr("transform", function (d) {
-                        var y = (d.data.data.level === 0 ? 50 : d.data.data.level * 300);
+                        //var y = (d.data.data.level === 0 ? 50 : d.data.data.level * 300);
                         //y = y + 2;
 
-                        var trans = "translate(" + d.x + "," + y + ")";
+                        //var trans = "translate(" + d.x + "," + y + ")";
 
 
                         if (d._children)
-                            return trans + " rotate(180)";
+                            return "rotate(180)";
                         else
-                            return trans + "";
+                            return "";
                     });
                    /*  .attr("transform", function (d, i) {
 
