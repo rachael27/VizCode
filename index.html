@@ -3611,7 +3611,7 @@
                     .style("stroke-width", "13px")
                     .attr("fill", "white")
                     .attr("transform", function (d) {
-                        //var y = (d.data.data.level === 0 ? 50 : d.data.data.level * 300);
+                        var y = (d.data.data.level === 0 ? 50 : d.data.data.level * 300);
                         //y = y + 2;
 
                         var trans = "translate(" + d.x + "," + y + ")";
